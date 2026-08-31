@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amazon Checkout &amp; Pay | Zijie Zhou</title>
+<meta name="description" content="A 48-hour UX audit of Amazon's checkout flow: rebalancing speed against trust to prevent design-induced errors.">
+<link rel="canonical" href="https://zj666z.github.io/all-projects/amazon-checkout-experience/">
+<meta property="og:title" content="Amazon Checkout &amp; Pay | Zijie Zhou">
+<meta property="og:description" content="A 48-hour UX audit of Amazon's checkout flow: rebalancing speed against trust to prevent design-induced errors.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="nav nav--light" aria-label="Primary">
+  <div class="nav__inner">
+    <a class="nav__brand" href="../../" aria-label="Zijie Zhou — home">Z.</a>
+    <div class="nav__links">
+      <a class="nav__link" href="../../">Home</a>
+      <a class="nav__link" href="../../all-projects/">All Projects</a>
+      <a class="nav__link" href="../../about/">About</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+  <header class="case-hero">
+    <video class="case-hero__bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src="../../assets/video/amazon-hero.mp4" type="video/mp4">
+    </video>
+    <div class="case-hero__inner">
+      <img class="case-hero__logo" src="../../assets/img/amazon-hero.png" alt="Design Challenge:<br>Amazon Checkout/Payment Experience" width="467" height="114">
+      <h1>Design Challenge:<br>Amazon Checkout/Payment Experience</h1>
+      <dl class="case-meta">
+        <div><p><strong>Role:</strong></p><p>Product Designer</p></div>
+        <div><p><strong>Duration:</strong></p><p>2 Days</p></div>
+        <div><p><strong>Project Type:</strong></p><p>Design Challenge</p></div>
+        <div><p><strong>Business Line:</strong></p><p>E-commerce, Fintech</p></div>
+      </dl>
+    </div>
+  </header>
+
+  <div class="case">
+    <section class="wrap">
+      <div class="case-head reveal">
+        <span class="pill">Summary</span>
+        <h2 class="case-title">Project Overview</h2>
+      </div>
+      <figure class="figure reveal">
+        <img src="../../assets/img/amazon-overview.png" alt="Overview of the Amazon checkout audit and redesign" loading="lazy">
+      </figure>
+      <h2 class="reveal">Context</h2>
+      <div class="grid-2 reveal">
+        <article class="block">
+          
+          <h3>Brief</h3>
+          <p>Conduct a UX audit of an e-commerce payment flow to identify usability friction and propose data-informed solutions in 48 hours.</p>
+        </article>
+        <article class="block">
+          
+          <h3>Focus</h3>
+          <p>I focused on Amazon, identifying a systemic trade-off where the platform's pursuit of "zero-friction" (Buy Now) inadvertently creates "negative friction" post-purchase (e.g., accidental orders, unrecognized payment failures). I delivered a full-funnel audit and a solution.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <h2 class="reveal">My Process</h2>
+      <div class="grid-3 reveal">
+        <article class="step">
+          <span class="num">01</span>
+          <h3>User Research &amp; UX Audit:</h3>
+          <p>Conducted user research and end-to-end audit of the checkout flow, identifying hidden friction points where opaque default settings and lack of visibility led to accidental payments and unnoticed errors.</p>
+        </article>
+        <article class="step">
+          <span class="num">02</span>
+          <h3>Problem Definition &amp; Analysis:</h3>
+          <p>Defined the core user struggle as a Trade-off, where the system prioritizes speed over accuracy, shifting friction to the post-purchase stage.</p>
+        </article>
+        <article class="step">
+          <span class="num">03</span>
+          <h3>Design Strategy &amp; Solution:</h3>
+          <p>Proposed a redesigned the flow and information architecture that restores decision visibility and error prevention, ensuring users can verify critical details without sacrificing the efficiency of the checkout speed.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="case-head reveal">
+        <span class="pill">Research &amp; Analysis</span>
+        <h2 class="case-title">Balancing Speed vs. Trust in High-Volume Checkout</h2>
+      </div>
+      <div class="panel reveal">
+        <h3>Research Summary - What I learned?</h3>
+        <p>To identify critical pain points, I conducted a mixed-method UX audit combining online user feedback analysis
+          (e.g., Reddit, forums) with 3 in-depth user interviews. This research revealed that while Amazon maximizes
+          transaction speed, it often sacrifices user control.</p>
+      </div>
+      <div class="grid-3 reveal">
+        <article class="step">
+          <span class="num">01</span>
+          <h3>🛡️ Prioritize Confidence over Blind Speed</h3>
+          <p><strong>Insight:</strong> ～66% Users hesitate to use "Buy Now" because they fear accidental errors (wrong card/address).<br><strong>Strategy:</strong> Visibility. Keep "Fatal Error Factors" (Variant, Address, Payment, Total) permanently visible.</p>
+        </article>
+        <article class="step">
+          <span class="num">02</span>
+          <h3>🧠 Reduce Cognitive Load via Progressive Disclosure</h3>
+          <p><strong>Insight:</strong> Users feel overwhelmed by long scrolling pages and cluttered text blocks.<br><strong>Strategy:</strong> Focus. Replace long lists with concise cards or accordions. Show only the must-know facts at each step.</p>
+        </article>
+        <article class="step">
+          <span class="num">03</span>
+          <h3>🏷️ Eliminate "Hidden Cost" Anxiety</h3>
+          <p><strong>Insight:</strong> Users abandon flows when shipping fees or taxes appear unexpectedly at the end.<br><strong>Strategy:</strong> Transparency. Surface total costs upfront. The price users see is the price they pay.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <h2 class="reveal">Problem</h2>
+      <div class="grid-2 reveal">
+        <article class="block">
+          <h4 class="kicker">⚠️ Design-Induced Errors</h4>
+          <h3>System Design Flaw: The "Speed Trap" Interface</h3>
+          <ul><li><strong>Hidden Defaults:</strong> Critical decision factors (Active Card, Shipping Address) are buried behind "1-Click" defaults, assuming user context never changes.</li><li><strong>Zero Friction:</strong> The flow removes the "Safety Pause" needed for verification.</li></ul>
+        </article>
+        <article class="block">
+          <h4 class="kicker">😰 Post-Purchase Regret</h4>
+          <h3>Anxiety &amp; Churn Loop</h3>
+          <ul><li><strong>Decision Paralysis:</strong> Users hesitate to commit because the interface provides insufficient information to feel safe about the transaction.</li><li><strong>Loss of Control:</strong> Info overload &amp; hard to verify details beforehand makes the "Buy Now" button feel like a risky gamble rather than a convenience.</li></ul>
+        </article>
+      </div>
+      <figure class="figure figure--scroll reveal">
+        <img src="../../assets/img/amazon-current-flow.png" alt="Existing Amazon checkout and payment flow" loading="lazy">
+        <figcaption>👆 Existing Checkout/Payment Flow 👆</figcaption>
+      </figure>
+    </section>
+
+    <section class="wrap">
+      <h2 class="reveal">Impact:</h2>
+      <div class="grid-2 reveal">
+        <article class="block">
+          <h4 class="kicker">💸 Operational Waste</h4>
+          <h3>Escalating Operational Costs</h3>
+          <ul><li><strong>High Return Rate:</strong> Frequent "accidental orders" (wrong address/card) directly drive up expensive cancellations and reverse logistics costs.</li><li><strong>Increased Support Burden:</strong> Buried failure states force confused users to contact Customer Support for "Payment Revisions," increasing ticket volume.</li></ul>
+        </article>
+        <article class="block">
+          <h4 class="kicker">📉 Trust Debt</h4>
+          <h3>Eroding User Confidence</h3>
+          <ul><li><strong>Purchase Anxiety:</strong> The fear of unforced errors turns "Buy Now" into a "Risky Bet," causing users to hesitate on high-value purchases.</li><li><strong>Damaged Loyalty (NPS):</strong> Repeated "hidden failures" destroy trust, creating a feeling of loss of control that drives long-term churn.</li></ul>
+        </article>
+      </div>
+      <p class="pullquote reveal">How might we balance place order efficiency with sufficient information visibility to prevent post-purchase errors from eroding long-term user trust (NPS)?</p>
+    </section>
+
+    <section class="wrap">
+      <h2 class="reveal">Opportunity</h2>
+      <div class="grid-2 reveal">
+        <article class="block">
+          
+          <h3>Confident Speed</h3>
+          <p>Keep the "Buy Now" flow fast, but make it safe. We can add Smart Checkpoints—clear visual cues for Address and Card—so users can spot mistakes before they click "Place Order."</p>
+        </article>
+        <article class="block">
+          
+          <h3>Regain Control through Visibility</h3>
+          <p>Make the currently selected card impossible to miss. This restores financial control, ensuring users know which account is being charged before they commit.</p>
+        </article>
+      </div>
+      <h2 class="reveal">Goal</h2>
+      <div class="grid-3 reveal">
+        <article class="block">
+          <h3>Stop Accidental Orders</h3>
+          <p>Prevent users from buying with the wrong card or address by ensuring they can clearly see these details before they commit.</p>
+        </article>
+        <article class="block">
+          <h3>Maximize "First-Time Yield"</h3>
+          <p>Empower users to choose the right payment method instantly, ensuring the transaction is successful on the first try.</p>
+        </article>
+        <article class="block">
+          <h3>Reduce After-Sales Hassle</h3>
+          <p>Cut down on the "Bad Profits" generated by user mistakes, specifically targeting the high cost of support and returns.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="case-head reveal">
+        <span class="pill">Solution</span>
+        <h2 class="case-title">Design Proposals</h2>
+      </div>
+      <div class="panel reveal">
+        <h3>Key Features</h3>
+        <p>I was trying to overhaul the Standard Checkout (Flow 1) to introduce smart friction and visual clarity. This core
+          redesign ensures users verify critical details before committing.</p>
+      </div>
+      <div class="grid-2 reveal">
+        <article class="block">
+          
+          <h3>Above the Fold Clarity (Visual Hierarchy)</h3>
+          <p><strong>Design Strategy:</strong> Addressing user's need for brevity and reduced scrolling, I restructured the layout to pin the "Must-Know Facts" (Total Cost, Active Card, Primary Address) strictly above the fold.</p><p><strong>Outcome:</strong> This reduces Cognitive Load by replacing long scrolls with a concise dropdown, ensuring users see the essential info clearly before they place the order.</p>
+        </article>
+        <article class="block">
+          
+          <h3>Visual Confidence Snapshots</h3>
+          <p><strong>Design Strategy:</strong> Moving away from text-heavy parsable content, I utilized Visual Cards (e.g., Card Art) to represent payment methods in the checkout/payment flow.</p><p><strong>Outcome:</strong> This creates a focused "Final Snapshot" of what will be charged and shipped, delivering the Trustworthy Flow that infrequent shoppers need to click "Place Order" without anxiety.</p>
+        </article>
+      </div>
+      <figure class="figure figure--scroll reveal">
+        <img src="../../assets/img/amazon-redesign-flow.png" alt="Redesigned checkout flow" loading="lazy">
+        <figcaption>👆 Select payment plan + Select &amp; edit address + Buy now (Updated); [Scroll Horizontally to See More ↔️] 👆</figcaption>
+      </figure>
+    </section>
+
+    <section class="wrap">
+      <h2 class="reveal">Potential Solution Impacts</h2>
+      <div class="grid-3 reveal">
+        <article class="block">
+          <h3>Maximized Revenue Capture (Conversion)</h3>
+          <p>Recovered at-risk revenue by enabling in-context editing (preventing drop-offs) and driving High-AOV adoption via seamless installment options.</p>
+        </article>
+        <article class="block">
+          <h3>Restored User Confidence (Experience)</h3>
+          <p>Shifted user sentiment from "anxious" to "secure" by ensuring Zero-Scroll Visibility of critical decision factors (Total/Card/Address).</p>
+        </article>
+        <article class="block">
+          <h3>Reduced Operational Waste (Efficiency)</h3>
+          <p>Drastically cut post-purchase cancellations and CS ticket volume (e.g., "Wrong Address," "Payment Reversal") by enforcing pre-purchase validation.</p>
+        </article>
+      </div>
+    </section>
+
+    <nav class="wrap case-nav" aria-label="More case studies">
+      <a class="btn btn--light" href="../../all-projects/">&larr; All case studies</a>
+      <a class="btn btn--dark" href="../element-design-system/">Element Design System &rarr;</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__block">
+    <div class="footer__inner">
+      <a class="footer__brand" href="../../">ZI.JIE.</a>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Zijie Zhou</p>
+        <div class="footer__social">
+          <a href="mailto:zijiezhou00@gmail.com" aria-label="Email Zijie"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M224 48H32a8 8 0 0 0-8 8v136a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8Zm-96 85.15L52.57 64h150.86ZM40 92.19l53.16 48.7L40 189.62ZM56.19 200 128 134.19 199.81 200Zm159.81-10.38-53.16-48.73L216 92.19Z"/></svg></a>
+          <a href="https://www.linkedin.com/in/zijiezhou000111/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216 24H40a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16ZM96 176a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0Zm-8-80a12 12 0 1 1 12-12 12 12 0 0 1-12 12Zm96 80a8 8 0 0 1-16 0v-36a20 20 0 0 0-40 0v36a8 8 0 0 1-16 0v-64a8 8 0 0 1 15.79-1.78A36 36 0 0 1 184 140Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/site.js" defer></script>
+</body>
+</html>
