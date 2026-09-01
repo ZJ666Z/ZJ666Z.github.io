@@ -92,7 +92,7 @@ strong { font-weight: 700; }
 
 .nav__link {
   position: relative; padding: 8px 16px;
-  font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ink);
+  font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ink); text-align: center;
   transition: color .3s var(--fx-ease);
 }
 /* 圆点指示器 */
@@ -147,7 +147,9 @@ strong { font-weight: 700; }
 .sec__inner { display: flex; flex-direction: column; gap: 64px; }
 
 .sec-head { width: 100%; max-width: 720px; margin-inline: auto; text-align: center; display: grid; gap: 16px; }
+.sec-head .pill { justify-self: center; }
 .sec-head h2 { font-size: 48px; line-height: 56px; font-weight: 700; }
+.sec-head h2.page-title { font-size: 60px; line-height: 72px; font-weight: 600; }
 .sec-head p  { color: var(--ink-2); }
 .accent { color: var(--blue-btn); }
 
@@ -173,6 +175,7 @@ strong { font-weight: 700; }
 /* ---------- 项目卡 ---------- */
 .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.case .grid-3 { gap: 36px; }
 
 .card {
   display: flex; flex-direction: column; gap: 32px;
@@ -216,13 +219,14 @@ strong { font-weight: 700; }
 .panel { background: #fff; border-radius: var(--r-block); padding: 32px; display: grid; gap: 32px; }
 .panel--dark { background: var(--dark); color: #fff; }
 .panel__head { display: flex; gap: 64px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+.panel__head > div { flex: 1 1 400px; min-width: 0; }
 .panel__head h2 { font-size: 36px; line-height: 44px; font-weight: 600; }
-.panel__head p { color: var(--ink-2); max-width: 360px; }
+.panel__head p { color: var(--ink-2); flex: 0 1 360px; text-align: right; }
 .pill {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 6px 16px 6px 14px; border-radius: var(--r-pill);
   background: #fff; border: 1px solid var(--line);
-  font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ink);
+  font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ink); text-align: center;
   width: max-content; max-width: 100%;
 }
 .panel .pill { background: var(--bg); border-color: transparent; }
@@ -232,7 +236,7 @@ strong { font-weight: 700; }
 .quote { background: var(--bg); border-radius: var(--r-card); padding: 32px; display: grid; gap: 24px; align-content: start; }
 .quote__who { display: flex; align-items: center; gap: 12px; }
 .quote__who img { width: 44px; height: 44px; border-radius: 60px; object-fit: cover; }
-.quote__id { display: grid; gap: 2px; }
+.quote__id { display: grid; gap: 2px; flex: 1 1 auto; min-width: 0; }
 .quote__id h3 { font-size: 18px; line-height: 24px; font-weight: 600 !important; }
 .quote__id p { font-size: 14px; line-height: 20px; font-weight: 400; }
 .quote blockquote { font-size: 12px; line-height: 18px; font-weight: 600; }
@@ -265,7 +269,7 @@ strong { font-weight: 700; }
 .case-hero h1 { width: 100%; font-size: 24px; line-height: 32px; font-weight: 500; text-align: center; }
 .case-meta {
   width: 100%; margin-top: 189px;
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 40px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;
   font-size: 18px; line-height: 28px;
 }
 .case-meta strong { font-weight: 700; }
@@ -274,11 +278,11 @@ strong { font-weight: 700; }
 .case { padding-bottom: 96px; }
 .case > section { padding-block: 96px 0; display: grid; gap: 32px; }
 .case > section > .wrap, .case section.wrap { display: grid; gap: 32px; }
-.case-head { justify-items: center; text-align: center; display: grid; gap: 16px; }
+.case-head { text-align: center; display: grid; gap: 16px; max-width: 720px; margin-inline: auto; }
+.case-head .pill { justify-self: center; }
 .case-head .pill { text-align: center; }
 .case-head .pill { background: #fff; }
-.case-title { font-size: 48px; line-height: 56px; font-weight: 700; }
-.case-head { width: 100%; }
+.case-title { font-size: 48px; line-height: 56px; font-weight: 700; width: 100%; }
 /* 用 :where() 写通用排版，特指度为 0，组件类永远能盖过它 */
 :where(.case) :where(h2) { font-size: 36px; line-height: 44px; font-weight: 600; }
 :where(.case) :where(h3) { font-size: 24px; line-height: 32px; font-weight: 500; }
@@ -301,7 +305,13 @@ strong { font-weight: 700; }
   .tradeoff__arrow { justify-self: center; }
 }
 
-.panel { background: #fff; border-radius: var(--r-card); padding: 36px; display: grid; gap: 20px; }
+.case .panel { border-radius: var(--r-card); padding: 36px; gap: 20px; }
+.case .panel--quotes { border-radius: var(--r-block); padding: 32px; gap: 32px; }
+.plain-stack { display: grid; gap: 44px; }
+.plain-block { display: grid; gap: 12px; }
+.plain-block h3 { font-size: 24px; line-height: 32px; font-weight: 500; }
+.stack-blocks { display: grid; gap: 16px; }
+.stack-blocks .block { padding: 32px; }
 .block { background: #fff; border-radius: var(--r-card); padding: 24px; display: grid; gap: 12px; align-content: start; }
 .block h3 { font-size: 24px; line-height: 32px; font-weight: 500; }
 .step { background: #fff; border-radius: var(--r-card); padding: 24px; display: grid; gap: 12px; align-content: start; }
@@ -312,7 +322,8 @@ strong { font-weight: 700; }
   background: var(--bg); border-radius: var(--r-card);
   padding: 16px 16px 16px 36px; display: flex; align-items: center; gap: 36px; justify-content: space-between; flex-wrap: wrap;
 }
-.notice p { font-size: 18px; line-height: 26px; font-weight: 600; color: var(--ink-2); }
+.notice p { font-size: 18px; line-height: 26px; font-weight: 600; color: var(--ink-2); flex: 1 1 auto; }
+.notice .btn { flex: none; margin-left: auto; }
 .notice--dark { background: var(--ink-2); }
 .notice--dark p { color: #fff; }
 .nda { color: #ffaa93; font-weight: 600; }
@@ -329,6 +340,7 @@ strong { font-weight: 700; }
 .figure--scroll::-webkit-scrollbar { width: 0; height: 0; display: none; }
 .figure--scroll img { width: auto; max-width: none; min-width: 100%; }
 
+.hmw-n { text-align: center; font-size: 36px; line-height: 44px; font-weight: 600; color: var(--ink); }
 .pullquote { text-align: center; font-size: 36px; line-height: 48px; font-weight: 600; max-width: 900px; margin-inline: auto; }
 .pullquote::before, .pullquote::after { content: '"'; color: var(--blue); }
 
