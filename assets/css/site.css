@@ -212,7 +212,7 @@ strong { font-weight: 700; }
 .quote__who { display: flex; align-items: center; gap: 12px; }
 .quote__who img { width: 44px; height: 44px; border-radius: 60px; object-fit: cover; }
 .quote__id { display: grid; gap: 2px; }
-.quote__id h3 { font-size: 18px; line-height: 24px; font-weight: 600; }
+.quote__id h3 { font-size: 18px; line-height: 24px; font-weight: 600 !important; }
 .quote__id p { font-size: 14px; line-height: 20px; font-weight: 400; }
 .quote blockquote { font-size: 12px; line-height: 18px; font-weight: 600; }
 .quote details summary { cursor: pointer; margin-top: 10px; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--blue-btn); list-style: none; }
@@ -241,7 +241,7 @@ strong { font-weight: 700; }
 .case-hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 .case-hero__inner { position: relative; z-index: 2; display: grid; gap: 0; justify-items: center; width: 100%; }
 .case-hero__logo { max-width: 467px; width: min(467px, 70%); height: auto; }
-.case-hero h1 { font-size: 24px; line-height: 32px; font-weight: 500; text-align: center; }
+.case-hero h1 { width: 100%; font-size: 24px; line-height: 32px; font-weight: 500; text-align: center; }
 .case-meta {
   width: 100%; margin-top: 189px;
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 40px;
@@ -257,11 +257,14 @@ strong { font-weight: 700; }
 .case-head .pill { text-align: center; }
 .case-head .pill { background: #fff; }
 .case-title { font-size: 48px; line-height: 56px; font-weight: 700; }
-.case h2 { font-size: 36px; line-height: 44px; font-weight: 600; }
-.case h3 { font-size: 24px; line-height: 32px; font-weight: 700; }
-.case h4 { font-size: 18px; line-height: 24px; font-weight: 600; }
-.case p  { color: var(--ink-2); }
-.case ul { display: grid; gap: 8px; padding-left: 22px; list-style: disc; color: #212121; }
+.case-head { width: 100%; }
+/* 用 :where() 写通用排版，特指度为 0，组件类永远能盖过它 */
+:where(.case) :where(h2) { font-size: 36px; line-height: 44px; font-weight: 600; }
+:where(.case) :where(h3) { font-size: 24px; line-height: 32px; font-weight: 500; }
+:where(.case) :where(h4) { font-size: 18px; line-height: 24px; font-weight: 600; }
+:where(.case) :where(p)  { color: var(--ink-2); }
+/* 原站列表不缩进，项目符号挂在文字左侧的留白里 */
+:where(.case) :where(ul) { display: grid; gap: 0; padding-left: 0; list-style: disc outside; color: #212121; }
 .case li::marker { color: var(--muted); }
 .kicker { color: var(--muted); font-weight: 600; }
 
@@ -279,8 +282,9 @@ strong { font-weight: 700; }
 
 .panel { background: #fff; border-radius: var(--r-card); padding: 36px; display: grid; gap: 20px; }
 .block { background: #fff; border-radius: var(--r-card); padding: 24px; display: grid; gap: 12px; align-content: start; }
+.block h3 { font-size: 24px; line-height: 32px; font-weight: 500; }
 .step { background: #fff; border-radius: var(--r-card); padding: 24px; display: grid; gap: 12px; align-content: start; }
-.step h3 { font-size: 24px; line-height: 32px; font-weight: 700; }
+.step h3 { font-size: 24px; line-height: 32px; font-weight: 500; }
 .num { display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--r-pill); background: var(--dark); color: #fff; font-size: 16px; font-weight: 700; }
 
 .notice {
@@ -306,7 +310,17 @@ strong { font-weight: 700; }
 .pullquote { text-align: center; font-size: 36px; line-height: 48px; font-weight: 600; max-width: 900px; margin-inline: auto; }
 .pullquote::before, .pullquote::after { content: '"'; color: var(--blue); }
 
-.case-nav { display: flex; gap: 12px; flex-wrap: wrap; padding-top: 96px; }
+/* 成果段落：文字 510 / 配图 558 左右交错，与原站一致 */
+.zigzag { display: grid; grid-template-columns: 510px 558px; gap: 60px; align-items: center; padding-left: 24px; }
+.zigzag--flip { grid-template-columns: 558px 510px; padding-left: 0; padding-right: 24px; }
+.zigzag__text { display: grid; gap: 12px; align-content: center; }
+.zigzag__text h3 { font-size: 24px; line-height: 32px; font-weight: 500; }
+.zigzag figure, .zigzag img { margin: 0; }
+.zigzag img { width: 100%; border-radius: var(--r-card); }
+@media (max-width: 1279.98px) {
+  .zigzag, .zigzag--flip { grid-template-columns: minmax(0,1fr); gap: 24px; padding: 0; }
+  .zigzag--flip .zigzag__text { order: -1; }
+}
 
 /* 生活相册：三行，每行一张双宽 —— 与原站的 2:1:1 / 1:2:1 / 1:1:2 排布一致 */
 .gallery { display: grid; gap: 36px; }
@@ -372,10 +386,32 @@ strong { font-weight: 700; }
   .footer__inner { padding: 40px var(--pad) 24px; gap: 40px; }
 }
 
-/* ---------- 入场淡入（对齐原站：只有透明度，无位移） ---------- */
-@keyframes appear { from { opacity: .001 } to { opacity: 1 } }
-main > *, .footer { animation: appear .42s cubic-bezier(.2,.8,.2,1) both; }
-@media (prefers-reduced-motion: reduce) { main > *, .footer { animation: none } }
+/* ---------- 入场动效 ----------
+   对齐原站：初始 opacity .001，滚动进入视口后播放 spring(stiffness 300, damping 60, mass 1)。
+   首页的 Resume 按钮和三张项目卡另外带 96px 上移，其余只有透明度。
+   下面的 linear() 就是那条弹簧曲线的采样，浏览器不支持时回落到前一行的 cubic-bezier。 */
+:root {
+  --fx-dur: 1s;
+  --fx-ease: cubic-bezier(.16, 1, .3, 1);
+  --fx-spring: linear(0.0000, 0.1272, 0.2981, 0.4411, 0.5556, 0.6467, 0.7191, 0.7767,
+    0.8225, 0.8588, 0.8878, 0.9108, 0.9291, 0.9436, 0.9552, 0.9644, 0.9717, 0.9775,
+    0.9821, 0.9858, 0.9887, 0.9910, 0.9928, 0.9943, 0.9955);
+}
+
+.js .fx { opacity: .001; }
+.js .fx-up { opacity: .001; transform: translateY(96px); }
+.fx, .fx-up {
+  transition: opacity var(--fx-dur) var(--fx-ease), transform var(--fx-dur) var(--fx-ease);
+  transition-timing-function: var(--fx-spring);
+  will-change: opacity, transform;
+}
+.fx.is-in, .fx-up.is-in { opacity: 1; transform: none; will-change: auto; }
+
+/* 没有 JS 时上面两条不生效，内容直接可见，不会白屏 */
+
+@media (prefers-reduced-motion: reduce) {
+  .fx, .fx-up { opacity: 1; transform: none; transition: none; }
+}
 
 /* ---------- 首屏下方的滚动提示箭头 ---------- */
 .scroll-cue {
