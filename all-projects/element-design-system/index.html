@@ -9,7 +9,9 @@
 <meta property="og:title" content="Element Global Design System | Zijie Zhou">
 <meta property="og:description" content="Co-developing Johnson Controls' Global Element Design System from 0 to 1, adopted by 34 design teams.">
 <meta property="og:type" content="website">
-<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+<link rel="icon" href="../../assets/img/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="../../assets/img/favicon-light.svg">
 <link rel="stylesheet" href="../../assets/css/site.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -28,12 +30,18 @@
 </nav>
 
 <main id="main">
-  <header class="case-hero">
+  <header class="case-hero case-hero--element">
     <video class="case-hero__bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
       <source src="../../assets/video/eds-hero.mp4" type="video/mp4">
     </video>
     <div class="case-hero__inner fx">
-      <h1>Element Global Design System</h1>
+      <div class="case-hero__identity">
+        <div class="case-hero__jci" aria-label="Johnson Controls">
+          <span>Johnson<br>Controls</span>
+          <img src="../../assets/img/logo-johnson-controls.png" alt="" width="96" height="96">
+        </div>
+        <h1>Element Global Design System</h1>
+      </div>
       <dl class="case-meta">
         <div><p><strong>Role:</strong></p><p>UX Design Intern</p></div>
         <div><p><strong>Timeline:</strong></p><p>July 18, 2022 - Sep 1, 2023 (1 Year 3 Months)</p></div>
@@ -55,18 +63,18 @@
         <div class="stat"><b>+65%</b><span>Design-token efficiency</span></div>
         <div class="stat"><b>-62%</b><span>Design maintenance</span></div>
       </div>
-      <figure class="figure fx">
-        <img src="../../assets/img/eds-overview.png" alt="Element Design System overview" loading="lazy">
-      </figure>
-      <div class="split fx">
-        <h2>Context</h2>
+      <div class="overview-grid overview-grid--element fx">
+        <figure class="figure">
+          <img src="../../assets/img/eds-overview.png" alt="Element Design System overview" width="1800" height="1402" loading="lazy">
+        </figure>
         <div class="split__body">
-        <p><strong>Element Design System Overview</strong></p>
-        <p>Built a scalable design system from the ground up to unify Johnson Controls' global digital products. EDS provides a
-          comprehensive library of components, patterns, and code snippets, accelerating speed-to-market and ensuring a consistent
-          UX/UI language across web applications.</p>
-        <p><strong>My Responsibility</strong></p>
-        <ul><li><strong>0 to 1 Creation:</strong> Co-developed the global design system from scratch, now adopted by 34 design &amp; 2 engineering teams, establishing a unified design language across the organization.</li><li><strong>System Architecture:</strong> Built a comprehensive Figma UI kit and guidelines for 27 components and 6 patterns (incl. data visualization), reducing component creation time by 42%.</li><li><strong>Operational Impact:</strong> Streamlined workflows to cut design maintenance by 62% and boost token efficiency by 65%, saving the company over $800K (achieving ~$200K net annual savings).</li><li><strong>Adoption &amp; Training:</strong> Partnered with cross-functional stakeholders to drive adoption; supported bi-weekly Figma training to onboard teams and enforce core system principles.</li></ul>
+          <h2>Context</h2>
+          <p><strong>Element Design System Overview</strong></p>
+          <p>Built a scalable design system from the ground up to unify Johnson Controls' global digital products. EDS provides a
+            comprehensive library of components, patterns, and code snippets, accelerating speed-to-market and ensuring a consistent
+            UX/UI language across web applications.</p>
+          <p><strong>My Responsibility</strong></p>
+          <ul><li><strong>0 to 1 Creation:</strong> Co-developed the global design system from scratch, now adopted by 34 design &amp; 2 engineering teams, establishing a unified design language across the organization.</li><li><strong>System Architecture:</strong> Built a comprehensive Figma UI kit and guidelines for 27 components and 6 patterns (incl. data visualization), reducing component creation time by 42%.</li><li><strong>Operational Impact:</strong> Streamlined workflows to cut design maintenance by 62% and boost token efficiency by 65%, saving the company over $800K (achieving ~$200K net annual savings).</li><li><strong>Adoption &amp; Training:</strong> Partnered with cross-functional stakeholders to drive adoption; supported bi-weekly Figma training to onboard teams and enforce core system principles.</li></ul>
         </div>
       </div>
       <div class="notice notice--dark fx"><p><span class="nda">[UNDER NDA]</span> This project is protected by confidentiality agreements, but I would be happy to walk you through my process and the outcomes in a private interview for more details</p><a class="btn btn--blue" href="https://www.linkedin.com/in/zijiezhou000111/" target="_blank" rel="noopener"><span class="roll"><span class="roll__in">Contact Me</span><span class="roll__in" aria-hidden="true">Contact Me</span></span></a></div>
@@ -107,9 +115,9 @@
               <h4 class="kicker">Inconsistencies in Today's JCI Products</h4>
               <p style="font-size:14px;color:var(--muted)">* Ambiguous visual representation for confidentiality</p>
             </div>
-            <img src="../../assets/img/eds-inconsistency-01.png" alt="Inconsistent product UI example one" loading="lazy">
-            <img src="../../assets/img/eds-inconsistency-02.png" alt="Inconsistent product UI example two" loading="lazy">
-            <img src="../../assets/img/eds-inconsistency-03.png" alt="Inconsistent product UI example three" loading="lazy">
+            <img src="../../assets/img/eds-inconsistency-01.png" alt="Inconsistent product UI example one" width="1200" height="600" loading="lazy">
+            <img src="../../assets/img/eds-inconsistency-02.png" alt="Inconsistent product UI example two" width="833" height="505" loading="lazy">
+            <img src="../../assets/img/eds-inconsistency-03.png" alt="Inconsistent product UI example three" width="833" height="489" loading="lazy">
           </div>
           <div class="tri__col">
             <div class="tri__block">
@@ -142,7 +150,7 @@
       </div>
       <h4 class="kicker fx">Without Design System</h4>
       <figure class="figure fx">
-        <img src="../../assets/img/eds-fragmented-ux.png" alt="Fragmented user experience diagram" loading="lazy">
+        <img src="../../assets/img/eds-fragmented-ux.png" alt="Fragmented user experience diagram" width="1287" height="855" loading="lazy">
       </figure>
       <h2 class="fx" style="text-align:center">⬇️</h2>
       <h2 class="fx" style="text-align:center">Fragmented User Experience</h2>
@@ -161,7 +169,7 @@
           Johnson Controls (JCI), while physical products shared a robust design language, the digital ecosystem remained fragmented.</p>
       </div>
       <figure class="figure fx">
-        <img src="../../assets/img/eds-current-screens.png" alt="Current log in and log off screens" loading="lazy">
+        <img src="../../assets/img/eds-current-screens.png" alt="Current log in and log off screens" width="1800" height="341" loading="lazy">
         <figcaption>👆 Current Log in &amp; off screens 👆</figcaption>
       </figure>
       <h2 class="fx">Problem: The Challenges &amp; Strategic Trade-offs</h2>
@@ -200,10 +208,10 @@
       <h3 class="fx">Currently, every app has its own login flow and manages the auth routing itself:</h3>
       <div class="grid-2">
       <figure class="figure fx">
-        <img src="../../assets/img/eds-current-flow-01.png" alt="Current login flow, part one" loading="lazy">
+        <img src="../../assets/img/eds-current-flow-01.png" alt="Current login flow, part one" width="4096" height="1029" loading="lazy">
       </figure>
       <figure class="figure fx">
-        <img src="../../assets/img/eds-current-flow-02.png" alt="Current login flow, part two" loading="lazy">
+        <img src="../../assets/img/eds-current-flow-02.png" alt="Current login flow, part two" width="1800" height="782" loading="lazy">
       </figure>
       </div>
       <p class="fx" style="text-align:center;color:var(--muted)">👆 Current Log in Flow 👆</p>
@@ -278,7 +286,7 @@
         <ul><li><strong>Target pattern:</strong> A centralized login entry point—customized by JCI, hosted by Okta—replaces app-owned login pages across the JCI ecosystem.</li><li><strong>Smart routing:</strong> Users are redirected from any app to the centralized Login Screen, then routed to either JCI username/password (no IdP on record) or the correct SSO Identity Provider (IdP found via email lookup).</li><li><strong>Seamless return:</strong> After authentication (and optional account selection for multi-org users), users are redirected back to the originating app's Home Screen.</li><li><strong>Platform value:</strong> Centralization improves governance and consistency, reduces maintenance/security burden on product teams, and enables SSO ("log in once, access everywhere") with scalable theming.</li></ul>
       </div>
       <figure class="figure fx">
-        <img src="../../assets/img/eds-centralized-login.png" alt="Centralized login architecture" loading="lazy">
+        <img src="../../assets/img/eds-centralized-login.png" alt="Centralized login architecture" width="1784" height="776" loading="lazy">
       </figure>
       <div class="panel fx">
         <span class="num">02</span>
@@ -286,54 +294,60 @@
         <h3>3.1 Consistent component &amp; terminology - "Log in &amp; Sign up"</h3>
       </div>
       <figure class="figure fx">
-        <img src="../../assets/img/eds-terminology.png" alt="Consistent login terminology and components" loading="lazy">
+        <img src="../../assets/img/eds-terminology.png" alt="Consistent login terminology and components" width="1800" height="978" loading="lazy">
       </figure>
       <h3 class="fx">3.2 Flexible Authentication Architecture</h3>
       <p class="fx">To meet the diverse security and user experience needs across JCI's massive product portfolio, we defined three core authentication strategies within the design system:</p>
-      <div class="block fx">
-        <h4 class="kicker">1. 🔐 Single Sign-On (SSO) — The ecosystem hub breaking down silos</h4>
-        <ul><li><strong>Behavior/Interaction:</strong> Integrates Okta's SSO service to build a unified, enterprise-grade authentication portal.</li><li><strong>Design Value:</strong> Completely breaks down identity barriers between products. Consumers only need to authenticate once to seamlessly access multiple unrelated JCI products.</li></ul>
+      <div class="auth-row fx">
+        <div class="block">
+          <h4 class="kicker">1. 🔐 Single Sign-On (SSO) — The ecosystem hub breaking down silos</h4>
+          <ul><li><strong>Behavior/Interaction:</strong> Integrates Okta's SSO service to build a unified, enterprise-grade authentication portal.</li><li><strong>Design Value:</strong> Completely breaks down identity barriers between products. Consumers only need to authenticate once to seamlessly access multiple unrelated JCI products.</li></ul>
+        </div>
+        <figure class="figure">
+          <img src="../../assets/img/eds-auth-sso.png" alt="Single sign-on screens" width="2048" height="1704" loading="lazy">
+        </figure>
       </div>
-      <figure class="figure fx">
-        <img src="../../assets/img/eds-auth-sso.png" alt="Single sign-on screens" loading="lazy">
-      </figure>
-      <div class="block fx">
-        <h4 class="kicker">2. 🧠 Progressive Authentication — The standard for reducing cognitive load</h4>
-        <ul><li><strong>Behavior/Interaction:</strong> Requests only the User ID upfront, deferring the password input to the next step.</li><li><strong>Design Value:</strong> Drastically reduces cognitive load by eliminating non-essential visual distractions. The system automatically determines the correct login path in the background.</li></ul>
+      <div class="auth-row fx">
+        <div class="block">
+          <h4 class="kicker">2. 🧠 Progressive Authentication — The standard for reducing cognitive load</h4>
+          <ul><li><strong>Behavior/Interaction:</strong> Requests only the User ID upfront, deferring the password input to the next step.</li><li><strong>Design Value:</strong> Drastically reduces cognitive load by eliminating non-essential visual distractions. The system automatically determines the correct login path in the background.</li></ul>
+        </div>
+        <figure class="figure">
+          <img src="../../assets/img/eds-auth-progressive.png" alt="Progressive authentication screens" width="2503" height="2082" loading="lazy">
+        </figure>
       </div>
-      <figure class="figure fx">
-        <img src="../../assets/img/eds-auth-progressive.png" alt="Progressive authentication screens" loading="lazy">
-      </figure>
-      <div class="block fx">
-        <h4 class="kicker">3. ⚡ One-step Authentication — Maximized efficiency for high-frequency scenarios</h4>
-        <ul><li><strong>Behavior/Interaction:</strong> Displays both the User ID and password input fields on the same page, requiring no step-by-step navigation.</li><li><strong>Design Value:</strong> Tailor-made for products that require high-frequency log-in and log-off actions, providing the fastest possible entry experience.</li></ul>
+      <div class="auth-row fx">
+        <div class="block">
+          <h4 class="kicker">3. ⚡ One-step Authentication — Maximized efficiency for high-frequency scenarios</h4>
+          <ul><li><strong>Behavior/Interaction:</strong> Displays both the User ID and password input fields on the same page, requiring no step-by-step navigation.</li><li><strong>Design Value:</strong> Tailor-made for products that require high-frequency log-in and log-off actions, providing the fastest possible entry experience.</li></ul>
+        </div>
+        <figure class="figure">
+          <img src="../../assets/img/eds-auth-one-step.png" alt="One-step authentication screens" width="2220" height="2582" loading="lazy">
+        </figure>
       </div>
-      <figure class="figure fx">
-        <img src="../../assets/img/eds-auth-one-step.png" alt="One-step authentication screens" loading="lazy">
-      </figure>
       <div class="panel fx">
         <span class="num">03</span>
         <h4 class="kicker">🏷️ Multi-tenant Brand System vs. Governance</h4>
         <h3>Migration of Login Pages</h3>
       </div>
       <figure class="figure fx">
-        <img src="../../assets/img/eds-migration.png" alt="Login page migration plan" loading="lazy">
+        <img src="../../assets/img/eds-migration.png" alt="Login page migration plan" width="1800" height="781" loading="lazy">
       </figure>
       <h3 class="fx">United approach to log in screen</h3>
       <figure class="figure fx">
-        <img src="../../assets/img/eds-layout-focused.png" alt="Focused centre-aligned login layout" loading="lazy">
+        <img src="../../assets/img/eds-layout-focused.png" alt="Focused centre-aligned login layout" width="2660" height="806" loading="lazy">
         <figcaption>Focused (Centered Align Component)</figcaption>
       </figure>
       <figure class="figure fx">
-        <img src="../../assets/img/eds-layout-billboard.png" alt="Marketing billboard login layout" loading="lazy">
+        <img src="../../assets/img/eds-layout-billboard.png" alt="Marketing billboard login layout" width="1800" height="545" loading="lazy">
         <figcaption>Marketing Billboard (Left or Right Align Components)</figcaption>
       </figure>
-      <figure class="figure figure--scroll fx">
-        <img src="../../assets/img/eds-login-flows.png" alt="Complete login flows" loading="lazy">
+      <figure class="figure figure--scroll figure--login-flow fx">
+        <img src="../../assets/img/eds-login-flows.png" alt="Complete login flows" width="1800" height="244" loading="lazy">
         <figcaption>👆 Login Flows; [Scroll Horizontally to See More ↔️] 👆</figcaption>
       </figure>
-      <figure class="figure figure--scroll fx">
-        <img src="../../assets/img/eds-component-details.png" alt="Login component specifications" loading="lazy">
+      <figure class="figure figure--scroll figure--component-details fx">
+        <img src="../../assets/img/eds-component-details.png" alt="Login component specifications" width="1800" height="570" loading="lazy">
         <figcaption>👆 Component Details; [Scroll Horizontally to See More ↔️] 👆</figcaption>
       </figure>
     </section>

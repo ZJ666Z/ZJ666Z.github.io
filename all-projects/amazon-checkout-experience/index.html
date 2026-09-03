@@ -9,7 +9,9 @@
 <meta property="og:title" content="Amazon Checkout &amp; Pay | Zijie Zhou">
 <meta property="og:description" content="A 48-hour UX audit of Amazon's checkout flow: rebalancing speed against trust to prevent design-induced errors.">
 <meta property="og:type" content="website">
-<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+<link rel="icon" href="../../assets/img/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="../../assets/img/favicon-light.svg">
 <link rel="stylesheet" href="../../assets/css/site.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -28,13 +30,15 @@
 </nav>
 
 <main id="main">
-  <header class="case-hero">
+  <header class="case-hero case-hero--amazon">
     <video class="case-hero__bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
       <source src="../../assets/video/amazon-hero.mp4" type="video/mp4">
     </video>
     <div class="case-hero__inner fx">
-      <img class="case-hero__logo" src="../../assets/img/amazon-hero.png" alt="Design Challenge: Amazon Checkout/Payment Experience" width="467" height="114">
-      <h1>Design Challenge:<br>Amazon Checkout/Payment Experience</h1>
+      <div class="case-hero__identity">
+        <img class="case-hero__logo" src="../../assets/img/amazon-hero.png" alt="Amazon" width="1024" height="309">
+        <h1>Design Challenge:<br>Amazon Checkout/Payment Experience</h1>
+      </div>
       <dl class="case-meta">
         <div><p><strong>Role:</strong></p><p>Product Designer</p></div>
         <div><p><strong>Duration:</strong></p><p>2 Days</p></div>
@@ -50,19 +54,19 @@
         <span class="pill"><svg class="ico" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" fill="currentColor"><path opacity="0.2" d="M232,56V200H160a32,32,0,0,0-32,32V88a32,32,0,0,1,32-32Z"></path><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64ZM160,88h40a8,8,0,0,1,0,16H160a8,8,0,0,1,0-16Zm48,40a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,128Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,160Z"></path></svg>Summary</span>
         <h2 class="case-title">Project Overview</h2>
       </div>
-      <figure class="figure fx">
-        <img src="../../assets/img/amazon-overview.png" alt="Overview of the Amazon checkout audit and redesign" loading="lazy">
-      </figure>
-      <div class="split fx">
-        <h2>Context</h2>
+      <div class="overview-grid overview-grid--amazon fx">
+        <figure class="figure">
+          <img src="../../assets/img/amazon-overview.png" alt="Overview of the Amazon checkout audit and redesign" width="1800" height="1326" loading="lazy">
+        </figure>
         <div class="split__body">
+          <h2>Context</h2>
           <h3>Brief</h3>
           <p>Conduct a UX audit of an e-commerce payment flow to identify usability friction and propose data-informed
-            solutions in 48 hours.</p>
+              solutions in 48 hours.</p>
           <h3>Focus</h3>
           <p>I focused on Amazon, identifying a systemic trade-off where the platform's pursuit of "zero-friction" (Buy Now)
-            inadvertently creates "negative friction" post-purchase (e.g., accidental orders, unrecognized payment failures).
-            I delivered a full-funnel audit and a solution.</p>
+              inadvertently creates "negative friction" post-purchase (e.g., accidental orders, unrecognized payment failures).
+              I delivered a full-funnel audit and a solution.</p>
         </div>
       </div>
     </section>
@@ -130,8 +134,8 @@
           <ul><li><strong>Decision Paralysis:</strong> Users hesitate to commit because the interface provides insufficient information to feel safe about the transaction.</li><li><strong>Loss of Control:</strong> Info overload &amp; hard to verify details beforehand makes the "Buy Now" button feel like a risky gamble rather than a convenience.</li></ul>
         </article>
       </div>
-      <figure class="figure figure--scroll fx">
-        <img src="../../assets/img/amazon-current-flow.png" alt="Existing Amazon checkout and payment flow" loading="lazy">
+      <figure class="figure figure--scroll figure--current-amazon fx">
+        <img src="../../assets/img/amazon-current-flow.png" alt="Existing Amazon checkout and payment flow" width="1424" height="975" loading="lazy">
         <figcaption>👆 Existing Checkout/Payment Flow 👆</figcaption>
       </figure>
     </section>
@@ -204,8 +208,8 @@
           <p><strong>Design Strategy:</strong> Moving away from text-heavy parsable content, I utilized Visual Cards (e.g., Card Art) to represent payment methods in the checkout/payment flow.</p><p><strong>Outcome:</strong> This creates a focused "Final Snapshot" of what will be charged and shipped, delivering the Trustworthy Flow that infrequent shoppers need to click "Place Order" without anxiety.</p>
         </div>
       </div>
-      <figure class="figure figure--scroll fx">
-        <img src="../../assets/img/amazon-redesign-flow.png" alt="Redesigned checkout flow" loading="lazy">
+      <figure class="figure figure--scroll figure--wide-amazon fx">
+        <img src="../../assets/img/amazon-redesign-flow.png" alt="Redesigned checkout flow" width="1800" height="590" loading="lazy">
         <figcaption>👆 Select payment plan + Select &amp; edit address + Buy now (Updated); [Scroll Horizontally to See More ↔️] 👆</figcaption>
       </figure>
     </section>
