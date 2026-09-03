@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="../../assets/css/site.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
-<body>
+<body class="page-case page-case-element">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="nav fx nav--light" aria-label="Primary">
@@ -65,7 +65,7 @@
       </div>
       <div class="overview-grid overview-grid--element fx">
         <figure class="figure">
-          <img src="../../assets/img/eds-overview.png" alt="Element Design System overview" width="1800" height="1402" loading="lazy">
+          <img src="../../assets/img/eds-overview.png" alt="Element Design System overview" width="2381" height="1855" loading="lazy">
         </figure>
         <div class="split__body">
           <h2>Context</h2>
@@ -168,8 +168,8 @@
         <p>Login is frequently the first time a user interacts with a product, setting the tone for their entire experience. At
           Johnson Controls (JCI), while physical products shared a robust design language, the digital ecosystem remained fragmented.</p>
       </div>
-      <figure class="figure fx">
-        <img src="../../assets/img/eds-current-screens.png" alt="Current log in and log off screens" width="1800" height="341" loading="lazy">
+      <figure class="figure figure--scroll figure--panorama fx">
+        <img src="../../assets/img/eds-current-screens.png" alt="Current log in and log off screens" width="3154" height="598" loading="lazy">
         <figcaption>👆 Current Log in &amp; off screens 👆</figcaption>
       </figure>
       <h2 class="fx">Problem: The Challenges &amp; Strategic Trade-offs</h2>
@@ -206,12 +206,12 @@
       </div>
 
       <h3 class="fx">Currently, every app has its own login flow and manages the auth routing itself:</h3>
-      <div class="grid-2">
+      <div class="figure-strip fx">
       <figure class="figure fx">
-        <img src="../../assets/img/eds-current-flow-01.png" alt="Current login flow, part one" width="4096" height="1029" loading="lazy">
+        <img src="../../assets/img/eds-current-flow-01.png" alt="Current login flow, part one" width="5352" height="1344" loading="lazy">
       </figure>
       <figure class="figure fx">
-        <img src="../../assets/img/eds-current-flow-02.png" alt="Current login flow, part two" width="1800" height="782" loading="lazy">
+        <img src="../../assets/img/eds-current-flow-02.png" alt="Current login flow, part two" width="3630" height="1578" loading="lazy">
       </figure>
       </div>
       <p class="fx" style="text-align:center;color:var(--muted)">👆 Current Log in Flow 👆</p>
@@ -285,7 +285,7 @@
         <h3>Centralized Login Page</h3>
         <ul><li><strong>Target pattern:</strong> A centralized login entry point—customized by JCI, hosted by Okta—replaces app-owned login pages across the JCI ecosystem.</li><li><strong>Smart routing:</strong> Users are redirected from any app to the centralized Login Screen, then routed to either JCI username/password (no IdP on record) or the correct SSO Identity Provider (IdP found via email lookup).</li><li><strong>Seamless return:</strong> After authentication (and optional account selection for multi-org users), users are redirected back to the originating app's Home Screen.</li><li><strong>Platform value:</strong> Centralization improves governance and consistency, reduces maintenance/security burden on product teams, and enables SSO ("log in once, access everywhere") with scalable theming.</li></ul>
       </div>
-      <figure class="figure fx">
+      <figure class="figure figure--scroll figure--panorama fx">
         <img src="../../assets/img/eds-centralized-login.png" alt="Centralized login architecture" width="1784" height="776" loading="lazy">
       </figure>
       <div class="panel fx">
@@ -294,7 +294,7 @@
         <h3>3.1 Consistent component &amp; terminology - "Log in &amp; Sign up"</h3>
       </div>
       <figure class="figure fx">
-        <img src="../../assets/img/eds-terminology.png" alt="Consistent login terminology and components" width="1800" height="978" loading="lazy">
+        <img src="../../assets/img/eds-terminology.png" alt="Consistent login terminology and components" width="3769" height="2048" loading="lazy">
       </figure>
       <h3 class="fx">3.2 Flexible Authentication Architecture</h3>
       <p class="fx">To meet the diverse security and user experience needs across JCI's massive product portfolio, we defined three core authentication strategies within the design system:</p>
@@ -304,7 +304,7 @@
           <ul><li><strong>Behavior/Interaction:</strong> Integrates Okta's SSO service to build a unified, enterprise-grade authentication portal.</li><li><strong>Design Value:</strong> Completely breaks down identity barriers between products. Consumers only need to authenticate once to seamlessly access multiple unrelated JCI products.</li></ul>
         </div>
         <figure class="figure">
-          <img src="../../assets/img/eds-auth-sso.png" alt="Single sign-on screens" width="2048" height="1704" loading="lazy">
+          <img src="../../assets/img/eds-auth-sso.png" alt="Single sign-on screens" width="2503" height="2082" loading="lazy">
         </figure>
       </div>
       <div class="auth-row fx">
@@ -330,24 +330,24 @@
         <h4 class="kicker">🏷️ Multi-tenant Brand System vs. Governance</h4>
         <h3>Migration of Login Pages</h3>
       </div>
-      <figure class="figure fx">
-        <img src="../../assets/img/eds-migration.png" alt="Login page migration plan" width="1800" height="781" loading="lazy">
+      <figure class="figure figure--scroll figure--panorama fx">
+        <img src="../../assets/img/eds-migration.png" alt="Login page migration plan" width="3580" height="1553" loading="lazy">
       </figure>
       <h3 class="fx">United approach to log in screen</h3>
-      <figure class="figure fx">
+      <figure class="figure figure--scroll figure--panorama fx">
         <img src="../../assets/img/eds-layout-focused.png" alt="Focused centre-aligned login layout" width="2660" height="806" loading="lazy">
         <figcaption>Focused (Centered Align Component)</figcaption>
       </figure>
-      <figure class="figure fx">
-        <img src="../../assets/img/eds-layout-billboard.png" alt="Marketing billboard login layout" width="1800" height="545" loading="lazy">
+      <figure class="figure figure--scroll figure--panorama fx">
+        <img src="../../assets/img/eds-layout-billboard.png" alt="Marketing billboard login layout" width="2660" height="806" loading="lazy">
         <figcaption>Marketing Billboard (Left or Right Align Components)</figcaption>
       </figure>
-      <figure class="figure figure--scroll figure--login-flow fx">
-        <img src="../../assets/img/eds-login-flows.png" alt="Complete login flows" width="1800" height="244" loading="lazy">
+      <figure class="figure figure--scroll figure--panorama figure--login-flow fx">
+        <img src="../../assets/img/eds-login-flows.png" alt="Complete login flows" width="7522" height="1019" loading="lazy">
         <figcaption>👆 Login Flows; [Scroll Horizontally to See More ↔️] 👆</figcaption>
       </figure>
-      <figure class="figure figure--scroll figure--component-details fx">
-        <img src="../../assets/img/eds-component-details.png" alt="Login component specifications" width="1800" height="570" loading="lazy">
+      <figure class="figure figure--scroll figure--panorama figure--component-details fx">
+        <img src="../../assets/img/eds-component-details.png" alt="Login component specifications" width="13296" height="4210" loading="lazy">
         <figcaption>👆 Component Details; [Scroll Horizontally to See More ↔️] 👆</figcaption>
       </figure>
     </section>
