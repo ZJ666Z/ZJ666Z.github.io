@@ -6,6 +6,34 @@
   const nav = document.querySelector('.nav');
   if (!nav) return;
 
+  const shell = nav.querySelector('.nav__shell');
+  const links = nav.querySelector('.nav__links');
+  const menu = document.createElement('button');
+  menu.className = 'nav__menu';
+  menu.type = 'button';
+  menu.setAttribute('aria-label', 'Open navigation');
+  menu.setAttribute('aria-expanded', 'false');
+  menu.innerHTML = '<span></span><span></span><span></span>';
+  shell.append(menu);
+
+  const closeMenu = () => {
+    nav.classList.remove('menu-open');
+    menu.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-label', 'Open navigation');
+  };
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('menu-open');
+    menu.setAttribute('aria-expanded', String(open));
+    menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  });
+  links.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeMenu();
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 809) closeMenu();
+  });
+
   const stick = on => nav.classList.toggle('is-stuck', on);
   const sync = () => stick(window.scrollY > 80);
 
@@ -23,7 +51,25 @@
 })();
 
 (() => {
-  const items = document.querySelectorAll('.fx, .fx-up');
+  // Framer 分别驱动内容块。有动画子项的容器保持静止，避免父子叠加成 192px 位移。
+  document.querySelectorAll('.panel.fx').forEach(panel => {
+    if (!panel.querySelector('.quote.fx, .quote.fx-up')) return;
+    panel.querySelector('.panel__head')?.classList.add('fx');
+  });
+  document.querySelectorAll('.footer.fx').forEach(footer => {
+    footer.querySelector('.footer__brand')?.classList.add('fx');
+    footer.querySelector('.footer__bottom')?.classList.add('fx');
+  });
+  document.querySelectorAll('.gallery img').forEach(photo => {
+    photo.classList.add('fx', 'photo-fx');
+  });
+
+  const allItems = [...document.querySelectorAll('.fx, .fx-up')];
+  const items = allItems.filter(item => {
+    const isShell = Boolean(item.querySelector('.fx, .fx-up'));
+    item.classList.toggle('fx-shell', isShell);
+    return !isShell;
+  });
   if (!items.length) return;
 
   if (!('IntersectionObserver' in window) ||
@@ -38,10 +84,9 @@
       entry.target.classList.add('is-in');
       io.unobserve(entry.target);
     }
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0 });
+  }, { rootMargin: '0px', threshold: 0 });
 
-  items.forEach(el => io.observe(el));
+  // 先绘制初始态，再监听首屏，避免加载时直接跳到终态。
+  requestAnimationFrame(() => requestAnimationFrame(() => items.forEach(el => io.observe(el))));
 
-  // 兜底：万一 observer 没触发，4 秒后无条件显示
-  setTimeout(() => items.forEach(el => el.classList.add('is-in')), 4000);
 })();
