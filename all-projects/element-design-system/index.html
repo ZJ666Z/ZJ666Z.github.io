@@ -36,10 +36,7 @@
     </video>
     <div class="case-hero__inner fx">
       <div class="case-hero__identity">
-        <div class="case-hero__jci" aria-label="Johnson Controls">
-          <span>Johnson<br>Controls</span>
-          <img src="../../assets/img/logo-johnson-controls.png" alt="" width="96" height="96">
-        </div>
+        <img class="case-hero__jci" src="../../assets/img/johnson-controls-wordmark.svg" alt="Johnson Controls" width="270" height="130">
         <h1>Element Global Design System</h1>
       </div>
       <dl class="case-meta">
@@ -150,22 +147,18 @@
             <ul><li>Faster customer onboarding (Learn 1 product, gain familiarity with all)</li><li>Increase familiarity with field &amp; support functions</li><li>Engineers, Testers, and Designers can move between projects</li><li>Raise design acumen and provide support across the entire org</li></ul>
           </article>
           </div>
-          <aside class="beneficiaries" aria-label="Who benefits from the design system">
-            <h3>Who Benefits?</h3>
-            <div class="beneficiary"><span aria-hidden="true">C</span><p><strong>Customer</strong><small>Consistent, familiar product experiences</small></p></div>
-            <div class="beneficiary"><span aria-hidden="true">P</span><p><strong>Product &amp; Development Teams</strong><small>Including third-party developers</small></p></div>
-            <div class="beneficiary"><span aria-hidden="true">F</span><p><strong>Field &amp; Support</strong><small>Faster onboarding and shared patterns</small></p></div>
-            <div class="beneficiary"><span aria-hidden="true">B</span><p><strong>Our Business</strong><small>More efficient delivery at scale</small></p></div>
-          </aside>
+          <figure class="benefits-card__visual">
+            <img src="../../assets/img/eds-fragmented-ux.png" alt="Who benefits from the Element Design System" width="1287" height="855" loading="lazy">
+          </figure>
         </div>
       </div>
       <h4 class="kicker fx">Without Design System</h4>
-      <figure class="figure fx">
-        <img src="../../assets/img/eds-fragmented-ux.png" alt="Fragmented user experience diagram" width="1287" height="855" loading="lazy">
-      </figure>
       <h2 class="fx" style="text-align:center">⬇️</h2>
-      <h2 class="fragmented-pill fx">Fragmented User Experience</h2>
-      <h2 class="fx" style="text-align:center">Scroll down for a deep dive into one of the core design patterns I owned</h2>
+      <h2 class="fragmented-pill fx"><span>Fragmented</span> User Experience</h2>
+      <div class="deep-dive-callout fx">
+        <span class="mouse-cue" aria-hidden="true"><i></i></span>
+        <h2>Scroll down for a deep dive into <strong>one of</strong> the <strong>core design patterns</strong> I <strong>owned</strong></h2>
+      </div>
     </section>
 
     <section class="wrap">
@@ -175,7 +168,7 @@
         <h2 class="case-title">Case Study: 0 to 1 Pattern - Log in &amp; off</h2>
       </div>
       <div class="plain-block fx">
-        <h3>Current Status: Log in / Log off screens</h3>
+        <h3 class="case-lead-title">Current Status: Log in / Log off screens</h3>
         <p>Login is frequently the first time a user interacts with a product, setting the tone for their entire experience. At
           Johnson Controls (JCI), while physical products shared a robust design language, the digital ecosystem remained fragmented.</p>
       </div>
@@ -242,12 +235,13 @@
           <ul><li><strong>Reinventing the Wheel:</strong> Without a unified standard, individual product teams build and manage their own login pages and underlying authentication logic from scratch.</li><li><strong>Resource Drain &amp; Maintenance Quagmire:</strong> Massive engineering resources are squandered maintaining redundant, decentralized security backends. This inflates overall operational costs and severely delays the time-to-market for new products.</li></ul>
         </article>
       </div>
-      <p class="hmw-n fx">01</p>
-      <p class="pullquote fx">How might we reduce duplicated implementation and support burden from app-owned login flows while keeping sign-in success high?</p>
-      <p class="hmw-n fx">02</p>
-      <p class="pullquote fx">How might we guide users to the correct sign-in path on the first try to reduce drop-off and speed up time-to-access?</p>
-      <p class="hmw-n fx">03</p>
-      <p class="pullquote fx">How might we support product/customer branding needs in login without increasing variant complexity and slowing down delivery?</p>
+      <div class="hmw-group fx" aria-label="How might we questions">
+        <span class="hmw-quote" aria-hidden="true">&quot;</span>
+        <div class="hmw-item"><span class="hmw-n">01</span><h3>How might we reduce duplicated implementation and support burden from app-owned login flows while keeping sign-in success high?</h3></div>
+        <div class="hmw-item"><span class="hmw-n">02</span><h3>How might we guide users to the correct sign-in path on the first try to reduce drop-off and speed up time-to-access?</h3></div>
+        <div class="hmw-item"><span class="hmw-n">03</span><h3>How might we support product/customer branding needs in login without increasing variant complexity and slowing down delivery?</h3></div>
+        <span class="hmw-quote hmw-quote--end" aria-hidden="true">&quot;</span>
+      </div>
     </section>
 
     <section class="wrap">
@@ -294,7 +288,7 @@
         <span class="num">01</span>
         <h4 class="kicker">🛡️ Risk-based Access vs. Login Conversion</h4>
         <h3>Centralized Login Page</h3>
-        <ul><li><strong>Target pattern:</strong> A centralized login entry point—customized by JCI, hosted by Okta—replaces app-owned login pages across the JCI ecosystem.</li><li><strong>Smart routing:</strong> Users are redirected from any app to the centralized Login Screen, then routed to either JCI username/password (no IdP on record) or the correct SSO Identity Provider (IdP found via email lookup).</li><li><strong>Seamless return:</strong> After authentication (and optional account selection for multi-org users), users are redirected back to the originating app's Home Screen.</li><li><strong>Platform value:</strong> Centralization improves governance and consistency, reduces maintenance/security burden on product teams, and enables SSO ("log in once, access everywhere") with scalable theming.</li></ul>
+        <ul><li><strong>Target pattern:</strong> A centralized login entry point—customized by JCI, hosted by Okta—replaces app-owned login pages across the JCI ecosystem.</li><li><strong>Smart routing:</strong> Users are redirected from any app to the centralized Login Screen, then routed to either JCI username/password (no IdP on record) or the correct SSO Identity Provider (IdP found via email lookup).</li><li><strong>Seamless return:</strong> After authentication (and optional account selection for multi-org users), users are redirected back to the originating app's Home Screen.</li><li><strong>Platform value:</strong> Centralization improves governance and consistency, reduces maintenance/security burden on product teams, and enables SSO ("log in once, access everywhere") with scalable theming for brands/customers.</li></ul>
         <figure class="figure">
           <img src="../../assets/img/eds-centralized-login.png" alt="Centralized login architecture" width="1784" height="776" loading="lazy">
         </figure>
@@ -311,7 +305,7 @@
         <div class="auth-row">
         <div class="block">
           <h4 class="kicker">1. 🔐 Single Sign-On (SSO) — The ecosystem hub breaking down silos</h4>
-          <ul><li><strong>Behavior/Interaction:</strong> Integrates Okta's SSO service to build a unified, enterprise-grade authentication portal.</li><li><strong>Design Value:</strong> Completely breaks down identity barriers between products. Consumers only need to authenticate once to seamlessly access multiple unrelated JCI products.</li></ul>
+          <ul><li><strong>Behavior/Interaction:</strong> Integrates Okta's SSO service to build a unified, enterprise-grade authentication portal.</li><li><strong>Design Value:</strong> Completely breaks down identity barriers between products. Consumers only need to authenticate once to seamlessly access multiple unrelated JCI products, eliminating the heavy burden of memorizing multiple credentials.</li></ul>
         </div>
         <figure class="figure">
           <img src="../../assets/img/eds-auth-sso.png" alt="Single sign-on screens" width="2503" height="2082" loading="lazy">
@@ -320,7 +314,7 @@
         <div class="auth-row">
         <div class="block">
           <h4 class="kicker">2. 🧠 Progressive Authentication — The standard for reducing cognitive load</h4>
-          <ul><li><strong>Behavior/Interaction:</strong> Requests only the User ID upfront, deferring the password input to the next step.</li><li><strong>Design Value:</strong> Drastically reduces cognitive load by eliminating non-essential visual distractions. The system automatically determines the correct login path in the background.</li></ul>
+          <ul><li><strong>Behavior/Interaction:</strong> Requests only the User ID upfront, deferring the password input to the next step.</li><li><strong>Design Value:</strong> Drastically reduces cognitive load by eliminating non-essential visual distractions. The system automatically determines the correct login path in the background, instead of forcing users to read through options and manually choose.</li></ul>
         </div>
         <figure class="figure">
           <img src="../../assets/img/eds-auth-progressive.png" alt="Progressive authentication screens" width="2503" height="2082" loading="lazy">
@@ -329,7 +323,7 @@
         <div class="auth-row">
         <div class="block">
           <h4 class="kicker">3. ⚡ One-step Authentication — Maximized efficiency for high-frequency scenarios</h4>
-          <ul><li><strong>Behavior/Interaction:</strong> Displays both the User ID and password input fields on the same page, requiring no step-by-step navigation.</li><li><strong>Design Value:</strong> Tailor-made for products that require high-frequency log-in and log-off actions, providing the fastest possible entry experience.</li></ul>
+          <ul><li><strong>Behavior/Interaction:</strong> Displays both the User ID and password input fields on the same page, requiring no step-by-step navigation.</li><li><strong>Design Value:</strong> Tailor-made for products that require high-frequency log-in and log-off actions. By avoiding unnecessary page refreshes and redirects, it provides the fastest possible entry experience for specific high-frequency business use cases.</li></ul>
         </div>
         <figure class="figure">
           <img src="../../assets/img/eds-auth-one-step.png" alt="One-step authentication screens" width="2220" height="2582" loading="lazy">

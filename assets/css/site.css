@@ -255,6 +255,7 @@ strong { font-weight: 700; }
 .exp__logo--dark { background: var(--dark); }
 .exp__logo--clear { background: #fff; }
 .exp__logo img { display: block; width: 100%; height: 100%; border-radius: var(--r-pill); object-fit: cover; object-position: center; }
+.exp__logo--jci img { transform: scale(1.14); }
 .exp__body { display: grid; gap: 10px; }
 .exp h3 { font-size: 18px; line-height: 24px; font-weight: 600; }
 .exp__badge { margin-left: 8px; font-size: 12px; line-height: 18px; font-weight: 500; color: var(--ink); opacity: .7; }
@@ -339,9 +340,7 @@ strong { font-weight: 700; }
 .case-hero--element::after { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(14,18,32,.28); pointer-events: none; }
 .case-hero--amazon .case-hero__logo { width: 280px; max-width: 70%; }
 .case-hero--amazon h1 { width: 487px; max-width: 100%; margin-top: 25px; }
-.case-hero__jci { width: 270px; height: 130px; display: flex; align-items: center; justify-content: center; gap: 8px; color: #fff; }
-.case-hero__jci img { width: 82px; height: 82px; border: 0; border-radius: 0; object-fit: contain; object-position: center; background: none; filter: grayscale(1) brightness(0) invert(1); }
-.case-hero__jci span { font-size: 38px; line-height: 33px; font-weight: 700; letter-spacing: -1.8px; }
+.case-hero__jci { display: block; width: 270px; height: 130px; object-fit: contain; }
 .case-hero--element .case-hero__identity { top: 48.65%; }
 .case-meta {
   position: absolute; inset: auto 0 clamp(40px, 8.9dvh, 80px); width: 100%; margin: 0; border-radius: var(--r-card);
@@ -355,12 +354,13 @@ strong { font-weight: 700; }
 .case > section { padding-block: 96px 0; display: grid; gap: 32px; }
 .case > section:first-child { padding-top: 79px; }
 .case > section > .wrap, .case section.wrap { display: grid; gap: 32px; }
-.case-head { width: 100%; text-align: center; display: grid; gap: 16px; max-width: 720px; margin-inline: auto; }
+.case-head { width: 100%; min-width: 0; text-align: center; display: grid; gap: 16px; max-width: 720px; margin-inline: auto; }
 .case-head .pill { justify-self: center; }
 /* 左对齐变体：pill 仍居中，小标题和大标题靠左通栏 */
 .case-head--left { max-width: none; text-align: left; }
 .case-head--left .case-title, .case-head--left .case-sub { text-align: left; }
 .case-head--left .case-title, .case-head--left .case-sub { width: 100%; }
+.case-head--left .case-sub--pill { width: max-content; max-width: 100%; text-align: left !important; }
 /* 原站的两栏对照：列宽 498，间距 156 */
 .two-col { display: grid; grid-template-columns: 498px 498px; justify-content: space-between; gap: 156px 156px; }
 .two-col .block, .col-group .block { background: none; border-radius: 0; padding: 0; gap: 16px; }
@@ -428,6 +428,7 @@ strong { font-weight: 700; }
 .block h3 { font-size: 24px; line-height: 32px; font-weight: 500; }
 .step { background: transparent; border-radius: 0; padding: 0; display: grid; gap: 12px; align-content: start; }
 .step h3 { font-size: 24px; line-height: 32px; font-weight: 700; }
+.case .step h3 { font-weight: 500; }
 .num { display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--r-pill); background: var(--dark); color: #fff; font-size: 16px; font-weight: 700; }
 
 .notice {
@@ -526,6 +527,7 @@ strong { font-weight: 700; }
   padding: 24px; border-radius: var(--r-card); background: #ccddff;
 }
 .page-case-element .case > section:nth-child(2) > .panel { border-radius: var(--r-block); }
+.page-case-element .case > section:nth-child(2) .case-title { font-size: 36px; line-height: 44px; font-weight: 600; }
 .page-case-element .case > section:nth-child(5) .two-col .block {
   padding: 24px; border-radius: var(--r-card); background: var(--bg);
 }
@@ -562,28 +564,48 @@ strong { font-weight: 700; }
 .benefit-item { display: grid; gap: 8px; }
 .benefit-item h3 { font-size: 18px; line-height: 26px; font-weight: 700; }
 .benefit-item ul { padding-left: 18px; color: var(--ink-2); }
-.beneficiaries {
-  display: grid; gap: 12px; padding: 24px; border: 1px solid var(--line);
-  border-radius: 18px; background: #fff; box-shadow: 0 14px 36px rgba(0,0,0,.08);
-}
-.beneficiaries > h3 { margin-bottom: 4px; font-size: 24px; line-height: 32px; font-weight: 700; }
-.beneficiary { display: grid; grid-template-columns: 40px minmax(0,1fr); gap: 12px; align-items: center; padding: 12px; border-radius: 12px; background: var(--bg); }
-.beneficiary > span { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--dark); color: #fff; font-size: 14px; font-weight: 700; }
-.beneficiary p { display: grid; gap: 1px; }
-.beneficiary strong { color: var(--ink); font-size: 14px; line-height: 20px; }
-.beneficiary small { color: var(--muted); font-size: 12px; line-height: 17px; }
+.benefits-card__visual { align-self: center; }
+.benefits-card__visual img { width: 100%; border-radius: 0; }
 .fragmented-pill {
   width: min(613px, 100%); margin-inline: auto; padding: 8px 36px; border-radius: 999px;
   background: var(--dark); color: #fff; text-align: center;
 }
+.fragmented-pill span { color: #ffaa93; }
 .case-sub--pill {
-  width: min(613px, 100%); padding: 6px 16px; border-radius: 999px;
-  background: var(--bg); text-align: center !important; font-size: 18px; line-height: 28px;
+  width: max-content; max-width: 100%; padding: 6px 16px; border-radius: 999px;
+  background: var(--bg); text-align: left !important; font-size: 24px; line-height: 32px; font-weight: 500;
 }
 
-.hmw-n { text-align: center; font-size: 36px; line-height: 44px; font-weight: 600; color: var(--ink); }
+.case-lead-title { font-size: 36px !important; line-height: 44px !important; font-weight: 600 !important; }
+.case .panel > h3 { font-weight: 500; }
+
+.deep-dive-callout {
+  width: 100vw; width: 100cqw; margin-left: calc(50% - 50vw); margin-left: calc(50% - 50cqw);
+  padding: 36px max(24px, calc((100% - 952px) / 2)) 64px;
+  display: grid; justify-items: center; gap: 16px; background: #ccddff;
+}
+.deep-dive-callout h2 { width: min(952px, 100%); font-size: 24px; line-height: 32px; font-weight: 500; text-align: center; }
+.mouse-cue {
+  position: relative; display: grid; place-items: center; width: 24px; height: 40px;
+  border: 2px solid rgba(26,26,26,.5); border-radius: 20px;
+}
+.mouse-cue i { width: 6px; height: 6px; border-radius: 50%; background: var(--dark); }
+
+.hmw-group { display: grid; gap: 64px; width: 100%; }
+.hmw-quote { font-size: 48px; line-height: 56px; font-weight: 600; }
+.hmw-quote--end { text-align: right; }
+.hmw-item { display: grid; gap: 16px; }
+.hmw-n {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--dark); color: #fff; font-size: 24px; line-height: 32px; font-weight: 500;
+}
+.hmw-item h3 { font-size: 24px; line-height: 32px; font-weight: 600; text-align: left; }
 .pullquote { text-align: center; font-size: 36px; line-height: 44px; font-weight: 600; color: var(--ink); width: 100%; max-width: 800px; margin-inline: auto; }
 .pullquote::before, .pullquote::after { content: '"'; color: var(--blue); }
+
+/* Framer 的案例页页脚是白色卡片；主页继续使用深色页脚。 */
+.page-case .footer__block { background: #fff; }
+.page-case .footer__brand, .page-case .footer__social a { color: var(--ink); }
 
 /* 成果段落：文字 510 / 配图 558 左右交错，与原站一致 */
 .zigzag { display: grid; grid-template-columns: 558px 558px; gap: 36px; align-items: start; padding: 0; }
@@ -699,9 +721,7 @@ strong { font-weight: 700; }
   .case-hero__logo { width: min(360px, 90%); }
   .case-hero--amazon .case-hero__logo { width: 230px; }
   .case-hero--amazon h1 { width: 100%; max-width: 100%; margin-top: 16px; font-size: 24px; line-height: 32px; }
-  .case-hero__jci { width: 230px; height: 108px; }
-  .case-hero__jci img { width: 68px; height: 68px; }
-  .case-hero__jci span { font-size: 31px; line-height: 27px; letter-spacing: -1.4px; }
+  .case-hero__jci { width: 230px; height: auto; }
   .case-meta { position: static; margin: 0; grid-template-columns: minmax(0,1fr); gap: 8px; font-size: 16px; line-height: 24px; }
   .case-title { font-size: 30px; line-height: 38px; }
   .case > section { padding-block: 56px 0; }
@@ -725,6 +745,10 @@ strong { font-weight: 700; }
   .stack-blocks { padding: 24px; }
   .benefits-card { padding: 24px; gap: 28px; }
   .benefits-card__body { grid-template-columns: minmax(0,1fr); gap: 28px; }
+  .case-sub--pill { font-size: 18px; line-height: 28px; }
+  .case-head--left .case-sub--pill { width: 100%; }
+  .deep-dive-callout { padding: 32px 24px 48px; }
+  .hmw-group { gap: 40px; }
   .figure--scroll { min-height: 0; }
   .pullquote { font-size: 20px; line-height: 30px; }
   .gallery { gap: 16px; }
@@ -932,9 +956,7 @@ strong { font-weight: 700; }
   .case-hero h1 { font-size: 24px; line-height: 32px; }
   .case-hero__logo { width: min(300px, 82%); }
   .case-hero--amazon .case-hero__logo { width: 190px; }
-  .case-hero__jci { width: 200px; height: 88px; }
-  .case-hero__jci img { width: 56px; height: 56px; }
-  .case-hero__jci span { font-size: 27px; line-height: 24px; }
+  .case-hero__jci { width: 200px; height: auto; }
   .case-meta { font-size: 14px; line-height: 20px; gap: 6px; }
 }
 
