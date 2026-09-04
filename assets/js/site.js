@@ -54,7 +54,7 @@
    this viewer lets users inspect those original pixels instead of a CSS-scaled preview. */
 (() => {
   const excluded = [
-    '.nav img', '.marquee img', '.exp__logos img', '.quote__who img',
+    '.nav img', '.marquee img', '.card__media img', '.exp__logos img', '.quote__who img',
     '.case-hero img', '.about-portrait'
   ].join(',');
   const images = [...document.querySelectorAll('img')].filter(img => !img.matches(excluded));
