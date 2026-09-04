@@ -384,7 +384,7 @@ strong { font-weight: 700; }
 :where(.case) .panel li strong,
 :where(.case) .plain-block p strong { color: var(--ink); }
 .case li::marker { color: var(--muted); }
-.kicker { color: var(--muted); font-weight: 600; }
+.kicker { color: var(--ink); font-weight: 600; }
 
 /* 三组 trade-off：编号 + 小标题 + 陈述 + 左右两栏中间一个箭头 */
 .tradeoff { display: grid; gap: 12px; }
@@ -421,7 +421,7 @@ strong { font-weight: 700; }
 @media (max-width: 1279.98px) { .tri { grid-template-columns: minmax(0,1fr); gap: 32px; } }
 .plain-stack { display: grid; gap: 44px; }
 .plain-block { display: grid; gap: 12px; }
-.plain-block h3 { font-size: 24px; line-height: 32px; font-weight: 500; }
+.plain-block h3 { font-size: 24px; line-height: 32px; font-weight: 700; }
 .stack-blocks { display: grid; gap: 16px; }
 .stack-blocks .block { padding: 32px; }
 .block { background: #fff; border-radius: var(--r-card); padding: 24px; display: grid; gap: 12px; align-content: start; }
@@ -429,6 +429,7 @@ strong { font-weight: 700; }
 .step { background: transparent; border-radius: 0; padding: 0; display: grid; gap: 12px; align-content: start; }
 .step h3 { font-size: 24px; line-height: 32px; font-weight: 700; }
 .case .step h3 { font-weight: 500; }
+.page-case .step h3 { font-weight: 700; }
 .num { display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--r-pill); background: var(--dark); color: #fff; font-size: 16px; font-weight: 700; }
 
 .notice {
@@ -614,10 +615,58 @@ strong { font-weight: 700; }
 .zigzag__text h3 { font-size: 24px; line-height: 32px; font-weight: 500; }
 .zigzag figure, .zigzag img { margin: 0; }
 .zigzag img { width: 100%; border-radius: var(--r-card); }
+/* 成果区：两张文字卡一组、两张图一组，与原站一样左右成行并垂直居中 */
+.work-pair {
+  display: grid; grid-template-columns: 558px 558px; gap: 36px;
+  align-items: center; justify-content: center; padding: 0;
+}
+.work-pair__text { display: grid; gap: 36px; }
+.work-pair__media { display: grid; gap: 16px; align-content: center; }
+.work-pair__media--flush { gap: 0; }
+.work-pair__media figure, .work-pair__media img { margin: 0; }
+.work-pair__media img { width: 100%; border-radius: 0; }
+.work-pair .zigzag__text { width: 100%; padding: 24px; background: #fff; border-radius: var(--r-card); }
+.work-pair .zigzag__text h3 { font-weight: 700; color: var(--ink-2); }
+.work-pair .zigzag__text p { color: var(--ink-2); }
+@media (max-width: 1279.98px) {
+  .work-pair { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 809.98px) {
+  .work-pair--flip .work-pair__media { order: 1; }
+  .work-pair--flip .work-pair__text { order: 2; }
+}
 @media (max-width: 1279.98px) {
   .zigzag, .zigzag--flip { grid-template-columns: minmax(0,1fr); gap: 24px; padding: 0; }
   .zigzag--flip .zigzag__text { order: -1; }
 }
+
+/* EDS Problem 三栏里的文字是 Framer 的 14/20 小字卡片 */
+.page-case-element .tri__block { font-size: 14px; line-height: 20px; }
+.page-case-element .tri__block p { font-size: 14px; line-height: 20px; color: var(--ink); }
+.page-case-element .tri__block h4 { font-size: 18px; line-height: 24px; }
+.page-case-element .tri__block p strong { color: var(--ink); }
+
+/* EDS Context 栏的原站是 18/26 medium，Responsibility 列表同款 */
+.page-case-element .overview-grid .split__body,
+.page-case-element .overview-grid .split__body p,
+.page-case-element .overview-grid .split__body li {
+  font-size: 18px; line-height: 26px; font-weight: 500;
+}
+.page-case-element .plain-stack .plain-block strong { color: var(--ink); }
+
+/* Framer 里部分 24px 加粗标题是 #383838，不是 #1a1a1a */
+.page-case-element .tradeoff h3 strong { color: var(--ink-2); }
+.muted-lead { color: var(--ink-2) !important; }
+
+/* Amazon Research 段落原版是 #1a1a1a */
+.page-case-amazon .case > section:nth-child(3) .plain-block,
+.page-case-amazon .case > section:nth-child(3) .plain-block p,
+.page-case-amazon .case > section:nth-child(3) .plain-block strong {
+  color: var(--ink);
+}
+
+/* 案例图注：原站是 18/26 semibold，且颜色保留 muted */
+.page-case .figure figcaption { font-size: 18px; line-height: 26px; font-weight: 600; }
 
 /* 生活相册：三行，每行一张双宽 —— 与原站的 2:1:1 / 1:2:1 / 1:1:2 排布一致 */
 .gallery { display: grid; gap: 36px; }
