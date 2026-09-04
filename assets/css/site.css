@@ -387,16 +387,30 @@ strong { font-weight: 700; }
 .kicker { color: var(--ink); font-weight: 600; }
 
 /* 三组 trade-off：编号 + 小标题 + 陈述 + 左右两栏中间一个箭头 */
-.tradeoff { display: grid; gap: 12px; }
-.tradeoff .kicker { text-align: center; }
-.tradeoff .num { justify-self: start; }
-.tradeoff .num { margin-bottom: 4px; }
+.tradeoff { display: grid; gap: 16px; padding: 16px; border-radius: var(--r-card); background: var(--bg); }
+.tradeoff__head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.tradeoff__head .num { width: 48px; height: 48px; font-size: 18px; line-height: 24px; }
+.tradeoff__pill {
+  display: flex; align-items: center; justify-content: center; min-height: 48px;
+  padding: 2px 16px; border: 2px solid var(--dark); border-radius: var(--r-pill);
+  width: max-content; max-width: 100%; text-align: center;
+  font-size: 18px; line-height: 24px; color: var(--ink);
+}
+.tradeoff__pill strong { font-weight: 700; }
+.impact__pill {
+  display: flex; align-items: center; justify-content: center; min-height: 48px;
+  padding: 2px 16px; border: 2px solid var(--dark); border-radius: var(--r-pill);
+  width: max-content; max-width: 100%; text-align: center;
+  font-size: 18px; line-height: 24px; color: var(--ink);
+}
+.impact__pill strong { font-weight: 700; }
 .tradeoff h3 { font-size: 24px; line-height: 32px; font-weight: 600; }
-.tradeoff__pair { margin-top: 8px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; }
-.tradeoff__arrow { font-size: 28px; color: var(--muted); }
+.tradeoff__pair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 16px; align-items: stretch; }
+.tradeoff__card { display: grid; gap: 20px; align-content: center; background: #fff; border-radius: var(--r-card); padding: 24px; }
+.tradeoff__arrow { align-self: center; font-size: 48px; line-height: 1; color: var(--ink); }
 @media (max-width: 809.98px) {
-  .tradeoff { padding: 24px; }
   .tradeoff__pair { grid-template-columns: minmax(0,1fr); gap: 12px; }
+  .tradeoff__card { padding: 20px; }
   .tradeoff__arrow { justify-self: center; }
 }
 
@@ -421,7 +435,7 @@ strong { font-weight: 700; }
 @media (max-width: 1279.98px) { .tri { grid-template-columns: minmax(0,1fr); gap: 32px; } }
 .plain-stack { display: grid; gap: 44px; }
 .plain-block { display: grid; gap: 12px; }
-.plain-block h3 { font-size: 24px; line-height: 32px; font-weight: 700; }
+.plain-block h3 { font-size: 24px; line-height: 32px; font-weight: 500; }
 .stack-blocks { display: grid; gap: 16px; }
 .stack-blocks .block { padding: 32px; }
 .block { background: #fff; border-radius: var(--r-card); padding: 24px; display: grid; gap: 12px; align-content: start; }
@@ -516,6 +530,7 @@ strong { font-weight: 700; }
   padding: 24px; border-radius: var(--r-card); background: #fff;
 }
 .page-case-amazon .case > section:nth-child(n+3):nth-child(-n+6) { max-width: 1248px; }
+.page-case-element .case > section.wrap:nth-child(n+4) { padding-inline: 0; }
 .page-case-amazon .case > section:nth-child(3) .plain-stack .plain-block,
 .page-case-amazon .case > section:nth-child(4) .two-col .block,
 .page-case-amazon .case > section:nth-child(5) .two-col .block {
@@ -529,17 +544,28 @@ strong { font-weight: 700; }
 }
 .page-case-element .case > section:nth-child(2) > .panel { border-radius: var(--r-block); }
 .page-case-element .case > section:nth-child(2) .case-title { font-size: 36px; line-height: 44px; font-weight: 600; }
+.page-case-element .panel--problem { gap: 64px; }
+.page-case-element .panel--problem .problem-intro {
+  display: grid; grid-template-columns: 508px 508px; gap: 64px; align-items: start; width: 100%;
+}
+.page-case-element .panel--problem .split__body p,
+.page-case-element .panel--problem .split__body p strong { color: var(--ink-2); }
+@media (max-width: 809.98px) {
+  .page-case-element .panel--problem .problem-intro { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
 .page-case-element .case > section:nth-child(5) .two-col .block {
   padding: 24px; border-radius: var(--r-card); background: var(--bg);
 }
 .page-case-element .case > section:nth-child(5) .two-col {
-  width: 1137px; max-width: 100%; margin-inline: auto; grid-template-columns: 515px 515px; gap: 107px;
+  width: 100%; max-width: 1200px; margin-inline: auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px;
 }
 .page-case-element .case > section:nth-child(6) .col-group .block {
   padding: 24px; border-radius: var(--r-card); background: #ccddff;
 }
 .page-case-element .case > section:nth-child(6) .two-groups {
-  width: 1137px; max-width: 100%; margin-inline: auto; grid-template-columns: 551px 551px; gap: 35px;
+  width: 100%; max-width: 1200px; margin-inline: auto;
+  grid-template-columns: 582px 582px; gap: 36px;
 }
 @media (max-width: 1279.98px) {
   .page-case-amazon .case > section:nth-child(4) .two-col,
@@ -552,7 +578,6 @@ strong { font-weight: 700; }
     width: 100%; grid-template-columns: minmax(0,1fr); gap: 32px;
   }
 }
-.tradeoff { padding: 16px; border-radius: var(--r-card); background: var(--bg); }
 .stack-blocks { padding: 36px; border-radius: var(--r-card); background: #fff; }
 .stack-blocks .block { padding: 0; border-radius: 0; background: transparent; }
 
@@ -563,18 +588,21 @@ strong { font-weight: 700; }
 .benefits-card__body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr); gap: 36px; align-items: start; }
 .benefits-card__list { display: grid; gap: 24px; }
 .benefit-item { display: grid; gap: 8px; }
-.benefit-item h3 { font-size: 18px; line-height: 26px; font-weight: 700; }
+.benefit-item h3 { font-size: 18px; line-height: 28px; font-weight: 700; color: var(--ink-2); }
 .benefit-item ul { padding-left: 18px; color: var(--ink-2); }
 .benefits-card__visual { align-self: center; }
 .benefits-card__visual img { width: 100%; border-radius: 0; }
 .fragmented-pill {
-  width: min(613px, 100%); margin-inline: auto; padding: 8px 36px; border-radius: 999px;
-  background: var(--dark); color: #fff; text-align: center;
+  width: max-content; max-width: 100%; margin-inline: auto; padding: 8px 36px; border-radius: 999px;
+  background: var(--dark); color: #fff; text-align: center; white-space: nowrap;
 }
 .fragmented-pill span { color: #ffaa93; }
+@media (max-width: 809.98px) {
+  .fragmented-pill { width: min(613px, 100%); white-space: normal; }
+}
 .case-sub--pill {
   width: max-content; max-width: 100%; padding: 6px 16px; border-radius: 999px;
-  background: var(--bg); text-align: left !important; font-size: 24px; line-height: 32px; font-weight: 500;
+  background: var(--bg); color: var(--ink); text-align: left !important; font-size: 24px; line-height: 32px; font-weight: 500;
 }
 
 .case-lead-title { font-size: 36px !important; line-height: 44px !important; font-weight: 600 !important; }
@@ -645,6 +673,18 @@ strong { font-weight: 700; }
 .page-case-element .tri__block p { font-size: 14px; line-height: 20px; color: var(--ink); }
 .page-case-element .tri__block h4 { font-size: 18px; line-height: 24px; }
 .page-case-element .tri__block p strong { color: var(--ink); }
+.page-case-element .tri__block--inconsist img { width: 100%; aspect-ratio: 2; object-fit: cover; border-radius: 8px; }
+.page-case-element .tri__block--media { background: #efedff; gap: 20px; padding: 24px; }
+.page-case-element .tri__block--media img { width: 100%; aspect-ratio: 1.6495049504950494; object-fit: cover; border-radius: 12px; }
+.page-case-element .tri__block--goal { gap: 20px; }
+.page-case-element .tri__block--goal img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
+
+/* EDS 深潜与方案段的正文原版以 #1a1a1a 为主 */
+.page-case-element .case > section:nth-child(n+4) :where(p, li) { color: var(--ink); }
+.page-case-element .case > section:nth-child(5) :where(p, li) { color: var(--ink-2); }
+.page-case-element .tradeoff__card p strong { color: var(--ink-2); }
+.page-case-element .case-sub.case-sub--pill { color: var(--ink); }
+.page-case-element .flow-caption { text-align: center; color: var(--muted) !important; font-size: 18px; line-height: 26px; font-weight: 600; }
 
 /* EDS Context 栏的原站是 18/26 medium，Responsibility 列表同款 */
 .page-case-element .overview-grid .split__body,

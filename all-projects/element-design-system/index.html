@@ -78,19 +78,18 @@
     </section>
 
     <section class="wrap">
-      <div class="case-head case-head--left fx">
-        <span class="pill"><svg class="ico" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" fill="currentColor"><path opacity="0.2" d="M232,56V200H160a32,32,0,0,0-32,32V88a32,32,0,0,1,32-32Z"></path><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64ZM160,88h40a8,8,0,0,1,0,16H160a8,8,0,0,1,0-16Zm48,40a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,128Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,160Z"></path></svg>High-level Intro</span>
-        <h2 class="case-title">Problem</h2>
-      </div>
-      <div class="split fx">
-        <div></div>
+      <div class="panel panel--problem fx">
+      <div class="problem-intro fx">
+        <div class="case-head case-head--left fx">
+          <span class="pill"><svg class="ico" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" fill="currentColor"><path opacity="0.2" d="M232,56V200H160a32,32,0,0,0-32,32V88a32,32,0,0,1,32-32Z"></path><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64ZM160,88h40a8,8,0,0,1,0,16H160a8,8,0,0,1,0-16Zm48,40a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,128Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,160Z"></path></svg>High-level Intro</span>
+          <h2 class="case-title">Problem</h2>
+        </div>
         <div class="split__body">
           <p><strong>Goal:</strong> Enhance market agility, and establish a cohesive UX across the digital ecosystem to amplify
             brand presence, increase product adoption, and accelerate development speed.</p>
         </div>
       </div>
-      <div class="panel fx">
-        <div class="tri">
+      <div class="tri">
           <div class="tri__col">
             <div class="tri__block">
               <h4 class="kicker">Context + Challenge</h4>
@@ -108,16 +107,18 @@
             </div>
           </div>
           <div class="tri__col">
-            <div class="tri__block">
+            <div class="tri__block tri__block--inconsist">
               <h4 class="kicker">Inconsistencies in Today's JCI Products</h4>
               <p style="font-size:14px;color:var(--ink-2)">* Ambiguous visual representation for confidentiality</p>
+              <img src="../../assets/img/eds-inconsistency-01.png" alt="Inconsistent product UI example one" width="1200" height="600" loading="lazy">
             </div>
-            <img src="../../assets/img/eds-inconsistency-01.png" alt="Inconsistent product UI example one" width="1200" height="600" loading="lazy">
-            <img src="../../assets/img/eds-inconsistency-02.png" alt="Inconsistent product UI example two" width="833" height="505" loading="lazy">
-            <img src="../../assets/img/eds-inconsistency-03.png" alt="Inconsistent product UI example three" width="833" height="489" loading="lazy">
+            <div class="tri__block tri__block--media">
+              <img src="../../assets/img/eds-inconsistency-02.png" alt="Inconsistent product UI example two" width="833" height="505" loading="lazy">
+            </div>
           </div>
           <div class="tri__col">
-            <div class="tri__block">
+            <div class="tri__block tri__block--goal">
+              <img src="../../assets/img/eds-inconsistency-03.png" alt="Inconsistent product UI example three" width="833" height="489" loading="lazy">
               <h4 class="kicker">Goal &amp; Vision</h4>
               <p><strong>Design Side:</strong> Increase our market speed, share current digital best practices, and create a unified
                 look &amp; feel experience throughout the Johnson Controls digital ecosystem, leading to less training and increased
@@ -125,7 +126,7 @@
               <p><strong>Develop Side:</strong> Faster development time and reduced bug fixing.</p>
             </div>
           </div>
-        </div>
+      </div>
       </div>
     </section>
 
@@ -179,33 +180,57 @@
       <h2 class="fx">Problem: The Challenges &amp; Strategic Trade-offs</h2>
       <p class="fx">Designing a global authentication framework required navigating complex business requirements and user experience friction.</p>
       <div class="tradeoff fx">
-        <span class="num">01</span>
-        <h4 class="kicker">🛡️ Risk-based Access vs. Login Conversion</h4>
+        <div class="tradeoff__head">
+          <span class="num">01</span>
+          <span class="tradeoff__pill"><strong>🛡️ Risk-based Access vs. Login Conversion</strong></span>
+        </div>
         <h3><strong>Balancing enterprise-grade security with a high-success login experience requires intentional trade-offs.</strong></h3>
         <div class="tradeoff__pair">
-          <p><strong>Excessive Friction:</strong> When the login pattern includes too many fields, choices, or steps, users are more likely to hesitate or drop off.<br><strong>Inconsistent Patterns Across Apps:</strong> When products implement login and recovery differently, users see different steps, errors, and terminology.</p>
+          <div class="tradeoff__card">
+            <p><strong>Excessive Friction:</strong> When the login pattern includes too many fields, choices, or steps, users are more likely to hesitate or drop off.</p>
+            <p><strong>Inconsistent Patterns Across Apps:</strong> When products implement login and recovery differently, users see different steps, errors, and terminology.</p>
+          </div>
           <span class="tradeoff__arrow" aria-hidden="true">&rarr;</span>
-          <p><strong>Lower Completion Rates:</strong> Extra friction can reduce sign-in completion, especially for first-time or infrequent users.<br><strong>More Password/Access Issues:</strong> More lockouts and resets can lead to more support requests and longer time to access the product.</p>
+          <div class="tradeoff__card">
+            <p><strong>Lower Completion Rates:</strong> Extra friction can reduce sign-in completion, especially for first-time or infrequent users.</p>
+            <p><strong>More Password/Access Issues:</strong> More lockouts and resets can lead to more support requests and longer time to access the product.</p>
+          </div>
         </div>
       </div>
       <div class="tradeoff fx">
-        <span class="num">02</span>
-        <h4 class="kicker">🧠 Path Discovery vs. Cognitive Load</h4>
+        <div class="tradeoff__head">
+          <span class="num">02</span>
+          <span class="tradeoff__pill"><strong>🧠 Path Discovery vs. Cognitive Load</strong></span>
+        </div>
         <h3><strong>The primary entry point must help users reach the correct login path with minimal thinking and minimal errors.</strong></h3>
         <div class="tradeoff__pair">
-          <p><strong>Ambiguous Entry Choices:</strong> Generic labels like “Sign in” and “Sign up,” or presenting multiple auth options at once, forces users to decide before they understand the context.<br><strong>Information Overload:</strong> Showing all fields and SSO options simultaneously increases scanning effort and makes the “right next step” unclear.</p>
+          <div class="tradeoff__card">
+            <p><strong>Ambiguous Entry Choices:</strong> Generic labels like “Sign in” and “Sign up,” or presenting multiple auth options at once, forces users to decide before they understand the context.</p>
+            <p><strong>Information Overload:</strong> Showing all fields and SSO options simultaneously increases scanning effort and makes the “right next step” unclear.</p>
+          </div>
           <span class="tradeoff__arrow" aria-hidden="true">&rarr;</span>
-          <p><strong>Wrong-path Errors:</strong> Users choose the wrong method (JCI password vs. SSO), hit dead ends, and restart—driving frustration and abandonment.<br><strong>Decision Delay:</strong> Extra thinking time slows the login journey and increases drop-off under time pressure.</p>
+          <div class="tradeoff__card">
+            <p><strong>Wrong-path Errors:</strong> Users choose the wrong method (JCI password vs. SSO), hit dead ends, and restart—driving frustration and abandonment.</p>
+            <p><strong>Decision Delay:</strong> Extra thinking time slows the login journey and increases drop-off under time pressure.</p>
+          </div>
         </div>
       </div>
       <div class="tradeoff fx">
-        <span class="num">03</span>
-        <h4 class="kicker">🏷️ Multi-tenant Brand System vs. Governance</h4>
+        <div class="tradeoff__head">
+          <span class="num">03</span>
+          <span class="tradeoff__pill"><strong>🏷️ Multi-tenant Brand System vs. Governance</strong></span>
+        </div>
         <h3><strong>A unified login pattern must scale across products, brands, and customers—without turning into a one-off factory.</strong></h3>
         <div class="tradeoff__pair">
-          <p><strong>One-size-fits-all Standardization:</strong> Forcing a single layout and visual treatment across all products can under-serve flagship experiences and customer expectations.<br><strong>Unbounded Customization:</strong> Letting every team freely customize login creates design drift, longer QA cycles, and harder-to-maintain components.</p>
+          <div class="tradeoff__card">
+            <p><strong>One-size-fits-all Standardization:</strong> Forcing a single layout and visual treatment across all products can under-serve flagship experiences and customer expectations.</p>
+            <p><strong>Unbounded Customization:</strong> Letting every team freely customize login creates design drift, longer QA cycles, and harder-to-maintain components.</p>
+          </div>
           <span class="tradeoff__arrow" aria-hidden="true">&rarr;</span>
-          <p><strong>Inconsistent Brand Presence:</strong> The ecosystem feels fragmented; users may question legitimacy when the login experience looks different across products.<br><strong>Operational Overhead:</strong> Without clear guardrails (tokens, slots, ownership), customization becomes expensive and slows down product teams.</p>
+          <div class="tradeoff__card">
+            <p><strong>Inconsistent Brand Presence:</strong> The ecosystem feels fragmented; users may question legitimacy when the login experience looks different across products.</p>
+            <p><strong>Operational Overhead:</strong> Without clear guardrails (tokens, slots, ownership), customization becomes expensive and slows down product teams.</p>
+          </div>
         </div>
       </div>
 
@@ -218,19 +243,19 @@
         <img src="../../assets/img/eds-current-flow-02.png" alt="Current login flow, part two" width="3630" height="1578" loading="lazy">
       </figure>
       </div>
-      <p class="fx" style="text-align:center;color:var(--muted)">👆 Current Log in Flow 👆</p>
+      <p class="fx flow-caption">👆 Current Log in Flow 👆</p>
     </section>
 
     <section class="wrap">
       <h2 class="fx">Impact:</h2>
       <div class="two-col">
         <article class="block fx">
-          <h4 class="kicker">⚠️ User Friction &amp; Security Risks</h4>
+          <span class="impact__pill"><strong>⚠️ User Friction &amp; Security Risks</strong></span>
           <h3><strong>A poor entry experience depletes user patience and directly threatens enterprise data integrity.</strong></h3>
           <ul><li><strong>Credential Fatigue &amp; Password Reuse:</strong> A disjointed ecosystem forces users to memorize separate credentials for different sub-products, inevitably driving widespread &quot;password reuse&quot; behaviors.</li><li><strong>Retention Drop &amp; Compliance Blackhole:</strong> The high interaction cost causes disjointed user journeys and poor platform retention. Meanwhile, password reuse exponentially multiplies the risk of enterprise data breaches and compliance violations.</li></ul>
         </article>
         <article class="block fx">
-          <h4 class="kicker">⚙️ Engineering Waste &amp; System Redundancy</h4>
+          <span class="impact__pill"><strong>⚙️ Engineering Waste &amp; System Redundancy</strong></span>
           <h3><strong>Siloed development models lead to an unquantifiable waste of internal resources.</strong></h3>
           <ul><li><strong>Reinventing the Wheel:</strong> Without a unified standard, individual product teams build and manage their own login pages and underlying authentication logic from scratch.</li><li><strong>Resource Drain &amp; Maintenance Quagmire:</strong> Massive engineering resources are squandered maintaining redundant, decentralized security backends. This inflates overall operational costs and severely delays the time-to-market for new products.</li></ul>
         </article>
@@ -286,7 +311,7 @@
       </div>
       <div class="panel fx">
         <span class="num">01</span>
-        <h4 class="kicker">🛡️ Risk-based Access vs. Login Conversion</h4>
+        <h4 class="kicker"><strong>🛡️ Risk-based Access vs. Login Conversion</strong></h4>
         <h3><strong>Centralized Login Page</strong></h3>
         <ul><li><strong>Target pattern:</strong> A centralized login entry point—customized by JCI, hosted by Okta—replaces app-owned login pages across the JCI ecosystem.</li><li><strong>Smart routing:</strong> Users are redirected from any app to the centralized Login Screen, then routed to either JCI username/password (no IdP on record) or the correct SSO Identity Provider (IdP found via email lookup).</li><li><strong>Seamless return:</strong> After authentication (and optional account selection for multi-org users), users are redirected back to the originating app's Home Screen.</li><li><strong>Platform value:</strong> Centralization improves governance and consistency, reduces maintenance/security burden on product teams, and enables SSO ("log in once, access everywhere") with scalable theming for brands/customers.</li></ul>
         <figure class="figure">
@@ -295,7 +320,7 @@
       </div>
       <div class="panel fx">
         <span class="num">02</span>
-        <h4 class="kicker">🧠 Path Discovery vs. Cognitive Load</h4>
+        <h4 class="kicker"><strong>🧠 Path Discovery vs. Cognitive Load</strong></h4>
         <h3 class="muted-lead"><strong>3.1 Consistent component &amp; terminology - "Log in &amp; Sign up"</strong></h3>
         <figure class="figure">
           <img src="../../assets/img/eds-terminology.png" alt="Consistent login terminology and components" width="3769" height="2048" loading="lazy">
@@ -304,7 +329,7 @@
         <p>To meet the diverse security and user experience needs across JCI's massive product portfolio, we defined three core authentication strategies within the design system:</p>
         <div class="auth-row">
         <div class="block">
-          <h4 class="kicker">1. 🔐 Single Sign-On (SSO) — The ecosystem hub breaking down silos</h4>
+          <h4 class="kicker"><strong>1. 🔐 Single Sign-On (SSO) — The ecosystem hub breaking down silos</strong></h4>
           <ul><li><strong>Behavior/Interaction:</strong> Integrates Okta's SSO service to build a unified, enterprise-grade authentication portal.</li><li><strong>Design Value:</strong> Completely breaks down identity barriers between products. Consumers only need to authenticate once to seamlessly access multiple unrelated JCI products, eliminating the heavy burden of memorizing multiple credentials.</li></ul>
         </div>
         <figure class="figure">
@@ -313,7 +338,7 @@
         </div>
         <div class="auth-row">
         <div class="block">
-          <h4 class="kicker">2. 🧠 Progressive Authentication — The standard for reducing cognitive load</h4>
+          <h4 class="kicker"><strong>2. 🧠 Progressive Authentication — The standard for reducing cognitive load</strong></h4>
           <ul><li><strong>Behavior/Interaction:</strong> Requests only the User ID upfront, deferring the password input to the next step.</li><li><strong>Design Value:</strong> Drastically reduces cognitive load by eliminating non-essential visual distractions. The system automatically determines the correct login path in the background, instead of forcing users to read through options and manually choose.</li></ul>
         </div>
         <figure class="figure">
@@ -322,7 +347,7 @@
         </div>
         <div class="auth-row">
         <div class="block">
-          <h4 class="kicker">3. ⚡ One-step Authentication — Maximized efficiency for high-frequency scenarios</h4>
+          <h4 class="kicker"><strong>3. ⚡ One-step Authentication — Maximized efficiency for high-frequency scenarios</strong></h4>
           <ul><li><strong>Behavior/Interaction:</strong> Displays both the User ID and password input fields on the same page, requiring no step-by-step navigation.</li><li><strong>Design Value:</strong> Tailor-made for products that require high-frequency log-in and log-off actions. By avoiding unnecessary page refreshes and redirects, it provides the fastest possible entry experience for specific high-frequency business use cases.</li></ul>
         </div>
         <figure class="figure">
@@ -332,7 +357,7 @@
       </div>
       <div class="panel fx">
         <span class="num">03</span>
-        <h4 class="kicker">🏷️ Multi-tenant Brand System vs. Governance</h4>
+        <h4 class="kicker"><strong>🏷️ Multi-tenant Brand System vs. Governance</strong></h4>
         <h3><strong>Migration of Login Pages</strong></h3>
         <figure class="figure">
           <img src="../../assets/img/eds-migration.png" alt="Login page migration plan" width="3580" height="1553" loading="lazy">
@@ -362,15 +387,15 @@
       <p class="fx">As a foundational pillar of the Global EDS, this centralized login framework drove enterprise-wide alignment and contributed to significant overall savings.</p>
       <div class="plain-stack">
         <div class="plain-block fx">
-          <h3><strong>🎯 UX &amp; Brand Alignment</strong></h3>
+          <h3>🎯 <strong>UX &amp; Brand Alignment</strong></h3>
           <ul><li><strong>Product Adoption:</strong> Successfully integrated across 34+ design teams, unifying the digital entry point for the entire JCI portfolio.</li><li><strong>Frictionless Experience:</strong> Eliminated password fatigue and cognitive overload through progressive authentication and clear terminology.</li></ul>
         </div>
         <div class="plain-block fx">
-          <h3><strong>⚙️ Engineering Efficiency</strong></h3>
+          <h3>⚙️ <strong>Engineering Efficiency</strong></h3>
           <ul><li><strong>Single Source of Truth:</strong> Stopped individual product teams from reinventing the wheel by centralizing authentication UI and logic.</li><li><strong>Accelerated Workflows:</strong> Contributed directly to the EDS's global success of cutting component creation time and reducing UI maintenance.</li></ul>
         </div>
         <div class="plain-block fx">
-          <h3><strong>🛡️ Security &amp; ROI</strong></h3>
+          <h3>🛡️ <strong>Security &amp; ROI</strong></h3>
           <ul><li><strong>Secure by Design:</strong> Enabled seamless Okta SSO integration and prevented malicious account probing via generic error handling.</li><li><strong>Financial Impact:</strong> Played a key role in the systematic workflow improvements that saved JCI in operational costs.</li></ul>
         </div>
       </div>
