@@ -50,6 +50,114 @@
   }
 })();
 
+/* Full-resolution image viewer. The page keeps the exported Framer files as-is;
+   this viewer lets users inspect those original pixels instead of a CSS-scaled preview. */
+(() => {
+  const excluded = [
+    '.nav img', '.marquee img', '.exp__logos img', '.quote__who img',
+    '.case-hero img', '.about-portrait'
+  ].join(',');
+  const images = [...document.querySelectorAll('img')].filter(img => !img.matches(excluded));
+  if (!images.length) return;
+
+  const viewer = document.createElement('div');
+  viewer.className = 'image-viewer';
+  viewer.hidden = true;
+  viewer.setAttribute('role', 'dialog');
+  viewer.setAttribute('aria-modal', 'true');
+  viewer.setAttribute('aria-label', 'Full-resolution image viewer');
+  viewer.innerHTML = `
+    <div class="image-viewer__toolbar">
+      <p class="image-viewer__meta" aria-live="polite"></p>
+      <div class="image-viewer__actions">
+        <button type="button" data-action="minus" aria-label="Zoom out">−</button>
+        <button type="button" data-action="fit">Fit</button>
+        <button type="button" data-action="actual">1:1</button>
+        <button type="button" data-action="plus" aria-label="Zoom in">+</button>
+        <button class="image-viewer__close" type="button" data-action="close" aria-label="Close image viewer">×</button>
+      </div>
+    </div>
+    <div class="image-viewer__stage"><img alt=""></div>`;
+  document.body.append(viewer);
+
+  const stage = viewer.querySelector('.image-viewer__stage');
+  const full = viewer.querySelector('img');
+  const meta = viewer.querySelector('.image-viewer__meta');
+  const closeButton = viewer.querySelector('[data-action="close"]');
+  let zoom = 1;
+  let fitZoom = 1;
+  let previousOverflow = '';
+
+  const applyZoom = next => {
+    zoom = Math.max(.05, Math.min(2, next));
+    full.style.width = `${Math.round(full.naturalWidth * zoom)}px`;
+    full.style.height = `${Math.round(full.naturalHeight * zoom)}px`;
+    meta.textContent = `${full.naturalWidth} × ${full.naturalHeight}px · ${Math.round(zoom * 100)}%`;
+  };
+  const calculateFit = () => Math.min(
+    (window.innerWidth - 40) / full.naturalWidth,
+    (window.innerHeight - 108) / full.naturalHeight,
+    1
+  );
+  const fit = () => {
+    fitZoom = calculateFit();
+    applyZoom(fitZoom);
+    stage.scrollTo({left: 0, top: 0});
+  };
+  const close = () => {
+    viewer.hidden = true;
+    document.body.style.overflow = previousOverflow;
+    full.removeAttribute('src');
+  };
+  const open = source => {
+    previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    viewer.hidden = false;
+    full.alt = source.alt || 'Full-resolution portfolio image';
+    full.src = source.currentSrc || source.src;
+    const ready = () => {
+      fit();
+      closeButton.focus({preventScroll: true});
+    };
+    if (full.complete) ready(); else full.addEventListener('load', ready, {once: true});
+  };
+
+  images.forEach(img => {
+    img.classList.add('is-zoomable');
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', `${img.alt || 'Image'} — open full resolution`);
+    img.addEventListener('click', event => {
+      // Cover images live inside project links; clicking the visual opens the image,
+      // while the title/body of the card continues to navigate to the case study.
+      event.preventDefault();
+      event.stopPropagation();
+      open(img);
+    });
+    img.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      open(img);
+    });
+  });
+
+  viewer.addEventListener('click', event => {
+    const action = event.target.closest('[data-action]')?.dataset.action;
+    if (action === 'close' || event.target === viewer) close();
+    if (action === 'minus') applyZoom(zoom / 1.25);
+    if (action === 'plus') applyZoom(zoom * 1.25);
+    if (action === 'fit') fit();
+    if (action === 'actual') applyZoom(1);
+  });
+  full.addEventListener('dblclick', () => zoom === fitZoom ? applyZoom(1) : fit());
+  document.addEventListener('keydown', event => {
+    if (!viewer.hidden && event.key === 'Escape') close();
+  });
+  window.addEventListener('resize', () => {
+    if (!viewer.hidden && Math.abs(zoom - fitZoom) < .001) fit();
+  });
+})();
+
 (() => {
   // Framer 分别驱动内容块。有动画子项的容器保持静止，避免父子叠加成 192px 位移。
   document.querySelectorAll('.panel.fx').forEach(panel => {

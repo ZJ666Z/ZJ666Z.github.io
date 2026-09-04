@@ -133,34 +133,45 @@
     </section>
 
     <section class="wrap">
-      <h2 class="fx">Impacts: Other Benefits for Adoption</h2>
-      <div class="stack-blocks">
-        <article class="block fx">
-          <h3>Accelerate Speed to Market</h3>
-          <ul><li>Faster design and Engineering cycles</li><li>Drive down defects through retested, reusable components</li></ul>
-        </article>
-        <article class="block fx">
-          <h3>Amplify Brand Presence &amp; Improve Consistency</h3>
-          <ul><li>Unify our products and offerings (one JCI)</li><li>Signal to the market our digital maturity growth</li><li>Increase brand equity, design becomes a differentiator</li></ul>
-        </article>
-        <article class="block fx">
-          <h3>Increase Efficiency</h3>
-          <ul><li>Faster customer onboarding (Learn 1 product, gain familiarity with all)</li><li>Increase familiarity with field &amp; support functions</li><li>Engineers, Testers, and Designers can move between projects</li><li>Raise design acumen and provide support across the entire org</li></ul>
-        </article>
+      <div class="benefits-card fx">
+        <h2>Impacts: Other Benefits for Adoption</h2>
+        <div class="benefits-card__body">
+          <div class="benefits-card__list">
+          <article class="benefit-item">
+            <h3>Accelerate Speed to Market</h3>
+            <ul><li>Faster design and Engineering cycles</li><li>Drive down defects through retested, reusable components</li></ul>
+          </article>
+          <article class="benefit-item">
+            <h3>Amplify Brand Presence &amp; Improve Consistency</h3>
+            <ul><li>Unify our products and offerings (one JCI)</li><li>Signal to the market our digital maturity growth</li><li>Increase brand equity, design becomes a differentiator</li></ul>
+          </article>
+          <article class="benefit-item">
+            <h3>Increase Efficiency</h3>
+            <ul><li>Faster customer onboarding (Learn 1 product, gain familiarity with all)</li><li>Increase familiarity with field &amp; support functions</li><li>Engineers, Testers, and Designers can move between projects</li><li>Raise design acumen and provide support across the entire org</li></ul>
+          </article>
+          </div>
+          <aside class="beneficiaries" aria-label="Who benefits from the design system">
+            <h3>Who Benefits?</h3>
+            <div class="beneficiary"><span aria-hidden="true">C</span><p><strong>Customer</strong><small>Consistent, familiar product experiences</small></p></div>
+            <div class="beneficiary"><span aria-hidden="true">P</span><p><strong>Product &amp; Development Teams</strong><small>Including third-party developers</small></p></div>
+            <div class="beneficiary"><span aria-hidden="true">F</span><p><strong>Field &amp; Support</strong><small>Faster onboarding and shared patterns</small></p></div>
+            <div class="beneficiary"><span aria-hidden="true">B</span><p><strong>Our Business</strong><small>More efficient delivery at scale</small></p></div>
+          </aside>
+        </div>
       </div>
       <h4 class="kicker fx">Without Design System</h4>
       <figure class="figure fx">
         <img src="../../assets/img/eds-fragmented-ux.png" alt="Fragmented user experience diagram" width="1287" height="855" loading="lazy">
       </figure>
       <h2 class="fx" style="text-align:center">⬇️</h2>
-      <h2 class="fx" style="text-align:center">Fragmented User Experience</h2>
+      <h2 class="fragmented-pill fx">Fragmented User Experience</h2>
       <h2 class="fx" style="text-align:center">Scroll down for a deep dive into one of the core design patterns I owned</h2>
     </section>
 
     <section class="wrap">
       <div class="case-head case-head--left fx">
         <span class="pill"><svg class="ico" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" fill="currentColor"><path opacity="0.2" d="M208,88H152V32Z"></path><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-45.54-48.85a36.05,36.05,0,1,0-11.31,11.31l11.19,11.2a8,8,0,0,0,11.32-11.32ZM104,148a20,20,0,1,1,20,20A20,20,0,0,1,104,148Z"></path></svg>Research &amp; Analysis</span>
-        <h3 class="case-sub">Global Experience Design + Brand Team + Okta</h3>
+        <h3 class="case-sub case-sub--pill">Global Experience Design + Brand Team + Okta</h3>
         <h2 class="case-title">Case Study: 0 to 1 Pattern - Log in &amp; off</h2>
       </div>
       <div class="plain-block fx">
@@ -168,7 +179,7 @@
         <p>Login is frequently the first time a user interacts with a product, setting the tone for their entire experience. At
           Johnson Controls (JCI), while physical products shared a robust design language, the digital ecosystem remained fragmented.</p>
       </div>
-      <figure class="figure figure--scroll figure--panorama fx">
+      <figure class="figure fx">
         <img src="../../assets/img/eds-current-screens.png" alt="Current log in and log off screens" width="3154" height="598" loading="lazy">
         <figcaption>👆 Current Log in &amp; off screens 👆</figcaption>
       </figure>
@@ -206,7 +217,7 @@
       </div>
 
       <h3 class="fx">Currently, every app has its own login flow and manages the auth routing itself:</h3>
-      <div class="figure-strip fx">
+      <div class="current-flow-stack fx">
       <figure class="figure fx">
         <img src="../../assets/img/eds-current-flow-01.png" alt="Current login flow, part one" width="5352" height="1344" loading="lazy">
       </figure>
@@ -284,21 +295,20 @@
         <h4 class="kicker">🛡️ Risk-based Access vs. Login Conversion</h4>
         <h3>Centralized Login Page</h3>
         <ul><li><strong>Target pattern:</strong> A centralized login entry point—customized by JCI, hosted by Okta—replaces app-owned login pages across the JCI ecosystem.</li><li><strong>Smart routing:</strong> Users are redirected from any app to the centralized Login Screen, then routed to either JCI username/password (no IdP on record) or the correct SSO Identity Provider (IdP found via email lookup).</li><li><strong>Seamless return:</strong> After authentication (and optional account selection for multi-org users), users are redirected back to the originating app's Home Screen.</li><li><strong>Platform value:</strong> Centralization improves governance and consistency, reduces maintenance/security burden on product teams, and enables SSO ("log in once, access everywhere") with scalable theming.</li></ul>
+        <figure class="figure">
+          <img src="../../assets/img/eds-centralized-login.png" alt="Centralized login architecture" width="1784" height="776" loading="lazy">
+        </figure>
       </div>
-      <figure class="figure figure--scroll figure--panorama fx">
-        <img src="../../assets/img/eds-centralized-login.png" alt="Centralized login architecture" width="1784" height="776" loading="lazy">
-      </figure>
       <div class="panel fx">
         <span class="num">02</span>
         <h4 class="kicker">🧠 Path Discovery vs. Cognitive Load</h4>
         <h3>3.1 Consistent component &amp; terminology - "Log in &amp; Sign up"</h3>
-      </div>
-      <figure class="figure fx">
-        <img src="../../assets/img/eds-terminology.png" alt="Consistent login terminology and components" width="3769" height="2048" loading="lazy">
-      </figure>
-      <h3 class="fx">3.2 Flexible Authentication Architecture</h3>
-      <p class="fx">To meet the diverse security and user experience needs across JCI's massive product portfolio, we defined three core authentication strategies within the design system:</p>
-      <div class="auth-row fx">
+        <figure class="figure">
+          <img src="../../assets/img/eds-terminology.png" alt="Consistent login terminology and components" width="3769" height="2048" loading="lazy">
+        </figure>
+        <h3>3.2 Flexible Authentication Architecture</h3>
+        <p>To meet the diverse security and user experience needs across JCI's massive product portfolio, we defined three core authentication strategies within the design system:</p>
+        <div class="auth-row">
         <div class="block">
           <h4 class="kicker">1. 🔐 Single Sign-On (SSO) — The ecosystem hub breaking down silos</h4>
           <ul><li><strong>Behavior/Interaction:</strong> Integrates Okta's SSO service to build a unified, enterprise-grade authentication portal.</li><li><strong>Design Value:</strong> Completely breaks down identity barriers between products. Consumers only need to authenticate once to seamlessly access multiple unrelated JCI products.</li></ul>
@@ -306,8 +316,8 @@
         <figure class="figure">
           <img src="../../assets/img/eds-auth-sso.png" alt="Single sign-on screens" width="2503" height="2082" loading="lazy">
         </figure>
-      </div>
-      <div class="auth-row fx">
+        </div>
+        <div class="auth-row">
         <div class="block">
           <h4 class="kicker">2. 🧠 Progressive Authentication — The standard for reducing cognitive load</h4>
           <ul><li><strong>Behavior/Interaction:</strong> Requests only the User ID upfront, deferring the password input to the next step.</li><li><strong>Design Value:</strong> Drastically reduces cognitive load by eliminating non-essential visual distractions. The system automatically determines the correct login path in the background.</li></ul>
@@ -315,8 +325,8 @@
         <figure class="figure">
           <img src="../../assets/img/eds-auth-progressive.png" alt="Progressive authentication screens" width="2503" height="2082" loading="lazy">
         </figure>
-      </div>
-      <div class="auth-row fx">
+        </div>
+        <div class="auth-row">
         <div class="block">
           <h4 class="kicker">3. ⚡ One-step Authentication — Maximized efficiency for high-frequency scenarios</h4>
           <ul><li><strong>Behavior/Interaction:</strong> Displays both the User ID and password input fields on the same page, requiring no step-by-step navigation.</li><li><strong>Design Value:</strong> Tailor-made for products that require high-frequency log-in and log-off actions, providing the fastest possible entry experience.</li></ul>
@@ -324,24 +334,25 @@
         <figure class="figure">
           <img src="../../assets/img/eds-auth-one-step.png" alt="One-step authentication screens" width="2220" height="2582" loading="lazy">
         </figure>
+        </div>
       </div>
       <div class="panel fx">
         <span class="num">03</span>
         <h4 class="kicker">🏷️ Multi-tenant Brand System vs. Governance</h4>
         <h3>Migration of Login Pages</h3>
+        <figure class="figure">
+          <img src="../../assets/img/eds-migration.png" alt="Login page migration plan" width="3580" height="1553" loading="lazy">
+        </figure>
+        <h3>United approach to log in screen</h3>
+        <figure class="figure">
+          <img src="../../assets/img/eds-layout-focused.png" alt="Focused centre-aligned login layout" width="2660" height="806" loading="lazy">
+          <figcaption>Focused (Centered Align Component)</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../../assets/img/eds-layout-billboard.png" alt="Marketing billboard login layout" width="2660" height="806" loading="lazy">
+          <figcaption>Marketing Billboard (Left or Right Align Components)</figcaption>
+        </figure>
       </div>
-      <figure class="figure figure--scroll figure--panorama fx">
-        <img src="../../assets/img/eds-migration.png" alt="Login page migration plan" width="3580" height="1553" loading="lazy">
-      </figure>
-      <h3 class="fx">United approach to log in screen</h3>
-      <figure class="figure figure--scroll figure--panorama fx">
-        <img src="../../assets/img/eds-layout-focused.png" alt="Focused centre-aligned login layout" width="2660" height="806" loading="lazy">
-        <figcaption>Focused (Centered Align Component)</figcaption>
-      </figure>
-      <figure class="figure figure--scroll figure--panorama fx">
-        <img src="../../assets/img/eds-layout-billboard.png" alt="Marketing billboard login layout" width="2660" height="806" loading="lazy">
-        <figcaption>Marketing Billboard (Left or Right Align Components)</figcaption>
-      </figure>
       <figure class="figure figure--scroll figure--panorama figure--login-flow fx">
         <img src="../../assets/img/eds-login-flows.png" alt="Complete login flows" width="7522" height="1019" loading="lazy">
         <figcaption>👆 Login Flows; [Scroll Horizontally to See More ↔️] 👆</figcaption>
