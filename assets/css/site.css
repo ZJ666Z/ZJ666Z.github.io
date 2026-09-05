@@ -698,6 +698,259 @@ strong { font-weight: 700; }
 .page-case-element .tradeoff h3 strong { color: var(--ink-2); }
 .muted-lead { color: var(--ink-2) !important; }
 
+/* ============ EDS 精修 2：对齐 Framer 导出里的卡片/列表细节 ============ */
+
+/* Framer 的 Benefits 卡紧跟在 Problem 白卡后面（间距 36，不是新 section 的 96） */
+.page-case-element .case > section:nth-child(3) { padding-top: 36px; }
+
+/* Problem 三栏固定 548 高；左灰卡与右 Goal 卡撑满整列 */
+.page-case-element .tri { grid-template-rows: 548px; }
+.page-case-element .tri__col { align-content: stretch; }
+.page-case-element .tri__col:nth-child(1),
+.page-case-element .tri__col:nth-child(3) { grid-template-rows: minmax(0, 1fr); }
+.page-case-element .tri__col:nth-child(2) { grid-template-rows: 303px 229px; }
+.page-case-element .tri__block--grouped { gap: 36px; align-content: start; }
+.page-case-element .tri__unit { display: grid; gap: 10px; align-content: start; }
+.page-case-element .tri__block--inconsist { gap: 16px; align-content: start; }
+.page-case-element .tri__block__intro { display: grid; gap: 8px; align-content: start; }
+.page-case-element .tri__block--inconsist img { aspect-ratio: 2.08; }
+.page-case-element .tri__col:nth-child(2) .tri__block--media { background: #efedff; }
+.page-case-element .tri__block--media { gap: 0; align-content: stretch; }
+.page-case-element .tri__block--media img { aspect-ratio: 1.6495049504950494; }
+.page-case-element .tri__block--goal { align-content: start; }
+
+/* Impact 两灰卡 + 中间横向箭头（Framer 行 gap 36，卡片 flex:1） */
+.page-case-element .impact-cards {
+  display: flex; align-items: center; gap: 36px;
+  width: 100%; max-width: 1200px; margin-inline: auto;
+}
+.page-case-element .impact-cards .block {
+  flex: 1 0 0; min-width: 0; margin: 0; align-self: stretch;
+  display: grid; gap: 12px; align-content: start; justify-items: stretch;
+  padding: 24px; border-radius: 24px; background: #f5f4f6;
+}
+.page-case-element .impact-cards .block h3 {
+  font-size: 24px; line-height: 32px; font-weight: 700; color: var(--ink-2);
+}
+.page-case-element .impact-cards__arrow {
+  display: flex; align-items: center; justify-content: center;
+  flex: none; align-self: center; width: 36px;
+  font-size: 60px; line-height: 72px; font-weight: 600; color: var(--ink);
+  text-align: center; white-space: nowrap;
+}
+
+/* Impact 下的 HMW：圆点 48、引用 60/72、行距 64、外层上下间距 36 */
+.page-case-element .hmw-group { padding: 24px 24px 8px; gap: 36px; }
+.page-case-element .hmw-items { display: grid; gap: 64px; width: 100%; }
+.page-case-element .hmw-item { display: grid; gap: 16px; align-content: start; }
+.page-case-element .hmw-n {
+  width: 48px; height: 48px; border-radius: 999px;
+  font-size: 24px; line-height: 32px; font-weight: 700;
+}
+.page-case-element .hmw-quote {
+  font-size: 60px; line-height: 72px; font-weight: 600; color: var(--ink);
+  text-align: left;
+}
+.page-case-element .hmw-quote--end { text-align: right; }
+
+/* Opportunity / Goal：每列一整张 #ccddff 卡，内部三小节按 Framer 行距 */
+.page-case-element .case > section:nth-child(6) .col-group__card {
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 24px; border-radius: 24px; background: #ccddff;
+}
+.page-case-element .case > section:nth-child(6) .col-group__card .block {
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 0; border-radius: 0; background: none;
+}
+.page-case-element .case > section:nth-child(6) .col-group__card .block h3 {
+  font-size: 24px; line-height: 32px; font-weight: 700; color: var(--ink);
+}
+.page-case-element .case > section:nth-child(6) .col-group__card .block ul,
+.page-case-element .case > section:nth-child(6) .col-group__card .block li {
+  color: var(--ink);
+}
+.page-case-element .case > section:nth-child(6) .col-group__card .block ul {
+  padding-inline-start: 0;
+}
+.page-case-element .case > section:nth-child(6) .col-group__card .block li {
+  padding-inline-start: 24px;
+}
+
+/* Research 头部 Badge：Framer 是 24/32 semibold */
+.page-case-element .case > section:nth-child(4) .case-sub--pill {
+  font-weight: 600;
+}
+
+/* Benefits：一张白卡 16 间距、左右 530/530、列表像 Framer 一样紧凑 */
+.page-case-element .benefits-card { gap: 16px; }
+.page-case-element .benefits-card__body {
+  grid-template-columns: 530px 530px; gap: 20px;
+}
+.page-case-element .benefits-card__list { gap: 0; }
+.page-case-element .benefit-item { gap: 3px; }
+.page-case-element .benefit-item + .benefit-item { margin-top: 3px; }
+.page-case-element .benefit-item ul { padding-left: 0; }
+.page-case-element .benefits-card__visual img {
+  width: 530px; height: 352px; border-radius: 12px; object-fit: cover;
+}
+
+/* “Without Design System” 是 36px 标题，居中 */
+.page-case-element .without-label {
+  font-size: 36px; line-height: 44px; font-weight: 600; color: var(--ink);
+  text-align: center;
+}
+
+/* 案例列表圆点：Framer 用 “•” 挂 24px 缩进左侧，不用浏览器默认 disc */
+.page-case-element .case ul { list-style: none; }
+.page-case-element .case ul li { position: relative; padding-inline-start: 24px; }
+.page-case-element .case ul li::before {
+  content: "•"; position: absolute; left: 0; top: 0; color: inherit;
+}
+.page-case-element .case li::marker { color: inherit; }
+
+/* ============ EDS 精修 3：标签/卡片/说明文字的对齐与颜色 ============ */
+
+/* 四个指标的数值与标签在 Framer 里都居中 */
+.page-case-element .stat { text-align: center; }
+
+/* Overview 右栏：正文/列表 #212121，Context 下方两个加粗小标题 #383838 */
+.page-case-element .overview-grid .split__body { color: #212121; }
+.page-case-element .overview-grid .split__body h2 { color: var(--ink); }
+.page-case-element .overview-grid .split__body > p strong { color: var(--ink-2); }
+
+/* Problem 左卡是富文本：段与段之间 0 间距，只有标题到正文留 10px */
+.page-case-element .tri__unit { gap: 0; }
+.page-case-element .tri__unit h4 { margin-bottom: 10px; }
+
+/* NDA 卡的 Contact Me 按钮在 Framer 原版里是品牌蓝 #4b6bf3（EDS/TikTok 共用组件） */
+.page-case-element .notice--dark .btn,
+.page-case-element .notice--dark .btn--blue,
+.page-case-tiktok .notice--dark .btn,
+.page-case-tiktok .notice--dark .btn--blue { background: var(--blue-btn); }
+
+/* Benefits 列表正文 #383838 */
+.page-case-element .benefits-card__list li { color: var(--ink-2); }
+
+/* Research 区截图说明 18/26 semibold 灰色居中（Current Log in & off screens） */
+.page-case-element .case > section:nth-child(4) .figure figcaption {
+  font-size: 18px; line-height: 26px; font-weight: 600; color: var(--muted); text-align: center;
+}
+
+/* Solution 区大图下的说明 18/28 bold #1a1a1a 左对齐（Focused / Marketing Billboard） */
+.page-case-element .case > section:nth-child(7) .panel figcaption {
+  font-size: 18px; line-height: 28px; font-weight: 700; color: var(--ink); text-align: left;
+}
+
+/* Research tradeoff 卡片正文 #383838；“Currently…”引导行 24/600 */
+.page-case-element .case > section:nth-child(4) .tradeoff__card p { color: var(--ink-2); }
+.page-case-element .case > section:nth-child(4) > h3.fx {
+  font-size: 24px; line-height: 32px; font-weight: 600; color: var(--ink);
+}
+
+/* Solution 三张白卡内部行距按 Framer 为 16 */
+.page-case-element .case > section:nth-child(7) .panel { gap: 16px; }
+
+/* ============ EDS 精修 4：标签/卡片对齐、间距、等高细节 ============ */
+
+/* Problem 左栏的 High-level Intro 胶囊靠左（原版 Header 是左对齐） */
+.page-case-element .problem-intro .case-head--left .pill {
+  justify-self: start;
+}
+
+/* Benefits：三组内容按原版富文本连续排版，组与组之间不加额外间隙 */
+.page-case-element .benefits-card__list { gap: 0; }
+.page-case-element .benefit-item { gap: 0; margin: 0; }
+.page-case-element .benefit-item + .benefit-item { margin-top: 0; }
+.page-case-element .benefit-item h3 { margin-bottom: 0; }
+.page-case-element .benefit-item ul { margin-top: 0; }
+
+/* “Without Design System”分段前的留白 + 蓝色深潜条内部行距（Framer 原版结构） */
+.page-case-element .without-label { margin-top: 99px; }
+.page-case-element .deep-dive-callout { gap: 26px; }
+
+/* Trade-off：左右卡 550px，中间箭头通道 68px，卡片内部段落不另加 20px 空距 */
+.page-case-element .tradeoff__pair {
+  grid-template-columns: minmax(0, 550px) 68px minmax(0, 550px);
+  gap: 0;
+}
+.page-case-element .tradeoff__card {
+  width: 550px;
+  max-width: 100%;
+  gap: 0;
+  align-content: center;
+}
+.page-case-element .tradeoff__card p { margin: 0; }
+.page-case-element .tradeoff__arrow { justify-self: center; }
+
+/* Solution 编号行：圆点 + 标签横向一行；数字 01/02/03 是 24/32 的字号 */
+.page-case-element .case > section:nth-child(7) .panel-chip-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.page-case-element .panel-chip-row .kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 2px 16px;
+  border: 2px solid var(--dark);
+  border-radius: 999px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.page-case-element .panel-chip-row .kicker strong { font-weight: 700; }
+.page-case-element .tradeoff__head .num,
+.page-case-element .panel-chip-row .num {
+  font-size: 24px;
+  line-height: 32px;
+  padding: 2px;
+}
+
+/* Solution 里的 auth 图文行：右侧截图列 556px，与 Framer 原图尺寸一致 */
+.page-case-element .auth-row {
+  width: 100%;
+  max-width: 1128px;
+  grid-template-columns: 556px 556px;
+  gap: 16px;
+}
+
+/* Solution 顶部对齐与首卡位置（桌面 1440 按 Framer 实测） */
+@media (min-width: 1280px) {
+  .page-case-element .case > section:nth-child(7) { padding-top: 64px; }
+  .page-case-element .case > section:nth-child(7) > .panel:nth-of-type(2) {
+    margin-top: 108px;
+  }
+  .page-case-element .case > section:nth-child(7) > .panel:last-of-type {
+    min-height: 1525px;
+  }
+}
+
+/* Impact 两卡：内部用 16px 行距，标题与卡片间距 12px，卡片后到 HMW 为 36px */
+.page-case-element .impact-cards .block { gap: 16px; }
+.page-case-element .impact-cards { margin-top: -20px; }
+.page-case-element .hmw-group { margin-top: 4px; }
+
+/* Opportunity / Goal：标题到卡片 12px，两卡都保持 Framer 的 496px 等高 */
+.page-case-element .case > section:nth-child(6) { padding-top: 36px; }
+.page-case-element .case > section:nth-child(6) .col-group { gap: 12px; }
+.page-case-element .case > section:nth-child(6) .col-group h2 { margin-bottom: 0; }
+.page-case-element .case > section:nth-child(6) .col-group__card {
+  height: 496px;
+  min-height: 496px;
+  overflow: hidden;
+  justify-content: flex-start;
+}
+.page-case-element .case > section:nth-child(6) .col-group__card .block:nth-child(3) {
+  margin-top: -4px;
+  gap: 12px;
+}
+
 /* Amazon Research 段落原版是 #1a1a1a */
 .page-case-amazon .case > section:nth-child(3) .plain-block,
 .page-case-amazon .case > section:nth-child(3) .plain-block p,
@@ -1066,4 +1319,57 @@ strong { font-weight: 700; }
   .page-home .hero:not(.hero--about) .hero__card {
     height: min(500px, calc(100dvh - 168px)); min-height: 430px;
   }
+}
+
+/* EDS 精修 2 的响应式回退（放最后，覆盖上面的桌面规则） */
+@media (max-width: 1279.98px) {
+  .page-case-element .case > section:nth-child(3) { padding-top: 40px; }
+  .page-case-element .tri { grid-template-rows: none; }
+  .page-case-element .tri__col:nth-child(1),
+  .page-case-element .tri__col:nth-child(2),
+  .page-case-element .tri__col:nth-child(3) { grid-template-rows: none; }
+  .page-case-element .impact-cards {
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px;
+  }
+  .page-case-element .impact-cards { margin-top: 0; }
+  .page-case-element .hmw-group { margin-top: 0; }
+  .page-case-element .tradeoff__pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .page-case-element .tradeoff__card { width: 100%; }
+  .page-case-element .case > section:nth-child(6) .col-group__card {
+    height: auto;
+    min-height: 0;
+  }
+  .page-case-element .case > section:nth-child(6) .col-group__card .block:nth-child(3) {
+    margin-top: 0;
+    gap: 16px;
+  }
+  .page-case-element .impact-cards__arrow {
+    width: auto; font-size: 48px; line-height: 60px;
+    transform: rotate(90deg); justify-self: center; padding-block: 4px;
+  }
+  .page-case-element .benefits-card__body { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .page-case-element .benefits-card__visual img { width: 100%; height: auto; }
+  .page-case-element .hmw-quote { font-size: 48px; line-height: 60px; }
+  .page-case-element .auth-row {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .page-case-element .case > section:nth-child(7) { padding-top: 96px; }
+  .page-case-element .case > section:nth-child(7) > .panel:nth-of-type(2) {
+    margin-top: 0;
+  }
+  .page-case-element .case > section:nth-child(7) > .panel:last-of-type {
+    min-height: 0;
+  }
+}
+@media (max-width: 809.98px) {
+  .page-case-element .benefits-card { gap: 16px; }
+  .page-case-element .hmw-group { padding: 16px; gap: 24px; }
+  .page-case-element .hmw-items { gap: 40px; }
+  .page-case-element .col-group__card { padding: 20px; }
+  .page-case-element .tradeoff__pair { gap: 12px; }
+  .page-case-element .case > section:nth-child(6) { padding-top: 52px; }
 }

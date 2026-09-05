@@ -91,25 +91,29 @@
       </div>
       <div class="tri">
           <div class="tri__col">
-            <div class="tri__block">
+            <div class="tri__block tri__block--grouped">
+              <div class="tri__unit">
               <h4 class="kicker">Context + Challenge</h4>
               <p><strong>Context:</strong> While JCI established a physical product design language in 2018, it lacked a unified
                 digital counterpart.</p>
               <p><strong>Challenge:</strong> Fragmented digital standards and siloed product teams led to a diluted master brand,
                 with inconsistent UI components and patterns across the portfolio.</p>
-            </div>
-            <div class="tri__block">
+              </div>
+              <div class="tri__unit">
               <h4 class="kicker">High-level Problems</h4>
               <p><strong>Context:</strong> While JCI established a physical product design language in 2018, it lacked a unified
                 digital counterpart.</p>
               <p><strong>Challenge:</strong> Fragmented digital standards and siloed product teams led to a diluted master brand,
                 with inconsistent UI components and patterns across the portfolio.</p>
+              </div>
             </div>
           </div>
           <div class="tri__col">
             <div class="tri__block tri__block--inconsist">
-              <h4 class="kicker">Inconsistencies in Today's JCI Products</h4>
-              <p style="font-size:14px;color:var(--ink-2)">* Ambiguous visual representation for confidentiality</p>
+              <div class="tri__block__intro">
+                <h4 class="kicker">Inconsistencies in Today's JCI Products</h4>
+                <p style="font-size:14px;color:var(--ink-2)">* Ambiguous visual representation for confidentiality</p>
+              </div>
               <img src="../../assets/img/eds-inconsistency-01.png" alt="Inconsistent product UI example one" width="1200" height="600" loading="lazy">
             </div>
             <div class="tri__block tri__block--media">
@@ -153,7 +157,7 @@
           </figure>
         </div>
       </div>
-      <h4 class="kicker fx">Without Design System</h4>
+      <h2 class="without-label fx">Without Design System</h2>
       <h2 class="fx" style="text-align:center">⬇️</h2>
       <h2 class="fragmented-pill fx"><span>Fragmented</span> User Experience</h2>
       <div class="deep-dive-callout fx">
@@ -248,12 +252,13 @@
 
     <section class="wrap">
       <h2 class="fx">Impact:</h2>
-      <div class="two-col">
+      <div class="two-col impact-cards">
         <article class="block fx">
           <span class="impact__pill"><strong>⚠️ User Friction &amp; Security Risks</strong></span>
           <h3><strong>A poor entry experience depletes user patience and directly threatens enterprise data integrity.</strong></h3>
           <ul><li><strong>Credential Fatigue &amp; Password Reuse:</strong> A disjointed ecosystem forces users to memorize separate credentials for different sub-products, inevitably driving widespread &quot;password reuse&quot; behaviors.</li><li><strong>Retention Drop &amp; Compliance Blackhole:</strong> The high interaction cost causes disjointed user journeys and poor platform retention. Meanwhile, password reuse exponentially multiplies the risk of enterprise data breaches and compliance violations.</li></ul>
         </article>
+        <span class="impact-cards__arrow" aria-hidden="true">&rarr;</span>
         <article class="block fx">
           <span class="impact__pill"><strong>⚙️ Engineering Waste &amp; System Redundancy</strong></span>
           <h3><strong>Siloed development models lead to an unquantifiable waste of internal resources.</strong></h3>
@@ -262,9 +267,11 @@
       </div>
       <div class="hmw-group fx" aria-label="How might we questions">
         <span class="hmw-quote" aria-hidden="true">&quot;</span>
-        <div class="hmw-item"><span class="hmw-n">01</span><h3>How might we reduce duplicated implementation and support burden from app-owned login flows while keeping sign-in success high?</h3></div>
-        <div class="hmw-item"><span class="hmw-n">02</span><h3>How might we guide users to the correct sign-in path on the first try to reduce drop-off and speed up time-to-access?</h3></div>
-        <div class="hmw-item"><span class="hmw-n">03</span><h3>How might we support product/customer branding needs in login without increasing variant complexity and slowing down delivery?</h3></div>
+        <div class="hmw-items">
+          <div class="hmw-item"><span class="hmw-n">01</span><h3>How might we reduce duplicated implementation and support burden from app-owned login flows while keeping sign-in success high?</h3></div>
+          <div class="hmw-item"><span class="hmw-n">02</span><h3>How might we guide users to the correct sign-in path on the first try to reduce drop-off and speed up time-to-access?</h3></div>
+          <div class="hmw-item"><span class="hmw-n">03</span><h3>How might we support product/customer branding needs in login without increasing variant complexity and slowing down delivery?</h3></div>
+        </div>
         <span class="hmw-quote hmw-quote--end" aria-hidden="true">&quot;</span>
       </div>
     </section>
@@ -273,33 +280,37 @@
       <div class="two-groups fx">
         <div class="col-group">
           <h2>Opportunity</h2>
-          <article class="block">
+          <div class="col-group__card">
+            <article class="block">
             <h3><strong>From UI Fix to System Overhaul</strong></h3>
-            <p>We seized the chance to upgrade the messy, decentralized backend architecture by introducing a standardized frontend interface.</p>
-          </article>
-          <article class="block">
+            <ul><li>We seized the chance to upgrade the messy, decentralized backend architecture by introducing a standardized frontend interface.</li></ul>
+            </article>
+            <article class="block">
             <h3><strong>The SSO Catalyst</strong></h3>
-            <p>We leveraged the redesign as the perfect vehicle to roll out Okta's Single Sign-On (SSO) service enterprise-wide, transitioning from fragmented logins to a unified gateway.</p>
-          </article>
-          <article class="block">
+            <ul><li>We leveraged the redesign as the perfect vehicle to roll out Okta's Single Sign-On (SSO) service enterprise-wide, transitioning from fragmented logins to a unified gateway.</li></ul>
+            </article>
+            <article class="block">
             <h3><strong>Eliminating Redundancy</strong></h3>
-            <p>By establishing one source of truth, we had the opportunity to stop 34+ product teams from reinventing the wheel, drastically reducing global tech debt.</p>
-          </article>
+            <ul><li>By establishing one source of truth, we had the opportunity to stop 34+ product teams from reinventing the wheel, drastically reducing global tech debt.</li></ul>
+            </article>
+          </div>
         </div>
         <div class="col-group">
           <h2>Goal</h2>
-          <article class="block">
+          <div class="col-group__card">
+            <article class="block">
             <h3><strong>Consistent</strong></h3>
-            <p>Align the digital entry point seamlessly with JCI's overall brand aesthetics and physical product language.</p>
-          </article>
-          <article class="block">
+            <ul><li>Align the digital entry point seamlessly with JCI's overall brand aesthetics and physical product language.</li></ul>
+            </article>
+            <article class="block">
             <h3><strong>Balanced</strong></h3>
-            <p>Optimize the delicate trade-off between enforcing robust enterprise security and providing frictionless user convenience.</p>
-          </article>
-          <article class="block">
+            <ul><li>Optimize the delicate trade-off between enforcing robust enterprise security and providing frictionless user convenience.</li></ul>
+            </article>
+            <article class="block">
             <h3><strong>Adaptable</strong></h3>
-            <p>Flexibly scale across different product weights (flagship vs. sub-products), diverse user types, and multi-device breakpoints.</p>
-          </article>
+            <ul><li>Flexibly scale across different product weights (flagship vs. sub-products), diverse user types, and multi-device breakpoints.</li></ul>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -310,8 +321,10 @@
         <h2 class="case-title">Design Solution</h2>
       </div>
       <div class="panel fx">
-        <span class="num">01</span>
-        <h4 class="kicker"><strong>🛡️ Risk-based Access vs. Login Conversion</strong></h4>
+        <div class="panel-chip-row">
+          <span class="num">01</span>
+          <h4 class="kicker"><strong>🛡️ Risk-based Access vs. Login Conversion</strong></h4>
+        </div>
         <h3><strong>Centralized Login Page</strong></h3>
         <ul><li><strong>Target pattern:</strong> A centralized login entry point—customized by JCI, hosted by Okta—replaces app-owned login pages across the JCI ecosystem.</li><li><strong>Smart routing:</strong> Users are redirected from any app to the centralized Login Screen, then routed to either JCI username/password (no IdP on record) or the correct SSO Identity Provider (IdP found via email lookup).</li><li><strong>Seamless return:</strong> After authentication (and optional account selection for multi-org users), users are redirected back to the originating app's Home Screen.</li><li><strong>Platform value:</strong> Centralization improves governance and consistency, reduces maintenance/security burden on product teams, and enables SSO ("log in once, access everywhere") with scalable theming for brands/customers.</li></ul>
         <figure class="figure">
@@ -319,8 +332,10 @@
         </figure>
       </div>
       <div class="panel fx">
-        <span class="num">02</span>
-        <h4 class="kicker"><strong>🧠 Path Discovery vs. Cognitive Load</strong></h4>
+        <div class="panel-chip-row">
+          <span class="num">02</span>
+          <h4 class="kicker"><strong>🧠 Path Discovery vs. Cognitive Load</strong></h4>
+        </div>
         <h3 class="muted-lead"><strong>3.1 Consistent component &amp; terminology - "Log in &amp; Sign up"</strong></h3>
         <figure class="figure">
           <img src="../../assets/img/eds-terminology.png" alt="Consistent login terminology and components" width="3769" height="2048" loading="lazy">
@@ -356,20 +371,22 @@
         </div>
       </div>
       <div class="panel fx">
-        <span class="num">03</span>
-        <h4 class="kicker"><strong>🏷️ Multi-tenant Brand System vs. Governance</strong></h4>
+        <div class="panel-chip-row">
+          <span class="num">03</span>
+          <h4 class="kicker"><strong>🏷️ Multi-tenant Brand System vs. Governance</strong></h4>
+        </div>
         <h3><strong>Migration of Login Pages</strong></h3>
         <figure class="figure">
           <img src="../../assets/img/eds-migration.png" alt="Login page migration plan" width="3580" height="1553" loading="lazy">
         </figure>
         <h3><strong>United approach to log in screen</strong></h3>
         <figure class="figure">
-          <img src="../../assets/img/eds-layout-focused.png" alt="Focused centre-aligned login layout" width="2660" height="806" loading="lazy">
           <figcaption>Focused (Centered Align Component)</figcaption>
+          <img src="../../assets/img/eds-layout-focused.png" alt="Focused centre-aligned login layout" width="2660" height="806" loading="lazy">
         </figure>
         <figure class="figure">
-          <img src="../../assets/img/eds-layout-billboard.png" alt="Marketing billboard login layout" width="2660" height="806" loading="lazy">
           <figcaption>Marketing Billboard (Left or Right Align Components)</figcaption>
+          <img src="../../assets/img/eds-layout-billboard.png" alt="Marketing billboard login layout" width="2660" height="806" loading="lazy">
         </figure>
       </div>
       <figure class="figure figure--scroll figure--panorama figure--login-flow fx">
