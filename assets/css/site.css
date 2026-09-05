@@ -544,8 +544,11 @@ strong { font-weight: 700; }
 .page-case-amazon .amazon-deep .two-col { grid-template-columns: 546px 36px 546px; gap: 36px; }
 .page-case-amazon .amazon-deep .problem-cards { margin-top: -16px; }
 .page-case-amazon .amazon-deep .impact-cards-row {
-  margin-top: -52px;
+  margin-top: -20px;
   margin-bottom: 52px;
+}
+.page-case-amazon .amazon-deep .impact-title {
+  margin-top: -32px;
 }
 .page-case-amazon .amazon-deep .amz-pair-arrow {
   display: grid;
