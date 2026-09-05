@@ -528,7 +528,15 @@ strong { font-weight: 700; }
 }
 .page-case-amazon .amazon-deep { max-width: 1248px; }
 .page-case-amazon .amazon-deep { gap: 36px; }
+.page-case-amazon .case > section:nth-child(2) { padding-top: 36px; }
+.page-case-amazon .amazon-deep { margin-top: 80px; }
 .page-case-element .case > section.wrap:nth-child(n+4) { padding-inline: 0; }
+.page-case-amazon .case { padding-bottom: 0; }
+.page-case-amazon .footer {
+  padding-top: 48px;
+  padding-bottom: 8px;
+  padding-inline: 8px;
+}
 .page-case-amazon .amazon-deep .plain-stack .plain-block,
 .page-case-amazon .amazon-deep .two-col .block {
   padding: 24px; border-radius: var(--r-card); background: var(--bg);
@@ -1032,6 +1040,77 @@ strong { font-weight: 700; }
 }
 .page-case-amazon .amz-overview-copy p:first-child strong {
   color: var(--ink);
+}
+
+/* Amazon Research 三张洞察卡：原版有 48px 编号圆点，卡间距 16 */
+.page-case-amazon .amazon-deep .plain-stack {
+  gap: 4px;
+}
+.page-case-amazon .amazon-deep .plain-stack .plain-block {
+  gap: 16px;
+}
+.page-case-amazon .amazon-deep .plain-stack .plain-block .num {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  padding: 2px;
+}
+.page-case-amazon .amazon-deep .plain-stack .plain-block p {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+/* Amazon Opportunity / Goal：一列一整张蓝卡，卡片等高 476px */
+.page-case-amazon .amazon-deep .col-group {
+  gap: 12px;
+}
+.page-case-amazon .amazon-deep .col-group h2 {
+  margin-bottom: 0;
+}
+.page-case-amazon .amazon-deep .col-group .amazon-blue {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+  height: 476px;
+  min-height: 476px;
+  overflow: hidden;
+  padding: 24px;
+  border-radius: 24px;
+  background: #ccddff;
+}
+.page-case-amazon .amazon-deep .col-group .amazon-blue h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.page-case-amazon .amazon-deep .col-group .amazon-blue p {
+  color: var(--ink-2);
+}
+.page-case-amazon .amazon-deep .pullquote {
+  margin-top: 104px;
+  margin-bottom: 84px;
+}
+.page-case-amazon .case > section:nth-child(4) {
+  padding-top: 64px;
+}
+.page-case-amazon .case > section:nth-child(n+4) {
+  padding-inline: 0;
+}
+.page-case-amazon .figure--wide-amazon + section {
+  margin-top: 34px;
+}
+.page-case-amazon .case > section:nth-of-type(5) {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  gap: 12px;
+}
+.page-case-amazon .case > section:nth-of-type(5) .plain-stack {
+  gap: 20px;
 }
 
 /* 案例图注：原站是 18/26 semibold，且颜色保留 muted */
