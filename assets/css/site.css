@@ -396,6 +396,9 @@ strong { font-weight: 700; }
   top: 0;
   color: var(--ink-2);
 }
+.page-case-tiktok .footer {
+  margin-top: -58px;
+}
 :where(.case) :where(.two-col ul, .block ul) { color: var(--ink-2); }
 :where(.case) :where(.step p, .block p) { color: #212121; }
 :where(.case) .panel p strong,
@@ -1311,10 +1314,28 @@ strong { font-weight: 700; }
     left: 16px; opacity: 1; filter: none; transform: translateY(-50%); background: #fff;
   }
   .nav.is-stuck { padding-block: 24px; }
-  .nav.is-stuck .nav__shell { width: calc(100% - 32px); padding: 0; gap: 12px; background: transparent; backdrop-filter: none; border-radius: 0; }
-  .nav.is-stuck .nav__brand { width: 36px; height: 36px; border-radius: 8px; }
-  .nav.is-stuck .brand__mark { width: 16px; height: 14.6px; }
-  .nav.is-stuck .nav__links { padding: 6px 0; border-radius: 12px; }
+  .nav.is-stuck .nav__shell {
+    width: max-content;
+    max-width: calc(100% - 32px);
+    margin-inline: auto;
+    padding: 4px;
+    gap: 12px;
+    background: rgba(26,26,26,.5);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+  }
+  .nav.is-stuck .nav__brand { width: 44px; height: 44px; border-radius: 12px; }
+  .nav.is-stuck .brand__mark { width: 20px; height: 18.26px; }
+  .nav.is-stuck .nav__menu { color: #fff; }
+  .nav.menu-open.is-stuck .nav__shell {
+    width: calc(100% - 32px);
+    max-width: none;
+    padding: 0;
+    gap: 12px;
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
+  }
   .hero:not(.hero--about) { margin-top: 84px; padding: 118px 0 0; }
   .hero:not(.hero--about) > .wrap { padding: 16px 16px 48px; }
   .hero:not(.hero--about) .hero__card { padding: 96px 32px 32px; min-height: 460px; gap: 40px; border-radius: var(--r-block); }
