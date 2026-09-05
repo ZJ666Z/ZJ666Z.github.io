@@ -1112,6 +1112,16 @@ strong { font-weight: 700; }
 .page-case-amazon .case > section:nth-of-type(5) .plain-stack {
   gap: 20px;
 }
+.page-case-amazon .case > section:nth-of-type(4) {
+  gap: 20px;
+  margin-top: 12px;
+}
+.page-case-amazon .case > section:nth-of-type(4) .plain-stack {
+  gap: 8px;
+}
+.page-case-amazon .figure--wide-amazon {
+  margin-top: 52px;
+}
 
 /* 案例图注：原站是 18/26 semibold，且颜色保留 muted */
 .page-case .figure figcaption { font-size: 18px; line-height: 26px; font-weight: 600; }
