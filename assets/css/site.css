@@ -510,18 +510,15 @@ strong { font-weight: 700; }
 
 /* Framer 的研究段落以整屏白底承接，其他项目段落保持浅灰页面底色。 */
 .page-case { overflow-x: clip; container-type: inline-size; }
-.page-case-amazon .case > section:nth-child(3),
-.page-case-amazon .case > section:nth-child(4),
-.page-case-amazon .case > section:nth-child(5),
-.page-case-amazon .case > section:nth-child(6),
+.page-case-amazon .amazon-deep,
 .page-case-element .case > section:nth-child(4),
 .page-case-element .case > section:nth-child(5),
 .page-case-element .case > section:nth-child(6) {
   background: #fff; box-shadow: 0 0 0 100vmax #fff; clip-path: inset(0 -100vmax);
 }
-.page-case-amazon .case > section:nth-child(3),
+.page-case-amazon .amazon-deep,
 .page-case-element .case > section:nth-child(4) { padding-top: 128px; }
-.page-case-amazon .case > section:nth-child(6),
+.page-case-amazon .amazon-deep,
 .page-case-element .case > section:nth-child(6) { padding-bottom: 64px; }
 .page-case-amazon .case > section:nth-child(2) .step {
   padding: 24px; border-radius: var(--r-card); background: #fff;
@@ -529,17 +526,16 @@ strong { font-weight: 700; }
 .page-case-tiktok .case > section:nth-child(2) .step {
   padding: 24px; border-radius: var(--r-card); background: #fff;
 }
-.page-case-amazon .case > section:nth-child(n+3):nth-child(-n+6) { max-width: 1248px; }
+.page-case-amazon .amazon-deep { max-width: 1248px; }
+.page-case-amazon .amazon-deep { gap: 36px; }
 .page-case-element .case > section.wrap:nth-child(n+4) { padding-inline: 0; }
-.page-case-amazon .case > section:nth-child(3) .plain-stack .plain-block,
-.page-case-amazon .case > section:nth-child(4) .two-col .block,
-.page-case-amazon .case > section:nth-child(5) .two-col .block {
+.page-case-amazon .amazon-deep .plain-stack .plain-block,
+.page-case-amazon .amazon-deep .two-col .block {
   padding: 24px; border-radius: var(--r-card); background: var(--bg);
 }
-.page-case-amazon .case > section:nth-child(4) .two-col,
-.page-case-amazon .case > section:nth-child(5) .two-col { grid-template-columns: 546px 546px; gap: 108px; }
-.page-case-amazon .case > section:nth-child(6) .two-groups { grid-template-columns: 582px 582px; gap: 36px; }
-.page-case-amazon .case > section:nth-child(6) .col-group .block {
+.page-case-amazon .amazon-deep .two-col { grid-template-columns: 546px 546px; gap: 108px; }
+.page-case-amazon .amazon-deep .two-groups { grid-template-columns: 582px 582px; gap: 36px; }
+.page-case-amazon .amazon-deep .col-group .block {
   padding: 24px; border-radius: var(--r-card); background: #ccddff;
 }
 .page-case-element .case > section:nth-child(2) > .panel { border-radius: var(--r-block); }
@@ -568,12 +564,11 @@ strong { font-weight: 700; }
   grid-template-columns: 582px 582px; gap: 36px;
 }
 @media (max-width: 1279.98px) {
-  .page-case-amazon .case > section:nth-child(4) .two-col,
-  .page-case-amazon .case > section:nth-child(5) .two-col,
+  .page-case-amazon .amazon-deep .two-col,
   .page-case-element .case > section:nth-child(5) .two-col {
     width: 100%; grid-template-columns: minmax(0,1fr); gap: 24px;
   }
-  .page-case-amazon .case > section:nth-child(6) .two-groups,
+  .page-case-amazon .amazon-deep .two-groups,
   .page-case-element .case > section:nth-child(6) .two-groups {
     width: 100%; grid-template-columns: minmax(0,1fr); gap: 32px;
   }
@@ -890,7 +885,30 @@ strong { font-weight: 700; }
 .page-case-element .case > section:nth-child(7) .panel .figure img {
   border-radius: 0;
 }
+.page-case-element .case > section:nth-child(7) .auth-row .figure img {
+  border-radius: 16px;
+}
 .page-case-element .figure--login-flow { margin-top: 32px; }
+
+/* Current Log in Flow 与下方 Impact 之间留出原版的 36px */
+.page-case-element .flow-caption {
+  margin-top: -36px;
+  height: 26px;
+}
+.page-case-element .case > section:nth-child(4) { padding-bottom: 36px; }
+
+/* 末尾 Solution Impacts 区块与 footer 之间补出呼吸空间 */
+.page-case-element .case > section:nth-child(8) {
+  padding-top: 76px;
+  padding-bottom: 104px;
+}
+.page-case-element .case > section:nth-child(8) > p {
+  margin-top: -20px;
+}
+.page-case-element .case > section:nth-child(8) > .plain-stack {
+  margin-top: -16px;
+  gap: 20px;
+}
 
 /* Trade-off：左右卡 550px，中间箭头通道 68px，卡片内部段落不另加 20px 空距 */
 .page-case-element .tradeoff__pair {
@@ -969,6 +987,7 @@ strong { font-weight: 700; }
   .page-case-element .case > section:nth-child(7) > .panel--first { margin-top: 0; }
   .page-case-element .case > section:nth-child(7) > .panel--last { min-height: 1525px; }
   .page-case-element .case > section:nth-child(5) { padding-top: 0; }
+  .page-case-element .case > section:nth-child(5) { margin-top: -10px; }
 }
 
 /* Impact 两卡：内部用 16px 行距，标题与卡片间距 12px，卡片后到 HMW 为 36px */
@@ -992,9 +1011,26 @@ strong { font-weight: 700; }
 }
 
 /* Amazon Research 段落原版是 #1a1a1a */
-.page-case-amazon .case > section:nth-child(3) .plain-block,
-.page-case-amazon .case > section:nth-child(3) .plain-block p,
-.page-case-amazon .case > section:nth-child(3) .plain-block strong {
+.page-case-amazon .amazon-deep .plain-block,
+.page-case-amazon .amazon-deep .plain-block p,
+.page-case-amazon .amazon-deep .plain-block strong {
+  color: var(--ink);
+}
+
+/* Amazon Context 的 Brief / Focus 是 18px 正文小节，不是 24px 小标题 */
+.page-case-amazon .overview-grid--amazon .split__body {
+  gap: 16px;
+}
+.page-case-amazon .amz-overview-copy {
+  display: grid;
+  gap: 0;
+}
+.page-case-amazon .amz-overview-copy p {
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--ink-2);
+}
+.page-case-amazon .amz-overview-copy p:first-child strong {
   color: var(--ink);
 }
 
@@ -1120,9 +1156,9 @@ strong { font-weight: 700; }
   .case h2 { font-size: 28px; line-height: 36px; }
   .case > section { padding-block: 40px; }
   .overview-grid { padding: 24px; border-radius: var(--r-card); }
-  .page-case-amazon .case > section:nth-child(3),
+  .page-case-amazon .amazon-deep,
   .page-case-element .case > section:nth-child(4) { padding-top: 64px; }
-  .page-case-amazon .case > section:nth-child(6),
+  .page-case-amazon .amazon-deep,
   .page-case-element .case > section:nth-child(6) { padding-bottom: 48px; }
   .stack-blocks { padding: 24px; }
   .benefits-card { padding: 24px; gap: 28px; }
