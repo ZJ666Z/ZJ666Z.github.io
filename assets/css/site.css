@@ -378,6 +378,24 @@ strong { font-weight: 700; }
 /* 原站列表不缩进，项目符号挂在文字左侧的留白里 */
 :where(.case) :where(ul) { display: grid; gap: 0; padding-left: 0; list-style: disc outside; color: #212121; }
 .case ol { margin: 0; padding-left: 23px; color: #212121; }
+.page-case-tiktok ol {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: tiktok-step;
+}
+.page-case-tiktok ol li {
+  position: relative;
+  list-style: none;
+  padding-left: 23.832px;
+  counter-increment: tiktok-step;
+}
+.page-case-tiktok ol li::before {
+  content: counter(tiktok-step) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ink-2);
+}
 :where(.case) :where(.two-col ul, .block ul) { color: var(--ink-2); }
 :where(.case) :where(.step p, .block p) { color: #212121; }
 :where(.case) .panel p strong,
@@ -1151,6 +1169,17 @@ strong { font-weight: 700; }
 .page-case-amazon .amazon-deep .col-group .amazon-blue p {
   color: var(--ink-2);
 }
+.page-case-amazon .amazon-deep .col-group .amazon-blue p {
+  position: relative;
+  padding-left: 23.832px;
+}
+.page-case-amazon .amazon-deep .col-group .amazon-blue p::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ink-2);
+}
 .page-case-amazon .amazon-deep .amz-hmw {
   display: flex;
   flex-direction: column;
@@ -1449,6 +1478,9 @@ strong { font-weight: 700; }
 .about-bullets { display: grid; gap: 0; padding-left: 23px; list-style: disc outside; color: #fff; font-size: 18px; line-height: 28px; }
 .about-bullets a { color: var(--blue); text-decoration: none; }
 .about-bullets a:hover { text-decoration: underline; }
+.about-bullets { list-style: none; padding-left: 0; }
+.about-bullets li { position: relative; list-style: none; padding-left: 23.832px; }
+.about-bullets li::before { content: "•"; position: absolute; left: 0; top: 0; color: currentColor; }
 
 /* ---------- 原图放大查看 ---------- */
 .is-zoomable { cursor: zoom-in; }
@@ -1568,6 +1600,35 @@ strong { font-weight: 700; }
   .page-home .hero:not(.hero--about) > .wrap { padding-inline: 16px; }
   .page-home .hero:not(.hero--about) .hero__card {
     height: min(500px, calc(100dvh - 168px)); min-height: 430px;
+    justify-content: center;
+  }
+  .page-case-amazon .amazon-deep .problem-cards,
+  .page-case-amazon .amazon-deep .impact-cards-row {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .page-case-amazon .amazon-deep .impact-title {
+    margin-top: 0;
+  }
+  .page-case-amazon .amazon-deep .amz-hmw {
+    margin-top: 0;
+  }
+  .page-case-amazon .amazon-deep .amz-pair-arrow {
+    transform: none;
+    font-size: 0;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+  }
+  .page-case-amazon .amazon-deep .problem-cards .amz-pair-arrow {
+    margin-top: 0;
+  }
+  .page-case-amazon .amazon-deep .amz-pair-arrow::after {
+    content: "↓";
+    font-size: 48px;
+    line-height: 1;
+    color: var(--ink);
   }
 }
 
