@@ -284,7 +284,7 @@ strong { font-weight: 700; }
 /* ---------- 白色大面板 ---------- */
 .panel { background: #fff; border-radius: var(--r-block); padding: 32px; display: grid; gap: 32px; }
 .panel--dark { background: var(--dark); color: #fff; }
-.panel__head { display: flex; gap: 64px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+.panel__head { display: flex; gap: 64px; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; }
 .panel__head > div { flex: 1 1 400px; min-width: 0; }
 .panel__head h2 { font-size: 36px; line-height: 44px; font-weight: 600; }
 .panel__head p { color: var(--ink-2); flex: 0 1 360px; text-align: right; }
@@ -619,6 +619,13 @@ strong { font-weight: 700; }
   border: 2px solid rgba(26,26,26,.5); border-radius: 20px;
 }
 .mouse-cue i { width: 6px; height: 6px; border-radius: 50%; background: var(--dark); }
+.deep-dive-callout .mouse-cue i {
+  animation: mouse-wheel 1.6s ease-in-out infinite;
+}
+@keyframes mouse-wheel {
+  0%, 100% { transform: translateY(2px); opacity: 1; }
+  60% { transform: translateY(16px); opacity: 0; }
+}
 
 .hmw-group { display: grid; gap: 64px; width: 100%; }
 .hmw-quote { font-size: 48px; line-height: 56px; font-weight: 600; }
@@ -865,8 +872,25 @@ strong { font-weight: 700; }
 .page-case-element .benefit-item ul { margin-top: 0; }
 
 /* “Without Design System”分段前的留白 + 蓝色深潜条内部行距（Framer 原版结构） */
+.page-case-element .case { padding-bottom: 0; }
 .page-case-element .without-label { margin-top: 99px; }
-.page-case-element .deep-dive-callout { gap: 26px; }
+.page-case-element .deep-dive-callout {
+  gap: 26px;
+  margin-top: 96px;
+}
+
+/* 深潜条后的白色 Research 区需要给底部入场元素多留 96px 可裁剪空间，
+   否则 Current Log in Flow 说明会一直停在 opacity:.001 */
+.page-case-element .case > section:nth-child(4) {
+  clip-path: inset(0 -100vmax -96px);
+}
+
+/* 大截图保持直角，不裁掉图像内容（与原版 Framer 一致） */
+.page-case-element .case > section:nth-child(4) .figure img,
+.page-case-element .case > section:nth-child(7) .panel .figure img {
+  border-radius: 0;
+}
+.page-case-element .figure--login-flow { margin-top: 32px; }
 
 /* Trade-off：左右卡 550px，中间箭头通道 68px，卡片内部段落不另加 20px 空距 */
 .page-case-element .tradeoff__pair {
@@ -920,15 +944,31 @@ strong { font-weight: 700; }
   gap: 16px;
 }
 
+/* Design Solution 下的 Problem 副标题 + 说明（Framer 原版每个 section 都有一份） */
+.page-case-element .solution-problem {
+  display: grid;
+  gap: 36px;
+  width: 100%;
+}
+.page-case-element .solution-problem h2 {
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.page-case-element .solution-problem p {
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--ink);
+}
+
 /* Solution 顶部对齐与首卡位置（桌面 1440 按 Framer 实测） */
 @media (min-width: 1280px) {
   .page-case-element .case > section:nth-child(7) { padding-top: 64px; }
-  .page-case-element .case > section:nth-child(7) > .panel:nth-of-type(2) {
-    margin-top: 108px;
-  }
-  .page-case-element .case > section:nth-child(7) > .panel:last-of-type {
-    min-height: 1525px;
-  }
+  .page-case-element .case > section:nth-child(7) { gap: 36px; }
+  .page-case-element .case > section:nth-child(7) > .panel--first { margin-top: 0; }
+  .page-case-element .case > section:nth-child(7) > .panel--last { min-height: 1525px; }
+  .page-case-element .case > section:nth-child(5) { padding-top: 0; }
 }
 
 /* Impact 两卡：内部用 16px 行距，标题与卡片间距 12px，卡片后到 HMW 为 36px */
@@ -1129,6 +1169,7 @@ strong { font-weight: 700; }
   .fx, .fx-up { opacity: 1; transform: none; transition: none; }
   .fx.photo-fx { transition: none; filter: none; }
   .marquee__track { animation: none; }
+  .mouse-cue i { animation: none; }
 }
 
 /* ---------- 首屏下方的双箭头滚动提示 ---------- */
@@ -1358,10 +1399,10 @@ strong { font-weight: 700; }
     grid-template-columns: minmax(0, 1fr);
   }
   .page-case-element .case > section:nth-child(7) { padding-top: 96px; }
-  .page-case-element .case > section:nth-child(7) > .panel:nth-of-type(2) {
+  .page-case-element .case > section:nth-child(7) > .panel--first {
     margin-top: 0;
   }
-  .page-case-element .case > section:nth-child(7) > .panel:last-of-type {
+  .page-case-element .case > section:nth-child(7) > .panel--last {
     min-height: 0;
   }
 }
