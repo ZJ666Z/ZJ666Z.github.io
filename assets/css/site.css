@@ -551,8 +551,8 @@ strong { font-weight: 700; }
   display: grid;
   place-items: center;
   align-self: center;
-  font-size: 60px;
-  line-height: 72px;
+  font-size: 48px;
+  line-height: 1;
   font-weight: 600;
   color: var(--ink);
 }
