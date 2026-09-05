@@ -541,7 +541,24 @@ strong { font-weight: 700; }
 .page-case-amazon .amazon-deep .two-col .block {
   padding: 24px; border-radius: var(--r-card); background: var(--bg);
 }
-.page-case-amazon .amazon-deep .two-col { grid-template-columns: 546px 546px; gap: 108px; }
+.page-case-amazon .amazon-deep .two-col { grid-template-columns: 546px 36px 546px; gap: 36px; }
+.page-case-amazon .amazon-deep .problem-cards { margin-top: -16px; }
+.page-case-amazon .amazon-deep .impact-cards-row {
+  margin-top: -52px;
+  margin-bottom: 52px;
+}
+.page-case-amazon .amazon-deep .amz-pair-arrow {
+  display: grid;
+  place-items: center;
+  align-self: center;
+  font-size: 60px;
+  line-height: 72px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.page-case-amazon .amazon-deep .problem-cards .amz-pair-arrow {
+  margin-top: -41px;
+}
 .page-case-amazon .amazon-deep .two-groups { grid-template-columns: 582px 582px; gap: 36px; }
 .page-case-amazon .amazon-deep .col-group .block {
   padding: 24px; border-radius: var(--r-card); background: #ccddff;
@@ -575,6 +592,10 @@ strong { font-weight: 700; }
   .page-case-amazon .amazon-deep .two-col,
   .page-case-element .case > section:nth-child(5) .two-col {
     width: 100%; grid-template-columns: minmax(0,1fr); gap: 24px;
+  }
+  .page-case-amazon .amazon-deep .amz-pair-arrow {
+    justify-self: center;
+    transform: rotate(90deg);
   }
   .page-case-amazon .amazon-deep .two-groups,
   .page-case-element .case > section:nth-child(6) .two-groups {
@@ -1045,10 +1066,6 @@ strong { font-weight: 700; }
 /* Amazon Research 三张洞察卡：原版有 48px 编号圆点，卡间距 16 */
 .page-case-amazon .amazon-deep .plain-stack {
   gap: 16px;
-  margin-bottom: -24px;
-}
-.page-case-amazon .amazon-deep .problem-title {
-  margin-top: -24px;
 }
 .page-case-amazon .amazon-deep .plain-stack .plain-block {
   gap: 16px;
@@ -1085,6 +1102,22 @@ strong { font-weight: 700; }
 .page-case-amazon .amazon-deep .two-col .block h3 strong {
   color: var(--ink-2);
 }
+.page-case-amazon .amazon-deep .two-col .block ul {
+  list-style: none;
+  padding-left: 0;
+}
+.page-case-amazon .amazon-deep .two-col .block li {
+  position: relative;
+  list-style: none;
+  padding-left: 23.832px;
+}
+.page-case-amazon .amazon-deep .two-col .block li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ink-2);
+}
 
 /* Amazon Opportunity / Goal：一列一整张蓝卡，卡片等高 476px */
 .page-case-amazon .amazon-deep .col-group {
@@ -1115,9 +1148,33 @@ strong { font-weight: 700; }
 .page-case-amazon .amazon-deep .col-group .amazon-blue p {
   color: var(--ink-2);
 }
-.page-case-amazon .amazon-deep .pullquote {
-  margin-top: 104px;
-  margin-bottom: 84px;
+.page-case-amazon .amazon-deep .amz-hmw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 24px 24px 8px;
+  margin-top: -48px;
+  margin-bottom: 0;
+}
+.page-case-amazon .amazon-deep .amz-hmw-mark {
+  width: min(800px, 100%);
+  font-size: 60px;
+  line-height: 72px;
+  font-weight: 600;
+  text-align: left;
+  color: var(--ink);
+}
+.page-case-amazon .amazon-deep .amz-hmw-mark--end {
+  text-align: right;
+}
+.page-case-amazon .amazon-deep .amz-hmw-question {
+  width: min(800px, 100%);
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--ink);
 }
 .page-case-amazon .case > section:nth-child(4) {
   padding-top: 64px;
@@ -1144,7 +1201,7 @@ strong { font-weight: 700; }
   gap: 8px;
 }
 .page-case-amazon .figure--wide-amazon {
-  margin-top: 52px;
+  margin-top: 72px;
 }
 
 /* 案例图注：原站是 18/26 semibold，且颜色保留 muted */
