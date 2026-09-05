@@ -1044,7 +1044,11 @@ strong { font-weight: 700; }
 
 /* Amazon Research 三张洞察卡：原版有 48px 编号圆点，卡间距 16 */
 .page-case-amazon .amazon-deep .plain-stack {
-  gap: 4px;
+  gap: 16px;
+  margin-bottom: -24px;
+}
+.page-case-amazon .amazon-deep .problem-title {
+  margin-top: -24px;
 }
 .page-case-amazon .amazon-deep .plain-stack .plain-block {
   gap: 16px;
@@ -1059,6 +1063,26 @@ strong { font-weight: 700; }
 }
 .page-case-amazon .amazon-deep .plain-stack .plain-block p {
   margin: 0;
+  color: var(--ink-2);
+}
+
+/* Amazon Problem 双卡：标签是 2px outline pill，标题整体加粗 */
+.page-case-amazon .amazon-deep .two-col .block .amz-card-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 2px 16px;
+  border: 2px solid var(--dark);
+  border-radius: 999px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.page-case-amazon .amazon-deep .two-col .block h3 strong {
   color: var(--ink-2);
 }
 
