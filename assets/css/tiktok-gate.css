@@ -79,3 +79,62 @@
 @media (prefers-reduced-motion: reduce) {
   .tiktok-gate { box-shadow: none; }
 }
+
+/* ---------- 996633 案例正文：Framer 原版的分段标签与过渡 ---------- */
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.case-head--left .case-tags { justify-content: flex-start; }
+
+.case-head .pill--tag,
+.pill--tag {
+  padding: 4px 12px;
+  background: #f2f2f2;
+  box-shadow: inset 0 0 0 1px #e0e0e0;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.case-note {
+  max-width: 800px;
+  margin-inline: auto;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.case-continue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: clamp(48px, 7vw, 96px) auto clamp(16px, 3vw, 40px);
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.case-continue::after {
+  content: "↓";
+  font-size: 18px;
+  line-height: 1;
+  animation: case-continue-nudge 1.8s ease-in-out infinite;
+}
+
+@keyframes case-continue-nudge {
+  0%, 100% { transform: translateY(0); opacity: .55; }
+  50%      { transform: translateY(4px); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-continue::after { animation: none; opacity: .8; }
+}
