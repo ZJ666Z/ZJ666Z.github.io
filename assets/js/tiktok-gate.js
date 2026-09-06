@@ -26,11 +26,52 @@
     });
   };
 
+  /* Design Proposals carousel — one option at a time, matching the Framer original.
+     Enhancement only: without JS the three proposals stay stacked and readable. */
+  const setupCarousels = () => {
+    content.querySelectorAll('[data-tt-carousel]').forEach(root => {
+      if (root.dataset.ttReady) return;
+      const slides = [...root.querySelectorAll('[data-tt-slide]')];
+      const dots = root.querySelector('[data-tt-dots]');
+      const navs = [...root.querySelectorAll('[data-tt-step]')];
+      if (slides.length < 2 || !dots) return;
+
+      let index = 0;
+      const show = next => {
+        index = (next + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.setAttribute('aria-hidden', String(i !== index)));
+        [...dots.children].forEach((dot, i) => {
+          dot.setAttribute('aria-current', String(i === index));
+          dot.tabIndex = i === index ? 0 : -1;
+        });
+      };
+
+      slides.forEach((slide, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Show proposal ${i + 1} of ${slides.length}`);
+        dot.setAttribute('aria-controls', slide.id);
+        dot.addEventListener('click', () => show(i));
+        dots.append(dot);
+      });
+
+      navs.forEach(nav => {
+        nav.hidden = false;
+        nav.addEventListener('click', () => show(index + Number(nav.dataset.ttStep)));
+      });
+
+      dots.hidden = false;
+      root.dataset.ttReady = 'true';
+      show(0);
+    });
+  };
+
   const unlock = () => {
     gate.hidden = true;
     content.hidden = false;
     content.removeAttribute('aria-hidden');
     loadPrivateMedia();
+    setupCarousels();
     document.dispatchEvent(new CustomEvent('tiktok-unlocked'));
   };
 

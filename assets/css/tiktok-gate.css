@@ -138,3 +138,274 @@
 @media (prefers-reduced-motion: reduce) {
   .case-continue::after { animation: none; opacity: .8; }
 }
+
+/* ---------- 996633 正文版式：对齐 Framer 原版 ---------- */
+/* 全部限定在 #tiktok-full-content 内，避免影响其他 case 页 */
+
+/* Framer 用白色区块底承载浅灰卡片；页面底色本身是 #f5f4f6 */
+#tiktok-full-content .tt-band {
+  max-width: none;
+  /* 与 .figure--scroll 同一套通栏写法：cqw 排除滚动条宽度 */
+  width: 100vw;
+  width: 100cqw;
+  margin-inline: calc(50% - 50vw);
+  margin-inline: calc(50% - 50cqw);
+  padding-block: clamp(56px, 8vw, 112px);
+  padding-inline: max(var(--pad), calc((100cqw - var(--page)) / 2 + var(--pad)));
+  background: var(--white);
+}
+
+#tiktok-full-content .tt-prose { display: grid; gap: 12px; }
+
+/* Work Overview：一张白卡，图 + Context 左右分栏 */
+#tiktok-full-content .tt-overview {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+}
+
+#tiktok-full-content .tt-overview__media { margin: 0; }
+#tiktok-full-content .tt-overview__media img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-card);
+}
+
+#tiktok-full-content .tt-overview__body { display: grid; gap: 12px; align-content: start; }
+
+/* Problem / Impact：两张浅灰卡，中间一个箭头 */
+#tiktok-full-content .tt-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 24px;
+}
+
+/* 没有箭头时（Problem 2 / Design Rationale）退回等分两列 */
+#tiktok-full-content .tt-pair:not(:has(.tt-arrow)) {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+#tiktok-full-content .tt-card {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: 24px;
+  border-radius: var(--r-card);
+  background: var(--bg);
+}
+
+#tiktok-full-content .tt-card h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+#tiktok-full-content .tt-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-self: start;
+  padding: 10px 16px;
+  border-radius: var(--r-pill);
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--ink);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+#tiktok-full-content .tt-arrow {
+  align-self: center;
+  width: 40px;
+  font-size: 28px;
+  line-height: 1;
+  text-align: center;
+  color: var(--ink);
+}
+
+#tiktok-full-content .tt-arrow::before { content: "→"; }
+
+/* Opportunity / Goal：左右两张浅蓝卡，标题在卡片上方 */
+#tiktok-full-content .tt-duo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+}
+
+#tiktok-full-content .tt-duo__col { display: grid; gap: 16px; align-content: start; }
+
+#tiktok-full-content .tt-bluecard {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  height: 100%;
+  padding: 24px;
+  border-radius: var(--r-card);
+  background: #ccddff;
+}
+
+#tiktok-full-content .tt-bluecard h3 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+#tiktok-full-content .tt-bluecard h3 + ul { margin-bottom: 4px; }
+
+/* Potential Solution Impacts：Framer 这里没有卡片容器 */
+#tiktok-full-content .tt-impacts {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+
+#tiktok-full-content .tt-impacts h3 {
+  margin-top: 12px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+#tiktok-full-content .tt-impacts h3:first-child { margin-top: 0; }
+
+/* Design Proposals 轮播：手机图 + 文案卡，左右箭头 + 圆点 */
+#tiktok-full-content .tt-carousel { position: relative; display: grid; gap: 24px; }
+
+#tiktok-full-content .tt-carousel__track {
+  display: grid;
+  gap: 40px;
+}
+
+/* JS 就绪后才切换到单帧模式；无 JS 时三个方案依次平铺 */
+#tiktok-full-content .tt-carousel[data-tt-ready] .tt-carousel__track {
+  grid-template-areas: "slide";
+  gap: 0;
+}
+
+#tiktok-full-content .tt-carousel[data-tt-ready] .tt-slide { grid-area: slide; }
+
+#tiktok-full-content .tt-carousel[data-tt-ready] .tt-slide[aria-hidden="true"] {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+#tiktok-full-content .tt-slide {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  transition: opacity .35s ease;
+}
+
+#tiktok-full-content .tt-slide__media { margin: 0; justify-self: center; }
+
+#tiktok-full-content .tt-slide__media img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  /* 方案图是 2560x5284 的长竖图，限高才不会把整帧撑得过高 */
+  max-height: 660px;
+  border-radius: var(--r-card);
+}
+
+#tiktok-full-content .tt-slide__body {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: 32px;
+  border-radius: var(--r-card);
+  background: #fff;
+}
+
+#tiktok-full-content .tt-slide__body h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+#tiktok-full-content .tt-slide__label {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+#tiktok-full-content .tt-carousel__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: var(--r-pill);
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--ink), 0 6px 20px rgba(26, 26, 26, .1);
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+
+#tiktok-full-content .tt-carousel__nav--prev { left: -24px; }
+#tiktok-full-content .tt-carousel__nav--next { right: -24px; }
+#tiktok-full-content .tt-carousel__nav--prev::before { content: "←"; }
+#tiktok-full-content .tt-carousel__nav--next::before { content: "→"; }
+
+#tiktok-full-content .tt-carousel__nav:hover { background: var(--bg); }
+#tiktok-full-content .tt-carousel__nav:active { transform: translateY(-50%) scale(.94); }
+#tiktok-full-content .tt-carousel__nav:disabled { opacity: .35; cursor: default; }
+
+#tiktok-full-content .tt-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+#tiktok-full-content .tt-carousel__dots button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: #d4d4d8;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+
+#tiktok-full-content .tt-carousel__dots button[aria-current="true"] {
+  background: var(--blue-btn);
+  transform: scale(1.15);
+}
+
+@media (max-width: 900px) {
+  #tiktok-full-content .tt-overview,
+  #tiktok-full-content .tt-duo,
+  #tiktok-full-content .tt-slide { grid-template-columns: minmax(0, 1fr); }
+  #tiktok-full-content .tt-pair,
+  #tiktok-full-content .tt-pair:not(:has(.tt-arrow)) { grid-template-columns: minmax(0, 1fr); }
+  #tiktok-full-content .tt-arrow { width: auto; justify-self: center; }
+  #tiktok-full-content .tt-arrow::before { content: "↓"; }
+  #tiktok-full-content .tt-slide__media img { max-width: 360px; margin-inline: auto; }
+  #tiktok-full-content .tt-carousel__nav--prev { left: -8px; }
+  #tiktok-full-content .tt-carousel__nav--next { right: -8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #tiktok-full-content .tt-slide,
+  #tiktok-full-content .tt-carousel__nav,
+  #tiktok-full-content .tt-carousel__dots button { transition: none; }
+}
