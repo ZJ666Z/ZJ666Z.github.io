@@ -1,0 +1,81 @@
+/* TikTok 996633 access gate: a calm threshold before the long case study. */
+.tiktok-gate-wrap {
+  min-height: min(52vh, 520px);
+  align-content: center;
+}
+
+.tiktok-gate {
+  width: min(760px, 100%);
+  margin-inline: auto;
+  padding: clamp(28px, 5vw, 56px);
+  gap: 36px;
+  background: var(--dark);
+  color: #fff;
+  box-shadow: 0 28px 80px rgba(26, 26, 26, .12);
+}
+
+.tiktok-gate__intro,
+.tiktok-gate__form {
+  display: grid;
+  gap: 16px;
+}
+
+.tiktok-gate__intro .pill {
+  justify-self: start;
+  background: #fff;
+  color: var(--ink);
+}
+
+.tiktok-gate h2 {
+  color: #fff;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.15;
+}
+
+.tiktok-gate p,
+.tiktok-gate label {
+  color: rgba(255, 255, 255, .78);
+}
+
+.tiktok-gate__form label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.tiktok-gate__controls {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.tiktok-gate__controls input {
+  min-width: 0;
+  flex: 1 1 auto;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: var(--r-btn);
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, .1);
+  color: #fff;
+  font: inherit;
+  line-height: 24px;
+}
+
+.tiktok-gate__controls input::placeholder { color: rgba(255, 255, 255, .56); }
+.tiktok-gate__controls input:focus-visible { outline-color: #fff; }
+.tiktok-gate__status { min-height: 28px; font-size: 14px; line-height: 20px; }
+.tiktok-gate__status[data-state="error"] { color: #ffb6a6; }
+.tiktok-gate__status[data-state="loading"] { color: rgba(255, 255, 255, .64); }
+
+#tiktok-full-content[hidden] { display: none; }
+
+@media (max-width: 600px) {
+  .tiktok-gate-wrap { min-height: 58vh; }
+  .tiktok-gate { padding: 28px 20px; gap: 28px; }
+  .tiktok-gate__controls { display: grid; }
+  .tiktok-gate__controls .btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tiktok-gate { box-shadow: none; }
+}
