@@ -1,81 +1,142 @@
-# TikTok 996633 内容上线与密码锁优化计划
+# TikTok 996633 内容替换与密码锁优化计划
 
-## 目标
+> 状态：仅完成核对与计划，尚未替换公开页面，也尚未把完整版内容放入公开仓库。
 
-用 Framer 原版隐藏页 `tiktok-shop996633` 的完整内容替换当前公开的 TikTok Shop 案例页，并为该案例页加上访问密码，同时保证全站视觉/交互与 v1.0 统一。
+## 1. 已核对的现状
 
-## 当前状态
+### 996633 是否已经还原
 
-- 本地站点没有还原 996633 页面：`all-projects/` 下只有 `tiktok-shop`。
-- Framer 原版有 `framer-reference/all-projects/tiktok-shop996633/index.html`，内容完整度明显高于当前 TikTok 页。
-- 996633 原版页面结构约为：
-  - Work Overview / Context / Project Timeline
-  - 三阶段流程（Competitor Research / UX Audit / Problem Alignment）
-  - P0 Problem 1：Pre-purchase，区分 insurance 与 warranty
-  - P0 Problem 2：Post-purchase，区分 Protection Policy 与 Insurance Claim
-  - 每段都包含 Context / Problem / Impact / HMW / Opportunity / Goal / Design Proposals / Potential Impacts
-- 页面高度约 15834px，属于完整长案例，不是当前 TikTok 的摘要页。
+已经有本地 Framer 参考，但当前站点还没有把它还原成公开页面：
 
-## 约束与关键决策
+- Framer 参考：`../framer-reference/all-projects/tiktok-shop996633/index.html`
+- 当前公开页面：`all-projects/tiktok-shop/index.html`
+- 本地完整草稿：`private/tiktok-shop-full/index.html`
 
-1. **GitHub Pages 无法做到真正安全的内容保护**。凡是放在 public 仓库、静态托管的 HTML/图片，用户都能从源码拿到。
-2. 当前站点目标是作品集展示，建议采用“UI 密码锁 + 内容不进搜索引擎”的轻量方案；如确实需要保密，应改到私有仓库/私有部署或授权访问。
-3. 需要你确认最终密码；计划中先用变量 `TIKTOK_PASSWORD` 占位。
+三者的关系目前是：
 
-## Phase 1：996633 页面还原
+| 页面 | 当前内容 | 结论 |
+| --- | --- | --- |
+| Framer 996633 | 完整长案例，包含完整研究、问题、方案和影响 | 作为视觉与内容参考源 |
+| 公开 TikTok 页 | 封面、Context、Timeline、4 个工作成果、推荐语 | 目前仍是摘要页 |
+| `private/tiktok-shop-full` | 已有大部分完整案例结构与本地图片 | 可作为迁移底稿，但要继续对照 Framer |
 
-- [ ] 新建本地页面目录 `all-projects/tiktok-shop996633/`，按 Framer 原版逐段重建。
-- [ ] 对照原版检查所有 section：
-  - Work Overview 首屏与 Context
-  - 三阶段流程卡
-  - P0 Problem 1 / Problem 2
-  - Impact 两栏卡 + 箭头
-  - HMW 引号与间距
-  - Opportunity / Goal 蓝色等高卡
-  - Design Proposals 与 A/B/C 方案对比
-  - Potential Solution Impacts
-- [ ] 图片、图注、横屏全景图位置与原版一致；先导出原图再压缩部署版本。
-- [ ] 使用现有 `QA-CHECKLIST.md` 全项过一遍：
-  - 卡片间距/圆角/背景
-  - bullet 缩进
-  - reveal 动画不卡隐藏
-  - 390/834/1440 无横向溢出
-- [ ] 页面标题/description/canonical 与当前 TikTok 项目保持一致。
+已确认的差异：
 
-## Phase 2：密码锁
+- Framer 参考包含约 22 张图片、1 段视频、9 个主要 section；公开页只有摘要结构。
+- 完整内容包含两个 P0 问题：
+  - Pre-purchase：区分付费 Insurance 与免费 Seller Warranty。
+  - Post-purchase：区分 Protection Policy 与 Insurance Claim。
+- 完整内容还包含 Context、Problem、Impact、HMW、Opportunity、Goal、Design Proposals、Potential Solution Impacts 等分析链路。
+- 本地 `private/tiktok-shop-full` 已经覆盖主要完整内容，但它是本地私有草稿，不能直接视为已上线版本；图片命名、文字、段落顺序和 Framer 视觉仍需要逐项校验。
 
-### 推荐方案（静态站友好）
+## 2. 推荐产品方案
 
-- [ ] TikTok 案例入口继续指向 `all-projects/tiktok-shop/`。
-- [ ] 在该路径入口页只显示封面/简介 + 密码输入。
-- [ ] 密码校验成功后：
-  - `sessionStorage.setItem('tiktok_unlocked','1')`
-  - 页面显示 996633 完整内容或跳转内容页。
-- [ ] 正确密码使用 hash/非明文写在 `site.js` 中，至少避免肉眼直接看到明文。
-- [ ] 页面 `<meta name="robots" content="noindex,nofollow">`。
-- [ ] 失败提示统一，不做暴力尝试反馈。
+### 目标
 
-### 可选加强
+保留当前 TikTok 项目入口和封面识别，把用户点击后的内容升级为 996633 完整案例，同时让访问门槛看起来像作品集的一部分，而不是突兀的后台登录页。
 
-- [ ] 把完整内容独立成私有文件路由，不参与首页/项目列表爬虫。
-- [ ] 如需要分享，使用带 token 的 URL 而非固定密码。
-- [ ] 未来若要真正保密：私有仓库 + 私有静态托管/鉴权中间层。
+### 推荐路径
 
-## Phase 3：替换与回归
+1. 保留 `all-projects/tiktok-shop/` 作为唯一对外入口，不新增一个容易被猜到的公开完整路径。
+2. 未解锁时显示：TikTok 封面、项目标题、角色/时间/团队信息、简短 NDA 说明、密码输入框。
+3. 解锁成功后，在同一路径展示完整案例，避免用户在跳转后丢失上下文。
+4. 完整案例沿用当前站点的长页面视觉语言，但恢复 996633 的内容层级和图片节奏：
+   - Summary / Work Overview
+   - Context
+   - Project Timeline
+   - P0 Problem 1：Pre-purchase
+   - Design Proposals 与 Option A/B/C
+   - P0 Problem 2：Post-purchase
+   - Design Rationale & Strategy
+   - Potential Solution Impacts
+5. 首页和 All Projects 仍然只展示项目卡片，不泄露完整案例内部标题、指标和方案细节。
 
-- [ ] 当前公开 TikTok 页面不再保留旧内容副本；旧完整内容迁移到 996633 结构。
-- [ ] 首页和 All Projects 的 TikTok 卡片点击仍进入带锁页面。
-- [ ] 全站导航 “TikTok” 相关路径无死链。
-- [ ] 运行全站自动化检查：
-  - bullet
-  - body/document height 与原版差值
-  - reveal 元素无卡 hidden
-  - mobile nav capsule
-  - 390/834/1440 overflow
-- [ ] 验收后打 tag，例如 `v1.1-tiktok-locked`。
+## 3. 密码锁方案与安全边界
 
-## 待确认
+### 第一阶段：适配当前静态站
 
-- 最终访问密码
-- 未解锁时首页/All Projects 是否显示完整项目标题和封面
-- 分享对象是否需要一次性链接，而不是固定密码
+- 使用 `sessionStorage` 保存当前浏览会话的解锁状态，刷新页面不需要反复输入，但关闭浏览器后自动失效。
+- 密码校验逻辑不保存明文密码，代码中只保留占位配置或不可逆校验值。
+- 未解锁状态不渲染完整案例 DOM，也不加载完整案例图片和视频，减少误展示与首屏负担。
+- 错误提示保持统一，不暴露密码长度、匹配位置或尝试次数。
+- 页面加入 `noindex,nofollow`，并检查 canonical、Open Graph 和站内链接，避免完整内容被搜索引擎收录。
+- 解锁页面支持回车提交、焦点管理、键盘操作和移动端输入，不改变现有导航和 footer 体验。
+
+### 必须明确的安全限制
+
+GitHub Pages 是静态公开托管。只要完整版 HTML、图片或视频随站点部署，熟悉网页源码的人仍然可能绕过前端密码锁拿到资源。因此这个方案是“作品集访问门槛”，不是 NDA 级别的真正保密。
+
+如果内容需要真正限制为指定面试官或同事可见，第二阶段应迁移到带服务端鉴权的私有部署，例如：
+
+- 私有仓库 + 带访问控制的部署平台；或
+- 认证中间层 / 受保护对象存储；或
+- 一次性 token / 邀请链接，并在服务端验证。
+
+不把真实密码、token、内部链接或私有原图提交进公开 Git 历史。
+
+## 4. 实施顺序
+
+### Phase 0：内容与资产审计
+
+- [ ] 以 Framer 996633 为结构基准，逐段对照 `private/tiktok-shop-full`。
+- [ ] 建立 section、标题、正文、图片、视频的映射表。
+- [ ] 标记仍需确认的文案、数字、内部链接和可能不适合公开展示的图片。
+- [ ] 确认最终密码及其分享范围；未确认前只使用占位配置，不写入正式版本。
+
+### Phase 1：内容迁移
+
+- [ ] 用完整草稿替换当前 TikTok 摘要内容，但保留现有 URL、站点导航、footer 和 SEO 基础结构。
+- [ ] 优先复用已经整理好的本地资产，补齐 Framer 参考中缺少的图片和视频映射。
+- [ ] 恢复完整的两条问题分析链路和方案比较，不把完整内容压缩成“工作成果”四张卡。
+- [ ] 对横向长图保留可滚动容器，并在移动端明确提示可横向查看。
+- [ ] 旧摘要文案只保留在未解锁的项目简介中，不在页面源码中留一份完整副本。
+
+### Phase 2：访问门槛
+
+- [ ] 在现有 TikTok 入口加入轻量密码锁 UI。
+- [ ] 未解锁时不插入完整案例节点、不加载完整案例媒体。
+- [ ] 正确密码进入完整内容；错误密码保持页面布局稳定并给出可访问提示。
+- [ ] 处理直接访问、刷新、浏览器返回、关闭标签页后重新打开等状态。
+- [ ] 只在解锁后的内容区域放置敏感的案例细节或内部链接；公开入口不保留可直接点击的内部文档地址。
+
+### Phase 3：动效与响应式
+
+- [ ] 完整案例沿用当前已经推送的动效基础：标题有节奏、图片轻量 reveal、卡片不过度 3D 化。
+- [ ] 不恢复已明确移除的首页右上角图形错峰展开、首页文字/装饰图形不同速退场、重卡片倾斜和重图片遮罩。
+- [ ] 完整案例中的长图、数据卡和方案对比使用轻微进入动效，重点突出叙事层级，而不是让每个模块都抢注意力。
+- [ ] 检查 `prefers-reduced-motion`，减少动效用户仍可完整阅读和解锁。
+- [ ] 在 390、834、1280、1440 宽度检查长图、表格、导航、密码框和 footer。
+
+### Phase 4：验收与发布
+
+- [ ] 本地验证未解锁页面：只出现封面/元信息/密码锁，完整正文和媒体不加载。
+- [ ] 验证正确密码、错误密码、回车提交、刷新、清除 session 后的行为。
+- [ ] 对照 Framer 检查 section 顺序、标题、图片数量、图片比例、横向滚动和页面高度。
+- [ ] 检查无 404 资源、无横向溢出、无控制台错误、无死链。
+- [ ] 对公开仓库做隐私扫描：不得出现 `private/`、真实密码、token、内部文档 URL 或未授权原图。
+- [ ] 先给你看本地预览；确认后再提交并推送。
+- [ ] 内容替换获得确认后，再单独创建版本标签，例如 `v1.1-tiktok-996633-locked`；不移动现有 `v1.0`。
+
+## 5. 最终验收标准
+
+### 内容
+
+- [ ] 公开入口仍是原来的 TikTok 项目卡片和 URL。
+- [ ] 解锁后内容与 996633 Framer 参考在结构上对应，且不再是摘要页。
+- [ ] 关键信息链路完整：研究 → UX 审计 → 问题 → 数据影响 → HMW → 机会 → 目标 → 方案 → 预期影响。
+
+### 体验
+
+- [ ] 密码锁不会破坏作品集的视觉表达，用户知道为什么需要密码以及如何继续。
+- [ ] 首屏、长图和方案卡的动效服务于叙事，不制造新的等待和干扰。
+- [ ] 桌面端和移动端都能正常阅读、横向查看长图并完成解锁。
+
+### 隐私
+
+- [ ] 轻量密码锁只被描述为访问门槛，不对外宣称为真正安全保护。
+- [ ] 真正需要保密的内容最终放到带服务端鉴权的私有部署中。
+
+## 待你确认的两个决策
+
+1. 访问密码：正式密码是什么，是否只给面试官/特定同事使用？
+2. 保密等级：接受 GitHub Pages 的轻量密码锁，还是需要把完整版迁移到真正受保护的私有托管？
