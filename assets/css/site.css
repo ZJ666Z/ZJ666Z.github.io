@@ -1257,7 +1257,6 @@ strong { font-weight: 700; }
 }
 .gallery__row > .photo-fx:nth-child(2) { --photo-delay: 70ms; }
 .gallery__row > .photo-fx:nth-child(3) { --photo-delay: 140ms; }
-.js .photo-fx:not(.is-in) { opacity: .001; transform: translate3d(0, 48px, 0) scale(.965); filter: saturate(.82); }
 @media (hover: hover) {
   .photo-fx.is-in:hover { transform: translateY(-4px) scale(1.018); filter: saturate(1.06); transition-delay: 0ms; }
 }
@@ -1411,9 +1410,6 @@ strong { font-weight: 700; }
     0.9821, 0.9858, 0.9887, 0.9910, 0.9928, 0.9943, 0.9955, 1);
 }
 
-.js .fx, .js .fx-up { opacity: .001; transform: translate3d(0, 96px, 0); }
-.js .nav.fx { transform: none; }
-.js .footer__bottom.fx:not(.is-in) { transform: translate3d(0, 36px, 0); }
 .fx, .fx-up {
   transition: opacity var(--fx-dur) var(--fx-ease), transform var(--fx-dur) var(--fx-ease);
   transition-timing-function: var(--fx-spring);
@@ -1486,7 +1482,6 @@ strong { font-weight: 700; }
 }
 .hero--about .hero__card { padding: 36px; min-height: 416px; gap: 0; justify-content: flex-start; }
 .hero--about .hero__text { gap: 0; }
-.js .hero--about .fx-up:not(.is-in) { transform: translate3d(0, 36px, 0); }
 .about-portrait { width: 84px; height: 84px; border: 2px solid var(--line); border-radius: 999px; object-fit: cover; object-position: center; background: #fff; margin-bottom: 34px; }
 .hero__card h1.about-title { font-size: 36px; line-height: 44px; font-weight: 600; max-width: none; margin-bottom: 16px; }
 .about-bullets { margin-bottom: 32px; }
@@ -1548,7 +1543,6 @@ strong { font-weight: 700; }
 @media (max-width: 809.98px) {
   .page-home .hero:not(.hero--about) { height: calc(100vh - 84px); height: calc(100svh - 84px); min-height: 0; }
   .page-home .hero:not(.hero--about) .scroll-cue { height: 56px; }
-  .js .page-home .hero:not(.hero--about) .fx-up:not(.is-in) { transform: translate3d(0, 24px, 0); }
   .hero__card h1.about-title { font-size: 36px; line-height: 44px; margin-bottom: 16px; }
   .hero--about { padding: 108px 0 0; }
   .hero--about .hero__card { height: 692px; min-height: 692px; padding: 64px 32px; }

@@ -55,7 +55,7 @@
 (() => {
   const excluded = [
     '.nav img', '.marquee img', '.card__media img', '.exp__logos img', '.quote__who img',
-    '.case-hero img', '.about-portrait'
+    '.case-hero img', '.about-portrait', '.hero__graphic'
   ].join(',');
   const images = [...document.querySelectorAll('img')].filter(img => !img.matches(excluded));
   if (!images.length) return;
@@ -156,45 +156,4 @@
   window.addEventListener('resize', () => {
     if (!viewer.hidden && Math.abs(zoom - fitZoom) < .001) fit();
   });
-})();
-
-(() => {
-  // Framer 分别驱动内容块。有动画子项的容器保持静止，避免父子叠加成 192px 位移。
-  document.querySelectorAll('.panel.fx').forEach(panel => {
-    if (!panel.querySelector('.quote.fx, .quote.fx-up')) return;
-    panel.querySelector('.panel__head')?.classList.add('fx');
-  });
-  document.querySelectorAll('.footer.fx').forEach(footer => {
-    footer.querySelector('.footer__brand')?.classList.add('fx');
-    footer.querySelector('.footer__bottom')?.classList.add('fx');
-  });
-  document.querySelectorAll('.gallery img').forEach(photo => {
-    photo.classList.add('fx', 'photo-fx');
-  });
-
-  const allItems = [...document.querySelectorAll('.fx, .fx-up')];
-  const items = allItems.filter(item => {
-    const isShell = Boolean(item.querySelector('.fx, .fx-up'));
-    item.classList.toggle('fx-shell', isShell);
-    return !isShell;
-  });
-  if (!items.length) return;
-
-  if (!('IntersectionObserver' in window) ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    items.forEach(el => el.classList.add('is-in'));
-    return;
-  }
-
-  const io = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      entry.target.classList.add('is-in');
-      io.unobserve(entry.target);
-    }
-  }, { rootMargin: '0px', threshold: 0 });
-
-  // 先绘制初始态，再监听首屏，避免加载时直接跳到终态。
-  requestAnimationFrame(() => requestAnimationFrame(() => items.forEach(el => io.observe(el))));
-
 })();
