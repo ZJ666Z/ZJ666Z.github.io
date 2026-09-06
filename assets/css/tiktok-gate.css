@@ -577,7 +577,7 @@
 /* 引言：Framer 把两个 60px 深色引号分置于文字块的左上与右下 */
 #tiktok-full-content .pullquote {
   position: relative;
-  max-width: 760px;
+  max-width: 800px;
   margin: clamp(56px, 7vw, 96px) auto;
   padding: 56px 0;
   color: var(--ink);
@@ -598,7 +598,8 @@
 /* 列表符号：Framer 用的是小中点，缩进也更宽 */
 #tiktok-full-content .case ul,
 #tiktok-full-content ul { padding-inline-start: 22px; }
-#tiktok-full-content li::marker { content: "·  "; color: var(--muted); }
+#tiktok-full-content ul li::marker { content: "·  "; color: var(--muted); }
+#tiktok-full-content ol li::marker { color: var(--muted); }
 
 @media (max-width: 900px) {
   #tiktok-full-content .pullquote { padding: 44px 0; }
@@ -607,3 +608,105 @@
   #tiktok-full-content .pullquote::before { left: 0; }
   #tiktok-full-content .pullquote::after  { right: 0; }
 }
+
+/* ---------- 与 Framer 逐项对齐（第二轮） ---------- */
+/* Framer 的内容列是 1200 宽、左缘 x=120；本站 .wrap 是 1200 含 24px 内边距 → 内容只有 1152。
+   在隐藏正文里把外宽放大到 1248，内容才回到 1200。 */
+#tiktok-full-content { --tt-page: calc(var(--page) + var(--pad) * 2); }
+#tiktok-full-content .wrap:not(.tt-band) { max-width: var(--tt-page); }
+#tiktok-full-content .tt-band {
+  padding-inline: max(var(--pad), calc((100cqw - var(--tt-page)) / 2 + var(--pad)));
+}
+
+/* Framer 的文字色：灰卡内 #383838，卡外正文 #1a1a1a，图注 #8e8e8e */
+#tiktok-full-content .tt-card,
+#tiktok-full-content .tt-card h3,
+#tiktok-full-content .tt-card li,
+#tiktok-full-content .tt-slide__body,
+#tiktok-full-content .tt-slide__body li { color: var(--ink-2); }
+
+#tiktok-full-content .tt-prose p,
+#tiktok-full-content .tt-bluecard li,
+#tiktok-full-content .tt-impacts li,
+#tiktok-full-content .tt-stack li { color: var(--ink); }
+
+#tiktok-full-content .figure figcaption,
+#tiktok-full-content .tt-figure figcaption { color: var(--muted); }
+
+#tiktok-full-content .tt-overview__body p,
+#tiktok-full-content .tt-overview__body li { color: #212121; }
+
+/* 字号：kicker 18、阶段标签 24、Pros/Cons 24/700、*Note 18、步骤序号 24 */
+#tiktok-full-content .tt-kicker { font-size: 18px; line-height: 26px; }
+
+#tiktok-full-content .case-head .pill--tag,
+#tiktok-full-content .pill--tag { font-size: 24px; text-align: left; }
+#tiktok-full-content .case-pills .pill--tag { font-size: 14px; }
+
+#tiktok-full-content .tt-slide__label { font-size: 24px; line-height: 32px; font-weight: 700; }
+
+#tiktok-full-content .case-note { font-size: 18px; line-height: 26px; color: var(--ink-2); }
+
+#tiktok-full-content .num { font-size: 24px; }
+
+#tiktok-full-content .case-continue p {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  color: #a7a7a7;
+}
+
+/* [CONFIDENTIAL] 在 Framer 里是琥珀色 600 */
+#tiktok-full-content .notice strong { font-weight: 600; color: #bd9156; }
+
+/* 轮播文案卡在 Framer 里更窄（正文 504 宽），手机图占左侧 */
+#tiktok-full-content .tt-slide {
+  grid-template-columns: 320px minmax(0, 560px);
+  justify-content: center;
+  gap: 72px;
+}
+
+#tiktok-full-content .tt-slide__body { padding: 24px; }
+
+/* Project Details 是深色填充、白字，居右 */
+#tiktok-full-content .tt-sectionbar .pill {
+  flex: none;
+  margin-left: auto;
+  background: var(--dark);
+  box-shadow: none;
+  color: #fff;
+}
+
+@media (max-width: 1320px) {
+  #tiktok-full-content .tt-slide { grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 48px; }
+}
+
+@media (max-width: 900px) {
+  #tiktok-full-content .tt-slide { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  #tiktok-full-content .case-head .pill--tag,
+  #tiktok-full-content .pill--tag { font-size: 18px; }
+}
+
+/* 收尾对齐 */
+#tiktok-full-content .tt-kicker { text-align: center; }
+#tiktok-full-content .num { text-align: center; }
+#tiktok-full-content .case-note { color: var(--ink); font-weight: 500; }
+#tiktok-full-content .tt-overview__body p { color: var(--ink-2); }
+
+/* Framer 的灰卡是 546 宽（498 内容 + 24 内边距），中间留给箭头 */
+#tiktok-full-content .tt-pair { gap: 48px; }
+#tiktok-full-content .tt-duo { gap: 36px; }
+
+/* Summary / Project Details 两段在 Framer 里用的是 1152 列（P0 段才是 1200） */
+#tiktok-full-content .wrap.tt-inset { max-width: var(--page); }
+
+/* 轮播文案卡：Framer 的正文左缘在 624，比我的靠左 36px */
+#tiktok-full-content .tt-slide { gap: 40px; }
+
+/* 轮播卡内文字沿用灰卡的字色 */
+#tiktok-full-content .tt-slide__body h3,
+#tiktok-full-content .tt-slide__label { color: var(--ink-2); }
+
+#tiktok-full-content .case-note { font-weight: 400; }
+
+#tiktok-full-content .tt-bluecard p { color: var(--ink); }
