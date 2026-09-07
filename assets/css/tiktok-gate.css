@@ -92,173 +92,135 @@
 
 .case-head .pill--tag,
 .pill--tag {
-  padding: 4px 12px;
-  background: #f2f2f2;
-  box-shadow: inset 0 0 0 1px #e0e0e0;
-  font-size: 13px;
-  line-height: 18px;
+  padding: 8px 20px;
+  background: #ececee;
+  font-size: clamp(16px, 1.6vw, 24px);
+  line-height: 1.35;
   font-weight: 600;
-  color: var(--ink-2);
+  color: var(--ink);
+}
+
+.case-pills .pill--tag {
+  padding: 6px 16px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .case-note {
-  max-width: 800px;
-  margin-inline: auto;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
+  max-width: none;
+  margin-inline: 0;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  text-align: left;
 }
 
+@media (max-width: 900px) {
+  .case-head .pill--tag,
+  .pill--tag { font-size: 18px; }
+}
 
+/* ---------- 996633 正文版式：复用站点通用组件（.two-col / .block / .two-groups / .col-group / .plain-stack / .overview-grid），
+   仅补充 tiktok 专属的少量差异（灰卡底色、蓝卡底色、箭头、轮播），做法与 amazon / element 两个 case 页一致 ---------- */
 
-/* ---------- 996633 正文版式：对齐 Framer 原版 ---------- */
-/* 全部限定在 #tiktok-full-content 内，避免影响其他 case 页 */
-
-/* Section 间距：内容块之间的垂直间距 */
-#tiktok-full-content > section { margin-bottom: clamp(56px, 8vw, 112px); }
-#tiktok-full-content > section:last-child { margin-bottom: 0; }
+/* Section 间距：与 .case > section 的 96px 节奏保持一致 */
+#tiktok-full-content > section { padding-block: 96px 0; }
+#tiktok-full-content > section.tt-band { padding-block: clamp(56px, 8vw, 112px); }
 
 /* Framer 用白色区块底承载浅灰卡片；页面底色本身是 #f5f4f6 */
-#tiktok-full-content .tt-band {
+#tiktok-full-content > section.tt-band {
   max-width: none;
-  /* 与 .figure--scroll 同一套通栏写法：cqw 排除滚动条宽度 */
   width: 100vw;
   width: 100cqw;
   margin-inline: calc(50% - 50vw);
   margin-inline: calc(50% - 50cqw);
-  padding-block: clamp(56px, 8vw, 112px);
   padding-inline: max(var(--pad), calc((100cqw - var(--page)) / 2 + var(--pad)));
   background: var(--white);
 }
 
-#tiktok-full-content .tt-prose { display: grid; gap: 12px; }
+/* Work Overview：复用 .overview-grid + .split__body（与 amazon/element 相同结构） */
+#tiktok-full-content .overview-grid--tiktok .figure img { height: auto; }
 
-/* Work Overview：一张白卡，图 + Context 左右分栏 */
-#tiktok-full-content .tt-overview {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: 48px;
-  padding: 48px;
-  background: #fff;
-  border-radius: var(--r-card);
-}
-
-#tiktok-full-content .tt-overview__media { margin: 0; }
-#tiktok-full-content .tt-overview__media img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--r-card);
-}
-
-#tiktok-full-content .tt-overview__body { display: grid; gap: 12px; align-content: start; }
-
-/* Problem / Impact：两张浅灰卡，中间一个箭头 */
-#tiktok-full-content .tt-pair {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: stretch;
-  gap: 48px;
-  margin-top: 32px;
-}
-
-/* 没有箭头时（Problem 2 / Design Rationale）退回等分两列 */
-#tiktok-full-content .tt-pair:not(:has(.tt-arrow)) {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-}
-
-#tiktok-full-content .tt-card {
-  display: grid;
-  gap: 12px;
-  align-content: start;
+/* Problem / Impact 对照卡：复用 .two-col + .block，仅补灰底与箭头（做法同 amazon 的 .two-col .block） */
+#tiktok-full-content .two-col .block {
   padding: 24px;
   border-radius: var(--r-card);
   background: var(--bg);
+  gap: 12px;
 }
 
-#tiktok-full-content .tt-card h3 {
+#tiktok-full-content .two-col .block h3 {
   font-size: 24px;
   line-height: 32px;
   font-weight: 700;
   color: var(--ink);
 }
 
-#tiktok-full-content .tt-kicker {
+#tiktok-full-content .two-col .block,
+#tiktok-full-content .two-col .block li { color: var(--ink-2); }
+
+/* 有箭头的对照组：卡片-箭头-卡片；没箭头的（Problem 2）用 .two-col 默认等分两列 */
+#tiktok-full-content .two-col:has(.tt-pair-arrow) {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 24px;
+}
+
+#tiktok-full-content .tt-pair-arrow {
+  display: grid;
+  place-items: center;
+  align-self: center;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* 卡片顶部的小标签：同 amazon 的 .amz-card-pill 描边药丸 */
+#tiktok-full-content .tt-card-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  justify-self: start;
-  padding: 10px 16px;
-  border-radius: var(--r-pill);
-  background: #fff;
-  box-shadow: inset 0 0 0 1px var(--ink);
+  justify-content: center;
+  width: max-content;
+  max-width: 100%;
+  min-height: 40px;
+  padding: 2px 16px;
+  border: 2px solid var(--dark);
+  border-radius: 999px;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 22px;
   font-weight: 700;
   color: var(--ink);
 }
 
-#tiktok-full-content .tt-arrow {
-  align-self: center;
-  width: 40px;
-  font-size: 28px;
-  line-height: 1;
-  text-align: center;
-  color: var(--ink);
+@media (max-width: 1279.98px) {
+  #tiktok-full-content .two-col:has(.tt-pair-arrow) { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  #tiktok-full-content .tt-pair-arrow { justify-self: center; transform: rotate(90deg); }
 }
 
-#tiktok-full-content .tt-arrow::before { content: "→"; }
-
-/* Opportunity / Goal：左右两张浅蓝卡，标题在卡片上方 */
-#tiktok-full-content .tt-duo {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: start;
-  gap: 36px;
-  margin-top: 32px;
-}
-
-#tiktok-full-content .tt-duo__col { display: grid; gap: 16px; align-content: start; }
-
-#tiktok-full-content .tt-bluecard {
-  display: grid;
-  gap: 12px;
-  align-content: start;
-  height: 100%;
+/* Opportunity / Goal：复用 .two-groups + .col-group + .block，仅补蓝底（做法同 amazon/element 的 .col-group .block） */
+#tiktok-full-content .col-group .block {
   padding: 24px;
   border-radius: var(--r-card);
   background: #ccddff;
+  gap: 12px;
+  height: 100%;
 }
 
-#tiktok-full-content .tt-bluecard h3 {
+#tiktok-full-content .col-group .block h3 {
   font-size: 20px;
   line-height: 28px;
   font-weight: 700;
   color: var(--ink);
 }
 
-#tiktok-full-content .tt-bluecard h3 + ul { margin-bottom: 4px; }
+#tiktok-full-content .col-group .block,
+#tiktok-full-content .col-group .block li,
+#tiktok-full-content .col-group .block p { color: var(--ink); }
 
-/* Potential Solution Impacts：Framer 这里没有卡片容器 */
-#tiktok-full-content .tt-impacts {
-  display: grid;
-  gap: 12px;
-  padding: 0;
-  background: none;
-  border-radius: 0;
-}
+#tiktok-full-content .col-group { grid-template-rows: auto 1fr; align-content: stretch; }
 
-#tiktok-full-content .tt-impacts h3 {
-  margin-top: 12px;
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-#tiktok-full-content .tt-impacts h3:first-child { margin-top: 0; }
-
-/* Design Proposals 轮播：手机图 + 文案卡，左右箭头 + 圆点 */
+/* Design Proposals 轮播：手机图 + 文案卡，左右箭头 + 圆点（案例页里唯一没有现成组件的部分） */
 #tiktok-full-content .tt-carousel {
   position: relative;
   display: grid;
@@ -392,18 +354,11 @@
 }
 
 @media (max-width: 900px) {
-  #tiktok-full-content .tt-overview,
-  #tiktok-full-content .tt-duo,
   #tiktok-full-content .tt-slide { grid-template-columns: minmax(0, 1fr); }
-  #tiktok-full-content .tt-pair,
-  #tiktok-full-content .tt-pair:not(:has(.tt-arrow)) { grid-template-columns: minmax(0, 1fr); }
-  #tiktok-full-content .tt-arrow { width: auto; justify-self: center; }
-  #tiktok-full-content .tt-arrow::before { content: "↓"; }
   #tiktok-full-content .tt-slide__media img { max-width: 240px; margin-inline: auto; }
   #tiktok-full-content .tt-carousel__nav { width: 40px; height: 40px; }
   #tiktok-full-content .tt-carousel__nav--prev { left: -12px; }
   #tiktok-full-content .tt-carousel__nav--next { right: -12px; }
-  #tiktok-full-content .tt-overview { padding: 32px; gap: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -412,13 +367,12 @@
   #tiktok-full-content .tt-carousel__dots button { transition: none; }
 }
 
-/* ---------- 与 Framer 对齐的排版比例 ---------- */
-/* Framer：大标题 48/700，区块标题 36/600，卡内小标题 24/500 */
+/* ---------- 排版比例：与 amazon / element 两个 case 页保持一致 ---------- */
 #tiktok-full-content .case-title { font-size: clamp(32px, 4vw, 48px); line-height: 1.15; font-weight: 700; }
 
 #tiktok-full-content > section > h2,
-#tiktok-full-content .tt-duo__col > h2,
-#tiktok-full-content .tt-overview__body > h2 {
+#tiktok-full-content .col-group > h2,
+#tiktok-full-content .split__body > h2 {
   font-size: clamp(28px, 3vw, 36px);
   line-height: 1.2;
   font-weight: 600;
@@ -427,30 +381,17 @@
   margin-bottom: 24px;
 }
 
-/* Framer 外层 h2 是 500，但正文套了 <strong>，实际渲染是 700 */
-#tiktok-full-content .tt-card h3,
-#tiktok-full-content .tt-bluecard h3,
-#tiktok-full-content .tt-impacts h3 {
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 700;
-}
+#tiktok-full-content .tt-slide__body h3 { font-weight: 600; color: var(--ink-2); }
+#tiktok-full-content .tt-slide__label { font-size: 24px; line-height: 32px; font-weight: 500; color: var(--ink-2); }
 
-#tiktok-full-content .tt-slide__body h3 { font-weight: 600; }
-#tiktok-full-content .tt-slide__label { font-weight: 500; }
+/* Potential Solution Impacts / Post-purchase 列表：Framer 的小标题是 24/700 */
+#tiktok-full-content .plain-block h3 { font-size: 24px; line-height: 32px; font-weight: 700; color: var(--ink); }
+#tiktok-full-content .plain-block li { color: var(--ink); }
 
-/* Research 段：pill 居中，标签与大标题左对齐（Framer 就是这么排的） */
-#tiktok-full-content .case-head--tt-left {
-  max-width: none;
-  text-align: left;
-  justify-items: start;
-}
+/* Research 段：pill 居中，标签与大标题左对齐（复用通用的 .case-head--left） */
+#tiktok-full-content .case-head--left .pill { justify-self: center; }
 
-#tiktok-full-content .case-head--tt-left .pill { justify-self: center; }
-#tiktok-full-content .case-head--tt-left .case-tags { justify-content: flex-start; }
-#tiktok-full-content .case-head--tt-left .case-title { width: 100%; text-align: left; }
-
-/* Solution 段：section pill 与 P0 标签同一行居中 */
+/* Solution 段：section pill 与 P0 标签同一行居中（tiktok 特有，其它页只有单个 pill） */
 #tiktok-full-content .case-pills {
   display: flex;
   flex-wrap: wrap;
@@ -459,49 +400,11 @@
   justify-self: center;
 }
 
-/* Framer 的阶段标签是 24px/600 的大号灰底药丸，不是小标签 */
-#tiktok-full-content .case-head .pill--tag,
-#tiktok-full-content .pill--tag {
-  padding: 8px 20px;
-  background: #ececee;
-  box-shadow: none;
-  font-size: clamp(16px, 1.6vw, 24px);
-  line-height: 1.35;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-/* Solution 行里的标签跟 pill 同高，视觉上不喧宾夺主 */
-#tiktok-full-content .case-pills .pill--tag {
-  padding: 6px 16px;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-/* Context 正文：Framer 的两段是连续行，不留段间距 */
-#tiktok-full-content .tt-prose { gap: 0; }
-
-/* 适宽流程图：Framer 把这两张缩放到内容宽度整图展示 */
-#tiktok-full-content .tt-figure img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--r-card);
-}
-
-#tiktok-full-content .tt-figure figcaption {
-  margin-top: 12px;
-  text-align: center;
-  color: var(--ink-2);
-}
-
-/* 蓝卡等高 */
-#tiktok-full-content .tt-duo { align-items: stretch; }
-
 /* 横向滚动图的容器底色跟 Framer 一致 */
 #tiktok-full-content .figure--scroll,
 #tiktok-full-content .figure--scroll img { background: var(--bg); }
 
-/* Project Timeline：Framer 是左标题 + 右侧 pill 同一行 */
+/* Project Timeline：左标题 + 右侧 pill 同一行（tiktok 特有，其它页没有这种表头） */
 #tiktok-full-content .tt-sectionbar {
   display: flex;
   flex-wrap: wrap;
@@ -517,30 +420,21 @@
   color: var(--ink);
 }
 
-/* 01/02/03 在 Framer 里是白色卡片 */
+#tiktok-full-content .tt-sectionbar .pill {
+  flex: none;
+  margin-left: auto;
+  background: var(--dark);
+  color: #fff;
+}
+
+/* 01/02/03 步骤卡：白色卡片（与 amazon 的 Process 步骤一致） */
 #tiktok-full-content .step {
   padding: 24px;
   border-radius: var(--r-card);
   background: var(--white);
 }
 
-#tiktok-full-content .step h3 { font-size: 24px; line-height: 32px; font-weight: 700; }
-
-/* 蓝卡等高：让卡片撑满所在列的剩余高度 */
-#tiktok-full-content .tt-duo__col {
-  grid-template-rows: auto 1fr;
-  align-content: stretch;
-}
-
-/* *Note 在 Framer 里跟着正文左对齐 */
-#tiktok-full-content .case-note {
-  max-width: none;
-  margin-inline: 0;
-  text-align: left;
-}
-
-
-/* Problem 1 → 2 的过渡：两侧细线夹一个滚动提示，文案在下方（对齐 Framer） */
+/* Problem 1 → 2 的过渡：两侧细线夹一个滚动提示，复用 .mouse-cue（与 element 页同款鼠标滚动动画） */
 #tiktok-full-content .case-continue {
   display: grid;
   gap: 16px;
@@ -561,173 +455,24 @@
   content: "";
 }
 
-#tiktok-full-content .case-continue__mouse {
-  flex: none;
-  width: 22px;
-  height: 34px;
-  border: 1.5px solid var(--muted);
-  border-radius: 999px;
-  position: relative;
-}
-
-#tiktok-full-content .case-continue__mouse::after {
-  position: absolute;
-  top: 7px;
-  left: 50%;
-  width: 3px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--muted);
-  content: "";
-  transform: translateX(-50%);
-  animation: case-continue-nudge 1.8s ease-in-out infinite;
-}
+#tiktok-full-content .case-continue__rule .mouse-cue i { animation: mouse-wheel 1.6s ease-in-out infinite; }
 
 #tiktok-full-content .case-continue p {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 22px;
+  color: #a7a7a7;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
   text-align: center;
 }
 
-@keyframes case-continue-nudge {
-  0%, 100% { transform: translate(-50%, 0);   opacity: .5; }
-  50%      { transform: translate(-50%, 8px); opacity: 1; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  #tiktok-full-content .case-continue__mouse::after { animation: none; opacity: .8; }
+  #tiktok-full-content .case-continue__rule .mouse-cue i { animation: none; }
 }
-
-/* Design Rationale & Strategy：Framer 是一张整宽白卡，两段纵向堆叠 */
-#tiktok-full-content .tt-stack { display: grid; gap: 12px; }
-#tiktok-full-content .tt-stack h3 { font-size: 24px; line-height: 32px; font-weight: 700; }
-#tiktok-full-content .tt-stack h3 ~ h3 { margin-top: 12px; }
-
-/* 引言：Framer 把两个 60px 深色引号分置于文字块的左上与右下 */
-#tiktok-full-content .pullquote {
-  position: relative;
-  max-width: 800px;
-  margin: clamp(56px, 7vw, 96px) auto;
-  padding: 56px 0;
-  color: var(--ink);
-}
-
-#tiktok-full-content .pullquote::before,
-#tiktok-full-content .pullquote::after {
-  position: absolute;
-  color: var(--ink);
-  font-size: 60px;
-  line-height: 1;
-  font-weight: 600;
-}
-
-#tiktok-full-content .pullquote::before { top: 0; left: -8px; }
-#tiktok-full-content .pullquote::after  { right: -8px; bottom: 0; }
 
 /* 列表符号：Framer 用的是小中点，缩进也更宽 */
-#tiktok-full-content .case ul,
 #tiktok-full-content ul { padding-inline-start: 22px; }
 #tiktok-full-content ul li::marker { content: "·  "; color: var(--muted); }
 #tiktok-full-content ol li::marker { color: var(--muted); }
 
-@media (max-width: 900px) {
-  #tiktok-full-content .pullquote { padding: 44px 0; }
-  #tiktok-full-content .pullquote::before,
-  #tiktok-full-content .pullquote::after { font-size: 44px; }
-  #tiktok-full-content .pullquote::before { left: 0; }
-  #tiktok-full-content .pullquote::after  { right: 0; }
-}
-
-/* ---------- 与 Framer 逐项对齐（第二轮） ---------- */
-/* Framer 的内容列是 1200 宽、左缘 x=120；本站 .wrap 是 1200 含 24px 内边距 → 内容只有 1152。
-   在隐藏正文里把外宽放大到 1248，内容才回到 1200。 */
-#tiktok-full-content { --tt-page: calc(var(--page) + var(--pad) * 2); }
-#tiktok-full-content .wrap:not(.tt-band) { max-width: var(--tt-page); }
-#tiktok-full-content .tt-band {
-  padding-inline: max(var(--pad), calc((100cqw - var(--tt-page)) / 2 + var(--pad)));
-}
-
-/* Framer 的文字色：灰卡内 #383838，卡外正文 #1a1a1a，图注 #8e8e8e */
-#tiktok-full-content .tt-card,
-#tiktok-full-content .tt-card h3,
-#tiktok-full-content .tt-card li,
-#tiktok-full-content .tt-slide__body,
-#tiktok-full-content .tt-slide__body li { color: var(--ink-2); }
-
-#tiktok-full-content .tt-prose p,
-#tiktok-full-content .tt-bluecard li,
-#tiktok-full-content .tt-impacts li,
-#tiktok-full-content .tt-stack li { color: var(--ink); }
-
-#tiktok-full-content .figure figcaption,
-#tiktok-full-content .tt-figure figcaption { color: var(--muted); }
-
-#tiktok-full-content .tt-overview__body p,
-#tiktok-full-content .tt-overview__body li { color: #212121; }
-
-/* 字号：kicker 18、阶段标签 24、Pros/Cons 24/700、*Note 18、步骤序号 24 */
-#tiktok-full-content .tt-kicker { font-size: 18px; line-height: 26px; }
-
-#tiktok-full-content .case-head .pill--tag,
-#tiktok-full-content .pill--tag { font-size: 24px; text-align: left; }
-#tiktok-full-content .case-pills .pill--tag { font-size: 14px; }
-
-#tiktok-full-content .tt-slide__label { font-size: 24px; line-height: 32px; font-weight: 700; }
-
-#tiktok-full-content .case-note { font-size: 18px; line-height: 26px; color: var(--ink-2); }
-
-#tiktok-full-content .num { font-size: 24px; }
-
-#tiktok-full-content .case-continue p {
-  font-size: 12px;
-  line-height: 18px;
-  font-weight: 500;
-  color: #a7a7a7;
-}
-
 /* [CONFIDENTIAL] 在 Framer 里是琥珀色 600 */
 #tiktok-full-content .notice strong { font-weight: 600; color: #bd9156; }
-
-/* 轮播文案卡在 Framer 里更窄（正文 504 宽），手机图占左侧 */
-#tiktok-full-content .tt-slide__body { padding: 24px; }
-
-/* Project Details 是深色填充、白字，居右 */
-#tiktok-full-content .tt-sectionbar .pill {
-  flex: none;
-  margin-left: auto;
-  background: var(--dark);
-  box-shadow: none;
-  color: #fff;
-}
-
-@media (max-width: 1320px) {
-  #tiktok-full-content .tt-slide { grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 48px; }
-}
-
-@media (max-width: 900px) {
-  #tiktok-full-content .tt-slide { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  #tiktok-full-content .case-head .pill--tag,
-  #tiktok-full-content .pill--tag { font-size: 18px; }
-}
-
-/* 收尾对齐 */
-#tiktok-full-content .tt-kicker { text-align: center; }
-#tiktok-full-content .num { text-align: center; }
-#tiktok-full-content .case-note { color: var(--ink); font-weight: 500; }
-#tiktok-full-content .tt-overview__body p { color: var(--ink-2); }
-
-/* Framer 的灰卡是 546 宽（498 内容 + 24 内边距），中间留给箭头 */
-#tiktok-full-content .tt-pair { gap: 48px; }
-#tiktok-full-content .tt-duo { gap: 36px; }
-
-/* Summary / Project Details 两段在 Framer 里用的是 1152 列（P0 段才是 1200） */
-#tiktok-full-content .wrap.tt-inset { max-width: var(--page); }
-
-/* 轮播卡内文字沿用灰卡的字色 */
-#tiktok-full-content .tt-slide__body h3,
-#tiktok-full-content .tt-slide__label { color: var(--ink-2); }
-
-#tiktok-full-content .case-note { font-weight: 400; }
-
-#tiktok-full-content .tt-bluecard p { color: var(--ink); }

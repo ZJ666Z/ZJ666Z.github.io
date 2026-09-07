@@ -181,14 +181,14 @@
 
   <div id="tiktok-full-content" aria-hidden="true" hidden>
 
-    <section class="wrap tt-inset">
+    <section class="wrap">
       <div class="case-head fx">
         <span class="pill"><svg class="ico" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" fill="currentColor"><path opacity="0.2" d="M232,56V200H160a32,32,0,0,0-32,32V88a32,32,0,0,1,32-32Z"></path><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64ZM160,88h40a8,8,0,0,1,0,16H160a8,8,0,0,1,0-16Zm48,40a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,128Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,160Z"></path></svg>Summary</span>
         <h2 class="case-title">Work Overview</h2>
       </div>
-      <div class="panel tt-overview fx">
-        <figure class="tt-overview__media"><img data-tiktok-src="../../assets/img/tiktok-996633-work-overview.webp" alt="Work overview" width="1010" height="790" loading="lazy"></figure>
-        <div class="tt-overview__body">
+      <div class="overview-grid overview-grid--tiktok fx">
+        <figure class="figure"><img data-tiktok-src="../../assets/img/tiktok-996633-work-overview.webp" alt="Work overview" width="1010" height="790" loading="lazy"></figure>
+        <div class="split__body">
           <h2>Context</h2>
           <p><strong>ByteDance/TikTok's Global Payment Team (PIPO)</strong></p>
           <p>Provides comprehensive payment infrastructure to ensure seamless transaction experiences across ByteDance platforms including TikTok.</p>
@@ -202,7 +202,7 @@
       <div class="notice fx"><p><strong>[CONFIDENTIAL]</strong> This document is accessible only to employees of ByteDance/TikTok</p></div>
     </section>
 
-    <section class="wrap tt-inset">
+    <section class="wrap">
       <div class="tt-sectionbar fx">
         <h2>Project Timeline</h2>
         <span class="pill"><svg class="ico" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" fill="currentColor"><path opacity="0.2" d="M232,56V200H160a32,32,0,0,0-32,32V88a32,32,0,0,1,32-32Z"></path><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64ZM160,88h40a8,8,0,0,1,0,16H160a8,8,0,0,1,0-16Zm48,40a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,128Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,160Z"></path></svg>Project Details</span>
@@ -216,67 +216,65 @@
     </section>
 
     <section class="wrap tt-band">
-      <div class="case-head case-head--tt-left fx">
+      <div class="case-head case-head--left fx">
         <span class="pill"><svg class="ico" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" fill="currentColor"><path opacity="0.2" d="M208,88H152V32Z"></path><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-45.54-48.85a36.05,36.05,0,1,0-11.31,11.31l11.19,11.2a8,8,0,0,0,11.32-11.32ZM104,148a20,20,0,1,1,20,20A20,20,0,0,1,104,148Z"></path></svg>Research &amp; Analysis</span>
         <div class="case-tags"><span class="pill pill--tag">🔴 P0 - Problem 1</span><span class="pill pill--tag">Pre-purchase</span></div>
         <h2 class="case-title">(SEA &amp; US) Clarify the differences between insurance and warranty</h2>
       </div>
       <h2 class="fx">Context</h2>
-      <div class="tt-prose fx">
-        <p>Through a UX audit, I firstly identified a critical ambiguity where users struggle to distinguish between paid insurance and free warranty&mdash;an insight later validated by data showing a clear negative impact on conversion.</p>
-        <p>After aligning with stakeholders, the potential impact was recognized. However, due to the current lack of A/B testing capabilities, we reviewed the prioritization and ROI, deciding to schedule this optimization for Q4 2025.</p>
-      </div>
+      <p class="fx">Through a UX audit, I firstly identified a critical ambiguity where users struggle to distinguish between paid insurance and free warranty&mdash;an insight later validated by data showing a clear negative impact on conversion.</p>
+      <p class="fx">After aligning with stakeholders, the potential impact was recognized. However, due to the current lack of A/B testing capabilities, we reviewed the prioritization and ROI, deciding to schedule this optimization for Q4 2025.</p>
       <h2 class="fx">Problem</h2>
-      <div class="tt-pair">
-        <article class="tt-card fx">
-          <span class="tt-kicker">🎨 Identify by UX</span>
+      <div class="two-col">
+        <article class="block fx">
+          <span class="tt-card-pill">🎨 Identify by UX</span>
           <h3>Cognitive Ambiguity</h3>
           <ul><li>Users struggle to distinguish between Platform Insurance (paid) and Seller Warranty (included).</li><li>This ambiguity creates cognitive load, forcing users to investigate further or hesitate, rather than making a quick purchase decision.</li></ul>
         </article>
-        <span class="tt-arrow fx" aria-hidden="true"></span>
-        <article class="tt-card fx">
-          <span class="tt-kicker">📊 Validated by DA</span>
+        <span class="tt-pair-arrow" aria-hidden="true">&rarr;</span>
+        <article class="block fx">
+          <span class="tt-card-pill">📊 Validated by DA</span>
           <h3>Funnel Deterioration</h3>
           <ul><li>Prioritizing the insurance module on the PDP increased module clicks but <strong>negatively impacted the overall purchase funnel</strong>.</li><li>The data suggests users are <strong>staying longer due to confusion, not engagement.</strong></li></ul>
         </article>
       </div>
-      <figure class="figure tt-figure fx"><img data-tiktok-src="../../assets/img/tiktok-996633-existing-insurance-flow.webp" alt="Existing insurance flow (SEA)" width="7800" height="3126" loading="lazy">
+      <figure class="figure fx"><img data-tiktok-src="../../assets/img/tiktok-996633-existing-insurance-flow.webp" alt="Existing insurance flow (SEA)" width="7800" height="3126" loading="lazy">
         <figcaption>👆 Existing Insurance Flow (SEA) 👆</figcaption></figure>
       <h2 class="fx">Impact:</h2>
-      <div class="tt-pair">
-        <article class="tt-card fx">
-          <span class="tt-kicker">🎨 UX Hypothesis</span>
+      <div class="two-col">
+        <article class="block fx">
+          <span class="tt-card-pill">🎨 UX Hypothesis</span>
           <h3>Business &amp; trust risks</h3>
           <ul><li>Potential decrease in Gross Written Premium (GWP).</li><li>Increased risk of user mistrust, misunderstandings (e.g., suspected double charging), and subsequent disputes or refunds.</li></ul>
         </article>
-        <span class="tt-arrow fx" aria-hidden="true"></span>
-        <article class="tt-card fx">
-          <span class="tt-kicker">📊 DA Evidence</span>
+        <span class="tt-pair-arrow" aria-hidden="true">&rarr;</span>
+        <article class="block fx">
+          <span class="tt-card-pill">📊 DA Evidence</span>
           <h3>Key Data Metrics Decline</h3>
           <ul><li><strong>Conversion Rate:</strong> Drop in "PDP Visit" to "Buy Now Click" by <strong>-0.57%</strong> (p=0.09).</li><li><strong>User Loss:</strong> Statistically significant drop in converting users (PDP Visitors to Buyers) by <strong>-0.22%</strong>.</li><li><strong>Negative Engagement:</strong> Average time on PDP increased from <strong>30min to 33min</strong>), but this was driven by a <strong>+25%</strong> increase in exit behaviors (clicking back or swiping away).</li></ul>
         </article>
       </div>
       <p class="pullquote fx">How might we clarify and highlight the difference between the seller warranty and our insurance to shoppers?</p>
-      <div class="tt-duo">
-        <div class="tt-duo__col">
+      <div class="two-groups">
+        <div class="col-group">
           <h2 class="fx">Opportunity</h2>
-          <div class="tt-bluecard fx">
+          <article class="block fx">
           <h3>Clarify Value Proposition</h3>
           <ul><li>Explicitly highlight the differences between Insurance and Warranty on the PDP and Order Summary. Display price and key benefits upfront to eliminate ambiguity.</li></ul>
           <h3>Reduce Friction</h3>
           <ul><li>Provide sufficient information on the main page to enable decision-making reducing/without forcing users to click into a secondary page, thereby smoothing the friction in the purchase path.</li></ul>
-          </div>
+          </article>
         </div>
-        <div class="tt-duo__col">
+        <div class="col-group">
           <h2 class="fx">Goal</h2>
-          <div class="tt-bluecard fx">
+          <article class="block fx">
           <h3>Visualize the Benefit</h3>
           <ul><li>Help users immediately picture the "hassle-free" experience (hassle reduction) that comes with the insurance.</li></ul>
           <h3>Capture Attention</h3>
           <ul><li>Create a strong visual hook to grab user interest instantly among other information.</li></ul>
           <h3>Encourage Engagement</h3>
           <ul><li>Motivate users to read the content and understand the insurance value.</li></ul>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -321,91 +319,93 @@
       </div>
       <h2 class="fx">Potential Solution Impacts</h2>
       <p class="fx case-note">*Note - Since this optimization is scheduled for Q4 A/B testing, these are the projected improvements based on current negative baselines.</p>
-      <div class="tt-impacts fx">
+      <div class="plain-stack fx">
+        <div class="plain-block">
         <h3>Recover Conversion Funnel</h3>
         <ul><li><strong>Outcome:</strong> Eliminate the cognitive friction caused by ambiguity to recover the lost user throughput.</li><li><strong>Metric:</strong> Reverse the negative trend in <strong>PDP Visit to Buy Now Click</strong> (Target: Recover the -0.57% drop) and <strong>Visitor to Buyer Conversion</strong> (Target: Recover the -0.22% drop).</li></ul>
+        </div>
+        <div class="plain-block">
         <h3>Correct User Engagement Behavior</h3>
         <ul><li><strong>Outcome:</strong> Reduce "Negative Dwell Time" (confusion-driven stay) and decrease abandonment.</li><li><strong>Metric:</strong> Decrease <strong>Negative Exit Behaviors</strong> (Target: Reduce the current <strong>+25%</strong> spike in "Click Back" or "Swipe Away" actions).</li></ul>
+        </div>
+        <div class="plain-block">
         <h3>Drive Business Growth (GWP)</h3>
         <ul><li><strong>Outcome:</strong> By clarifying the unique value of paid insurance vs. free warranty, users will be more confident in adding insurance to their cart.</li><li><strong>Metric:</strong> Increase <strong>Insurance Attach Rate</strong> (Purchase Rate) and <strong>GWP</strong> (Gross Written Premium).</li></ul>
+        </div>
+        <div class="plain-block">
         <h3>Mitigate Post-Purchase Disputes</h3>
         <ul><li><strong>Outcome:</strong> Clear differentiation upfront prevents users from mistakenly purchasing insurance or assuming it was free, reducing "accidental" purchases.</li><li><strong>Metric:</strong> Decrease <strong>Refund/Dispute Rate</strong> related to "Unrecognized Charge" or "Double Charging".</li></ul>
+        </div>
       </div>
       <div class="case-continue fx">
-        <div class="case-continue__rule"><span class="case-continue__mouse" aria-hidden="true"></span></div>
+        <div class="case-continue__rule"><span class="mouse-cue" aria-hidden="true"><i></i></span></div>
         <p>Scroll down to continue to Problem 2</p>
       </div>
     </section>
 
     <section class="wrap tt-band">
-      <div class="case-head case-head--tt-left fx">
+      <div class="case-head case-head--left fx">
         <span class="pill"><svg class="ico" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" fill="currentColor"><path opacity="0.2" d="M208,88H152V32Z"></path><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-45.54-48.85a36.05,36.05,0,1,0-11.31,11.31l11.19,11.2a8,8,0,0,0,11.32-11.32ZM104,148a20,20,0,1,1,20,20A20,20,0,0,1,104,148Z"></path></svg>Research &amp; Analysis</span>
         <div class="case-tags"><span class="pill pill--tag">🔴 P0 - Problem 2</span><span class="pill pill--tag">Post-purchase</span></div>
         <h2 class="case-title">(SEA) Distinguish the Protection Policy and Insurance Claim Info</h2>
       </div>
       <h2 class="fx">Context</h2>
-      <div class="tt-prose fx">
-        <p>Insurance information involves two distinct user-experience paths&mdash;policy status and claim status. Unlike us, competitors employ progressive disclosure to manage user attention and display these two paths separately.</p>
-        <p>After aligning with stakeholders, the proposal was well received. However, stakeholders consider improving insurance purchase flow with a higher priority than claims experience, so this optimization was scheduled for Q4 follow-up.</p>
-      </div>
+      <p class="fx">Insurance information involves two distinct user-experience paths&mdash;policy status and claim status. Unlike us, competitors employ progressive disclosure to manage user attention and display these two paths separately.</p>
+      <p class="fx">After aligning with stakeholders, the proposal was well received. However, stakeholders consider improving insurance purchase flow with a higher priority than claims experience, so this optimization was scheduled for Q4 follow-up.</p>
       <h2 class="fx">Post-purchase Experience</h2>
-      <div class="tt-impacts fx">
-        <ul><li><strong>Policy:</strong> The contract you bought. It is the proof that you have protection (e.g., "Active" or "Expired").</li><li><strong>Claim:</strong> The request you make when something goes wrong. It is the process of asking the insurance company for money or repairs.</li></ul>
-      </div>
+      <ul class="fx"><li><strong>Policy:</strong> The contract you bought. It is the proof that you have protection (e.g., "Active" or "Expired").</li><li><strong>Claim:</strong> The request you make when something goes wrong. It is the process of asking the insurance company for money or repairs.</li></ul>
       <h2 class="fx">Problem</h2>
-      <div class="tt-pair">
-        <article class="tt-card fx">
-          <span class="tt-kicker">🎨 UX Identified</span>
+      <div class="two-col">
+        <article class="block fx">
+          <span class="tt-card-pill">🎨 UX Identified</span>
           <h3>Ambiguous Information Architecture</h3>
           <ul><li>The user flows for Protection Policies and Insurance Claims are not clearly distinguished.</li><li>Confusing progress indicators <strong>fail to signal the independence of these two functions</strong>, creating a mismatch with the user's mental model.</li></ul>
         </article>
-        <article class="tt-card fx">
-          <span class="tt-kicker">👤 User Pain Point</span>
+        <article class="block fx">
+          <span class="tt-card-pill">👤 User Pain Point</span>
           <h3>Navigation Friction</h3>
           <ul><li>Users struggle to discern between managing a policy and tracking a claim due to the lack of separation in the interface.</li></ul>
         </article>
       </div>
       <figure class="figure fx"><img data-tiktok-src="../../assets/img/tiktok-996633-policy-claim-states.webp" alt="Policy and claim states" width="2968" height="1070" loading="lazy"></figure>
-      <div class="tt-impacts fx">
-        <ul><li><strong>Policy:</strong> Processing → Protected → Expired; (Failed/Cancelled)</li><li><strong>Claim:</strong> Claim in review → Review outcome (Approved/Rejected) → Resolution (Paid)</li></ul>
-      </div>
-      <figure class="figure tt-figure fx"><img data-tiktok-src="../../assets/img/tiktok-996633-existing-claim-flow.webp" alt="Existing insurance claim flow and IA (SEA)" width="8000" height="4691" loading="lazy">
+      <ul class="fx"><li><strong>Policy:</strong> Processing → Protected → Expired; (Failed/Cancelled)</li><li><strong>Claim:</strong> Claim in review → Review outcome (Approved/Rejected) → Resolution (Paid)</li></ul>
+      <figure class="figure fx"><img data-tiktok-src="../../assets/img/tiktok-996633-existing-claim-flow.webp" alt="Existing insurance claim flow and IA (SEA)" width="8000" height="4691" loading="lazy">
         <figcaption>👆 Existing Insurance Claim Flow &amp; IA (SEA) 👆</figcaption></figure>
       <h2 class="fx">Impact</h2>
-      <div class="tt-pair">
-        <article class="tt-card fx">
-          <span class="tt-kicker">💼 Business Risk</span>
+      <div class="two-col">
+        <article class="block fx">
+          <span class="tt-card-pill">💼 Business Risk</span>
           <h3>Operational Costs &amp; Trust</h3>
           <ul><li><strong>Increased Support Volume:</strong> Confusion when searching for claim progress leads to a spike in Customer Service (CS) inquiries.</li><li><strong>Erosion of Trust:</strong> A confusing post-purchase experience damages brand credibility.</li></ul>
         </article>
-        <article class="tt-card fx">
-          <span class="tt-kicker">📉 Long-term Metrics</span>
+        <article class="block fx">
+          <span class="tt-card-pill">📉 Long-term Metrics</span>
           <h3>Key Data Metrics Decline</h3>
           <ul><li>Risk of reducing Net Promoter Score (NPS) and, ultimately, Gross Written Premium (GWP) due to poor retention.</li></ul>
         </article>
       </div>
       <p class="pullquote fx">How might we clearly distinguish the policy coverage flow from the insurance claim flow to prevent user confusion?</p>
-      <div class="tt-duo">
-        <div class="tt-duo__col">
+      <div class="two-groups">
+        <div class="col-group">
           <h2 class="fx">Opportunity</h2>
-          <div class="tt-bluecard fx">
+          <article class="block fx">
           <h3>Separate the Paths</h3>
           <ul><li>Create distinct pages for Policies and Claims. "Holding a policy" and "Tracking a refund" are different tasks and should not be mixed.</li></ul>
           <h3>Visual Distinction</h3>
           <p>Use different UI patterns to clarify the difference:</p>
           <ul><li><strong>Policies:</strong> Use static Status Labels (e.g., Active).</li><li><strong>Claims:</strong> Use dynamic Progress Bars (e.g., In Review → Paid).</li></ul>
-          </div>
+          </article>
         </div>
-        <div class="tt-duo__col">
+        <div class="col-group">
           <h2 class="fx">Goal</h2>
-          <div class="tt-bluecard fx">
+          <article class="block fx">
           <h3>Instant Clarity</h3>
           <ul><li>Ensure users immediately know if they are looking at a policy or a claim status.</li></ul>
           <h3>Reduce Friction</h3>
           <ul><li>Minimize navigation errors and confusion.</li></ul>
           <h3>Build Post-Purchase Trust</h3>
           <ul><li>Provide a transparent and anxiety-free experience during the stressful claims process to protect user sentiment and long-term retention (NPS).</li></ul>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -416,7 +416,7 @@
         <h2 class="case-title">Design Proposals</h2>
       </div>
       <h2 class="fx">Design Rationale &amp; Strategy</h2>
-      <div class="panel tt-stack fx">
+      <div class="panel fx">
         <h3>Prioritizing by Frequency</h3>
         <ul><li><strong>Data-Driven:</strong> Existing data indicates that the "Claims" function has a <strong>very low usage rate</strong>.</li><li><strong>Decision:</strong> It is justifiable to lower the accessibility level (adding one extra step for progressive disclosure) to declutter the primary interface.</li></ul>
         <h3>Distinguishing by Static vs Dynamic</h3>
@@ -428,13 +428,19 @@
         <figcaption>👆 Screen Details (Updated); [Scroll Horizontally to See More ↔️] 👆</figcaption></figure>
       <h2 class="fx">Potential Solution Impacts</h2>
       <p class="fx case-note">*Note - As a new business line (Insurance), this project is prioritized for Q4 2025 implementation due to business focus on the purchase flow.</p>
-      <div class="tt-impacts fx">
+      <div class="plain-stack fx">
+        <div class="plain-block">
         <h3>Reduce Operational Costs</h3>
         <ul><li><strong>Outcome:</strong> We anticipate a significant drop in users contacting support due to confusion about their claim status ("Where Is My Claim?").</li><li><strong>Metric:</strong> Decrease in <strong>CS Ticket Volume</strong> (specifically claim-related inquiries).</li></ul>
+        </div>
+        <div class="plain-block">
         <h3>Improve Wayfinding Efficiency</h3>
         <ul><li><strong>Outcome:</strong> Users should distinguish between Policy and Claim status faster and without mistakes.</li><li><strong>Metric:</strong> Decrease in <strong>Navigation Error Rate</strong> (users clicking the wrong tab) and <strong>Task Completion Time</strong>.</li></ul>
+        </div>
+        <div class="plain-block">
         <h3>Protect User Sentiment</h3>
         <ul><li><strong>Outcome:</strong> A transparent post-purchase experience prevents user frustration, protecting long-term retention.</li><li><strong>Metric:</strong> Maintain or Increase <strong>Post-Claim NPS</strong> (Net Promoter Score).</li></ul>
+        </div>
       </div>
     </section>
 
