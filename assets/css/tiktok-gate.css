@@ -100,12 +100,6 @@
   color: var(--ink);
 }
 
-.case-pills .pill--tag {
-  padding: 6px 16px;
-  font-size: 14px;
-  line-height: 20px;
-}
-
 .case-note {
   max-width: none;
   margin-inline: 0;
@@ -114,6 +108,12 @@
   line-height: 26px;
   font-weight: 400;
   text-align: left;
+}
+
+/* Framer 里第二处 *Note（Design Rationale 之后）颜色和字重跟第一处不一样 */
+#tiktok-full-content .case-note.case-note--muted {
+  color: var(--ink-2);
+  font-weight: 500;
 }
 
 @media (max-width: 900px) {
@@ -141,6 +141,7 @@
 
 /* Work Overview：复用 .overview-grid + .split__body（与 amazon/element 相同结构） */
 #tiktok-full-content .overview-grid--tiktok .figure img { height: auto; }
+#tiktok-full-content .overview-grid--tiktok .split__body > ol + p { color: #212121; }
 
 /* Problem / Impact 对照卡：复用 .two-col + .block，仅补灰底与箭头（做法同 amazon 的 .two-col .block） */
 #tiktok-full-content .two-col .block {
@@ -154,7 +155,7 @@
   font-size: 24px;
   line-height: 32px;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--ink-2);
 }
 
 #tiktok-full-content .two-col .block,
@@ -170,25 +171,18 @@
   display: grid;
   place-items: center;
   align-self: center;
-  font-size: 40px;
+  font-size: 60px;
   line-height: 1;
   font-weight: 600;
   color: var(--ink);
 }
 
-/* 卡片顶部的小标签：同 amazon 的 .amz-card-pill 描边药丸 */
+/* 卡片顶部的小标签：Framer 里没有描边/底色，纯粗体居中文字 */
 #tiktok-full-content .tt-card-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: max-content;
-  max-width: 100%;
-  min-height: 40px;
-  padding: 2px 16px;
-  border: 2px solid var(--dark);
-  border-radius: 999px;
-  font-size: 16px;
-  line-height: 22px;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  line-height: 26px;
   font-weight: 700;
   color: var(--ink);
 }
@@ -208,8 +202,8 @@
 }
 
 #tiktok-full-content .col-group .block h3 {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 24px;
+  line-height: 32px;
   font-weight: 700;
   color: var(--ink);
 }
@@ -283,15 +277,17 @@
 #tiktok-full-content .tt-slide__body h3 {
   font-size: 24px;
   line-height: 32px;
-  font-weight: 700;
-  color: var(--ink);
+  font-weight: 600;
+  color: var(--ink-2);
 }
 
+#tiktok-full-content .tt-slide__body li { color: var(--ink-2); }
+
 #tiktok-full-content .tt-slide__label {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 24px;
+  line-height: 32px;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--ink-2);
 }
 
 #tiktok-full-content .tt-carousel__nav {
@@ -381,11 +377,12 @@
   margin-bottom: 24px;
 }
 
-#tiktok-full-content .tt-slide__body h3 { font-weight: 600; color: var(--ink-2); }
-#tiktok-full-content .tt-slide__label { font-size: 24px; line-height: 32px; font-weight: 500; color: var(--ink-2); }
-
 /* Potential Solution Impacts / Post-purchase 列表：Framer 的小标题是 24/700 */
 #tiktok-full-content .plain-block h3 { font-size: 24px; line-height: 32px; font-weight: 700; color: var(--ink); }
+
+/* Context 正文段落（section 直接子级）：Framer 里是深色正文，不是卡片里的浅灰次级色 */
+#tiktok-full-content > section > p.fx,
+#tiktok-full-content > section > ul.fx { color: var(--ink); }
 #tiktok-full-content .plain-block li { color: var(--ink); }
 
 /* Research 段：pill 居中，标签与大标题左对齐（复用通用的 .case-head--left） */
@@ -433,6 +430,14 @@
   border-radius: var(--r-card);
   background: var(--white);
 }
+
+/* Framer 里步骤序号是 24px，不是站点默认的 16px */
+#tiktok-full-content .step .num { font-size: 24px; }
+
+/* Design Rationale & Strategy：整宽白卡，标题加粗、正文深色（这块只有 tiktok 用得到 .panel + h3/ul） */
+#tiktok-full-content .panel h3 { font-weight: 700; }
+#tiktok-full-content .panel li { color: var(--ink); }
+
 
 /* Problem 1 → 2 的过渡：两侧细线夹一个滚动提示，复用 .mouse-cue（与 element 页同款鼠标滚动动画） */
 #tiktok-full-content .case-continue {
