@@ -130,7 +130,19 @@
 /* 紧接在灰底通栏之后的 section：Framer 里这个衔接处间距很小，不是完整的 96px 起始间距 */
 #tiktok-full-content > section.tt-band + section { padding-top: 24px; }
 /* 通栏白底只留顶部间距，底部间距交给下一个 section 自己的 padding-top（跟站点其它 case 页一致，不叠加双倍间距） */
-#tiktok-full-content > section.tt-band { padding-block: clamp(56px, 8vw, 112px) 0; }
+#tiktok-full-content > section.tt-band { padding-block: clamp(96px, 15vw, 220px) 0; }
+
+/* 第二个灰底通栏前面已经有 case-continue 滚动提示自带的间距，顶部不需要再叠加那么多 */
+#tiktok-full-content > section:has(.case-continue) + section.tt-band { padding-top: clamp(56px, 8vw, 112px); }
+
+/* Problem / Impact 这类小节标题比普通 h2 需要更大的顶部留白（次级分段起点） */
+#tiktok-full-content .case-subhead { margin-top: 77px; }
+
+/* "Context" 紧跟在标题区块后面时，不需要跟其它小节一样的完整 32px 网格间距 */
+#tiktok-full-content .case-head + h2 { margin-top: -41px; }
+
+/* 引言：Framer 里上下留白比普通段落大得多 */
+#tiktok-full-content .pullquote { margin-block: clamp(56px, 8vw, 100px) clamp(24px, 4vw, 57px); }
 
 /* Framer 用白色区块底承载浅灰卡片；页面底色本身是 #f5f4f6 */
 #tiktok-full-content > section.tt-band {
