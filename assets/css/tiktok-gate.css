@@ -115,6 +115,10 @@
 /* ---------- 996633 正文版式：对齐 Framer 原版 ---------- */
 /* 全部限定在 #tiktok-full-content 内，避免影响其他 case 页 */
 
+/* Section 间距：内容块之间的垂直间距 */
+#tiktok-full-content > section { margin-bottom: clamp(56px, 8vw, 112px); }
+#tiktok-full-content > section:last-child { margin-bottom: 0; }
+
 /* Framer 用白色区块底承载浅灰卡片；页面底色本身是 #f5f4f6 */
 #tiktok-full-content .tt-band {
   max-width: none;
@@ -134,7 +138,10 @@
 #tiktok-full-content .tt-overview {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
-  gap: 32px;
+  gap: 48px;
+  padding: 48px;
+  background: #fff;
+  border-radius: var(--r-card);
 }
 
 #tiktok-full-content .tt-overview__media { margin: 0; }
@@ -151,7 +158,8 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: stretch;
-  gap: 24px;
+  gap: 48px;
+  margin-top: 32px;
 }
 
 /* 没有箭头时（Problem 2 / Design Rationale）退回等分两列 */
@@ -206,7 +214,8 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: start;
-  gap: 24px;
+  gap: 36px;
+  margin-top: 32px;
 }
 
 #tiktok-full-content .tt-duo__col { display: grid; gap: 16px; align-content: start; }
@@ -250,11 +259,19 @@
 #tiktok-full-content .tt-impacts h3:first-child { margin-top: 0; }
 
 /* Design Proposals 轮播：手机图 + 文案卡，左右箭头 + 圆点 */
-#tiktok-full-content .tt-carousel { position: relative; display: grid; gap: 24px; }
+#tiktok-full-content .tt-carousel {
+  position: relative;
+  display: grid;
+  gap: 32px;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
 
 #tiktok-full-content .tt-carousel__track {
   display: grid;
-  gap: 40px;
+  gap: 0;
+  width: 100%;
 }
 
 /* JS 就绪后才切换到单帧模式；无 JS 时三个方案依次平铺 */
@@ -273,9 +290,10 @@
 
 #tiktok-full-content .tt-slide {
   display: grid;
-  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  grid-template-columns: 320px minmax(0, 560px);
   align-items: center;
-  gap: 48px;
+  gap: 40px;
+  justify-content: center;
   transition: opacity .35s ease;
 }
 
@@ -294,9 +312,10 @@
   display: grid;
   gap: 12px;
   align-content: start;
-  padding: 32px;
+  padding: 24px;
   border-radius: var(--r-card);
   background: #fff;
+  height: 100%;
 }
 
 #tiktok-full-content .tt-slide__body h3 {
@@ -364,6 +383,14 @@
   transform: scale(1.15);
 }
 
+@media (max-width: 1024px) {
+  #tiktok-full-content .tt-slide {
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 32px;
+  }
+  #tiktok-full-content .tt-slide__media img { max-width: 280px; }
+}
+
 @media (max-width: 900px) {
   #tiktok-full-content .tt-overview,
   #tiktok-full-content .tt-duo,
@@ -372,9 +399,11 @@
   #tiktok-full-content .tt-pair:not(:has(.tt-arrow)) { grid-template-columns: minmax(0, 1fr); }
   #tiktok-full-content .tt-arrow { width: auto; justify-self: center; }
   #tiktok-full-content .tt-arrow::before { content: "↓"; }
-  #tiktok-full-content .tt-slide__media img { max-width: 360px; margin-inline: auto; }
-  #tiktok-full-content .tt-carousel__nav--prev { left: -8px; }
-  #tiktok-full-content .tt-carousel__nav--next { right: -8px; }
+  #tiktok-full-content .tt-slide__media img { max-width: 240px; margin-inline: auto; }
+  #tiktok-full-content .tt-carousel__nav { width: 40px; height: 40px; }
+  #tiktok-full-content .tt-carousel__nav--prev { left: -12px; }
+  #tiktok-full-content .tt-carousel__nav--next { right: -12px; }
+  #tiktok-full-content .tt-overview { padding: 32px; gap: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -395,6 +424,7 @@
   font-weight: 600;
   text-align: left;
   color: var(--ink);
+  margin-bottom: 24px;
 }
 
 /* Framer 外层 h2 是 500，但正文套了 <strong>，实际渲染是 700 */
@@ -660,12 +690,6 @@
 #tiktok-full-content .notice strong { font-weight: 600; color: #bd9156; }
 
 /* 轮播文案卡在 Framer 里更窄（正文 504 宽），手机图占左侧 */
-#tiktok-full-content .tt-slide {
-  grid-template-columns: 320px minmax(0, 560px);
-  justify-content: center;
-  gap: 72px;
-}
-
 #tiktok-full-content .tt-slide__body { padding: 24px; }
 
 /* Project Details 是深色填充、白字，居右 */
@@ -699,9 +723,6 @@
 
 /* Summary / Project Details 两段在 Framer 里用的是 1152 列（P0 段才是 1200） */
 #tiktok-full-content .wrap.tt-inset { max-width: var(--page); }
-
-/* 轮播文案卡：Framer 的正文左缘在 624，比我的靠左 36px */
-#tiktok-full-content .tt-slide { gap: 40px; }
 
 /* 轮播卡内文字沿用灰卡的字色 */
 #tiktok-full-content .tt-slide__body h3,
