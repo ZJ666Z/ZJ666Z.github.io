@@ -1288,11 +1288,19 @@ strong { font-weight: 700; }
   .nav__shell { width: calc(100% - 32px); gap: 12px; }
   .nav__links { display: none; }
   .nav__menu {
-    display: grid; width: 36px; height: 36px; padding: 8px; flex: none;
+    position: relative; display: grid; width: 36px; height: 36px; padding: 8px; flex: none;
     border: 0; border-radius: 12px; background: transparent; color: var(--ink); cursor: pointer;
-    align-content: center; gap: 4px;
+    grid-template-rows: repeat(3, 2px); align-content: center; align-items: stretch; justify-items: center; gap: 4px;
+    line-height: 0;
   }
-  .nav__menu span { display: block; width: 20px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .35s var(--fx-ease), opacity .2s ease; }
+  .nav__menu::before {
+    content: ""; position: absolute; left: 50%; top: 50%; width: 20px; height: 2px;
+    border-radius: 2px; background: currentColor; box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor;
+    transform: translate(-50%, -50%); transition: opacity .2s ease;
+  }
+  .nav__menu span { display: block; width: 20px; height: 2px; min-height: 2px; max-height: 2px; border-radius: 2px; background: currentColor; opacity: 0; transition: transform .35s var(--fx-ease), opacity .2s ease; }
+  .nav.menu-open .nav__menu::before { opacity: 0; }
+  .nav.menu-open .nav__menu span { opacity: 1; }
   .nav.menu-open { bottom: 0; height: 100dvh; background: rgba(255,255,255,.72); backdrop-filter: blur(14px); }
   .nav.menu-open .nav__menu span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
   .nav.menu-open .nav__menu span:nth-child(2) { opacity: 0; }
@@ -1314,7 +1322,7 @@ strong { font-weight: 700; }
   }
   .nav.is-stuck { padding-block: 24px; }
   .nav.is-stuck .nav__shell {
-    width: max-content;
+    width: 108px;
     max-width: calc(100% - 32px);
     margin-inline: auto;
     padding: 4px;
@@ -1326,6 +1334,13 @@ strong { font-weight: 700; }
   .nav.is-stuck .nav__brand { width: 44px; height: 44px; border-radius: 12px; }
   .nav.is-stuck .brand__mark { width: 20px; height: 18.26px; }
   .nav.is-stuck .nav__menu { color: #fff; }
+  .nav.is-stuck .nav__menu {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: #fff;
+    color: var(--ink);
+  }
   .nav.menu-open.is-stuck .nav__shell {
     width: calc(100% - 32px);
     max-width: none;

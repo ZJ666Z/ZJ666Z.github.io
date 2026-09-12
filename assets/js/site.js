@@ -34,8 +34,15 @@
     if (window.innerWidth > 809) closeMenu();
   });
 
-  const stick = on => nav.classList.toggle('is-stuck', on);
-  const sync = () => stick(window.scrollY > 80);
+  let stuck = window.scrollY > 80;
+  nav.classList.toggle('is-stuck', stuck);
+  const sync = () => {
+    // Separate enter/leave thresholds avoid oscillation near the collapse point.
+    const next = stuck ? window.scrollY > 64 : window.scrollY > 96;
+    if (next === stuck) return;
+    stuck = next;
+    nav.classList.toggle('is-stuck', stuck);
+  };
 
   sync();
   window.addEventListener('scroll', sync, { passive: true });
@@ -46,7 +53,7 @@
     sentinel.setAttribute('aria-hidden', 'true');
     sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:80px;pointer-events:none';
     document.body.prepend(sentinel);
-    new IntersectionObserver(([e]) => stick(!e.isIntersecting)).observe(sentinel);
+    new IntersectionObserver(sync).observe(sentinel);
   }
 })();
 

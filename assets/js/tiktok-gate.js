@@ -3,13 +3,14 @@
 (() => {
   const gate = document.querySelector('#tiktok-gate');
   const content = document.querySelector('#tiktok-full-content');
+  const popover = gate.querySelector('.tiktok-gate-popover');
   const form = document.querySelector('#tiktok-unlock-form');
   const input = document.querySelector('#tiktok-password');
   const status = document.querySelector('#tiktok-gate-status');
   if (!gate || !content || !form || !input || !status) return;
 
   const sessionKey = 'tiktok996633-unlocked';
-  // Temporary local-preview hash. Replace before a real release.
+  // Static-site access hash; never store the plaintext password in source.
   const accessHash = '3378fd1b3e3d336695ad764a3c3675c36cd6474465122e332f8b1ff53b493dd1';
 
   const sha256 = async value => {
@@ -32,18 +33,23 @@
     content.querySelectorAll('[data-tt-carousel]').forEach(root => {
       if (root.dataset.ttReady) return;
       const slides = [...root.querySelectorAll('[data-tt-slide]')];
+      const track = root.querySelector('.tt-carousel__track');
       const dots = root.querySelector('[data-tt-dots]');
       const navs = [...root.querySelectorAll('[data-tt-step]')];
-      if (slides.length < 2 || !dots) return;
+      if (slides.length < 2 || !dots || !track) return;
 
       let index = 0;
-      const show = next => {
-        index = (next + slides.length) % slides.length;
-        slides.forEach((slide, i) => slide.setAttribute('aria-hidden', String(i !== index)));
+      const updateDots = () => {
         [...dots.children].forEach((dot, i) => {
           dot.setAttribute('aria-current', String(i === index));
           dot.tabIndex = i === index ? 0 : -1;
         });
+      };
+
+      const show = next => {
+        index = (next + slides.length) % slides.length;
+        updateDots();
+        track.scrollTo({ left: index * track.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
       };
 
       slides.forEach((slide, i) => {
@@ -60,23 +66,54 @@
         nav.addEventListener('click', () => show(index + Number(nav.dataset.ttStep)));
       });
 
+      track.addEventListener('scroll', () => {
+        const next = Math.round(track.scrollLeft / Math.max(track.clientWidth, 1));
+        if (next !== index) {
+          index = Math.min(Math.max(next, 0), slides.length - 1);
+          updateDots();
+        }
+      }, { passive: true });
+
       dots.hidden = false;
       root.dataset.ttReady = 'true';
-      show(0);
+      updateDots();
+      if (track.clientWidth > 0) track.scrollLeft = 0;
+      else requestAnimationFrame(() => { track.scrollLeft = 0; });
     });
   };
 
   const unlock = () => {
+    if (popover) popover.dataset.open = 'false';
     gate.hidden = true;
     content.hidden = false;
+    content.classList.add('tiktok-unlocked');
     content.removeAttribute('aria-hidden');
     loadPrivateMedia();
     setupCarousels();
     document.dispatchEvent(new CustomEvent('tiktok-unlocked'));
   };
 
-  if (sessionStorage.getItem(sessionKey) === '1') unlock();
-  else input.focus({preventScroll: true});
+  let popoverWasOpen = false;
+  const updatePopover = () => {
+    if (!popover || gate.hidden) return;
+    const y = window.scrollY;
+    const gateTop = Math.round(gate.getBoundingClientRect().top + y);
+    const entered = y >= gateTop - 400;
+    const returned = y < gateTop - 600;
+    const show = entered && !returned;
+    popover.dataset.open = String(show);
+    if (show && !popoverWasOpen) input.focus({preventScroll: true});
+    popoverWasOpen = show;
+  };
+
+  window.addEventListener('scroll', updatePopover, { passive: true });
+  window.addEventListener('resize', updatePopover, { passive: true });
+
+  if (sessionStorage.getItem(sessionKey) === '1') {
+    unlock();
+  } else {
+    updatePopover();
+  }
 
   form.addEventListener('submit', async event => {
     event.preventDefault();

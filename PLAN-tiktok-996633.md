@@ -1,6 +1,56 @@
 # TikTok 996633 内容替换与密码锁优化计划
 
-> 状态：第一版已在本地实现，待视觉验收、正式密码确认和推送；当前批次尚未推送。
+> 状态：隐藏正文内容、组件复用、样式与间距已对齐 Framer 原版并在本地验证；**12 个本地提交尚未推送到 origin/main**；正式访问密码仍是占位值，未确认前不要推送。
+
+## 0. 2026-09-07/08 这两轮做的事（Handoff）
+
+**背景**：`all-projects/tiktok-shop/index.html` 解锁后的完整正文（`#tiktok-full-content`）之前是照抄 Framer 视觉自己写的一套 `tt-*` 专属类（`tt-overview`、`tt-pair`、`tt-card`、`tt-duo`、`tt-bluecard`、`tt-impacts`…），和 amazon/element 两个 case 页的组件体系是两套东西，样式和间距也有不少和 Framer 原版对不上的地方。用户明确要求：**只改隐藏正文这部分，别的 page 不要动**；并且要求"能复用别的页面的东西就直接复用，别自己发明"。
+
+**做了两件事，共 5 个提交（`c2c84bc` 到 `f1f8ad2`，均只改了 `all-projects/tiktok-shop/index.html` 和 `assets/css/tiktok-gate.css`，没碰 amazon/element 页面或它们用到的 `site.css` 通用规则）**：
+
+### 第一件事：组件复用重构（commit `c2c84bc`、`fe56e60`）
+
+把隐藏正文里的自造类换成 amazon/element 页已经在用的同一套组件，做法是照抄这两个页面的模式，不是发明新东西：
+
+| 原来的自造类 | 换成 |
+| --- | --- |
+| `.tt-overview` + `__media`/`__body` | `.overview-grid` + `.split__body`（跟 Work Overview 结构一致） |
+| `.tt-pair` + `.tt-card` + `.tt-arrow` | `.two-col` + `.block` + 新增极小的 `.tt-pair-arrow`（箭头，Framer 里这里没有描边/底色） |
+| `.tt-duo` + `.tt-bluecard` | `.two-groups` + `.col-group` + `.block`（蓝底通过 `#tiktok-full-content .col-group .block` 补色） |
+| `.tt-impacts` | `.plain-stack` + `.plain-block` |
+| `.tt-kicker` | `.tt-card-pill`（纯居中粗体文字，没有边框，之前误抄了 amazon 的描边药丸样式） |
+| `.pullquote` 自定义装饰 | 删除，改用 `site.css` 里通用的 `.pullquote`（后来发现 tiktok 这里比其它地方留白更大，见下） |
+| `.case-continue__mouse` 自定义动画 | 复用 element 页同款 `.mouse-cue` + `mouse-wheel` 关键帧 |
+| `.tt-figure` | 删除，普通 `.figure` 已经够用 |
+| `.wrap.tt-inset` 1152/1200 宽度 hack | 删除，统一用普通 `.wrap`（和其它 case 页一致） |
+
+只保留了三个确实没有现成对应物的自定义类：`.tt-band`（通栏灰底/白底切换）、`.tt-sectionbar`（Project Timeline 的"标题+右侧 pill"表头）、Design Proposals 轮播（`.tt-carousel` 一整套，其它 case 页都没有轮播这种组件）。
+
+验证方法：写 Playwright 脚本同源挂载 Framer 原版到 `/__orig/`（用的是 `tools/serve_with_original.py`），对隐藏正文和原版做逐元素的 computed style diff（font-size / font-weight / color），揪出这些真实 bug 并修掉：
+
+- 灰卡标题颜色反了（应为 `ink-2` 浅灰，写成了 `ink` 深黑）
+- 卡片顶部标签样式抄错了（原版没有描边药丸，就是纯居中粗体 18px）
+- 蓝卡标题字号错了（应 24px，写成 20px）
+- 轮播 Pros/Cons 标签字重错了（应 700，写成 500）
+- Project Timeline 步骤序号字号错了（应 24px，继承了站点默认 16px）
+- 对照卡箭头太小（应 60px，写成 40px）
+- Context 正文段落颜色继承错了（应该是深色 `ink`，被卡片场景的浅灰规则带偏成 `ink-2`）
+- 两处 `*Note` 提示文字样式不一样（Framer 原版本来就不统一，加了 `case-note--muted` 区分）
+
+### 第二件事：间距系统性审计与修复（commit `257e292`、`0142afc`、`f1f8ad2`）
+
+用户反馈"间距不对"后，没有再靠肉眼调，而是写脚本在 Framer 原版和隐藏正文之间选 26 个关键节点（每个 section 的过渡、标题前后、卡片到图片、引言前后……），用"最小匹配元素 + 找最近的合理配对"的方式量出真实像素间距，逐一比对修复。踩过的坑：
+
+- **标题到标题的间距不可靠**：如果两个标题之间夹着一段 `<ul><li>` 内容，量出来的"间距"其实包含了列表文字的高度，不是真的空白。后来改成直接量卡片/图片的 **盒子边缘**（`getBoundingClientRect`），才拿到干净的数字。
+- **`.tt-band` 曾经上下 padding 都是 112px，紧接着的下一个 section 自己又加了 96px 顶部 padding**，两个叠加导致 Opportunity/Goal 卡片到"Design Proposals"标题之间凭空多出 270px 空白（原版只有 80px）。改成 `.tt-band` 只留顶部 padding，底部交给下一个 section 自己的顶部 padding，不再双重叠加。
+- 进入 `.tt-band` 的顶部间距反而不够（原版比当时的实现多出 ~100px），加大了 `.tt-band` 自己的顶部 padding；但第二个 `.tt-band` 前面已经有"滚动继续"提示（`.case-continue`）自带的间距，同样加大顶部 padding 会导致这里间距过大，所以另外加了 `:has(.case-continue) + section.tt-band` 的例外规则，只在紧跟 `case-continue` 时用较小的顶部 padding。
+- **"Problem"/"Impact" 这两个小节标题的顶部留白不够**（比原版少 77px）——它们是分段的起点，需要比普通 h2 更大的顶部间距，加了 `case-subhead` 修饰类，用在 4 处（P1 和 P2 各一对 Problem/Impact）。
+- **引言（pullquote）上下完全没有额外留白**，只靠 32px 的通用网格间距，比原版分别少 100px（上）和 57px（下），补了 `margin-block`。
+- **"Context" 紧跟在 case-title 后面时留白反而太多**（比原版多 41px），是因为叠加了 section 的 32px 网格间距 + Context 标题自己的 24px `margin-bottom`；加了 `.case-head + h2 { margin-top: -41px }` 抵消。
+
+修完之后重新跑全部 26 个节点，真实存在的间距差异全部归零或只差 1-3px；还剩下几个"看起来差很多"的节点，逐个用直接量盒子边缘的方式复核后，确认是文字锚点跨过了一张很高的图片（比如 500-1000px 高的长图）导致测量失真，实际盒子间距本来就是标准的 32px 网格间距，不是 bug。
+
+**结论**：隐藏正文的结构、样式、间距目前应该已经和 Framer 原版对得很齐了。如果之后还要继续挑，建议还是用同一套"挂载原版到 `/__orig/` + Playwright 量盒子边缘"的方法，比纯肉眼对着截图猜快得多、也准得多，脚本本身在这个会话里没有保留（写在 `/tmp` 下，会话结束会清掉），下次要用需要重新写。
 
 ## 1. 已核对的现状
 
@@ -110,26 +160,26 @@ GitHub Pages 是静态公开托管。只要完整版 HTML、图片或视频随�
 ### Phase 4：验收与发布
 
 - [x] 静态验证未解锁页面：完整正文隐藏，新增媒体不加载。
-- [ ] 在浏览器验证正确密码、错误密码、回车提交、刷新、清除 session 后的行为。
-- [ ] 对照 Framer 检查 section 顺序、标题、图片数量、图片比例、横向滚动和页面高度。
-- [ ] 检查无 404 资源、无横向溢出、无控制台错误、无死链。
+- [x] 正确密码解锁验证过（提交后 `#tiktok-full-content` 正常显示、图片正常加载、轮播左右切换正常）；**错误密码、回车提交、刷新后 session 保持、清除 session 这几个分支这两轮没有重新验证**，早前阶段做过一次，建议正式推送前再过一遍。
+- [x] 对照 Framer 逐 section、逐标题、逐间距做了系统性 diff（见上面 0 节），样式和间距目前对得很齐。
+- [x] 检查过无横向溢出、无控制台报错、图片全部正常加载（0 张 broken image）；没有专门跑全站死链检查。
 - [ ] 对公开仓库做隐私扫描：不得出现 `private/`、真实密码、token、内部文档 URL 或未授权原图。
-- [ ] 先给你看本地预览；确认后再提交并推送。
+- [ ] 先给你看本地预览；确认后再提交并推送——**当前 12 个提交还在本地，没有推到 origin/main**。
 - [ ] 内容替换获得确认后，再单独创建版本标签，例如 `v1.1-tiktok-996633-locked`；不移动现有 `v1.0`。
 
 ## 5. 最终验收标准
 
 ### 内容
 
-- [ ] 公开入口仍是原来的 TikTok 项目卡片和 URL。
-- [ ] 解锁后内容与 996633 Framer 参考在结构上对应，且不再是摘要页。
-- [ ] 关键信息链路完整：研究 → UX 审计 → 问题 → 数据影响 → HMW → 机会 → 目标 → 方案 → 预期影响。
+- [x] 公开入口仍是原来的 TikTok 项目卡片和 URL。
+- [x] 解锁后内容与 996633 Framer 参考在结构上对应，且不再是摘要页；组件也换成了跟 amazon/element 一致的复用体系。
+- [x] 关键信息链路完整：研究 → UX 审计 → 问题 → 数据影响 → HMW → 机会 → 目标 → 方案 → 预期影响。
 
 ### 体验
 
 - [ ] 密码锁不会破坏作品集的视觉表达，用户知道为什么需要密码以及如何继续。
 - [ ] 首屏、长图和方案卡的动效服务于叙事，不制造新的等待和干扰。
-- [ ] 桌面端和移动端都能正常阅读、横向查看长图并完成解锁。
+- [ ] 桌面端和移动端都能正常阅读、横向查看长图并完成解锁。**这两轮的验证都在 1440px 桌面视口下做的，没有回归测过移动端断点**（`tt-band`/`case-subhead`/pullquote 这些新加的间距规则理论上没有响应式副作用，但建议推送前用手机宽度实际点一遍）。
 
 ### 隐私
 

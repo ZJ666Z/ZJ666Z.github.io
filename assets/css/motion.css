@@ -1,37 +1,27 @@
 /* Expressive portfolio motion. Finite entrances live in motion.js;
    source layout, text, image resolution and native scrolling stay intact. */
 .fx, .fx-up, .fx.photo-fx { will-change: auto; }
-.motion-word { display: inline-block; transform-origin: 0 100%; }
-.hero, .case-hero { --scene: 0; }
-.case-hero__bg {
-  scale: calc(1.1 - var(--scene) * .06);
-  translate: 0 calc(var(--scene) * 52px);
-  transform-origin: 50% 50%;
-}
-.case-hero__identity { translate: 0 calc(var(--scene) * -44px); }
-.case-meta { translate: 0 calc(var(--scene) * -24px); }
+.case-hero__bg { transform-origin: 50% 50%; }
 .stat b { display: block; transform-origin: 50% 100%; }
 .card { transform-origin: 50% 50%; transition: box-shadow .35s ease; }
 .card__media img { transition: transform .8s var(--fx-spring); }
 .card__body h3::after { transition-duration: .5s; }
 .btn, .footer__social a {
   translate: var(--magnet-x, 0px) var(--magnet-y, 0px);
-  transition: translate .55s cubic-bezier(.22,1.35,.36,1), box-shadow .25s ease;
+  transition: translate .25s var(--fx-ease), box-shadow .25s ease;
 }
 .btn:active { scale: .96; }
-.btn { transition: translate .55s cubic-bezier(.22,1.35,.36,1), box-shadow .25s ease, scale .18s ease; }
+.btn { transition: translate .25s var(--fx-ease), box-shadow .25s ease, scale .18s ease; }
 .footer__brand { transform-origin: 0 100%; }
 .nav__menu:active { scale: .92; }
-.nav__menu { transition: scale .25s ease; }
+.nav__menu {
+  transition: scale .2s ease, width .7s var(--fx-spring), height .7s var(--fx-spring),
+    padding .7s var(--fx-spring), background-color .3s ease, color .3s ease;
+}
 @media (hover: hover) and (pointer: fine) {
   .card:focus-visible { box-shadow: 0 8px 20px #141b4012; }
   .btn:hover { box-shadow: 0 8px 24px #4b6bf32b; }
-  .photo-fx.is-in:hover { transform: translateY(-4px) scale(1.018); filter: saturate(1.06); }
-}
-@media (max-width: 809.98px) {
-  .case-hero__identity { translate: 0 calc(var(--scene) * -20px); }
-  .case-hero__bg { translate: 0 calc(var(--scene) * 24px); }
-  .case-meta { translate: 0 calc(var(--scene) * -10px); }
+  .photo-fx.is-in:hover { transform: translateY(-2px) scale(1.01); filter: none; }
 }
 @media (hover: none) {
   .card:active .card__media img { transform: scale(1.06); }
