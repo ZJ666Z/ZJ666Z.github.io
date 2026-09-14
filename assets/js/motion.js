@@ -146,6 +146,8 @@
     pointers.push(reset);
   };
   document.querySelectorAll('.btn, .footer__social a').forEach(button => {
+    // The access form must remain steady while a password is entered.
+    if (button.matches('#tiktok-gate .tiktok-gate__controls .btn')) return;
     trackPointer(button, (x, y) => {
       button.style.setProperty('--magnet-x', `${x * 4}px`);
       button.style.setProperty('--magnet-y', `${y * 4}px`);

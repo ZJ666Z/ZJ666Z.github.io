@@ -418,6 +418,9 @@
   max-width: 100%;
 }
 
+/* The swipe instruction is a mobile-only affordance. */
+#tiktok-full-content .tt-carousel__hint { display: none; }
+
 #tiktok-full-content .tt-carousel__track {
   display: grid;
   gap: 0;
