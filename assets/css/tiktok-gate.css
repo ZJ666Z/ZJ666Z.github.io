@@ -141,10 +141,14 @@
 
 @media (max-width: 600px) {
   .tiktok-gate-wrap { padding: 16px; }
-  .tiktok-gate { padding: 28px 20px; gap: 28px; }
+  .tiktok-gate-popover { padding-inline: 16px; }
+  .tiktok-gate { width: 100%; box-sizing: border-box; padding: 28px 20px; gap: 28px; }
   .tiktok-gate__controls { display: grid; }
   .tiktok-gate__controls .btn { width: 100%; }
 }
+
+/* Unlocking should acknowledge immediately without the global button press-scale. */
+#tiktok-gate .tiktok-gate__controls .btn:active { scale: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   .tiktok-gate { box-shadow: none; }
@@ -867,7 +871,7 @@
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     scroll-padding-inline: 0;
-    touch-action: pan-x;
+    touch-action: auto;
     -webkit-overflow-scrolling: touch;
   }
 
