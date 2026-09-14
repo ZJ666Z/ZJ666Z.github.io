@@ -1714,3 +1714,104 @@ strong { font-weight: 700; }
   .page-case-element .tradeoff__pair { gap: 12px; }
   .page-case-element .case > section:nth-child(6) { padding-top: 52px; }
 }
+
+/* ---------- Case studies: mobile container contract ----------
+   Several desktop full-bleed sections deliberately remove their inline padding.
+   On a phone that made their cards touch the viewport edge, and intrinsic grid
+   sizing could grow beyond the clipped page. Keep every case section on the
+   same 24px rhythm and make its grid track explicitly shrinkable. */
+@media (max-width: 809.98px) {
+  .case > section.wrap {
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
+  }
+
+  .case > section.wrap > * { min-width: 0; }
+
+  .case .block {
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
+  }
+
+  .case .panel {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 24px;
+  }
+
+  .case .tradeoff { grid-template-columns: minmax(0, 1fr); }
+
+  .case .tradeoff__pair {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    min-width: 0;
+  }
+
+  .case .tradeoff__card { width: auto; min-width: 0; }
+
+  /* Card-in-card labels carry meaning, so give their copy a full readable line
+     instead of letting an intrinsic-width pill squeeze it into narrow columns. */
+  .case :is(.impact__pill, .tradeoff__pill, .amz-card-pill),
+  .page-case-element .panel-chip-row .kicker {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .case :is(.tradeoff__card, .block, .panel) > * { min-width: 0; }
+
+  .page-case-amazon .case > section:nth-child(n + 4),
+  .page-case-element .case > section.wrap:nth-child(n + 4) {
+    padding-inline: var(--pad);
+  }
+
+  /* Keep the disclosure readable: its action no longer competes with copy. */
+  .notice {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    grid-template-areas:
+      "icon copy"
+      "action action";
+    align-items: start;
+    padding: 20px;
+  }
+
+  .notice::before { grid-area: icon; margin-top: 1px; }
+  .notice p { grid-area: copy; width: 100%; }
+  .notice .btn {
+    grid-area: action;
+    width: 100%;
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  /* Paired desktop cards become a top-to-bottom causal sequence on phone. */
+  .case .tradeoff__arrow,
+  .page-case-element .impact-cards__arrow {
+    display: grid;
+    place-items: center;
+    width: auto;
+    height: auto;
+    padding-block: 4px;
+    font-size: 0;
+    line-height: 1;
+    transform: none;
+  }
+
+  .case .tradeoff__arrow::after,
+  .page-case-element .impact-cards__arrow::after {
+    content: "↓";
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  /* Make the home illustration feel intentionally anchored, not undersized. */
+  .hero:not(.hero--about) .hero__graphic {
+    top: -4px;
+    right: -4px;
+    width: min(156px, 46%);
+    height: auto;
+  }
+}

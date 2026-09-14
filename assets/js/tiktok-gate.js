@@ -49,7 +49,7 @@
       const show = next => {
         index = (next + slides.length) % slides.length;
         updateDots();
-        track.scrollTo({ left: index * track.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+        track.scrollTo({ left: slides[index].offsetLeft, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
       };
 
       slides.forEach((slide, i) => {
@@ -67,7 +67,9 @@
       });
 
       track.addEventListener('scroll', () => {
-        const next = Math.round(track.scrollLeft / Math.max(track.clientWidth, 1));
+        const next = slides.reduce((closest, slide, i) => (
+          Math.abs(slide.offsetLeft - track.scrollLeft) < Math.abs(slides[closest].offsetLeft - track.scrollLeft) ? i : closest
+        ), 0);
         if (next !== index) {
           index = Math.min(Math.max(next, 0), slides.length - 1);
           updateDots();

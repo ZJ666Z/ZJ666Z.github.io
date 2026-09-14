@@ -821,3 +821,98 @@
 
 /* [CONFIDENTIAL] 在 Framer 里是琥珀色 600 */
 #tiktok-full-content .notice strong { font-weight: 600; color: #bd9156; }
+
+/* ---------- 996633: mobile layout contract ----------
+   The final desktop alignment rules above intentionally restore paired columns.
+   Reassert the phone layout here so cards do not become two narrow columns and
+   every content section shares the site-wide 24px inline rhythm. */
+@media (max-width: 809.98px) {
+  #tiktok-full-content { --pad: 24px; }
+
+  #tiktok-full-content > section.wrap:not(.tt-band),
+  #tiktok-full-content > section.tt-band {
+    padding-inline: var(--pad);
+    min-width: 0;
+  }
+
+  #tiktok-full-content .two-col,
+  #tiktok-full-content .two-groups {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  #tiktok-full-content .two-col:has(.tt-pair-arrow) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  /* Card labels should read as part of their card, not shrink to their longest word. */
+  #tiktok-full-content .tt-card-pill {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* Phone proposals intentionally reveal the next option: this makes the
+     horizontal gesture discoverable while preserving the Framer arrow controls. */
+  #tiktok-full-content .tt-carousel { gap: 16px; }
+  #tiktok-full-content .tt-carousel[data-tt-ready] .tt-carousel__track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #tiktok-full-content .tt-carousel[data-tt-ready] .tt-slide {
+    flex: 0 0 calc(100% - 40px);
+    width: calc(100% - 40px);
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  /* The swipe affordance and next-card preview replace overlay controls on phone. */
+  #tiktok-full-content .tt-carousel__nav { display: none; }
+
+  #tiktok-full-content .tt-slide__body { width: 100%; box-sizing: border-box; }
+
+  #tiktok-full-content .tt-carousel__hint {
+    display: none;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  #tiktok-full-content .tt-carousel[data-tt-ready] .tt-carousel__hint { display: flex; }
+
+  #tiktok-full-content .tt-pair-arrow {
+    display: grid;
+    place-items: center;
+    justify-self: center;
+    width: auto;
+    height: auto;
+    padding-block: 4px;
+    font-size: 0;
+    line-height: 1;
+    transform: none;
+  }
+
+  #tiktok-full-content .tt-pair-arrow::after {
+    content: "↓";
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  #tiktok-full-content .case-head--left { row-gap: 16px; }
+  #tiktok-full-content .case-title { font-size: 30px; line-height: 38px; }
+}
