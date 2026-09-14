@@ -875,13 +875,20 @@
     flex: 0 0 calc(100% - 40px);
     width: calc(100% - 40px);
     min-width: 0;
+    grid-template-rows: auto minmax(0, 1fr);
+    align-items: stretch;
     scroll-snap-align: start;
   }
 
   /* The swipe affordance and next-card preview replace overlay controls on phone. */
   #tiktok-full-content .tt-carousel__nav { display: none; }
 
-  #tiktok-full-content .tt-slide__body { width: 100%; box-sizing: border-box; }
+  #tiktok-full-content .tt-slide__body {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    align-self: stretch;
+  }
 
   #tiktok-full-content .tt-carousel__hint {
     display: none;
