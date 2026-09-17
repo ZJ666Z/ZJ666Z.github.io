@@ -1,0 +1,84 @@
+/* TikTok project layout and components are inherited unchanged. Only placeholder media is styled here. */
+.ac-hero-placeholder{background:#1a1a1a;display:flex;align-items:flex-start;justify-content:center;padding-top:115px;color:#777;font-size:12px;letter-spacing:1px}
+.ac-title{font-size:clamp(30px,5vw,54px);line-height:1.2;font-weight:600;text-align:center;color:#fff}
+.ac-placeholder{width:100%;min-width:0;min-height:340px;background:#f5f4f6;border:1px dashed #c9c8ce;border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px;text-align:center;color:#777}
+.ac-placeholder>span{font-size:12px;letter-spacing:1px;color:#999}
+.ac-placeholder>p{font-size:18px;line-height:28px}
+.ac-placeholder--short{min-height:220px}
+.work-pair__media .ac-placeholder{min-height:240px}
+.page-case-agentic [id]{scroll-margin-top:110px}
+.ac-background{gap:40px!important}
+.ac-section-title{margin-top:56px}
+.ac-ai-intro .notice{background:#f0f2ff}
+.ac-ai-flow{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr);align-items:stretch;gap:8px}
+.ac-ai-flow article{min-width:0;padding:24px;border:1px solid #dedee5;border-radius:20px;background:#fff;display:flex;flex-direction:column;gap:10px}
+.ac-ai-flow article>span{font-size:11px;line-height:16px;letter-spacing:.5px;color:#71717a}
+.ac-ai-flow article>strong{font-size:21px;line-height:27px}
+.ac-ai-flow article>p{margin:0;color:#56565e;font-size:14px;line-height:22px}
+.ac-ai-flow>i{display:grid;place-items:center;font-style:normal;font-size:20px;color:#8b8b93}
+.ac-ai-flow .ac-ai-flow__human{background:#eef1ff;border-color:#d7ddff}
+.ac-context-title{margin:22px 0 0;font-size:clamp(30px,4vw,50px);line-height:1.12;letter-spacing:-1px}
+.ac-commerce-modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ac-commerce-modes .block{height:100%}
+.ac-commerce-modes__tiktok{background:#eef1ff;border-color:#d9dfff}
+.ac-journey{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+.ac-journey b{font-size:17px;line-height:24px}
+.ac-journey i{font-style:normal;color:#8b8b93}
+.ac-product-thesis{background:#e9edff}
+.ac-principles-title{margin:56px 0 0;font-size:clamp(28px,3.4vw,42px);line-height:1.16;letter-spacing:-.8px}
+.ac-principles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch}
+.ac-principles .step{height:100%}
+.ac-principles .num{width:auto}
+.ac-market-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:30px 0;border-top:1px solid #d8d8de;border-bottom:1px solid #d8d8de}
+.ac-market-strip>div{min-width:0;padding:0 28px;display:grid;gap:10px}
+.ac-market-strip>div+div{border-left:1px solid #d8d8de}
+.ac-market-strip span{color:#71717a;font-size:13px;line-height:20px}
+.ac-market-strip strong{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-1.2px;color:#4b6bf3}
+.ac-value-grid{align-items:stretch}
+.ac-opportunity{margin-top:0}
+.ac-opportunity .work-pair__media{align-content:stretch}
+.ac-opportunity .ac-placeholder{min-height:100%}
+.ac-before-after{margin-top:8px}
+.ac-value-grid .step{height:100%}
+.ac-value-grid .num{width:auto}
+.ac-project-definition strong{font-weight:700}
+.ac-transaction-map{margin-top:10px;display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1.15fr) 24px minmax(0,1fr);gap:10px;align-items:center}
+.ac-transaction-map>article,.ac-transaction-map__payment{min-width:0;padding:18px;border-radius:16px;background:#f5f4f6;display:grid;gap:6px}
+.ac-transaction-map>i{font-style:normal;text-align:center;color:#8b8b93}
+.ac-transaction-map span{font-size:10px;line-height:15px;letter-spacing:.45px;color:#71717a}
+.ac-transaction-map p{margin:0;color:#56565e;font-size:13px;line-height:20px}
+.ac-transaction-map__payment{grid-column:3/6;background:#eef1ff;border:1px solid #d7ddff}
+.ac-reality-gap{margin-top:24px;padding:48px;border-radius:28px;background:#f0f2ff;color:#17171a;display:grid;gap:36px}
+.ac-reality-gap__intro{max-width:820px;display:grid;gap:18px}
+.ac-reality-gap__intro .tt-card-pill{justify-self:start;background:#17171a;color:#fff;border-color:#17171a}
+.ac-reality-gap__intro h2{margin:0;font-size:clamp(32px,4.5vw,56px);line-height:1.08;letter-spacing:-1.5px}
+.ac-reality-gap__intro p{margin:0;max-width:800px;color:#56565e;font-size:18px;line-height:30px}
+.ac-reality-gap__intro p strong{color:#17171a}
+.ac-funnel{display:grid;gap:16px}
+.ac-funnel__overall{padding:24px 28px;border-radius:18px;background:#fff;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:center}
+.ac-funnel__overall>span{font-size:15px;line-height:24px}
+.ac-funnel__overall>strong{grid-row:1/3;grid-column:2;font-size:clamp(40px,6vw,68px);line-height:1;color:#4b6bf3;letter-spacing:-2px}
+.ac-funnel__overall>p{margin:0;color:#71717a;font-size:13px;line-height:20px}
+.ac-funnel__flow{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,.9fr) minmax(0,1fr) minmax(130px,.8fr) minmax(0,1fr);gap:10px;align-items:stretch}
+.ac-funnel__flow>article{min-width:0;padding:22px;border:1px solid #dedfeb;border-radius:18px;background:#fff;display:flex;flex-direction:column;gap:8px}
+.ac-funnel__flow>article>span{font-size:11px;line-height:17px;color:#71717a}
+.ac-funnel__flow>article>strong{font-size:18px;line-height:24px}
+.ac-funnel__flow>article>p{margin:0;color:#71717a;font-size:13px;line-height:20px}
+.ac-funnel__psr{box-shadow:inset 0 3px 0 #4b6bf3}
+.ac-funnel__drop{position:relative;padding:18px 4px;display:flex;flex-direction:column;justify-content:center;gap:4px;text-align:center}
+.ac-funnel__drop:before{content:"→";font-size:20px;color:#8b8b93}
+.ac-funnel__drop>b{font-size:24px;line-height:30px;color:#4b6bf3}
+.ac-funnel__drop>span{font-size:12px;line-height:18px}
+.ac-funnel__drop>small{color:#71717a;font-size:11px;line-height:17px}
+.ac-reality-gap__decision{padding-top:32px;border-top:1px solid #d6d8e8;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.ac-reality-gap__decision>div{display:grid;gap:12px}
+.ac-reality-gap__decision p{margin:0;font-size:17px;line-height:28px;color:#3f3f46}
+.ac-reality-gap__decision p:first-child{color:#17171a}
+.ac-reality-gap__decision ul{margin:0;padding-left:20px;color:#3f3f46;font-size:16px;line-height:27px}
+.ac-reality-gap__result{padding:24px 28px;border-radius:18px;background:#fff;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:28px;align-items:start}
+.ac-reality-gap__result>p{margin:0;font-size:16px;line-height:26px}
+.ac-reality-gap__result .case-note{color:#71717a;font-size:13px;line-height:21px}
+@media(max-width:800px){.ac-ai-flow{grid-template-columns:1fr}.ac-ai-flow>i{transform:rotate(90deg)}.ac-commerce-modes,.ac-principles,.ac-market-strip{grid-template-columns:1fr}.ac-market-strip>div{padding:22px 0}.ac-market-strip>div+div{border-left:0;border-top:1px solid #d8d8de}.ac-transaction-map{grid-template-columns:1fr}.ac-transaction-map>i{transform:rotate(90deg)}.ac-transaction-map__payment{grid-column:auto}.ac-funnel__flow{grid-template-columns:1fr}.ac-funnel__drop:before{content:"↓"}.ac-reality-gap__decision{grid-template-columns:1fr;gap:0}}
+@media(max-width:800px){.ac-reality-gap__decision>div{padding-top:24px}.ac-reality-gap__decision>div+div{margin-top:24px;border-top:1px solid #d6d8e8}.ac-reality-gap__result{grid-template-columns:1fr}}
+@media(max-width:600px){.ac-section-title{margin-top:28px}.ac-context-title{margin-top:8px;font-size:30px;line-height:1.14;letter-spacing:-.5px}.ac-opportunity .ac-placeholder{min-height:240px}.ac-value-grid .step,.ac-principles .step{height:auto}.ac-principles-title{margin-top:32px}.ac-reality-gap{padding:28px 20px;border-radius:22px;gap:28px}.ac-reality-gap__intro{gap:14px}.ac-reality-gap__intro h2{font-size:30px;line-height:1.14;letter-spacing:-.6px}.ac-reality-gap__intro p{font-size:16px;line-height:26px}.ac-funnel__overall{grid-template-columns:1fr;padding:22px}.ac-funnel__overall>strong{grid-row:auto;grid-column:auto;font-size:46px}.ac-funnel__drop{padding:10px 4px}.ac-reality-gap__decision p{font-size:16px;line-height:26px}.ac-reality-gap__result{padding:22px}}
+@media(max-width:600px){.ac-placeholder{min-height:240px;padding:24px}.ac-placeholder>p{font-size:16px;line-height:26px}.ac-placeholder--short{min-height:180px}.work-pair__media .ac-placeholder{min-height:200px}}
