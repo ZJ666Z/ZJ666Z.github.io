@@ -32,6 +32,7 @@
 /* ---------- 基础 ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html.i18n-pending body { visibility: hidden; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -54,6 +55,7 @@ ul, ol { margin: 0; padding: 0; }
 
 h1, h2, h3, h4, h5 { font-weight: 600; letter-spacing: 0; }
 strong { font-weight: 700; }
+.nda { overflow-wrap: anywhere; word-break: break-word; }
 
 :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
 
@@ -104,6 +106,23 @@ strong { font-weight: 700; }
 .nav__links { display: flex; align-items: center; gap: 4px; }
 .nav__menu { display: none; }
 
+.language-switcher {
+  display: inline-flex; align-items: center; gap: 2px; flex: none;
+  margin-left: 6px; padding: 2px; border-radius: 999px;
+  background: rgba(26,26,26,.08); color: var(--ink);
+}
+.language-switcher button {
+  width: 34px; height: 30px; padding: 0; border: 0; border-radius: 999px;
+  background: transparent; color: inherit; cursor: pointer;
+  font: 600 12px/1 var(--font); letter-spacing: .02em;
+  transition: color .25s var(--fx-ease), background-color .25s var(--fx-ease), transform .25s var(--fx-spring);
+}
+.language-switcher button:hover { transform: translateY(-1px); }
+.language-switcher button[aria-pressed="true"] { background: var(--dark); color: #fff; }
+.language-switcher button:focus-visible { outline: 2px solid #5b79ff; outline-offset: 2px; }
+.nav--light:not(.is-stuck) .language-switcher { background: rgba(255,255,255,.18); color: #fff; }
+.nav--light:not(.is-stuck) .language-switcher button[aria-pressed="true"] { background: #fff; color: var(--ink); }
+
 .nav__link {
   position: relative; overflow: hidden; padding: 8px 16px;
   font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ink); text-align: center;
@@ -137,7 +156,7 @@ strong { font-weight: 700; }
 
 /* 下滚后的胶囊 */
 .nav.is-stuck .nav__shell {
-  width: 335.16px; padding: 4px; gap: 4px;
+  width: max-content; max-width: calc(100% - (2 * var(--pad))); padding: 4px; gap: 4px;
   background: rgba(26,26,26,.5); backdrop-filter: blur(5px); border-radius: 16px;
 }
 .nav.is-stuck .nav__brand { width: 44px; height: 44px; border-radius: 12px; }
@@ -145,9 +164,25 @@ strong { font-weight: 700; }
 .nav.is-stuck .nav__links {
   padding: 2px 4px; gap: 4px; border-radius: 12px; background: var(--dark);
 }
+.nav.is-stuck .language-switcher { margin-left: 2px; background: rgba(255,255,255,.12); color: rgba(255,255,255,.72); }
+.nav.is-stuck .language-switcher button[aria-pressed="true"] { background: #fff; color: var(--ink); }
 .nav.is-stuck .nav__link { color: #fff; padding: 10px 16px; }
 .nav.is-stuck .nav__link::after { top: 31px; background: rgba(255,255,255,.65); }
 .nav.is-stuck .nav__link[aria-current="page"]::after { background: #fff; }
+
+/* Desktop covers a much longer collapse distance than mobile; a longer duration
+   keeps the perceived velocity aligned with the compact mobile transition. */
+@media (min-width: 810px) {
+  .nav { transition-duration: 1.05s; }
+  .nav.fx { transition: padding-block 1.05s var(--fx-spring), opacity var(--fx-dur) var(--fx-spring),
+                       transform var(--fx-dur) var(--fx-spring); }
+  .nav__shell {
+    transition: width 1.05s var(--fx-spring), padding 1.05s var(--fx-spring), gap 1.05s var(--fx-spring),
+                background-color 1.05s var(--fx-spring), border-radius 1.05s var(--fx-spring);
+  }
+  .nav__brand { transition-duration: 1.05s; }
+  .brand__mark { transition-duration: 1.05s; }
+}
 /* 案例页深色首屏上的顶部导航文字为白色 */
 .nav--light .nav__link { color: #fff; }
 .nav--light .nav__menu { color: #fff; }
@@ -1311,6 +1346,12 @@ strong { font-weight: 700; }
     border-radius: 12px; background: var(--dark); overflow: hidden;
   }
   .nav.menu-open .nav__link { overflow: visible; padding: 12px 24px 12px 32px; color: #fff; text-align: left; }
+  .nav.menu-open .language-switcher {
+    width: calc(100% - 24px); margin: 8px 12px 10px; padding: 4px;
+    justify-content: stretch; background: rgba(255,255,255,.12); color: rgba(255,255,255,.72);
+  }
+  .nav.menu-open .language-switcher button { width: auto; flex: 1; height: 36px; }
+  .nav.menu-open .language-switcher button[aria-pressed="true"] { background: #fff; color: var(--ink); }
   .nav.menu-open .nav__link::after {
     left: 16px; top: 50%; transform: translateY(-50%);
     background: rgba(255,255,255,.65);
@@ -1506,6 +1547,15 @@ strong { font-weight: 700; }
 .about-panel .about-label { color: #212121; }
 .about-panel .about-label { margin-bottom: 24px; }
 .about-panel p:not(.about-label) + p { margin-top: 28px; }
+.about-impact-list {
+  display: grid; gap: 16px; margin: 18px 0 28px; padding-left: 24px;
+  color: var(--ink-2); list-style: disc outside;
+}
+.about-impact-list li { padding-left: 4px; }
+.about-impact-list strong { color: var(--ink); }
+.i18n-inline--zh { display: none; }
+html[data-locale="zh"] .i18n-inline--en { display: none; }
+html[data-locale="zh"] .i18n-inline--zh { display: inline; }
 .about-bullets { display: grid; gap: 0; padding-left: 23px; list-style: disc outside; color: #fff; font-size: 18px; line-height: 28px; }
 .about-bullets a { color: var(--blue); text-decoration: none; }
 .about-bullets a:hover { text-decoration: underline; }

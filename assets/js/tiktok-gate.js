@@ -8,13 +8,14 @@
   const input = document.querySelector('#tiktok-password');
   const status = document.querySelector('#tiktok-gate-status');
   if (!gate || !content || !form || !input || !status) return;
+  const text = (key, values) => window.ZijiezI18n?.t(key, values) || key;
 
   const sessionKey = 'tiktok996633-unlocked';
   // Static-site access hash; never store the plaintext password in source.
   const accessHash = '3378fd1b3e3d336695ad764a3c3675c36cd6474465122e332f8b1ff53b493dd1';
 
   const sha256 = async value => {
-    if (!window.crypto?.subtle) throw new Error('Secure hashing is unavailable.');
+    if (!window.crypto?.subtle) throw new Error(text('gate.hashUnavailable'));
     const bytes = new TextEncoder().encode(value);
     const digest = await crypto.subtle.digest('SHA-256', bytes);
     return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
@@ -55,7 +56,9 @@
       slides.forEach((slide, i) => {
         const dot = document.createElement('button');
         dot.type = 'button';
-        dot.setAttribute('aria-label', `Show proposal ${i + 1} of ${slides.length}`);
+        const syncLabel = () => dot.setAttribute('aria-label', text('carousel.show', {current: i + 1, total: slides.length}));
+        syncLabel();
+        document.addEventListener('zijiez:languagechange', syncLabel);
         dot.setAttribute('aria-controls', slide.id);
         dot.addEventListener('click', () => show(i));
         dots.append(dot);
@@ -123,11 +126,11 @@
     if (!value || form.dataset.busy === 'true') return;
     form.dataset.busy = 'true';
     status.dataset.state = 'loading';
-    status.textContent = 'Checking access…';
+    status.textContent = text('gate.checking');
     try {
       if (await sha256(value) !== accessHash) {
         status.dataset.state = 'error';
-        status.textContent = 'That password does not match. Please try again.';
+        status.textContent = text('gate.wrongPassword');
         input.select();
         return;
       }
@@ -136,7 +139,7 @@
       unlock();
     } catch {
       status.dataset.state = 'error';
-      status.textContent = 'This browser cannot verify the password securely.';
+      status.textContent = text('gate.unsupported');
     } finally {
       form.dataset.busy = 'false';
     }

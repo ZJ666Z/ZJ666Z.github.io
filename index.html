@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/i18n-boot.js"></script>
 <title>Zijie Zhou — Product Designer</title>
 <meta name="description" content="Zijie Zhou is a product designer at TikTok focused on FinTech, turning data and intuition into measurable product growth.">
 <link rel="canonical" href="https://zj666z.github.io/">
@@ -16,7 +17,7 @@
 <link rel="stylesheet" href="assets/css/motion.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
-<body class="page-home">
+<body class="page-home" data-i18n-page="home" data-i18n-source="en">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="nav fx" aria-label="Primary">
@@ -37,8 +38,12 @@
         <img class="hero__graphic" src="assets/img/hero-graphic.svg" alt="" aria-hidden="true" width="415" height="311">
         <div class="hero__text fx">
           <h1>👋 Hi.<br>This is Zijie Zhou</h1>
-          <p class="hero__lede">I'm a <strong>product designer at TikTok</strong> focused on <strong>FinTech</strong>,<br>
-            turning <strong class="accent">data</strong> <span class="accent">+</span> <strong class="accent">intuition</strong> into <strong class="accent">measurable</strong> product growth</p>
+          <p class="hero__lede">
+            <span class="i18n-inline i18n-inline--en" data-i18n-ignore>I'm a <strong>product designer at TikTok</strong> focused on <strong>FinTech</strong>,<br>
+              turning <strong class="accent">data</strong> <span class="accent">+</span> <strong class="accent">intuition</strong> into <strong class="accent">measurable</strong> product growth</span>
+            <span class="i18n-inline i18n-inline--zh" lang="zh-CN" data-i18n-ignore>我是一名专注于 <strong>FinTech</strong> 的 <strong>TikTok 产品设计师</strong>，<br>
+              将 <strong class="accent">数据与体验洞察</strong> 转化为 <strong class="accent">可衡量的产品增长</strong>。</span>
+          </p>
         </div>
         <div class="fx-up"><a class="btn btn--blue" href="https://drive.google.com/file/d/1QrYy51cLZTGVywVHh1KBuk3KaG4EkL9T/view?usp=sharing" target="_blank" rel="noopener"><span class="roll"><span class="roll__in">Resume</span><span class="roll__in" aria-hidden="true">Resume</span></span></a></div>
       </div>
@@ -219,6 +224,9 @@
   </div>
 </footer>
 
+<script src="assets/js/i18n-content.js" defer></script>
+<script src="assets/js/i18n-generated.js" defer></script>
+<script src="assets/js/i18n.js" defer></script>
 <script src="assets/js/site.js" defer></script>
 <script src="assets/js/motion.js" defer></script>
 </body>

@@ -8,10 +8,12 @@
 
   const shell = nav.querySelector('.nav__shell');
   const links = nav.querySelector('.nav__links');
+  const i18n = () => window.ZijiezI18n;
+  const label = key => i18n()?.t(key) || ({'nav.open': 'Open navigation', 'nav.close': 'Close navigation'}[key] || key);
   const menu = document.createElement('button');
   menu.className = 'nav__menu';
   menu.type = 'button';
-  menu.setAttribute('aria-label', 'Open navigation');
+  menu.setAttribute('aria-label', label('nav.open'));
   menu.setAttribute('aria-expanded', 'false');
   menu.innerHTML = '<span></span><span></span><span></span>';
   shell.append(menu);
@@ -19,14 +21,19 @@
   const closeMenu = () => {
     nav.classList.remove('menu-open');
     menu.setAttribute('aria-expanded', 'false');
-    menu.setAttribute('aria-label', 'Open navigation');
+    menu.setAttribute('aria-label', label('nav.open'));
   };
   menu.addEventListener('click', () => {
     const open = nav.classList.toggle('menu-open');
     menu.setAttribute('aria-expanded', String(open));
-    menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    menu.setAttribute('aria-label', label(open ? 'nav.close' : 'nav.open'));
   });
-  links.addEventListener('click', closeMenu);
+  links.addEventListener('click', event => {
+    if (event.target.closest('.nav__link')) closeMenu();
+  });
+  document.addEventListener('zijiez:languagechange', () => {
+    menu.setAttribute('aria-label', label(nav.classList.contains('menu-open') ? 'nav.close' : 'nav.open'));
+  });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') closeMenu();
   });
@@ -60,6 +67,12 @@
 /* Full-resolution image viewer. The page keeps the exported Framer files as-is;
    this viewer lets users inspect those original pixels instead of a CSS-scaled preview. */
 (() => {
+  const i18n = () => window.ZijiezI18n;
+  const label = (key, values) => i18n()?.t(key, values) || ({
+    'viewer.label': 'Full-resolution image viewer', 'viewer.zoomOut': 'Zoom out',
+    'viewer.zoomIn': 'Zoom in', 'viewer.fit': 'Fit', 'viewer.close': 'Close image viewer',
+    'viewer.image': 'Image', 'viewer.fullImage': 'Full-resolution portfolio image'
+  }[key] || key);
   const excluded = [
     '.nav img', '.marquee img', '.card__media img', '.exp__logos img', '.quote__who img',
     '.case-hero img', '.about-portrait', '.hero__graphic'
@@ -72,16 +85,16 @@
   viewer.hidden = true;
   viewer.setAttribute('role', 'dialog');
   viewer.setAttribute('aria-modal', 'true');
-  viewer.setAttribute('aria-label', 'Full-resolution image viewer');
+  viewer.setAttribute('aria-label', label('viewer.label'));
   viewer.innerHTML = `
     <div class="image-viewer__toolbar">
       <p class="image-viewer__meta" aria-live="polite"></p>
       <div class="image-viewer__actions">
-        <button type="button" data-action="minus" aria-label="Zoom out">−</button>
-        <button type="button" data-action="fit">Fit</button>
+        <button type="button" data-action="minus" aria-label="${label('viewer.zoomOut')}">−</button>
+        <button type="button" data-action="fit">${label('viewer.fit')}</button>
         <button type="button" data-action="actual">1:1</button>
-        <button type="button" data-action="plus" aria-label="Zoom in">+</button>
-        <button class="image-viewer__close" type="button" data-action="close" aria-label="Close image viewer">×</button>
+        <button type="button" data-action="plus" aria-label="${label('viewer.zoomIn')}">+</button>
+        <button class="image-viewer__close" type="button" data-action="close" aria-label="${label('viewer.close')}">×</button>
       </div>
     </div>
     <div class="image-viewer__stage"><img alt=""></div>`;
@@ -120,7 +133,7 @@
     previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     viewer.hidden = false;
-    full.alt = source.alt || 'Full-resolution portfolio image';
+    full.alt = source.alt || label('viewer.fullImage');
     full.src = source.currentSrc || source.src;
     const ready = () => {
       fit();
@@ -133,7 +146,9 @@
     img.classList.add('is-zoomable');
     img.tabIndex = 0;
     img.setAttribute('role', 'button');
-    img.setAttribute('aria-label', `${img.alt || 'Image'} — open full resolution`);
+    const syncImageLabel = () => img.setAttribute('aria-label', label('viewer.open', {image: img.alt || label('viewer.image')}));
+    syncImageLabel();
+    document.addEventListener('zijiez:languagechange', syncImageLabel);
     img.addEventListener('click', event => {
       // Cover images live inside project links; clicking the visual opens the image,
       // while the title/body of the card continues to navigate to the case study.
@@ -162,5 +177,12 @@
   });
   window.addEventListener('resize', () => {
     if (!viewer.hidden && Math.abs(zoom - fitZoom) < .001) fit();
+  });
+  document.addEventListener('zijiez:languagechange', () => {
+    viewer.setAttribute('aria-label', label('viewer.label'));
+    viewer.querySelector('[data-action="minus"]').setAttribute('aria-label', label('viewer.zoomOut'));
+    viewer.querySelector('[data-action="fit"]').textContent = label('viewer.fit');
+    viewer.querySelector('[data-action="plus"]').setAttribute('aria-label', label('viewer.zoomIn'));
+    closeButton.setAttribute('aria-label', label('viewer.close'));
   });
 })();
