@@ -18,6 +18,41 @@
   menu.innerHTML = '<span></span><span></span><span></span>';
   shell.append(menu);
 
+  /* `max-content` snaps instead of interpolating in older browsers. Measure the
+     desktop pill as a pixel width, then slow its longer travel enough to retain
+     the calm, controlled feel of the 390px mobile transition. */
+  const syncDesktopCollapseMotion = () => {
+    if (window.innerWidth <= 809) {
+      nav.style.removeProperty('--nav-collapsed-width');
+      nav.style.removeProperty('--nav-collapse-duration');
+      return;
+    }
+
+    const probe = nav.cloneNode(true);
+    probe.classList.remove('fx', 'menu-open', 'is-stuck');
+    probe.setAttribute('aria-hidden', 'true');
+    probe.setAttribute('inert', '');
+    probe.style.cssText = 'position:absolute;inset:auto;left:-10000px;top:0;width:100vw;visibility:hidden;pointer-events:none;padding-block:24px;transition:none';
+    probe.querySelectorAll('*').forEach(element => { element.style.transition = 'none'; });
+    document.body.append(probe);
+
+    const probeShell = probe.querySelector('.nav__shell');
+    const expandedWidth = probeShell.getBoundingClientRect().width;
+    probe.classList.add('is-stuck');
+    const collapsedWidth = probeShell.getBoundingClientRect().width;
+    probe.remove();
+
+    const mobileWidthVelocity = (343 - 108) / .7;
+    const desktopPaceFactor = 2;
+    const duration = Math.min(4.8, Math.max(2.1,
+      ((expandedWidth - collapsedWidth) / mobileWidthVelocity) * desktopPaceFactor));
+    nav.style.setProperty('--nav-collapsed-width', `${Math.ceil(collapsedWidth)}px`);
+    nav.style.setProperty('--nav-collapse-duration', `${duration.toFixed(3)}s`);
+  };
+
+  syncDesktopCollapseMotion();
+  document.fonts?.ready.then(syncDesktopCollapseMotion);
+
   const closeMenu = () => {
     nav.classList.remove('menu-open');
     menu.setAttribute('aria-expanded', 'false');
@@ -33,12 +68,16 @@
   });
   document.addEventListener('zijiez:languagechange', () => {
     menu.setAttribute('aria-label', label(nav.classList.contains('menu-open') ? 'nav.close' : 'nav.open'));
+    syncDesktopCollapseMotion();
   });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') closeMenu();
   });
+  let resizeFrame = 0;
   window.addEventListener('resize', () => {
     if (window.innerWidth > 809) closeMenu();
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(syncDesktopCollapseMotion);
   });
 
   let stuck = window.scrollY > 80;

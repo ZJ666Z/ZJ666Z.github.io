@@ -79,11 +79,12 @@ strong { font-weight: 700; }
    下滚后收成居中双层胶囊：外层半透明模糊，内层实心深色包住三个链接。
    链接下方有 3px 圆点指示器：当前页常亮，hover 时从左侧滑入。 */
 .nav {
+  --nav-collapse-duration: .7s;
   position: fixed; inset: 0 0 auto; z-index: 60; padding-block: 24px;
-  transition: padding-block .7s var(--fx-spring);
+  transition: padding-block var(--nav-collapse-duration) var(--fx-spring);
 }
 .nav.fx {
-  transition: padding-block .7s var(--fx-spring), opacity var(--fx-dur) var(--fx-spring),
+  transition: padding-block var(--nav-collapse-duration) var(--fx-spring), opacity var(--fx-dur) var(--fx-spring),
               transform var(--fx-dur) var(--fx-spring);
 }
 .nav.is-stuck { padding-block: 16px; }
@@ -91,25 +92,40 @@ strong { font-weight: 700; }
   width: min(calc(100% - (2 * var(--pad))), 1152px); max-width: none;
   margin-inline: auto; padding-inline: 0;
   display: flex; align-items: center; justify-content: space-between; gap: 32px;
-  transition: width .7s var(--fx-spring), padding .7s var(--fx-spring), gap .7s var(--fx-spring),
-              background-color .7s var(--fx-spring), border-radius .7s var(--fx-spring);
+  interpolate-size: allow-keywords;
+  transition: width var(--nav-collapse-duration) var(--fx-spring), padding var(--nav-collapse-duration) var(--fx-spring),
+              gap var(--nav-collapse-duration) var(--fx-spring),
+              background-color var(--nav-collapse-duration) var(--fx-spring),
+              border-radius var(--nav-collapse-duration) var(--fx-spring);
 }
 .nav__brand {
   display: grid; place-items: center; width: 36px; height: 36px; flex: none;
   border-radius: 8px; background: var(--dark); color: #fff;
-  transition: width .7s var(--fx-spring), height .7s var(--fx-spring), border-radius .7s var(--fx-spring);
+  transition: width var(--nav-collapse-duration) var(--fx-spring),
+              height var(--nav-collapse-duration) var(--fx-spring),
+              border-radius var(--nav-collapse-duration) var(--fx-spring);
 }
 .brand__mark {
   width: 16px; height: 14.6px; transform: translateX(1px);
-  transition: width .7s var(--fx-spring), height .7s var(--fx-spring);
+  transition: width var(--nav-collapse-duration) var(--fx-spring),
+              height var(--nav-collapse-duration) var(--fx-spring);
 }
-.nav__links { display: flex; align-items: center; gap: 4px; }
+.nav__links {
+  display: flex; align-items: center; gap: 4px;
+  transition: padding var(--nav-collapse-duration) var(--fx-spring),
+              gap var(--nav-collapse-duration) var(--fx-spring),
+              background-color var(--nav-collapse-duration) var(--fx-spring),
+              border-radius var(--nav-collapse-duration) var(--fx-spring);
+}
 .nav__menu { display: none; }
 
 .language-switcher {
   display: inline-flex; align-items: center; gap: 2px; flex: none;
   margin-left: 6px; padding: 2px; border-radius: 999px;
   background: rgba(26,26,26,.08); color: var(--ink);
+  transition: margin-left var(--nav-collapse-duration) var(--fx-spring),
+              background-color var(--nav-collapse-duration) var(--fx-spring),
+              color var(--nav-collapse-duration) var(--fx-spring);
 }
 .language-switcher button {
   width: 34px; height: 30px; padding: 0; border: 0; border-radius: 999px;
@@ -126,15 +142,17 @@ strong { font-weight: 700; }
 .nav__link {
   position: relative; overflow: hidden; padding: 8px 16px;
   font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ink); text-align: center;
-  transition: color .3s var(--fx-ease);
+  transition: padding var(--nav-collapse-duration) var(--fx-spring),
+              color var(--nav-collapse-duration) var(--fx-spring);
 }
 /* 圆点指示器 */
 .nav__link::after {
   content: ""; position: absolute; left: -10px; top: 28px;
   width: 3px; height: 3px; border-radius: 999px; background: var(--muted);
   filter: blur(3px); opacity: 0; transform: none;
-  transition: left .7s var(--fx-spring), transform .7s var(--fx-spring),
-              opacity .7s var(--fx-spring), filter .7s var(--fx-spring), background-color .3s;
+  transition: left .7s var(--fx-spring), top var(--nav-collapse-duration) var(--fx-spring),
+              transform .7s var(--fx-spring), opacity .7s var(--fx-spring),
+              filter .7s var(--fx-spring), background-color var(--nav-collapse-duration) var(--fx-spring);
 }
 .nav__link:hover::after { left: 50%; opacity: 1; filter: blur(0); transform: translateX(-50%); }
 .nav__link[aria-current="page"]::after {
@@ -156,7 +174,7 @@ strong { font-weight: 700; }
 
 /* 下滚后的胶囊 */
 .nav.is-stuck .nav__shell {
-  width: max-content; max-width: calc(100% - (2 * var(--pad))); padding: 4px; gap: 4px;
+  width: var(--nav-collapsed-width, max-content); max-width: calc(100% - (2 * var(--pad))); padding: 4px; gap: 4px;
   background: rgba(26,26,26,.5); backdrop-filter: blur(5px); border-radius: 16px;
 }
 .nav.is-stuck .nav__brand { width: 44px; height: 44px; border-radius: 12px; }
@@ -170,19 +188,6 @@ strong { font-weight: 700; }
 .nav.is-stuck .nav__link::after { top: 31px; background: rgba(255,255,255,.65); }
 .nav.is-stuck .nav__link[aria-current="page"]::after { background: #fff; }
 
-/* Desktop covers a much longer collapse distance than mobile; a longer duration
-   keeps the perceived velocity aligned with the compact mobile transition. */
-@media (min-width: 810px) {
-  .nav { transition-duration: 1.05s; }
-  .nav.fx { transition: padding-block 1.05s var(--fx-spring), opacity var(--fx-dur) var(--fx-spring),
-                       transform var(--fx-dur) var(--fx-spring); }
-  .nav__shell {
-    transition: width 1.05s var(--fx-spring), padding 1.05s var(--fx-spring), gap 1.05s var(--fx-spring),
-                background-color 1.05s var(--fx-spring), border-radius 1.05s var(--fx-spring);
-  }
-  .nav__brand { transition-duration: 1.05s; }
-  .brand__mark { transition-duration: 1.05s; }
-}
 /* 案例页深色首屏上的顶部导航文字为白色 */
 .nav--light .nav__link { color: #fff; }
 .nav--light .nav__menu { color: #fff; }
