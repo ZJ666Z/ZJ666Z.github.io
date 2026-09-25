@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Z.J. Zhou - Resume</title>
+<style>
+  @font-face { font-family: Montserrat; font-style: normal; font-weight: 400 900; font-display: swap; src: url(../../assets/fonts/montserrat-latin.woff2) format('woff2'); }
+  :root { color-scheme: light; font-family: Montserrat, Arial, sans-serif; color: #1a1a1a; }
+  * { box-sizing: border-box; }
+  body { max-width: 960px; min-height: 1242px; margin: 0 auto; padding: 47px; font-size: 12.55px; line-height: 1.5; }
+  header { display: flex; justify-content: space-between; align-items: start; gap: 28px; }
+  h1 { margin: 0 0 6px; font-size: 56.5px; line-height: 69px; white-space: nowrap; }
+  header p { margin: 0; font-size: 20.4px; line-height: 25px; letter-spacing: 5.1px; }
+  .contact { text-align: right; line-height: 25px; }
+  .contact p { margin: 0; font-size: 12.55px; line-height: 25px; letter-spacing: 0; }
+  a { color: inherit; }
+  main { display: grid; grid-template-columns: minmax(0, 210fr) minmax(0, 312fr); gap: 47px; margin-top: 47px; }
+  .sidebar { order: 1; display: grid; align-content: start; gap: 10px; }
+  .work { order: 2; }
+  h2 { margin: 0 0 6px; padding-bottom: 8px; border-bottom: 1px dotted #777; font-size: 22px; line-height: 27px; }
+  h3 { margin: 0; font-size: 12.55px; line-height: 25px; }
+  p { margin: 0; }
+  ul { margin: 0; padding-left: 18px; }
+  .work li { font-size: 12px; line-height: 19px; }
+  .work li + li { margin-top: 3px; }
+  .entry + .entry { margin-top: 16px; }
+  .meta { display: flex; justify-content: space-between; gap: 12px; line-height: 25px; }
+  .date { flex: none; font-weight: 700; white-space: nowrap; }
+  .education .entry + .entry { margin-top: 3px; }
+  .education .date { display: block; font-weight: 400; }
+  .education .entry { line-height: 24px; }
+  .education ul { line-height: 24px; }
+  .groups { column-count: 2; column-gap: 0; }
+  .group { break-inside: avoid; }
+  .group strong, .group span { display: block; line-height: 23.5px; }
+  @media (max-width: 700px) {
+    body { min-height: 0; padding: 32px 24px; font-size: 13px; line-height: 1.65; }
+    header { display: grid; gap: 18px; }
+    h1 { font-size: clamp(30px, 9vw, 42px); line-height: 48px; }
+    header p { font-size: 13px; line-height: 21px; letter-spacing: .24em; }
+    .contact { text-align: left; }
+    main { grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 36px; }
+    .work { order: 1; }
+    .work li { font-size: 13px; line-height: 21px; }
+    .work li + li { margin-top: 3px; }
+    .sidebar { order: 2; }
+    .entry + .entry { margin-top: 36px; }
+    .meta { flex-wrap: wrap; }
+    .groups { display: block; }
+    .group + .group { margin-top: 10px; }
+  }
+  @media (max-width: 359px) { body { padding-inline: 18px; } .groups { display: block; } .group + .group { margin-top: 10px; } }
+  @media print { body { max-width: none; padding: 0; } h2 { break-after: avoid; } .entry { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Z.J. ZHOU</h1><p>PRODUCT DESIGNER</p></div>
+  <div class="contact"><p><a href="mailto:zijiezhou00@gmail.com">zijiezhou00@gmail.com</a></p><p>Shanghai, China</p><p>+1 (925)5483928 / +086 15900718049</p><p><a href="https://zijiez.me/">https://zijiez.me/</a></p></div>
+</header>
+<main>
+  <aside class="sidebar">
+    <section class="education">
+      <h2>EDUCATION</h2>
+      <article class="entry"><h3>Cornell University</h3><span class="date">August 2024 - May 2026</span><p>Master of Science, Design &amp; Technology</p><ul><li>Cumulative GPA - 4.1</li><li>1 paper published at <strong>NeurIPS 2025</strong></li></ul></article>
+      <article class="entry"><h3>California College of the Arts</h3><span class="date">July 2019 - May 2023</span><p>Bachelor of Fine Arts, Human Computer Interaction</p><p>Computational Practices (Minor)</p><ul><li>Cumulative GPA - 3.953</li><li>Graduated with high distinction</li></ul></article>
+    </section>
+    <section>
+      <h2>TOOLS</h2>
+      <div class="groups">
+        <div class="group"><strong>UX/UI Design Tools:</strong><span>Figma</span><span>Adobe Xd</span><span>Sketch</span><span>Framer</span><span>Lovable / Replit</span><span>Mural / Miro / Fig Jam</span></div>
+        <div class="group"><strong>Adobe Creative Suite:</strong><span>Adobe After Effects</span><span>Adobe Illustrator</span><span>Adobe Premiere Pro</span></div>
+        <div class="group"><strong>Office Tools:</strong><span>Notion</span><span>Lark</span><span>Microsoft / Google Office</span></div>
+        <div class="group"><strong>3D Modeling:</strong><span>Rhino, Grasshopper</span><span>Blender</span><span>Unreal Engine 4</span></div>
+        <div class="group"><strong>Programming Language:</strong><span>JavaScript, HTML, CSS</span><span>Python</span></div>
+      </div>
+    </section>
+    <section>
+      <h2>SKILLS</h2>
+      <div class="groups">
+        <div class="group"><strong>Design / Product:</strong><span>Design Thinking</span><span>Product Strategy</span><span>Persona &amp; User Journey</span><span>Accessibility (WCAG)</span><span>Info. Arch &amp; Wireframing</span><span>Rapid Prototyping</span></div>
+        <div class="group"><strong>Research / UXR:</strong><span>User Research</span><span>Qual &amp; Quant Analysis</span><span>Competitive Analysis</span><span>Heuristic Evaluation</span><span>Usability &amp; User Testing</span><span>A/B Testing</span></div>
+        <div class="group"><strong>Execution:</strong><span>Agile Methodology</span><span>Project Management</span><span>Multithreaded Execution</span><span>Cross-Functional (XFN) Collaboration</span></div>
+        <div class="group"><strong>Engineering &amp; AI:</strong><span>Front-End Dev</span><span>Machine &amp; Deep Learning</span><span>Reinforcement Learning</span><span>Computer Vision (CV)</span></div>
+        <div class="group"><strong>Other:</strong><span>3D Parametric Modeling</span><span>Graphic Design</span></div>
+      </div>
+    </section>
+  </aside>
+  <section class="work">
+    <h2>WORK EXPERIENCE</h2>
+    <article class="entry">
+      <h3>ByteDance / TikTok - Global Payment, [Agentic &amp; E-Comm / LIVE / FinTech]</h3>
+      <p class="meta"><strong>Product Designer - Shanghai, China</strong><span class="date">2026/6 - Now</span></p>
+      <ul>
+        <li><strong>AI-Native Design Workflow:</strong> Owned AI-native workflow strategy, enabling designers to ship production-ready UI code within legacy architecture; cut development cycles <strong>93%</strong>, design QA to <strong>&lt;1 round</strong>, and bugs to single digits.</li>
+        <li><strong>US TikTok AI Agentic Commerce Payment Growth:</strong> Owned payment UX and strategy; lifted Pure / Hybrid UCP Checkout Show → Complete Payment from <strong>10% / 17% to 17% / 25%</strong> (+7pp / +8pp; <strong>+70% / +47.1%</strong>), funnel conversion <strong>10%+</strong>, and payment conversion <strong>70% → 80%</strong>.</li>
+        <li><strong>Owned 3 Global Payment Product Lines:</strong> Led Aggregated, Refund, and Withdrawal Checkout UX across 6+ TikTok business lines, Lark, CapCut, and 25+ products; reused shared capabilities to cut market/channel/payment-method-specific effort <strong>40%+</strong>, saving <strong>5–9 person-days</strong>.</li>
+        <li><strong>TikTok Promote payment Growth:</strong> Identified 18 optimization opportunities and shipped 5 P0–P00 initiatives, raising overall PSR to <strong>88.54%</strong>.</li>
+        <li><strong>UK TikTok Creator Card Conversion Growth:</strong> Led primary-card setup; drove <strong>42K+</strong> impressions and 963 setups in <strong>2 weeks</strong>, with 64.67% uplift, <strong>+145% MoM UV</strong>, and +107% MoM conversions.</li>
+        <li><strong>Cross-Market Payment Capability Reuse:</strong> Scaled reusable payment capabilities across products, expanding payment coverage, success rate, and user trust while reducing duplicate design and compliance / UX risks; raised overall PSR to <strong>89.60%</strong>.</li>
+      </ul>
+    </article>
+    <article class="entry">
+      <h3>ByteDance / TikTok - Global Payment, [E-Commerce / FinTech]</h3>
+      <p class="meta"><strong>Product Design Intern - Shanghai, China</strong><span class="date">Jun 2025 - Aug 2025</span></p>
+      <ul>
+        <li><strong>Cross-Market Insurance Benchmark:</strong> Led research across PH, ID, MY, TH, and the US; captured 800+ end-to-end screens across <strong>9+ competitors</strong>, built a standardized benchmark, and delivered <strong>2 regional reports</strong> supporting MY / TH / US launches and iteration.</li>
+        <li><strong>TikTok Shop Insurance UX Optimization:</strong> Identified <strong>10+ issues</strong> behind GWP / NPS decline; redesigned checkout insurance entry points and benefit visibility and drove <strong>2 P0 initiatives</strong> into the next release, reducing add-on funnel drop-off and improving GWP conversion and NPS.</li>
+      </ul>
+    </article>
+    <article class="entry">
+      <h3>Johnson Controls, [Design System / Infrastructure]</h3>
+      <p class="meta"><strong>UX Design Intern - Milwaukee, WI (Remote)</strong><span class="date">Jul 2022 - Sep 2023</span></p>
+      <ul>
+        <li><strong>0→1 Design System:</strong> Helped build and launch Element Design System (EDS), adopted by <strong>35+ product teams</strong>, improving UX/UI consistency, delivery efficiency, and design quality.</li>
+        <li><strong>Design System Adoption:</strong> Co-defined system principles, led biweekly Figma training &amp; EDS onboarding, and scaled EDS adoption across the organization.</li>
+        <li><strong>Reusable Design Assets:</strong> Built EDS UI Kit &amp; documentation with <strong>6 Design Patterns</strong> and <strong>27 Components</strong>, including data visualization; cut component creation time <strong>42%</strong> and improved Design Token efficiency <strong>65%</strong>.</li>
+        <li><strong>Design Efficiency &amp; Business Impact:</strong> Reduced maintenance time <strong>62%</strong>, freed <strong>26%</strong> more time for product innovation, saved <strong>$800K+</strong>, and delivered <strong>$200K+</strong> average annual net savings.</li>
+      </ul>
+    </article>
+  </section>
+</main>
+</body>
+</html>

@@ -19,8 +19,7 @@
   shell.append(menu);
 
   /* `max-content` snaps instead of interpolating in older browsers. Measure the
-     desktop pill as a pixel width, then slow its longer travel enough to retain
-     the calm, controlled feel of the 390px mobile transition. */
+     desktop pill as a pixel width and keep the longer desktop travel brisk. */
   const syncDesktopCollapseMotion = () => {
     if (window.innerWidth <= 809) {
       nav.style.removeProperty('--nav-collapsed-width');
@@ -42,10 +41,9 @@
     const collapsedWidth = probeShell.getBoundingClientRect().width;
     probe.remove();
 
-    const mobileWidthVelocity = (343 - 108) / .7;
-    const desktopPaceFactor = 2;
-    const duration = Math.min(4.8, Math.max(2.1,
-      ((expandedWidth - collapsedWidth) / mobileWidthVelocity) * desktopPaceFactor));
+    const desktopWidthVelocity = 600;
+    const duration = Math.min(1.2, Math.max(.8,
+      (expandedWidth - collapsedWidth) / desktopWidthVelocity));
     nav.style.setProperty('--nav-collapsed-width', `${Math.ceil(collapsedWidth)}px`);
     nav.style.setProperty('--nav-collapse-duration', `${duration.toFixed(3)}s`);
   };

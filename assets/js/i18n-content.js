@@ -481,6 +481,21 @@ window.ZIJIEZ_I18N_CONTENT = {
         'Scroll down to continue to Problem 2': '继续向下查看问题 2'
       }
     },
+    resume: {
+      meta: {
+        en: { title: 'Resume — Z.J. Zhou', description: "Read Z.J. Zhou's current product design resume in English or Chinese and download PDF, Markdown, or HTML." },
+        zh: { title: '简历 — 周子杰', description: '阅读周子杰最新版中英文产品设计简历，并下载 PDF、Markdown 或 HTML。' }
+      },
+      enToZh: {
+        'Zijie Zhou / CV': '周子杰 / 简历',
+        '下载 PDF 简历': '下载 PDF 简历',
+        '下载 Markdown 简历': '下载 Markdown 简历',
+        '下载 HTML 简历': '下载 HTML 简历',
+        'Product Designer · FinTech · AI-native workflows': '产品设计师 · FinTech · AI-native 设计工作流',
+        'Read online or take it with you.': '在线阅读，也可以随时下载。',
+        'Download the current resume as PDF, Markdown, or standalone HTML.': '当前简历支持下载为 PDF、Markdown 或独立 HTML 文件。'
+      }
+    },
     'tiktok-full': { extends: 'tiktok', enToZh: {} }
   }
 };

@@ -125,7 +125,7 @@
     document.documentElement.lang = locale === 'zh' ? 'zh-CN' : 'en';
     translatableTextNodes().forEach(node => translateTextNode(node, locale));
     document.querySelectorAll('body *').forEach(element => {
-      if (!element.closest('.language-switcher, .image-viewer, .nav__menu')) translateAttributes(element, locale);
+      if (!element.closest('.language-switcher, .image-viewer, .nav__menu, [data-i18n-ignore]')) translateAttributes(element, locale);
     });
     updateMetadata(locale);
     updateSwitcher();
