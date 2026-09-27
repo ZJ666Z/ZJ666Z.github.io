@@ -57,6 +57,10 @@
     register('#main .pill', 'number');
   }
   configurations.delete(document.querySelector('.nav'));
+  // The home intro lands on the hero and brings its content in itself.
+  if (document.documentElement.classList.contains('intro-play')) {
+    document.querySelectorAll('.hero, .hero *').forEach(el => configurations.delete(el));
+  }
 
   document.querySelectorAll('.problem-cards, .impact-cards-row, .impact-cards').forEach(group => {
     [...group.children].forEach((el, i) => {

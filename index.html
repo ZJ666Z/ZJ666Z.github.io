@@ -4,6 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="assets/js/i18n-boot.js"></script>
+<script>
+  /* Decide before first paint whether the home intro plays: once per session,
+     never with reduced motion or a deep link. ?intro=1 forces it, ?intro=0 skips. */
+  (() => {
+    const q = new URLSearchParams(location.search).get('intro');
+    let seen = false;
+    try { seen = sessionStorage.getItem('zijiez-intro') === 'seen'; } catch {}
+    const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (q === '0' || location.hash || (!q && (seen || calm))) return;
+    const root = document.documentElement;
+    root.classList.add('intro-play');
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    setTimeout(() => { if (!window.__zijiezIntroStarted) root.classList.remove('intro-play'); }, 4000);
+  })();
+</script>
 <title>Zijie Zhou — Product Designer</title>
 <meta name="description" content="Zijie Zhou is a product designer at TikTok focused on FinTech, turning data and intuition into measurable product growth.">
 <link rel="canonical" href="https://zj666z.github.io/">
@@ -15,6 +30,7 @@
 <link rel="apple-touch-icon" href="assets/img/favicon-light.svg">
 <link rel="stylesheet" href="assets/css/site.css">
 <link rel="stylesheet" href="assets/css/motion.css">
+<link rel="stylesheet" href="assets/css/intro.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body class="page-home" data-i18n-page="home" data-i18n-source="en">
@@ -229,5 +245,7 @@
 <script src="assets/js/i18n.js" defer></script>
 <script src="assets/js/site.js?v=nav-20260924" defer></script>
 <script src="assets/js/motion.js" defer></script>
+<script src="assets/js/intro-data.js" defer></script>
+<script src="assets/js/intro.js" defer></script>
 </body>
 </html>
