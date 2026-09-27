@@ -257,7 +257,7 @@
 
     const camKey = (t, x, y, w, h, s = SP.cam) => { tl.cam.x.to(t, x, s); tl.cam.y.to(t, y, s); tl.cam.ls.to(t, Math.log(fit(w, h)), s); };
     const first = tiles.get(chapters[0].cell.join(','));
-    tl.cam.x.v0 = first.cx; tl.cam.y.v0 = first.cy; tl.cam.ls.v0 = Math.log(fit(110, 110));
+    tl.cam.x.v0 = first.cx; tl.cam.y.v0 = first.cy; tl.cam.ls.v0 = Math.log(fit(190, 190));
     tl.dot = [first.cx, first.cy];
 
     let prevLeave = 0, prev = null;
@@ -271,7 +271,7 @@
     });
 
     /* finale: skill tiles bloom, every star grows, the stage lands on the card */
-    camKey(F + 0.18, 400, 300, 940, 720, SP.camSlow);
+    camKey(F + 0.12, 400, 300, 940, 720, SP.cam);
     const claimed = new Set(chapters.map(c => c.cell.join(',')));
     const skills = data.finale.map(c => c.join(',')).filter(k => tiles.has(k) && !claimed.has(k));
     for (const k of tiles.keys()) if (!claimed.has(k) && !skills.includes(k)) skills.push(k);
@@ -363,7 +363,7 @@
           small.p.setAttribute('transform', `translate(${cx} ${cy}) scale(1 ${(1 - 0.82 * clamp(wk)).toFixed(3)}) translate(${-cx} ${-cy})`);
         }
       });
-      camKey(S + P, C[0], C[1], BW + 170, BH + 200);
+      camKey(S + P - 0.18, C[0], C[1], BW + 170, BH + 200);
       camKey(S + 2 * P, C[0], C[1], 330, 330);
       takeaway(ctx, S + 3 * P + 0.2);
       TL.cues.push([S, 'pop', 0.8], [S + P, 'bloom', 0.8], [S + 2 * P, 'bloom', 0.6], [wink, 'tick2', 0.7], [S + 3 * P, 'pop', 0.6]);
@@ -540,7 +540,12 @@
       TL.cursor.push({ t0: S + 0.08, t1: click - 0.08, to: ['w', (slots[2][0] + slots[2][1]) / 2 + 8, C[1] + 8] });
       TL.cursor.push({ t0: click + 0.3, t1: ring + 0.5, to: ['s', 0.82, 0.86] });
       TL.press.push([click - 0.04, click + 0.06]);
-      camKey(ctx.arrive, C[0], C[1], TW + 120, 260, SP.fly);
+      // Whip between chapters: breathe out to hold both the folding card and the flying knob, then in on the tabs.
+      if (prev) {
+        const lo = Math.min(prev.C[0] - 240, C[0] - TW / 2), hi = Math.max(prev.C[0] + 240, C[0] + TW / 2);
+        camKey(ctx.arrive + 0.02, (lo + hi) / 2, (prev.C[1] + C[1]) / 2, hi - lo + 60, 320, SP.fly);
+      }
+      camKey(ctx.arrive + 0.3, C[0], C[1], TW + 120, 260, SP.fly);
       camKey(ring, C[0], C[1], 340, 400);
       camKey(code, C[0], C[1], 620, 360);
       takeaway(ctx, fold + SWAP);
@@ -572,9 +577,13 @@
     let x = c.x.at(t), y = c.y.at(t), sc = s;
     const u = land(t - TL.land);
     if (u > 0) {
+      // Land in screen space: the graphic's centre travels in a straight line on screen
+      // while its scale eases in log space, so no tile swings out past the viewport.
       const g = M.graphic, sf = g.w / 800;
-      const fx = (M.vw / 2 - g.x) / sf, fy = (M.vh / 2 - g.y) / sf;
-      sc = Math.exp(lerp(Math.log(s), Math.log(sf), u)); x = lerp(x, fx, u); y = lerp(y, fy, u);
+      const ax = M.vw / 2 + (400 - x) * s, ay = M.vh / 2 + (300 - y) * s;   // graphic centre now
+      const bx = g.x + g.w / 2, by = g.y + g.h / 2;                         // graphic centre on the page
+      sc = Math.exp(lerp(Math.log(s), Math.log(sf), u));
+      x = 400 - (lerp(ax, bx, u) - M.vw / 2) / sc; y = 300 - (lerp(ay, by, u) - M.vh / 2) / sc;
     }
     return { x, y, s: sc };
   }
@@ -635,7 +644,11 @@
         const dx = Math.max(0, Math.abs(tl.cx - c.x) - c.w / 2), dy = Math.max(0, Math.abs(tl.cy - c.y) - c.h / 2);
         under = Math.max(under, 1 - smooth((Math.hypot(dx, dy) - 70) / 90));
       }
-      const dim = 1 - (1 - 0.8 * rest) * (1 - 0.9 * under);
+      const rs = 100 * cam.s, sx = M.vw / 2 + (tl.cx - cam.x) * cam.s, sy = M.vh / 2 + (tl.cy - cam.y) * cam.s;
+      const m = 24;   // start receding a little before the tile touches the edge
+      const cut = Math.max(0, sx + rs + m - M.vw, rs + m - sx, sy + rs + m - M.vh, rs + m - sy) / (2 * rs);
+      const edge = smooth(cut / 0.08) * (1 - smooth((t - TL.F) / 0.3));
+      const dim = 1 - (1 - 0.8 * rest) * (1 - 0.9 * under) * (1 - 0.88 * edge);
       tl.veil.setAttribute('opacity', dim.toFixed(3));
       tl.veil.setAttribute('r', dim > 0.001 && r > 0 ? (Math.min(r, 100) + 1.5).toFixed(2) : 0);
       tl.iconEl.style.opacity = iv.toFixed(3);
@@ -705,7 +718,10 @@
         const v = win(t, c.swap - 0.05, c.swap + 0.85, { din: 0.02, dout: 0.2 });
         fx(c.el, v, 4);
         if (v > 0) {
-          const x = M.vw / 2 + (c.tile.cx - cam.x) * cam.s, y = M.vh / 2 + (c.tile.cy + c.dy * 126 - cam.y) * cam.s;
+          // Stays with its tile, but slides along the edge rather than leaving the screen.
+          const hw = c.el.offsetWidth / 2 + 16, hh = c.el.offsetHeight / 2;
+          const x = clamp(M.vw / 2 + (c.tile.cx - cam.x) * cam.s, hw, M.vw - hw);
+          const y = clamp(M.vh / 2 + (c.tile.cy + c.dy * 126 - cam.y) * cam.s, hh + 20, M.vh - hh - 84);
           c.el.style.transform = `translate(${x.toFixed(2)}px,${y.toFixed(2)}px) translate(-50%,-50%)`;
         }
         continue;
