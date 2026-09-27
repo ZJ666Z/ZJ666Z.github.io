@@ -5,14 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="assets/js/i18n-boot.js"></script>
 <script>
-  /* Decide before first paint whether the home intro plays: once per session,
+  /* Decide before first paint whether the home intro plays on each home refresh;
      never with reduced motion or a deep link. ?intro=1 forces it, ?intro=0 skips. */
   (() => {
     const q = new URLSearchParams(location.search).get('intro');
-    let seen = false;
-    try { seen = sessionStorage.getItem('zijiez-intro') === 'seen'; } catch {}
     const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (q === '0' || location.hash || (!q && (seen || calm))) return;
+    if (q === '0' || location.hash || (!q && calm)) return;
     const root = document.documentElement;
     root.classList.add('intro-play');
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';

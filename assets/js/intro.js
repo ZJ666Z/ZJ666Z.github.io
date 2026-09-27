@@ -798,7 +798,6 @@
   /* ---------- driver ---------- */
   let playing = false, raf = 0, t = 0, rate = 1, warping = false, last = 0, soundOn = false;
   const audio = { ctx: null, buf: null, src: null, loading: null };
-  const SEEN = 'zijiez-intro';
 
   async function startAudio() {
     try {
@@ -861,7 +860,6 @@
     removeEventListener('touchmove', onWheel, { capture: true }); overlay.removeEventListener('pointerdown', onDown);
     removeEventListener('resize', onResize);
     if ('scrollRestoration' in history) history.scrollRestoration = 'auto';
-    try { sessionStorage.setItem(SEEN, 'seen'); } catch {}
     document.dispatchEvent(new CustomEvent('zijiez:introdone'));
   }
 
