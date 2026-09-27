@@ -226,6 +226,8 @@
     <i class="zi__selh"></i><i class="zi__selh"></i><i class="zi__selh"></i><i class="zi__selh"></i><i class="zi__selr"></i><div class="zi__selbadge"></div></div>`);
   world.prepend(tileSvg);
   const hudFill = Q('.zi__fill'), hudHead = Q('.zi__head');
+  // Outside the HUD so the collected list can outlive it as the finale's summary.
+  const skillsEl = Q('.zi__scene').insertBefore(make('<div class="zi__skills"></div>'), cursorEl);
   const capYear = swapper(Q('.zi__year .zi-sw'), 6), capText = swapper(Q('.zi__captext .zi-sw'), 6);
 
   function measure() {
@@ -245,9 +247,9 @@
       cam: { x: new Track(0), y: new Track(0), ls: new Track(0) },
       actors: actors.map(() => ({ x: new Track(0), y: new Track(0), w: new Track(0), h: new Track(0), r: new Track(0), col: new ColorTrack(WHITE), vis: [] })),
       knob: { e: [0, 1, 2, 3].map(() => new Track(0)), col: new ColorTrack(WHITE), vis: [] },
-      layers: [], updates: [], cursor: [], press: [], cues: [], caps: [], tiles: new Map(), stars: [],
+      layers: [], updates: [], cursor: [], press: [], cues: [], caps: [], tiles: new Map(), stars: [], chips: [],
     };
-    actors.forEach(a => (a.inner.innerHTML = '')); topEl.innerHTML = '';
+    actors.forEach(a => (a.inner.innerHTML = '')); topEl.innerHTML = ''; skillsEl.innerHTML = '';
     let S = 0; const starts = [];
     chapters.forEach(ch => { starts.push(S); S += ch.beats * BEAT; });
     const F = tl.F = S;
@@ -261,7 +263,7 @@
     let prevLeave = 0, prev = null;
     chapters.forEach((ch, i) => {
       const tile = tiles.get(ch.cell.join(','));
-      const ctx = { ch, i, S: starts[i], E: starts[i] + ch.beats * BEAT, A: tl.actors[i % 2], el: actors[i % 2], tile, C: [tile.cx, tile.cy], prev, arrive: prevLeave, camKey };
+      const ctx = { ch, i, S: starts[i], E: starts[i] + ch.beats * BEAT, A: tl.actors[i % 2], el: actors[i % 2], tile, C: [tile.cx, tile.cy], prev, next: chapters[i + 1], arrive: prevLeave, camKey };
       const out = scenes[ch.scene](ctx);
       tl.tiles.set(tile.key, { appear: out.swap, iconBlur: out.iconBlur !== false });
       tl.caps.push([ctx.S, ch.year, L(ch.caption)]);
@@ -306,138 +308,172 @@
     return el;
   };
   const pos = (x, y) => `left:${x}px;top:${y}px`;
+  const logoImg = (src, w) => `<img class="zi-logo" src="${esc(src)}" alt="" style="width:${w}px">`;
+  const badgeSize = lg => { const h = lg.w / lg.ratio; return [lg.w + 112, Math.max(124, h + 56)]; };
+
+  // Beat one of a chapter: its tile blooms as a badge saying who it was with.
+  // Returns the time the UI may unfold from it.
+  function badge(ctx) {
+    const { A, S, C, ch } = ctx, lg = ch.logo;
+    if (!lg) return S;
+    const [W, H] = badgeSize(lg);
+    bloomTo(A, S, C, W, H, H / 2, WHITE);
+    layer(ctx, `<div class="zi-a zi-c" style="${pos(C[0], C[1])}">${logoImg(lg.src, lg.w)}</div>`, S, S + BEAT, { din: 0.06, dout: 0.1 });
+    ctx.camKey(ctx.arrive, C[0], C[1], W + 170, H + 200);
+    TL.cues.push([S, 'bloom', 0.8]);
+    return S + BEAT;
+  }
+  // Beat two: the badge (or nothing) unfolds into the UI surface.
+  const unfold = (ctx, U, w, h, r, col) => {
+    const { A, C } = ctx;
+    if (ctx.ch.logo) { A.w.to(U, w); A.h.to(U, h); A.r.to(U, r); A.col.to(U, col); } else bloomTo(A, U, C, w, h, r, col);
+  };
+  // Last beat: as the chapter settles into its tile, name what the tile stands for,
+  // then collect that name into the list of what the career has added up to.
+  function takeaway(ctx, swap) {
+    const { ch, tile, next } = ctx;
+    if (!ch.takeaway) return;
+    let dy = 1;
+    if (next) { const n = tiles.get(next.cell.join(',')), vx = n.cx - tile.cx, vy = n.cy - tile.cy; if (vy > 0 && Math.abs(vy) >= Math.abs(vx)) dy = -1; }
+    const el = add(skillsEl, `<div class="zi-take"><i></i>${esc(L(ch.takeaway))}</div>`);
+    TL.chips.push({ el, swap, tile, dy, i: TL.chips.length });
+  }
 
   const scenes = {
-    /* 2019 — the dot of the logo becomes a face: human-computer interaction */
+    /* 2019 — the dot of the logo, the school, then a face: human-centered HCI */
     hello(ctx) {
-      const { A, S, C, tile, camKey } = ctx, P = BEAT;
-      A.x.set(-1, C[0]); A.y.set(-1, C[1]);
-      A.w.set(-1, 0).to(S, 16, SP.pop).to(S + P, 200, SP.shape);
-      A.h.set(-1, 0).to(S, 16, SP.pop).to(S + P, 200, SP.shape).to(S + 2 * P - 0.02, 184, SP.press).to(S + 2 * P + 0.1, 200, SP.fast);
-      A.r.set(-1, 999); A.col.set(-1, WHITE).to(S + 3 * P, tile.color);
+      const { A, S, C, tile, camKey, ch } = ctx, P = BEAT, lg = ch.logo;
+      const [BW, BH] = lg ? badgeSize(lg) : [200, 200];
+      A.x.set(-1, C[0]); A.y.set(-1, C[1]); A.r.set(-1, 999); A.col.set(-1, WHITE).to(S + 3 * P, tile.color);
+      A.w.set(-1, 0).to(S, 16, SP.pop).to(S + P, BW, SP.shape).to(S + 2 * P, 200, SP.shape);
+      A.h.set(-1, 0).to(S, 16, SP.pop).to(S + P, BH, SP.shape).to(S + 2 * P, 200, SP.shape);
       A.vis.push([S, S + 3 * P + 0.2, tile.key]);
-      const icon = layer(ctx, `<svg class="zi__cicon" viewBox="0 0 800 600" width="800" height="600" style="${pos(0, 0)}">${tile.iconMarkup}</svg>`, S + P + 0.06, null, { blur: 6 });
-      // The right eye winks on the beat.
-      const small = [...icon.querySelectorAll('path')].map(p => ({ p, b: tile.icon[[...icon.querySelectorAll('path')].indexOf(p)].b }))
-        .filter(o => o.b.width < 14 && o.b.height < 16).sort((a, b) => b.b.x - a.b.x)[0];
+      if (lg) layer(ctx, `<div class="zi-a zi-c" style="${pos(C[0], C[1])}">${logoImg(lg.src, lg.w)}</div>`, S + P, S + 2 * P, { din: 0.08, dout: 0.1 });
+      const icon = layer(ctx, `<svg class="zi__cicon" viewBox="0 0 800 600" width="800" height="600" style="${pos(0, 0)}">${tile.iconMarkup}</svg>`, S + 2 * P + 0.06, null, { blur: 6 });
+      // The right eye winks on the off-beat.
+      const paths = [...icon.querySelectorAll('path')];
+      const small = paths.map((p, k) => ({ p, b: tile.icon[k].b })).filter(o => o.b.width < 14 && o.b.height < 16).sort((a, b) => b.b.x - a.b.x)[0];
+      const wink = S + 2.5 * P;
       TL.updates.push(t => {
         const on = step(t - (S + 3 * P), SP.color);
         icon.style.color = rgb(INK.map((c, i) => lerp(c, 255, on)));
         if (small) {
-          const wk = step(t - (S + 2 * P - 0.03), SP.press) - step(t - (S + 2 * P + 0.12), SP.fast);
+          const wk = step(t - (wink - 0.03), SP.press) - step(t - (wink + 0.12), SP.fast);
           const cx = small.b.x + small.b.width / 2, cy = small.b.y + small.b.height / 2;
           small.p.setAttribute('transform', `translate(${cx} ${cy}) scale(1 ${(1 - 0.82 * clamp(wk)).toFixed(3)}) translate(${-cx} ${-cy})`);
         }
       });
-      camKey(S + P, C[0], C[1], 330, 330);
-      TL.cues.push([S, 'pop', 0.8], [S + P, 'bloom', 0.8], [S + 2 * P, 'tick2', 0.7], [S + 3 * P, 'pop', 0.6]);
+      camKey(S + P, C[0], C[1], BW + 170, BH + 200);
+      camKey(S + 2 * P, C[0], C[1], 330, 330);
+      takeaway(ctx, S + 3 * P + 0.2);
+      TL.cues.push([S, 'pop', 0.8], [S + P, 'bloom', 0.8], [S + 2 * P, 'bloom', 0.6], [wink, 'tick2', 0.7], [S + 3 * P, 'pop', 0.6]);
       return { swap: S + 3 * P + 0.2, leave: S + 3 * P, iconBlur: false };
     },
 
     /* 2022 — a component snaps back to its design token */
     token(ctx) {
-      const { A, S, C, tile, camKey, ch } = ctx, P = BEAT, cp = ch.copy;
+      const { A, C, tile, camKey, ch } = ctx, P = BEAT, cp = ch.copy;
+      const U = badge(ctx);
       const W = 440, H = 260, x0 = C[0] - W / 2, y0 = C[1] - H / 2, x1 = x0 + W;
-      bloomTo(A, S, C, W, H, cp.tokenFrom[1], WHITE);
-      const grab = S + 0.42, rel = S + 2 * P, dFrom = 12 + 1.2 * cp.tokenFrom[1], dTo = 12 + 1.2 * 41;
+      unfold(ctx, U, W, H, cp.tokenFrom[1], WHITE);
+      const grab = U + 0.42, rel = U + 2 * P, tout = U + 3 * P, dFrom = 12 + 1.2 * cp.tokenFrom[1], dTo = 12 + 1.2 * 41;
       A.r.to(rel, cp.tokenTo[1], SP.snap);
-      foldTo(A, S + 3 * P, tile.color);
-      A.vis.push([S, S + 3 * P + SWAP, tile.key]);
+      foldTo(A, tout, tile.color);
+      A.vis.push([ctx.S, tout + SWAP, tile.key]);
       TL.dsDrag = { grab, rel, x0, y0, x1, y1: y0 + H, dFrom, rTo: cp.tokenTo[1], rFrom: cp.tokenFrom[1], W, H, actor: ctx.i % 2 };
-      const tout = S + 3 * P;
-      layer(ctx, `<div class="zi-a zi-tag" style="${pos(x0 + 32, y0 + 32)}">${esc(L(cp.tag))}</div>`, S, tout);
-      layer(ctx, `<div class="zi-a zi-h1" style="${pos(x0 + 32, y0 + 54)}">${esc(cp.title)}</div>`, S, tout);
-      layer(ctx, `<div class="zi-a zi-sub" style="${pos(x0 + 32, y0 + 104)}">${esc(L(cp.sub))}</div>`, S, tout);
-      const chip = layer(ctx, `<div class="zi-a zi-chip" style="${pos(x0 + 32, y0 + 190)}"><span class="zi-sw"><span></span><span></span></span></div>`, S, tout);
+      layer(ctx, `<div class="zi-a zi-tag" style="${pos(x0 + 32, y0 + 32)}">${esc(L(cp.tag))}</div>`, U, tout);
+      layer(ctx, `<div class="zi-a zi-h1" style="${pos(x0 + 32, y0 + 54)}">${esc(cp.title)}</div>`, U, tout);
+      layer(ctx, `<div class="zi-a zi-sub" style="${pos(x0 + 32, y0 + 104)}">${esc(L(cp.sub))}</div>`, U, tout);
+      const chip = layer(ctx, `<div class="zi-a zi-chip" style="${pos(x0 + 32, y0 + 190)}"><span class="zi-sw"><span></span><span></span></span></div>`, U, tout);
       const chipSw = swapper(chip.firstElementChild, 6);
       const tokenHtml = ([n, v]) => `${esc(n)} <span class="zi-dim">· ${v}</span>`;
-      chipSw.set([[S, tokenHtml(cp.tokenFrom)], [grab, '__live__'], [rel, tokenHtml(cp.tokenTo)]]);
+      chipSw.set([[U, tokenHtml(cp.tokenFrom)], [grab, '__live__'], [rel, tokenHtml(cp.tokenTo)]]);
       layer(ctx, `<div class="zi-a zi-stat" style="${pos(x0 + 408, y0 + 176)}"><b>${esc(cp.stat)}</b><span>${esc(L(cp.statSub))}</span></div>`, rel, tout, { din: 0.04 });
       TL.updates.push(t => {
-        if (t < S - 0.1 || t > tout + 0.3) return;
+        if (t < U - 0.1 || t > tout + 0.3) return;
         chipSw(t);
         const [a, b] = chip.firstElementChild.children;
         if (t >= grab && t < rel) b.innerHTML = `radius <span class="zi-dim">· ${Math.round(TL.rNow)}</span>`;
         if (a.innerHTML.includes('__live__')) a.innerHTML = `radius <span class="zi-dim">· 41</span>`;
         chip.firstElementChild.style.width = lerp(a.offsetWidth, b.offsetWidth, +b.style.opacity || 0) + 'px';
       });
-      TL.selWin = [S + 0.08, tout];
-      TL.cursor.push({ t0: S - 0.1, t1: grab - 0.04, to: ['w', x1 - dFrom, y0 + dFrom] });
-      TL.cursor.push({ t0: S + P, t1: S + P + 0.4, to: ['w', x1 - dTo, y0 + dTo] });
-      TL.cursor.push({ t0: S + 2 * P + 0.24, t1: S + 3 * P + 0.3, to: ['s', 0.8, 0.84] });
+      TL.selWin = [U + 0.08, tout];
+      TL.cursor.push({ t0: U - 0.1, t1: grab - 0.04, to: ['w', x1 - dFrom, y0 + dFrom] });
+      TL.cursor.push({ t0: U + P, t1: U + P + 0.4, to: ['w', x1 - dTo, y0 + dTo] });
+      TL.cursor.push({ t0: U + 2 * P + 0.24, t1: U + 3 * P + 0.3, to: ['s', 0.8, 0.84] });
       TL.press.push([grab, rel]);
-      TL.cursorIn = S - 0.12;
-      camKey(ctx.arrive, C[0], C[1], W + 90, H + 110);
-      TL.cues.push([S, 'bloom', 0.8], [grab, 'click', 0.5], [rel, 'tick2', 0.9], [rel + 0.02, 'chime', 0.5], [S + 3 * P, 'pop', 0.6]);
-      return { swap: S + 3 * P + SWAP, leave: S + 3 * P };
+      TL.cursorIn = U - 0.12;
+      camKey(U, C[0], C[1], W + 90, H + 110);
+      takeaway(ctx, tout + SWAP);
+      TL.cues.push([U, 'bloom', 0.7], [grab, 'click', 0.5], [rel, 'tick2', 0.9], [rel + 0.02, 'chime', 0.5], [tout, 'pop', 0.6]);
+      return { swap: tout + SWAP, leave: tout };
     },
 
-    /* 2024 — a notification: the paper gets in */
+    /* 2024 — the school, then the notification: the paper gets in */
     toast(ctx) {
-      const { A, S, C, tile, camKey, ch } = ctx, P = BEAT, cp = ch.copy;
-      const W = 430, H = 88, x0 = C[0] - W / 2;
-      bloomTo(A, S, C, W, H, 44, WHITE);
-      const fold = S + 1.5 * P, acc = S + P;
+      const { A, C, tile, camKey, ch } = ctx, P = BEAT, cp = ch.copy;
+      const U = badge(ctx);
+      const W = 440, H = 92, x0 = C[0] - W / 2, acc = U + P, fold = U + 1.5 * P;
+      unfold(ctx, U, W, H, 46, WHITE);
       foldTo(A, fold, tile.color);
-      A.vis.push([S, fold + SWAP, tile.key]);
-      const badge = layer(ctx, `<div class="zi-a zi-badge" style="${pos(x0 + 16, C[1] - 28)}"><svg viewBox="0 0 24 24" width="24" height="24" class="zi-ico"><path class="zi-doc" d="M8 4h6l4 4v11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z M10 12h5 M10 15.5h5"/><path class="zi-chk" pathLength="1" d="M6.5 12.5l3.6 3.6L17.5 8.6"/></svg></div>`, S, fold);
-      const t1 = layer(ctx, `<div class="zi-a zi-l zi-toastt" style="${pos(x0 + 86, C[1] - 11)}"><span class="zi-sw"><span></span><span></span></span></div>`, S, fold);
-      const t2 = layer(ctx, `<div class="zi-a zi-l zi-toasts" style="${pos(x0 + 86, C[1] + 13)}"><span class="zi-sw"><span></span><span></span></span></div>`, S, fold);
-      const s1 = swapper(t1.firstElementChild, 7), s2 = swapper(t2.firstElementChild, 7);
-      s1.set([[S, esc(L(cp.first[0]))], [acc, esc(L(cp.second[0]))]]);
-      s2.set([[S, esc(L(cp.first[1]))], [acc, esc(L(cp.second[1]))]]);
+      A.vis.push([ctx.S, fold + SWAP, tile.key]);
+      layer(ctx, `<div class="zi-a zi-l zi-mark" style="${pos(x0 + 14, C[1])}">${logoImg(cp.mark, 84)}</div>`, U, fold, { din: 0.06 });
+      const title = layer(ctx, `<div class="zi-a zi-toastt" style="${pos(x0 + 132, C[1] - 21)}">${esc(L(cp.title))}<svg class="zi-okay" viewBox="0 0 20 20" width="20" height="20"><circle cx="10" cy="10" r="10"/><path pathLength="1" d="M5.6 10.4l2.9 2.9 5.9-6"/></svg></div>`, U, fold, { din: 0.06 });
+      layer(ctx, `<div class="zi-a zi-toasts" style="${pos(x0 + 132, C[1] + 6)}">${esc(L(cp.sub))}</div>`, U, fold, { din: 0.1 });
+      const ok = title.querySelector('svg');
       TL.updates.push(t => {
-        if (t < S - 0.1 || t > fold + 0.3) return;
-        s1(t); s2(t);
-        const on = step(t - acc, SP.fast);
-        badge.querySelector('.zi-doc').style.opacity = 1 - on;
-        const ck = badge.querySelector('.zi-chk');
-        ck.style.strokeDasharray = '1 1'; ck.style.strokeDashoffset = (1 - sweepEase(clamp((t - acc) / 0.28))).toFixed(4);
-        badge.style.background = rgb(INK.map((c, i) => lerp(c, ACC[i], on)));
+        if (t < U - 0.1 || t > fold + 0.3) return;
+        const k = step(t - acc, SP.pop);
+        ok.style.transform = `scale(${clamp(k, 0, 1.2).toFixed(3)})`;
+        ok.querySelector('path').style.strokeDashoffset = (1 - sweepEase(clamp((t - acc - 0.05) / 0.22))).toFixed(4);
       });
-      camKey(ctx.arrive, C[0], C[1], W + 120, 260);
-      TL.cues.push([S, 'bloom', 0.7], [acc, 'chime', 0.9], [fold, 'pop', 0.55]);
+      camKey(U, C[0], C[1], W + 120, 260);
+      takeaway(ctx, fold + SWAP);
+      TL.cues.push([U, 'bloom', 0.6], [acc, 'chime', 0.9], [fold, 'pop', 0.55]);
       return { swap: fold + SWAP, leave: fold };
     },
 
-    /* 2025 — insurance you can tell apart from the warranty, switched on */
+    /* 2025 — TikTok checkout: insurance you can tell apart from the warranty, switched on */
     toggle(ctx) {
-      const { A, S, E, C, camKey, ch } = ctx, P = BEAT, cp = ch.copy;
-      const W = 460, H = 172, x0 = C[0] - W / 2, y0 = C[1] - H / 2;
-      bloomTo(A, S, C, W, H, 26, WHITE);
-      A.vis.push([S, E + SWAP, ctx.tile.key]);
+      const { A, E, C, camKey, ch } = ctx, P = BEAT, cp = ch.copy;
+      const U = badge(ctx);
+      const W = 460, H = 214, x0 = C[0] - W / 2, y0 = C[1] - H / 2, ry = y0 + 52;
+      unfold(ctx, U, W, H, 26, WHITE);
+      A.vis.push([ctx.S, E + SWAP, ctx.tile.key]);
       foldTo(A, E, ctx.tile.color);
-      const icon = layer(ctx, `<div class="zi-a zi-itile" style="${pos(x0 + 24, y0 + 22)}"><svg class="zi-ico zi-sa" viewBox="0 0 24 24" width="22" height="22"><path d="M12 3l7 3v5.2c0 4.3-2.9 7.9-7 9.8-4.1-1.9-7-5.5-7-9.8V6l7-3z"/></svg><svg class="zi-ico zi-sb" viewBox="0 0 24 24" width="22" height="22"><path d="M12 3l7 3v5.2c0 4.3-2.9 7.9-7 9.8-4.1-1.9-7-5.5-7-9.8V6l7-3z"/><path d="M9 12.2l2.2 2.2L15.2 10"/></svg></div>`, S, E);
-      layer(ctx, `<div class="zi-a zi-t16" style="${pos(x0 + 82, y0 + 24)}">${esc(L(cp.title))}</div>`, S, E);
-      layer(ctx, `<div class="zi-a zi-t13" style="${pos(x0 + 82, y0 + 49)}">${esc(L(cp.sub))}</div>`, S, E);
-      const price = layer(ctx, `<div class="zi-a zi-r zi-t15" style="${pos(x0 + 372, y0 + 44)}">${esc(cp.price)}</div>`, S, E);
-      const track = layer(ctx, `<div class="zi-a zi-toggle" style="${pos(x0 + 384, y0 + 28)}"></div>`, S, E);
-      layer(ctx, `<div class="zi-a zi-rule" style="${pos(x0 + 24, y0 + 94)};width:${W - 48}px"></div>`, S, E);
-      layer(ctx, `<div class="zi-a zi-l zi-t14d" style="${pos(x0 + 24, y0 + 134)}">${esc(L(cp.foot))}</div>`, S, E);
-      layer(ctx, `<div class="zi-a zi-r zi-t14" style="${pos(x0 + W - 24, y0 + 134)}">${esc(L(cp.footValue))}</div>`, S, E);
-      const on0 = S + P;
+      layer(ctx, `<div class="zi-a zi-l" style="${pos(x0 + 24, y0 + 30)}">${logoImg(cp.brand, cp.brandW ?? 104)}</div>`, U, E);
+      layer(ctx, `<div class="zi-a zi-r zi-t12" style="${pos(x0 + W - 24, y0 + 30)}">${esc(L(cp.context))}</div>`, U, E);
+      layer(ctx, `<div class="zi-a zi-rule" style="${pos(x0 + 24, y0 + 56)};width:${W - 48}px"></div>`, U, E);
+      const icon = layer(ctx, `<div class="zi-a zi-itile" style="${pos(x0 + 24, ry + 22)}"><svg class="zi-ico zi-sa" viewBox="0 0 24 24" width="22" height="22"><path d="M12 3l7 3v5.2c0 4.3-2.9 7.9-7 9.8-4.1-1.9-7-5.5-7-9.8V6l7-3z"/></svg><svg class="zi-ico zi-sb" viewBox="0 0 24 24" width="22" height="22"><path d="M12 3l7 3v5.2c0 4.3-2.9 7.9-7 9.8-4.1-1.9-7-5.5-7-9.8V6l7-3z"/><path d="M9 12.2l2.2 2.2L15.2 10"/></svg></div>`, U, E);
+      layer(ctx, `<div class="zi-a zi-t16" style="${pos(x0 + 82, ry + 24)}">${esc(L(cp.title))}</div>`, U, E);
+      layer(ctx, `<div class="zi-a zi-t13" style="${pos(x0 + 82, ry + 49)}">${esc(L(cp.sub))}</div>`, U, E);
+      const price = layer(ctx, `<div class="zi-a zi-r zi-t15" style="${pos(x0 + 372, ry + 44)}">${esc(cp.price)}</div>`, U, E);
+      const track = layer(ctx, `<div class="zi-a zi-toggle" style="${pos(x0 + 384, ry + 28)}"></div>`, U, E);
+      layer(ctx, `<div class="zi-a zi-rule" style="${pos(x0 + 24, ry + 94)};width:${W - 48}px"></div>`, U, E);
+      layer(ctx, `<div class="zi-a zi-l zi-t14d" style="${pos(x0 + 24, ry + 128)}">${esc(L(cp.foot))}</div>`, U, E);
+      layer(ctx, `<div class="zi-a zi-r zi-t14" style="${pos(x0 + W - 24, ry + 128)}">${esc(L(cp.footValue))}</div>`, U, E);
+      const on0 = U + P;
       TL.updates.push(t => {
-        if (t < S - 0.1 || t > E + 0.3) return;
-        const on = step(t - on0, SP.fast);
-        const hover = step(t - (on0 - 0.06), SP.fast);
+        if (t < U - 0.1 || t > E + 0.3) return;
+        const on = step(t - on0, SP.fast), hover = step(t - (on0 - 0.06), SP.fast);
         track.style.background = rgb([230, 229, 233].map((c, i) => lerp(lerp(c, c - 18, hover), ACC[i], on)));
         icon.querySelector('.zi-sa').style.opacity = 1 - on; icon.querySelector('.zi-sb').style.opacity = on;
         price.style.color = rgb([138, 138, 143].map((c, i) => lerp(c, INK[i], on)));
       });
       // The knob is its own element so it can leave this chapter as the next one's tab indicator.
-      const K = TL.knob, off = [x0 + 387, x0 + 413, y0 + 31, y0 + 57], onb = [x0 + 407, x0 + 433, y0 + 31, y0 + 57];
-      K.e.forEach((tr, e) => { tr.set(S - 0.001, off[e]); tr.to(on0, onb[e], [SP.trail, SP.lead, SP.fast, SP.fast][e]); });
-      K.col.set(S - 0.001, WHITE);
-      K.vis.push([S + 0.06, null]); K.shadow = [S, E];
-      TL.knobOn = onb;
-      TL.cursor.push({ t0: S + 0.02, t1: on0 - 0.08, to: ['w', x0 + 416, y0 + 48] });
+      const K = TL.knob, off = [x0 + 387, x0 + 413, ry + 31, ry + 57], onb = [x0 + 407, x0 + 433, ry + 31, ry + 57];
+      K.e.forEach((tr, e) => { tr.set(U - 0.001, off[e]); tr.to(on0, onb[e], [SP.trail, SP.lead, SP.fast, SP.fast][e]); });
+      K.col.set(U - 0.001, WHITE);
+      K.vis.push([U + 0.06, null]); K.shadow = [U, E];
+      TL.cursor.push({ t0: U + 0.02, t1: on0 - 0.08, to: ['w', x0 + 416, ry + 48] });
       TL.press.push([on0 - 0.04, on0 + 0.06]);
-      camKey(ctx.arrive, C[0], C[1], W + 110, H + 120);
-      TL.cues.push([S, 'bloom', 0.8], [on0 - 0.04, 'click', 0.6], [on0, 'toggle', 1]);
+      camKey(U, C[0], C[1], W + 110, H + 120);
+      takeaway(ctx, E + SWAP);
+      TL.cues.push([U, 'bloom', 0.7], [on0 - 0.04, 'click', 0.6], [on0, 'toggle', 1]);
       return { swap: E + SWAP, leave: E, knob: true };
     },
 
-    /* 2026 — three checkout lines, conversion lifted, then the designer ships the code */
+    /* 2026 — same team, full time: three checkout lines, conversion lifted, then the designer ships code */
     payments(ctx) {
       const { A, S, C, tile, camKey, ch, prev } = ctx, P = BEAT, cp = ch.copy;
       const TW = 420, TH = 72, tx0 = C[0] - TW / 2, slots = [0, 1, 2].map(k => [tx0 + 6 + 136 * k, tx0 + 142 + 136 * k]);
@@ -456,6 +492,13 @@
       K.e.forEach((tr, e) => tr.to(ring, dot[e], SP.fast));
       K.col.to(ring, ACC2);
       K.vis[K.vis.length - 1][1] = ring + 0.2;
+      // Who this is for: the brand rides above whatever surface is showing.
+      const brand = layer(ctx, `<div class="zi-a zi-c zi-brand">${logoImg(cp.brand, cp.brandW ?? 20)}${cp.brandText ? `<span>${esc(L(cp.brandText))}</span>` : ''}</div>`, tabsAt + 0.06, fold, { top: true });
+      TL.updates.push(t => {
+        if (t < tabsAt - 0.1 || t > fold + 0.3) return;
+        const top = A.y.at(t) - Math.max(0, A.h.at(t)) / 2;
+        brand.style.left = C[0] + 'px'; brand.style.top = (top - 30) + 'px';
+      });
       // Tabs: base labels, and ink labels clipped by the moving indicator.
       const labels = cp.tabs.map(L);
       layer(ctx, `<div class="zi-a" style="${pos(0, 0)}">${labels.map((l, k) => `<div class="zi-a zi-c zi-tab" style="${pos((slots[k][0] + slots[k][1]) / 2, C[1])}">${esc(l)}</div>`).join('')}</div>`, tabsAt, ring, { din: 0.08 });
@@ -486,11 +529,10 @@
       const bar = layer(ctx, `<div class="zi-a zi-compile" style="${pos(ex0, ey0)}"></div>`, run, fold + 0.05, { din: 0 });
       TL.updates.push(t => {
         if (t < code - 0.1 || t > fold + 0.3) return;
-        const spans = typed.querySelectorAll('span:not(.zi-tabkey)');
-        spans.forEach((s, k) => { const u = clamp((t - typeT - k * 0.026) / 0.05); s.style.opacity = u; });
+        typed.querySelectorAll('span:not(.zi-tabkey)').forEach((s, k) => { s.style.opacity = clamp((t - typeT - k * 0.026) / 0.05); });
         const tab = typed.querySelector('.zi-tabkey');
-        const tv = clamp((t - ghostT) / 0.08) * (1 - clamp((t - acceptT - 0.08) / 0.1));
-        tab.style.opacity = tv; tab.style.transform = `scale(${1 - 0.12 * (step(t - acceptT + 0.03, SP.press) - step(t - acceptT - 0.06, SP.fast))})`;
+        tab.style.opacity = clamp((t - ghostT) / 0.08) * (1 - clamp((t - acceptT - 0.08) / 0.1));
+        tab.style.transform = `scale(${1 - 0.12 * (step(t - acceptT + 0.03, SP.press) - step(t - acceptT - 0.06, SP.fast))})`;
         ghost.classList.toggle('zi-ghost', t < acceptT);
         runKey.style.transform = `translate(-100%,0) scale(${1 - 0.12 * (step(t - run + 0.03, SP.press) - step(t - run - 0.06, SP.fast))})`;
         bar.style.width = (540 * sweepEase(clamp((t - run) / 0.16))) + 'px';
@@ -498,9 +540,10 @@
       TL.cursor.push({ t0: S + 0.08, t1: click - 0.08, to: ['w', (slots[2][0] + slots[2][1]) / 2 + 8, C[1] + 8] });
       TL.cursor.push({ t0: click + 0.3, t1: ring + 0.5, to: ['s', 0.82, 0.86] });
       TL.press.push([click - 0.04, click + 0.06]);
-      camKey(ctx.arrive, C[0], C[1], TW + 120, 220, SP.fly);
-      camKey(ring, C[0], C[1], 330, 330);
-      camKey(code, C[0], C[1], 610, 300);
+      camKey(ctx.arrive, C[0], C[1], TW + 120, 260, SP.fly);
+      camKey(ring, C[0], C[1], 340, 400);
+      camKey(code, C[0], C[1], 620, 360);
+      takeaway(ctx, fold + SWAP);
       TL.cues.push([S, 'sweep', 0.6], [tabsAt, 'bloom', 0.6], [click - 0.04, 'click', 0.6], [click, 'tick', 0.8], [ring, 'pop', 0.6], [a1, 'sweep', 0.5],
         ...[...cp.code[0]].map((c, k) => [typeT + k * 0.026, 'key', 0.45]), [acceptT, 'key', 0.8], [run, 'enter', 0.9], [fold, 'pop', 0.6]);
       return { swap: fold + SWAP, leave: run };
@@ -512,6 +555,11 @@
     const line = Q('.zi__line');
     line.querySelectorAll('.zi__tick').forEach(n => n.remove());
     TL.years.forEach((y, i) => add(line, `<div class="zi__tick" style="left:${(i / (TL.years.length - 1)) * 100}%"><i></i><span>${esc(y)}</span></div>`));
+    const show = { caption: false, timeline: false, skipText: false, collect: false, ...data.hud };
+    Q('.zi__cap').hidden = !show.caption;
+    Q('.zi__line').hidden = !show.timeline;
+    Q('.zi__skiptext').hidden = !show.skipText;
+    TL.collect = show.collect;
     Q('.zi__skiptext').textContent = L(matchMedia('(hover: none)').matches ? data.ui.skipTouch : data.ui.skip);
     Q('.zi__esc').textContent = L(data.ui.esc);
     Q('.zi__soundtext').textContent = L(data.ui.sound);
@@ -651,6 +699,27 @@
     fx(hud, hv, 4); fx(skipEl, win(t, 0.6, F + 0.72, { dout: 0.22 }), 4);
     soundBtn.style.opacity = hv.toFixed(3); soundBtn.style.visibility = hv < 0.01 ? 'hidden' : 'visible';
     capYear(t); capText(t);
+    // Takeaways: pinned under their tile for a moment, then collected into the corner list.
+    for (const c of TL.chips) {
+      if (!TL.collect) {
+        const v = win(t, c.swap - 0.05, c.swap + 0.85, { din: 0.02, dout: 0.2 });
+        fx(c.el, v, 4);
+        if (v > 0) {
+          const x = M.vw / 2 + (c.tile.cx - cam.x) * cam.s, y = M.vh / 2 + (c.tile.cy + c.dy * 126 - cam.y) * cam.s;
+          c.el.style.transform = `translate(${x.toFixed(2)}px,${y.toFixed(2)}px) translate(-50%,-50%)`;
+        }
+        continue;
+      }
+      const v = win(t, c.swap - 0.05, F + 1.08, { din: 0.02, dout: 0.18 });   // stays through the fusion as the summary
+      fx(c.el, v, 4);
+      if (v <= 0) continue;
+      const c0 = camAt(c.swap);   // launch from where the tile was stamped, not where the camera has moved it
+      const sx = M.vw / 2 + (c.tile.cx - c0.x) * c0.s, sy = M.vh / 2 + (c.tile.cy + c.dy * 126 - c0.y) * c0.s;
+      const [ex, ey, ax] = M.portrait ? [20, 92 + c.i * 34, 0] : [M.vw - 32, 26 + c.i * 38, -100];
+      const pin = c.swap > F ? 0.06 : 0.35;   // the last one is stamped in the finale: collect it right away
+      const k = moveEase(clamp((t - c.swap - pin) / 0.45));
+      c.el.style.transform = `translate(${lerp(sx, ex, k).toFixed(2)}px,${lerp(sy, ey, k).toFixed(2)}px) translate(${lerp(-50, ax, k).toFixed(2)}%,${lerp(-50, 0, k).toFixed(2)}%) scale(${lerp(1, 0.88, k).toFixed(3)})`;
+    }
     let p = 0; const S = TL.starts;
     for (let i = 0; i < S.length - 1; i++) if (t >= S[i]) p = i + clamp((t - S[i]) / (S[i + 1] - S[i]));
     if (t >= S[S.length - 1]) p = S.length - 1;
@@ -785,6 +854,8 @@
     document.body.appendChild(overlay);
     overlay.classList.remove('zi--leave');
     if (!tiles.size) await loadTiles();
+    const srcs = data.chapters.flatMap(c => [c.logo?.src, c.copy?.brand, c.copy?.mark]).filter(Boolean);
+    await Promise.all(srcs.map(src => { const im = new Image(); im.src = src; return im.decode().catch(() => {}); }));
     await Promise.race([document.fonts?.ready, new Promise(r => setTimeout(r, 1200))]);
     scrollTo(0, 0);
     build();
