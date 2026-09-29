@@ -70,6 +70,26 @@
   color: var(--ink-2);
 }
 
+.tiktok-gate__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  align-items: center;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.tiktok-gate__contact a {
+  color: var(--blue-btn);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.tiktok-gate__contact a:hover { color: var(--blue); }
+.tiktok-gate__contact a:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+
 .tiktok-gate__form label {
   font-size: 14px;
   line-height: 20px;
@@ -95,8 +115,8 @@
   outline-offset: 2px;
 }
 
-#tiktok-gate .btn:hover .roll__in,
-#tiktok-gate .btn:focus-visible .roll__in {
+.tiktok-gate-wrap .btn:hover .roll__in,
+.tiktok-gate-wrap .btn:focus-visible .roll__in {
   animation: none;
   transform: none;
 }
@@ -121,6 +141,21 @@
 
 #tiktok-full-content:not(.tiktok-unlocked) {
   margin-top: -100vh;
+}
+
+#resume-full-content,
+#resume-full-content[hidden] {
+  filter: blur(14px) saturate(.9);
+  opacity: .72;
+  pointer-events: none;
+  user-select: none;
+}
+
+#resume-full-content.access-unlocked {
+  filter: none;
+  opacity: 1;
+  pointer-events: auto;
+  user-select: auto;
 }
 
 #tiktok-full-content,
@@ -148,7 +183,7 @@
 }
 
 /* Unlocking should acknowledge immediately without the global button press-scale. */
-#tiktok-gate .tiktok-gate__controls .btn:active { scale: 1; }
+.tiktok-gate-wrap .tiktok-gate__controls .btn:active { scale: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   .tiktok-gate { box-shadow: none; }

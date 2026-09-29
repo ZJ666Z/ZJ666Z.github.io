@@ -15,6 +15,7 @@
 <link rel="apple-touch-icon" href="../assets/img/favicon-light.svg">
 <link rel="stylesheet" href="../assets/css/site.css?v=resume-20260925-figma-2">
 <link rel="stylesheet" href="../assets/css/motion.css">
+<link rel="stylesheet" href="../assets/css/tiktok-gate.css?v=resume-gate-20260929">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body class="page-resume" data-i18n-page="resume" data-i18n-source="en">
@@ -31,6 +32,33 @@
   </div>
 </nav>
 
+<section id="resume-gate" class="tiktok-gate-wrap" data-access-gate data-access-target="resume-full-content" data-session-key="resume-unlocked" aria-labelledby="resume-gate-title">
+  <div class="tiktok-gate-popover" data-open="true">
+    <div class="wrap">
+      <div class="tiktok-gate panel">
+        <div class="tiktok-gate__intro">
+          <span class="pill">Private resume</span>
+          <h2 id="resume-gate-title">Resume</h2>
+          <p>This resume contains private contact and career details. Enter the access password to continue.</p>
+          <div class="tiktok-gate__contact" aria-label="Contact Zijie">
+            <a href="mailto:zijiezhou00@gmail.com" aria-label="Email Zijie">zijiezhou00@gmail.com</a>
+            <a href="https://www.linkedin.com/in/zijiezhou000111/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <form class="tiktok-gate__form">
+          <label for="resume-password">Access password</label>
+          <div class="tiktok-gate__controls">
+            <input id="resume-password" name="password" type="password" autocomplete="current-password" required>
+            <button class="btn btn--blue" type="submit"><span class="roll"><span class="roll__in">Unlock resume</span><span class="roll__in" aria-hidden="true">Unlock resume</span></span></button>
+          </div>
+          <p class="tiktok-gate__status" data-access-status role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="resume-full-content" data-access-content hidden aria-hidden="true">
 <main id="main" class="resume-main">
   <div class="wrap">
     <header class="resume-toolbar">
@@ -260,11 +288,13 @@
     </div>
   </div>
 </footer>
+</div>
 
 <script src="../assets/js/i18n-content.js?v=resume-20260925" defer></script>
 <script src="../assets/js/i18n-generated.js" defer></script>
 <script src="../assets/js/i18n.js?v=resume-20260925" defer></script>
 <script src="../assets/js/site.js?v=nav-20260924" defer></script>
+<script src="../assets/js/tiktok-gate.js?v=resume-gate-20260929" defer></script>
 <script src="../assets/js/motion.js" defer></script>
 </body>
 </html>

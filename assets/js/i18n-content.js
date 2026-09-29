@@ -75,7 +75,12 @@ window.ZIJIEZ_I18N_CONTENT = {
         'Scroll to selected projects': '滚动到精选项目',
         'Email Zijie': '给周子杰发邮件',
         '© 2026 Zijie Zhou': '© 2026 周子杰',
-        'LinkedIn': 'LinkedIn'
+        'LinkedIn': 'LinkedIn',
+        'Private resume': '非公开简历',
+        'Access password': '访问密码',
+        'Contact Zijie': '联系周子杰',
+        'This resume contains private contact and career details. Enter the access password to continue.': '这份简历包含非公开的联系方式与职业经历。请输入访问密码继续查看。',
+        'Unlock resume': '解锁简历'
       },
       zhToEn: {
         '主页': 'Home',
@@ -194,8 +199,10 @@ window.ZIJIEZ_I18N_CONTENT = {
         'into': '转化为',
         'measurable product growth': '可衡量的产品增长',
         'At': '在',
-        ', I own payment experience and AI-native delivery strategy across global products:': '，我负责全球产品的支付体验与 AI 原生交付策略：',
-        'AI-native design workflow:': 'AI 原生设计工作流：',
+        ', I work on global payment products and AI-native design workflows. From Hybrid Cashier and Refund & Withdrawal to Agentic Commerce, I navigate complex cross-market payment problems and translate user insights, business goals, and technical constraints into reusable, scalable product experiences:': '，我负责全球支付产品与 AI 原生设计工作流。从 Hybrid Cashier、Refund & Withdrawal 到 Agentic Commerce，我持续处理复杂的跨市场支付问题，并将用户洞察、业务目标与技术约束转化为可复用、可规模化的产品体验：',
+        'AI-native delivery:': 'AI-native delivery：',
+        'Payment growth:': 'Payment growth：',
+        'Global payment infrastructure:': 'Global payment infrastructure：',
         'Defined the strategy and led implementation of a design-to-code workflow that extends design ownership into production UI while remaining compatible with legacy enterprise architecture—cutting development time by 93%, reducing UX review to fewer than one round on average, and keeping bugs in the single digits.': '作为 Owner 定义落地策略，将设计交付拓展至渲染层代码，同时兼容企业历史技术架构；开发周期缩短 93%，体验走查平均降至不足 1 轮，缺陷控制在个位数。',
         'TikTok AI Agentic Commerce:': 'TikTok AI Agentic Commerce：',
         'As': '作为',

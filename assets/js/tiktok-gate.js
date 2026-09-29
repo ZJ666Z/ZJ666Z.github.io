@@ -1,16 +1,17 @@
-/* Lightweight portfolio gate for the TikTok 996633 case study.
+/* Reusable lightweight gate for private portfolio content.
    This is an access threshold for a static site, not a confidentiality boundary. */
 (() => {
-  const gate = document.querySelector('#tiktok-gate');
-  const content = document.querySelector('#tiktok-full-content');
-  const popover = gate.querySelector('.tiktok-gate-popover');
-  const form = document.querySelector('#tiktok-unlock-form');
-  const input = document.querySelector('#tiktok-password');
-  const status = document.querySelector('#tiktok-gate-status');
+  const gate = document.querySelector('[data-access-gate], #tiktok-gate');
+  const targetId = gate?.dataset.accessTarget;
+  const content = targetId ? document.getElementById(targetId) : document.querySelector('#tiktok-full-content');
+  const popover = gate?.querySelector('.tiktok-gate-popover');
+  const form = gate?.querySelector('form');
+  const input = form?.querySelector('input[name="password"]');
+  const status = gate?.querySelector('[data-access-status], .tiktok-gate__status');
   if (!gate || !content || !form || !input || !status) return;
   const text = (key, values) => window.ZijiezI18n?.t(key, values) || key;
 
-  const sessionKey = 'tiktok996633-unlocked';
+  const sessionKey = gate.dataset.sessionKey || 'tiktok996633-unlocked';
   // Static-site access hash; never store the plaintext password in source.
   const accessHash = '3378fd1b3e3d336695ad764a3c3675c36cd6474465122e332f8b1ff53b493dd1';
 
@@ -91,10 +92,12 @@
     if (popover) popover.dataset.open = 'false';
     gate.hidden = true;
     content.hidden = false;
+    content.classList.add('access-unlocked');
     content.classList.add('tiktok-unlocked');
     content.removeAttribute('aria-hidden');
     loadPrivateMedia();
     setupCarousels();
+    document.dispatchEvent(new CustomEvent('access-unlocked', { detail: { target: content.id } }));
     document.dispatchEvent(new CustomEvent('tiktok-unlocked'));
   };
 
