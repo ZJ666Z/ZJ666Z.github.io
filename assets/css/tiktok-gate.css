@@ -28,7 +28,10 @@
   opacity: 1;
   pointer-events: auto;
   transform: none;
+  cursor: pointer;
 }
+
+.tiktok-gate-popover[data-open="true"] .tiktok-gate { cursor: default; }
 
 @media (prefers-reduced-motion: reduce) {
   .tiktok-gate-popover { transition: none; }
