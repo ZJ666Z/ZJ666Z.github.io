@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "provider": "Poly Haven",
+  "downloadedOn": "2026-10-09",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://polyhaven.com/license",
+  "fileCount": 14,
+  "totalDownloadedBytes": 9213332,
+  "verification": "All downloaded files match the byte size and MD5 supplied by the official Poly Haven API. JPEG files are 1024 × 1024; the HDR is 1024 × 512.",
+  "integrationNotes": [
+    "Set baseColor maps to SRGBColorSpace; roughness, normal, and metalness maps remain linear data (NoColorSpace).",
+    "Normal maps use OpenGL (+Y) convention.",
+    "RepeatWrapping is appropriate for the seamless texture sets. Adjust repeat to physical dimensions; each selected material covers about 2 metres.",
+    "Files are untouched official 1K downloads; no baked synthetic detail or AI-generated textures."
+  ],
+  "assets": [
+    {
+      "name": "Metal Plate 02",
+      "purpose": "Worn steel workbench surface and selected metal equipment panels.",
+      "authors": [
+        "Rob Tuytel"
+      ],
+      "notes": [
+        "Original photographed surface includes panel seams and restrained rust. Crop UVs onto one plate for a continuous desktop, or retain seams for an assembled metal worktop.",
+        "Use the metalness map so oxidized and painted patches do not reflect as bare metal."
+      ],
+      "id": "metal_plate_02",
+      "sourceUrl": "https://polyhaven.com/a/metal_plate_02",
+      "apiUrl": "https://api.polyhaven.com/files/metal_plate_02",
+      "license": "CC0-1.0",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "physicalWidthMeters": 2,
+      "files": {
+        "baseColor": {
+          "path": "metal_plate_02/metal_plate_02_diff_1k.jpg",
+          "publicPath": "/assets/workshop/textures/metal_plate_02/metal_plate_02_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/metal_plate_02/metal_plate_02_diff_1k.jpg",
+          "bytes": 625917,
+          "md5": "531b7e067dc537e0b3c7962175e04ffd"
+        },
+        "roughness": {
+          "path": "metal_plate_02/metal_plate_02_rough_1k.jpg",
+          "publicPath": "/assets/workshop/textures/metal_plate_02/metal_plate_02_rough_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/metal_plate_02/metal_plate_02_rough_1k.jpg",
+          "bytes": 911772,
+          "md5": "1fa97d5031aa575656a316bfd404ca4d"
+        },
+        "normalGL": {
+          "path": "metal_plate_02/metal_plate_02_nor_gl_1k.jpg",
+          "publicPath": "/assets/workshop/textures/metal_plate_02/metal_plate_02_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/metal_plate_02/metal_plate_02_nor_gl_1k.jpg",
+          "bytes": 183264,
+          "md5": "ce8198004fd9409f592a7f024be0c01e"
+        },
+        "metalness": {
+          "path": "metal_plate_02/metal_plate_02_metal_1k.jpg",
+          "publicPath": "/assets/workshop/textures/metal_plate_02/metal_plate_02_metal_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/metal_plate_02/metal_plate_02_metal_1k.jpg",
+          "bytes": 551170,
+          "md5": "6ecfe9cdb7e0147c3dd7b49776d4a7d6"
+        }
+      }
+    },
+    {
+      "name": "Hangar Concrete Floor",
+      "purpose": "Industrial concrete laboratory floor with real scuffs and mottling.",
+      "authors": [
+        "Dimitrios Savva"
+      ],
+      "notes": [
+        "Dark base color is already suitable for the room; avoid multiplying it by near-black or the surface detail will disappear."
+      ],
+      "id": "hangar_concrete_floor",
+      "sourceUrl": "https://polyhaven.com/a/hangar_concrete_floor",
+      "apiUrl": "https://api.polyhaven.com/files/hangar_concrete_floor",
+      "license": "CC0-1.0",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "physicalWidthMeters": 2,
+      "files": {
+        "baseColor": {
+          "path": "hangar_concrete_floor/hangar_concrete_floor_diff_1k.jpg",
+          "publicPath": "/assets/workshop/textures/hangar_concrete_floor/hangar_concrete_floor_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/hangar_concrete_floor/hangar_concrete_floor_diff_1k.jpg",
+          "bytes": 614854,
+          "md5": "a073051aeaf7242f5e354ca4c89ac179"
+        },
+        "roughness": {
+          "path": "hangar_concrete_floor/hangar_concrete_floor_rough_1k.jpg",
+          "publicPath": "/assets/workshop/textures/hangar_concrete_floor/hangar_concrete_floor_rough_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/hangar_concrete_floor/hangar_concrete_floor_rough_1k.jpg",
+          "bytes": 518102,
+          "md5": "785ce74ed3a3c00dead34424c5e23749"
+        },
+        "normalGL": {
+          "path": "hangar_concrete_floor/hangar_concrete_floor_nor_gl_1k.jpg",
+          "publicPath": "/assets/workshop/textures/hangar_concrete_floor/hangar_concrete_floor_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/hangar_concrete_floor/hangar_concrete_floor_nor_gl_1k.jpg",
+          "bytes": 792876,
+          "md5": "28309c8eaf4dbf8647255d75a5bb8282"
+        }
+      }
+    },
+    {
+      "name": "Concrete Wall 006",
+      "purpose": "Weathered industrial concrete walls with subtle formwork holes and stains.",
+      "authors": [
+        "Charlotte Baglioni",
+        "Dario Barresi"
+      ],
+      "notes": [
+        "Can be moderately tinted gray to match the room. Preserve normal and roughness variation under grazing light."
+      ],
+      "id": "concrete_wall_006",
+      "sourceUrl": "https://polyhaven.com/a/concrete_wall_006",
+      "apiUrl": "https://api.polyhaven.com/files/concrete_wall_006",
+      "license": "CC0-1.0",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "physicalWidthMeters": 2,
+      "files": {
+        "baseColor": {
+          "path": "concrete_wall_006/concrete_wall_006_diff_1k.jpg",
+          "publicPath": "/assets/workshop/textures/concrete_wall_006/concrete_wall_006_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_006/concrete_wall_006_diff_1k.jpg",
+          "bytes": 769415,
+          "md5": "62ac61307a3321ecec26e1abd045f2ab"
+        },
+        "roughness": {
+          "path": "concrete_wall_006/concrete_wall_006_rough_1k.jpg",
+          "publicPath": "/assets/workshop/textures/concrete_wall_006/concrete_wall_006_rough_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_006/concrete_wall_006_rough_1k.jpg",
+          "bytes": 255004,
+          "md5": "660e38696f8c92d1585b17b7cc01cc06"
+        },
+        "normalGL": {
+          "path": "concrete_wall_006/concrete_wall_006_nor_gl_1k.jpg",
+          "publicPath": "/assets/workshop/textures/concrete_wall_006/concrete_wall_006_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_006/concrete_wall_006_nor_gl_1k.jpg",
+          "bytes": 1195078,
+          "md5": "337cf8d33598e1ecd036ef3727a4b36d"
+        }
+      }
+    },
+    {
+      "name": "Workshop",
+      "purpose": "Image-based lighting and reflections only; keep the modeled room as the visible background.",
+      "authors": [
+        "Dimitrios Savva",
+        "Jarod Guest"
+      ],
+      "notes": [
+        "1024 × 512 Radiance HDR; captured indoor workshop with mixed fluorescent and warm practical light.",
+        "Use as scene.environment via an equirectangular HDR loader and PMREM; not as scene.background."
+      ],
+      "id": "workshop",
+      "sourceUrl": "https://polyhaven.com/a/workshop",
+      "apiUrl": "https://api.polyhaven.com/files/workshop",
+      "license": "CC0-1.0",
+      "resolution": [
+        1024,
+        512
+      ],
+      "files": {
+        "environmentHDR": {
+          "path": "environment/workshop_1k.hdr",
+          "publicPath": "/assets/workshop/textures/environment/workshop_1k.hdr",
+          "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/workshop_1k.hdr",
+          "bytes": 1759482,
+          "md5": "cd6f886d1f52a49338619d8cf8ea9f25"
+        }
+      }
+    },
+    {
+      "name": "Blue Metal Plate",
+      "id": "blue_metal_plate",
+      "purpose": "Preferred refined workbench surface: dark blue-gray painted steel with fine real scratches and restrained wear.",
+      "authors": [
+        "Rob Tuytel"
+      ],
+      "sourceUrl": "https://polyhaven.com/a/blue_metal_plate",
+      "apiUrl": "https://api.polyhaven.com/files/blue_metal_plate",
+      "license": "CC0-1.0",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "physicalWidthMeters": 2.5,
+      "notes": [
+        "Selected after visually inspecting the downloaded base-color image. The central region is substantially cleaner and more uniform than metal_plate_02.",
+        "Original image includes vertical seams near u=0.28 and u=0.79. Suggested identical UV crop for all three maps: repeat [0.40,0.70], offset [0.34,0.18], without tiling. This samples the continuous central painted panel.",
+        "This is painted steel, not exposed brushed metal. No separate metalness map is supplied by the source; use restrained metalness for the painted coating.",
+        "Keep metal_plate_02 as an alternative for weathered wall panels rather than the primary desktop."
+      ],
+      "suggestedWorkbenchUv": {
+        "repeat": [
+          0.4,
+          0.7
+        ],
+        "offset": [
+          0.34,
+          0.18
+        ]
+      },
+      "files": {
+        "baseColor": {
+          "path": "blue_metal_plate/blue_metal_plate_diff_1k.jpg",
+          "publicPath": "/assets/workshop/textures/blue_metal_plate/blue_metal_plate_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/blue_metal_plate/blue_metal_plate_diff_1k.jpg",
+          "bytes": 395923,
+          "md5": "a906d0e554596fb76c6969f2f644c5e6"
+        },
+        "roughness": {
+          "path": "blue_metal_plate/blue_metal_plate_rough_1k.jpg",
+          "publicPath": "/assets/workshop/textures/blue_metal_plate/blue_metal_plate_rough_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/blue_metal_plate/blue_metal_plate_rough_1k.jpg",
+          "bytes": 402450,
+          "md5": "76c3911d8ad2416e4db3104a2ef831c7"
+        },
+        "normalGL": {
+          "path": "blue_metal_plate/blue_metal_plate_nor_gl_1k.jpg",
+          "publicPath": "/assets/workshop/textures/blue_metal_plate/blue_metal_plate_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/blue_metal_plate/blue_metal_plate_nor_gl_1k.jpg",
+          "bytes": 238025,
+          "md5": "f14c0f01832f8b18c39f07e4b5d6f749"
+        }
+      }
+    }
+  ]
+}
