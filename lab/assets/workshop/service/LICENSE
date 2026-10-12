@@ -1,0 +1,28 @@
+Workshop service-detail models from Poly Haven
+
+All four GLB assets in this directory are sourced from Poly Haven and are
+released under the Creative Commons CC0 1.0 Universal dedication.
+
+Official asset license: https://polyhaven.com/license
+CC0 legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+Office Notepads — Ulan Cabanilla
+https://polyhaven.com/a/office_notepads
+
+Stationery Supplies — Mateusz Sadek
+https://polyhaven.com/a/stationery_supplies
+
+Garden Gloves 01 — Satyaki Mandal
+https://polyhaven.com/a/garden_gloves_01
+
+Modular Electric Cables — Kuutti Siitonen
+https://polyhaven.com/a/modular_electric_cables
+
+Original geometry, UVs, material channels, and the complete source 1K glTF PBR
+texture sets are retained byte-for-byte. Each source glTF and its external
+images are packed into a self-contained GLB. A centering/grounding parent is
+added; no decimation, texture recompression, procedural replacement, cameras,
+or lights are included. See service-manifest.json for dimensions, checksums,
+source file hashes, mesh counts, and placement notes. The cable model is a set
+of wiring modules arranged in a display grid; use individual named nodes rather
+than placing the complete grid on the workbench.

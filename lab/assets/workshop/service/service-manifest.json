@@ -1,0 +1,513 @@
+{
+  "provider": "Poly Haven",
+  "license": "CC0-1.0",
+  "assets": [
+    {
+      "id": "office_notepads",
+      "name": "Office Notepads",
+      "file": "office_notepads.glb",
+      "sourceUrl": "https://polyhaven.com/a/office_notepads",
+      "authors": {
+        "Ulan Cabanilla": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/office_notepads/office_notepads_1k.gltf",
+      "sourceGltfMd5": "74b027b592ecc50b485f07d75728e95c",
+      "sourceFiles": [
+        {
+          "path": "textures/office_notepads_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/office_notepads/office_notepads_nor_gl_1k.jpg",
+          "md5": "ab84db9081b5fa234edd539d8ac8d8bf",
+          "bytes": 393394,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/office_notepads_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/office_notepads/office_notepads_diff_1k.jpg",
+          "md5": "8e0b41ecab0c337761582b50499b465c",
+          "bytes": 460873,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/office_notepads_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/office_notepads/office_notepads_arm_1k.jpg",
+          "md5": "9232150728af44604f8ec2dc6c409084",
+          "bytes": 445320,
+          "kind": "texture"
+        },
+        {
+          "path": "office_notepads.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/office_notepads/office_notepads.bin",
+          "md5": "d749a23361b8d854fad7a03a80b4cc6d",
+          "bytes": 17740,
+          "kind": "geometry"
+        }
+      ],
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        1.1027900204062462,
+        0.02199999988079071,
+        0.6598374508321285
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "groundedBoundsMeters": {
+        "min": [
+          -0.5513950102031231,
+          0,
+          -0.32991872541606426
+        ],
+        "max": [
+          0.5513950102031231,
+          0.02199999988079071,
+          0.32991872541606426
+        ]
+      },
+      "originalBoundsMeters": {
+        "min": [
+          -0.5550000220537186,
+          0.0,
+          -0.33116745576262474
+        ],
+        "max": [
+          0.5477899983525276,
+          0.02199999988079071,
+          0.3286699950695038
+        ]
+      },
+      "sourceCenterAdjustment": [
+        -0.0036050118505954742,
+        0.0,
+        -0.0012487303465604782
+      ],
+      "materialCount": 1,
+      "meshCount": 10,
+      "skinCount": 0,
+      "textureCount": 3,
+      "triangles": 666,
+      "textureBytes": 1299587,
+      "bytes": 1326536,
+      "sha256": "b12fa8e0434fd58308ebb0442ce635f0b5e52debed4f17cb6262124156300610",
+      "processing": "Original mesh, UVs, material channels, source node hierarchy and all source 1K glTF texture images retained byte-for-byte. Packed into a self-contained GLB with an XZ-centering/Y-grounding parent. No decimation, recompression, procedural replacement or imported cameras/lights.",
+      "placement": {
+        "pose": "This is a catalogue of individually authored paper pieces arranged on a horizontal plane. Add only the selected pads/sheets to the tabletop; the full source collection is too wide. The selected pieces are already flat and +Y-up; rotate about +Y to compose.",
+        "suggestedLongestSceneUnits": 0.38,
+        "zone": "One small paper stack beside the laptop or circuit board."
+      },
+      "runtimeSelection": {
+        "method": "selectModelParts by source node name; selected mesh is re-centered and grounded independently.",
+        "selectedNodes": [
+          "office_notepads_a4_stack",
+          "office_notepads_a4_b",
+          "office_notepads_sticky_stack"
+        ],
+        "note": "Use only the named paper pieces; this source is a multi-item catalogue, not a single tabletop asset."
+      }
+    },
+    {
+      "id": "stationery_supplies",
+      "name": "Stationery Supplies",
+      "file": "stationery_supplies.glb",
+      "sourceUrl": "https://polyhaven.com/a/stationery_supplies",
+      "authors": {
+        "Mateusz Sadek": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/stationery_supplies/stationery_supplies_1k.gltf",
+      "sourceGltfMd5": "f52db97749d2a35edc088e5885d0d8b9",
+      "sourceFiles": [
+        {
+          "path": "textures/stationery_supplies_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/stationery_supplies/stationery_supplies_nor_gl_1k.jpg",
+          "md5": "b4041a9882047b1b138417ffd8984cd3",
+          "bytes": 475821,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/stationery_supplies_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/stationery_supplies/stationery_supplies_diff_1k.jpg",
+          "md5": "6137e4177fe5b002254d57eb5c7003eb",
+          "bytes": 646389,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/stationery_supplies_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/stationery_supplies/stationery_supplies_arm_1k.jpg",
+          "md5": "7d4c4c9f4f7e880b09b37e2b13a044cf",
+          "bytes": 720443,
+          "kind": "texture"
+        },
+        {
+          "path": "stationery_supplies.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/stationery_supplies/stationery_supplies.bin",
+          "md5": "79c27c50437311205051da6de178053c",
+          "bytes": 128940,
+          "kind": "geometry"
+        }
+      ],
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        0.3018619976937771,
+        0.16434769053012133,
+        0.08366207033395767
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "groundedBoundsMeters": {
+        "min": [
+          -0.15093099884688854,
+          0,
+          -0.041831035166978836
+        ],
+        "max": [
+          0.15093099884688854,
+          0.16434769053012133,
+          0.041831035166978836
+        ]
+      },
+      "originalBoundsMeters": {
+        "min": [
+          -0.16328339278697968,
+          -0.07366625592112541,
+          -0.041831035166978836
+        ],
+        "max": [
+          0.1385786049067974,
+          0.09068143460899591,
+          0.041831035166978836
+        ]
+      },
+      "sourceCenterAdjustment": [
+        -0.012352393940091133,
+        -0.07366625592112541,
+        0.0
+      ],
+      "materialCount": 1,
+      "meshCount": 9,
+      "skinCount": 0,
+      "textureCount": 3,
+      "triangles": 4412,
+      "textureBytes": 1842653,
+      "bytes": 1980840,
+      "sha256": "b2f72a9ddd79b9e404303fa2d54b4bf8643e106bd06745230ffb62e50a80f25e",
+      "processing": "Original mesh, UVs, material channels, source node hierarchy and all source 1K glTF texture images retained byte-for-byte. Packed into a self-contained GLB with an XZ-centering/Y-grounding parent. No decimation, recompression, procedural replacement or imported cameras/lights.",
+      "placement": {
+        "pose": "This is a catalogue of separate stationery meshes, not one desk bundle. Source pens lie along X and are staggered across Y; the pencil cup is a separate upright +Y mesh. Select pieces by name, then center and ground each selected mesh before placement. Keep the cup upright; loose pens may stay flat or be staged in the cup.",
+        "suggestedLongestSceneUnits": 0.2,
+        "zone": "A pencil cup near the back edge, with only one or two individual pens beside the notes."
+      },
+      "runtimeSelection": {
+        "method": "selectModelParts by source node name; selected mesh is re-centered and grounded independently.",
+        "placementGroups": {
+          "pencilCup": [
+            "stationery_supplies_pencilcup"
+          ],
+          "loosePens": [
+            "stationery_supplies_pen_red",
+            "stationery_supplies_pen_fancy",
+            "stationery_supplies_pen_blue"
+          ],
+          "pencils": [
+            "stationery_supplies_pencil_new_a",
+            "stationery_supplies_pencil_new_b",
+            "stationery_supplies_pencil_used",
+            "stationery_supplies_pencil_old"
+          ],
+          "eraser": [
+            "stationery_supplies_eraser"
+          ]
+        },
+        "orientation": "Source pens extend along X at different Y heights; the pencilcup mesh is independently upright along +Y. Keep pencilcup vertical and use only a few individually selected writing tools."
+      }
+    },
+    {
+      "id": "garden_gloves_01",
+      "name": "Garden Gloves 01",
+      "file": "garden_gloves_01.glb",
+      "sourceUrl": "https://polyhaven.com/a/garden_gloves_01",
+      "authors": {
+        "Satyaki Mandal": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/garden_gloves_01/garden_gloves_01_1k.gltf",
+      "sourceGltfMd5": "45015bb690b0b6d1ebf7a84f4ab9f8b9",
+      "sourceFiles": [
+        {
+          "path": "garden_gloves_01.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/garden_gloves_01/garden_gloves_01.bin",
+          "md5": "1aed230a16b1b27887d9771bd51ee6ab",
+          "bytes": 168132,
+          "kind": "geometry"
+        },
+        {
+          "path": "textures/garden_gloves_01_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/garden_gloves_01/garden_gloves_01_nor_gl_1k.jpg",
+          "md5": "396d3c1fb391e00dbd222e55d1257c9e",
+          "bytes": 1042336,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/garden_gloves_01_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/garden_gloves_01/garden_gloves_01_diff_1k.jpg",
+          "md5": "23ae081e2e1375d7f73a7925bdacc92e",
+          "bytes": 806038,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/garden_gloves_01_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/garden_gloves_01/garden_gloves_01_arm_1k.jpg",
+          "md5": "18f0ea0ab0f29af115581d7ad377b756",
+          "bytes": 885378,
+          "kind": "texture"
+        }
+      ],
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        0.22655709087848663,
+        0.07602626085281372,
+        0.29904240369796753
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "groundedBoundsMeters": {
+        "min": [
+          -0.11327854543924332,
+          0,
+          -0.14952120184898376
+        ],
+        "max": [
+          0.11327854543924332,
+          0.07602626085281372,
+          0.14952120184898376
+        ]
+      },
+      "originalBoundsMeters": {
+        "min": [
+          -0.10881177335977554,
+          -9.720027446746826e-05,
+          -0.12749861180782318
+        ],
+        "max": [
+          0.11774531751871109,
+          0.07592906057834625,
+          0.17154379189014435
+        ]
+      },
+      "sourceCenterAdjustment": [
+        0.0044667720794677734,
+        -9.720027446746826e-05,
+        0.022022590041160583
+      ],
+      "materialCount": 1,
+      "meshCount": 1,
+      "skinCount": 0,
+      "textureCount": 3,
+      "triangles": 6822,
+      "textureBytes": 2733752,
+      "bytes": 2903876,
+      "sha256": "496a310ab76c638835bfae7f3f31680fc173e265a284aa4f324bf775522c4c4d",
+      "processing": "Original mesh, UVs, material channels, source node hierarchy and all source 1K glTF texture images retained byte-for-byte. Packed into a self-contained GLB with an XZ-centering/Y-grounding parent. No decimation, recompression, procedural replacement or imported cameras/lights.",
+      "placement": {
+        "pose": "The pair is modeled as a naturally crumpled horizontal prop. Retain source orientation, place its lowest point on the bench, and use only a Y-axis turn to angle the fingers toward the work area.",
+        "suggestedLongestSceneUnits": 0.3,
+        "zone": "Folded at one edge of the work surface or hanging over a low shelf; keep the silhouette visibly fabric-like."
+      }
+    },
+    {
+      "id": "modular_electric_cables",
+      "name": "Modular Electric Cables",
+      "file": "modular_electric_cables.glb",
+      "sourceUrl": "https://polyhaven.com/a/modular_electric_cables",
+      "authors": {
+        "Kuutti Siitonen": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/modular_electric_cables/modular_electric_cables_1k.gltf",
+      "sourceGltfMd5": "452d8189381a17d02467785ec1691f2b",
+      "sourceFiles": [
+        {
+          "path": "textures/modular_electric_cables_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_electric_cables/modular_electric_cables_nor_gl_1k.jpg",
+          "md5": "089c0dda6a7b06fc587eb23a9367fda2",
+          "bytes": 848440,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/modular_electric_cables_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_electric_cables/modular_electric_cables_diff_1k.jpg",
+          "md5": "bf807ef977dc49143dd8ed97c0ffec3c",
+          "bytes": 474284,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/modular_electric_cables_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_electric_cables/modular_electric_cables_arm_1k.jpg",
+          "md5": "196560790b8dcb085c569a7755648d7b",
+          "bytes": 797169,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/modular_electric_cables_boxes_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_electric_cables/modular_electric_cables_boxes_nor_gl_1k.jpg",
+          "md5": "cf66abe69419fdaac4afc36c940502d4",
+          "bytes": 749676,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/modular_electric_cables_boxes_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_electric_cables/modular_electric_cables_boxes_diff_1k.jpg",
+          "md5": "b561a3ec8790af4033504609e70baa12",
+          "bytes": 646895,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/modular_electric_cables_boxes_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modular_electric_cables/modular_electric_cables_boxes_arm_1k.jpg",
+          "md5": "a0c541de1da2bd138152e45be9383e72",
+          "bytes": 856332,
+          "kind": "texture"
+        },
+        {
+          "path": "modular_electric_cables.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/modular_electric_cables/modular_electric_cables.bin",
+          "md5": "1444b0e21d201c344a99e86937bbe5fc",
+          "bytes": 1563316,
+          "kind": "geometry"
+        }
+      ],
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        2.076632699576013,
+        0.7572520309296591,
+        0.21450419440008006
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "groundedBoundsMeters": {
+        "min": [
+          -1.0383163497880066,
+          0,
+          -0.10725209720004003
+        ],
+        "max": [
+          1.0383163497880066,
+          0.7572520309296591,
+          0.10725209720004003
+        ]
+      },
+      "originalBoundsMeters": {
+        "min": [
+          -0.7286150601631393,
+          -8.305643284245434e-09,
+          -0.10725207857326106
+        ],
+        "max": [
+          1.348017639412874,
+          0.7572520226240158,
+          0.10725211582681898
+        ]
+      },
+      "sourceCenterAdjustment": [
+        0.30970128962486737,
+        -8.305643284245434e-09,
+        1.8626778959529577e-08
+      ],
+      "materialCount": 2,
+      "meshCount": 49,
+      "skinCount": 0,
+      "textureCount": 6,
+      "triangles": 42078,
+      "textureBytes": 4372796,
+      "bytes": 5984568,
+      "sha256": "9e12df5795f46382bcc9a6ebe03a39f8d0de0db776ed05dce81aef8321c5be72",
+      "processing": "Original mesh, UVs, material channels, source node hierarchy and all source 1K glTF texture images retained byte-for-byte. Packed into a self-contained GLB with an XZ-centering/Y-grounding parent. No decimation, recompression, procedural replacement or imported cameras/lights.",
+      "placement": {
+        "pose": "This is a catalogue of cable segments, bends, plugs, switches and junction boxes, not a wound spool. The source arranges 49 separate pieces in a display grid; never place the whole grid on the bench. Select one or two named meshes, center and ground each selected part, then orient the individual cable/connector for the tabletop. Use cable_box_* for compact junction-box details or cable_3way_junction for a three-way cable connector.",
+        "suggestedLongestSceneUnits": 0.58,
+        "zone": "One or two individual connectors or cable bends beside the circuit board, not the complete display grid."
+      },
+      "nodeInventory": {
+        "nodeCount": 49,
+        "parts": [
+          {
+            "category": "single-conduit cable runs, lengths, bends and junctions",
+            "nodes": [
+              "cable_straight_medium",
+              "cable_straight_short",
+              "cable_mount",
+              "cable_end",
+              "cable_straight_long",
+              "cable_scurve_1",
+              "cable_scurve_4",
+              "cable_turn_long",
+              "cable_turn_short",
+              "cable_corner_towards",
+              "cable_10cm",
+              "cable_5cm",
+              "cable_2cm",
+              "cable_scurve_2",
+              "cable_scurve_3",
+              "cable_bridge_2",
+              "cable_bridge_3",
+              "cable_bridge_1",
+              "cable_corner_away",
+              "cable_3way_junction"
+            ]
+          },
+          {
+            "category": "double-conduit cable runs, reducers, bends and junctions",
+            "nodes": [
+              "cable_double",
+              "cable_double_10cm",
+              "cable_double_alt_long",
+              "cable_double_alt_short",
+              "cable_double_alt_turn",
+              "cable_double_end",
+              "cable_double_junction",
+              "cable_double_mount",
+              "cable_double_scurve",
+              "cable_double_turn_long",
+              "cable_double_turn_short",
+              "cable_double_uturn",
+              "cable_to_double_1",
+              "cable_to_double_2",
+              "cable_to_double_3",
+              "cable_to_double_4"
+            ]
+          },
+          {
+            "category": "junction boxes, wall switches and plugs",
+            "nodes": [
+              "cable_box_3way",
+              "cable_box_4way",
+              "cable_box_double",
+              "cable_box_double_to_single",
+              "cable_box_double_to_single_2",
+              "cable_box_turn",
+              "cable_lightswitch",
+              "cable_lightswitch_2",
+              "cable_lightswitch_double",
+              "cable_plug_4x",
+              "cable_plug_covered",
+              "cable_plug_covered_2",
+              "cable_switch"
+            ]
+          }
+        ],
+        "sceneUse": "Each named node is its own glTF scene node and mesh. Select a node by its authored name, then center and ground that individual piece for tabletop use. The array mesh names are implementation-generated BézierCurve/Cube labels; use node names for selection."
+      },
+      "runtimeSelection": {
+        "method": "selectModelParts by source node name; selected mesh is re-centered and grounded independently.",
+        "note": "Choose one or two cable/connector nodes from nodeInventory; do not instance the 49-piece display grid as a whole."
+      }
+    }
+  ]
+}
