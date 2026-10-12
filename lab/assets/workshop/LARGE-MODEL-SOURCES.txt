@@ -1,0 +1,19 @@
+Workshop furniture assets from Poly Haven
+
+All three assets: CC0-1.0.
+License: https://polyhaven.com/license
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+
+Metal Office Desk — Ulan Cabanilla
+https://polyhaven.com/a/metal_office_desk
+Original mesh and full 1k PBR textures embedded byte-for-byte in GLB; centered and grounded by a parent node.
+
+Metal Stool 01 — Ulan Cabanilla
+https://polyhaven.com/a/metal_stool_01
+Original mesh and full 1k PBR textures embedded byte-for-byte in GLB; centered and grounded by a parent node.
+
+Tool Cart — Savva Zakharov
+https://polyhaven.com/a/tool_cart
+Original mesh and full 1k PBR textures embedded byte-for-byte in GLB; centered and grounded by a parent node.
+
+Official website preview images are QA references only and are not distributed here.

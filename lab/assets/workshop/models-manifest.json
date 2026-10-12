@@ -1,0 +1,122 @@
+[
+  {
+    "id": "metal_office_desk",
+    "name": "Metal Office Desk",
+    "file": "metal_office_desk.glb",
+    "url": "https://polyhaven.com/a/metal_office_desk",
+    "author": "Ulan Cabanilla",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://polyhaven.com/license",
+    "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/metal_office_desk/metal_office_desk_1k.gltf",
+    "resolution": "1k",
+    "units": "metres",
+    "up": "+Y",
+    "front": "+Z (drawer side)",
+    "size": [
+      2.0000003576278687,
+      0.7875000238418579,
+      0.9472135305404663
+    ],
+    "min": [
+      -1.0000001788139343,
+      0,
+      -0.47360676527023315
+    ],
+    "max": [
+      1.0000001788139343,
+      0.7875000238418579,
+      0.47360676527023315
+    ],
+    "sourceCenterAdjustment": [
+      -6.556510925292969e-07,
+      0.0,
+      0.0044966042041778564
+    ],
+    "triangles": 6898,
+    "materials": 1,
+    "textures": 3,
+    "bytes": 1601192,
+    "sha256": "8f0aa4fa495080c462219b81c500e62bb1a0c44f50ebf12714d5254666554fed",
+    "processing": "Original mesh and full 1k PBR textures embedded byte-for-byte in GLB; centered and grounded by a parent node."
+  },
+  {
+    "id": "metal_stool_01",
+    "name": "Metal Stool 01",
+    "file": "metal_stool_01.glb",
+    "url": "https://polyhaven.com/a/metal_stool_01",
+    "author": "Ulan Cabanilla",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://polyhaven.com/license",
+    "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/metal_stool_01/metal_stool_01_1k.gltf",
+    "resolution": "1k",
+    "units": "metres",
+    "up": "+Y",
+    "front": "radially symmetric seating; upstream orientation retained",
+    "size": [
+      0.3519909083843231,
+      0.8827742969733663,
+      0.354570209980011
+    ],
+    "min": [
+      -0.17599545419216156,
+      0,
+      -0.1772851049900055
+    ],
+    "max": [
+      0.17599545419216156,
+      0.8827742969733663,
+      0.1772851049900055
+    ],
+    "sourceCenterAdjustment": [
+      -1.4901161193847656e-08,
+      1.8831517081707716e-05,
+      -4.929304122924805e-05
+    ],
+    "triangles": 8334,
+    "materials": 1,
+    "textures": 3,
+    "bytes": 2286156,
+    "sha256": "e9d8ed421a62a87cceb61c73fc68597e2b5cd6a19d74cee0b7d1aee5a0493d63",
+    "processing": "Original mesh and full 1k PBR textures embedded byte-for-byte in GLB; centered and grounded by a parent node."
+  },
+  {
+    "id": "tool_cart",
+    "name": "Tool Cart",
+    "file": "tool_cart.glb",
+    "url": "https://polyhaven.com/a/tool_cart",
+    "author": "Savva Zakharov",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://polyhaven.com/license",
+    "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/tool_cart/tool_cart_1k.gltf",
+    "resolution": "1k",
+    "units": "metres",
+    "up": "+Y",
+    "front": "+Z (drawer side)",
+    "size": [
+      1.2734254002571106,
+      0.964644730091095,
+      0.7536306381225586
+    ],
+    "min": [
+      -0.6367127001285553,
+      0,
+      -0.3768153190612793
+    ],
+    "max": [
+      0.6367127001285553,
+      0.964644730091095,
+      0.3768153190612793
+    ],
+    "sourceCenterAdjustment": [
+      -0.02089211344718933,
+      -0.003560006618499756,
+      -0.008127272129058838
+    ],
+    "triangles": 29394,
+    "materials": 1,
+    "textures": 3,
+    "bytes": 3171656,
+    "sha256": "fe3eefc8cd4da53521bfd353ab5f6d86aa3ab6b76eb5255d81c3891bf5598ae9",
+    "processing": "Original mesh and full 1k PBR textures embedded byte-for-byte in GLB; centered and grounded by a parent node."
+  }
+]
