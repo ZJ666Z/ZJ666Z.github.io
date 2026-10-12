@@ -1,0 +1,187 @@
+{
+  "assets": [
+    {
+      "id": "desk_lamp_arm_01",
+      "name": "Desk Lamp Arm 01",
+      "file": "desk_lamp_arm_01.glb",
+      "sourceUrl": "https://polyhaven.com/a/desk_lamp_arm_01",
+      "authors": {
+        "Yann Kervran": "Rigging",
+        "Kuutti Siitonen": "Modeling & texturing"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/desk_lamp_arm_01/desk_lamp_arm_01_1k.gltf",
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        0.20172932744026184,
+        0.8926106989383698,
+        0.6138725876808167
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "originalBoundsMeters": {
+        "min": [
+          -0.11847317218780518,
+          -0.08799377083778381,
+          -0.29663750529289246
+        ],
+        "max": [
+          0.08325615525245667,
+          0.8046169281005859,
+          0.3172350823879242
+        ]
+      },
+      "sourceCenterAdjustment": [
+        -0.017608508467674255,
+        -0.08799377083778381,
+        0.01029878854751587
+      ],
+      "materialCount": 2,
+      "meshCount": 1,
+      "skinCount": 0,
+      "textureCount": 3,
+      "triangles": 24102,
+      "bytes": 2874472,
+      "sha256": "b6acbbe6642fdcf22d5f991c000d74f3e0f432eb47510baedba3df056aaa5167",
+      "processing": "Original mesh, source model node hierarchy and complete 1K PBR images retained in a self-contained GLB. Added a grounding parent. No decimation or procedural substitute. The official glTF is a static pose with no skin, despite the source Blender asset also offering a rig. Original model cameras/lights excluded; room illumination is controlled by the scene.",
+      "runtimeIntegration": {
+        "helper": "src/workshop-assets.js",
+        "placeholder": "taskLamp",
+        "anchorInGroundedAssetXYZ": [0.0176085085, 0.0879937708, -0.0102987885],
+        "anchorMeaning": "Original tabletop clamp contact at source origin; the lower clamp bolt is intentionally below the tabletop.",
+        "placementSnapshot": {
+          "height": 2.1,
+          "rotationRadiansXYZ": [0, -2.35, 0],
+          "mountWorldXYZ": [-3.5, 1.012, -1.96],
+          "bulbWorldCenterXYZ": [-3.196452475, 2.648523173, -1.675727471]
+        },
+        "emission": "Only the desk_lamp_arm_01_light material is cloned and given warm #ffd4a2 emission at intensity 0.65. The housing retains its original PBR material. Any real scene light is separate from the GLB.",
+        "coordinateNote": "World values describe the recorded helper transform, not an intrinsic model coordinate; recalculate them if placement or scale changes."
+      }
+    },
+    {
+      "id": "circuit_board",
+      "name": "Circuit Board",
+      "file": "circuit_board.glb",
+      "sourceUrl": "https://polyhaven.com/a/circuit_board",
+      "authors": {
+        "Benny Weimer": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/circuit_board/circuit_board_1k.gltf",
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        0.4035058617591858,
+        0.07829589396715164,
+        0.3973844349384308
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "originalBoundsMeters": {
+        "min": [
+          -0.2066141664981842,
+          -0.006041519343852997,
+          -0.19861522316932678
+        ],
+        "max": [
+          0.1968916952610016,
+          0.07225437462329865,
+          0.198769211769104
+        ]
+      },
+      "sourceCenterAdjustment": [
+        -0.004861235618591309,
+        -0.006041519343852997,
+        7.699429988861084e-05
+      ],
+      "materialCount": 2,
+      "meshCount": 1,
+      "skinCount": 0,
+      "textureCount": 4,
+      "triangles": 14430,
+      "bytes": 4143072,
+      "sha256": "9748946797b7ee05086723ad878bd526f002adc0e316de1351290968aaf310d2",
+      "processing": "Original mesh, source model node hierarchy and complete 1K PBR images retained in a self-contained GLB. Added a grounding parent. No decimation or procedural substitute. Original model cameras/lights excluded; room illumination is controlled by the scene.",
+      "runtimeIntegration": {
+        "helper": "src/workshop-assets.js",
+        "placeholder": "pcb",
+        "placementSnapshot": {
+          "longestRotatedDimension": 0.6,
+          "rotationRadiansXYZ": [0, 0.12, 0],
+          "groundWorldXYZ": [-2.7, 1.02, 1.35]
+        },
+        "usage": "Environmental spare desktop motherboard only; it does not depict the Sesame robot's actual controller or wiring. All original PBR channels remain unchanged."
+      }
+    },
+    {
+      "id": "classic_laptop",
+      "name": "Classic Laptop",
+      "file": "classic_laptop.glb",
+      "sourceUrl": "https://polyhaven.com/a/classic_laptop",
+      "authors": {
+        "Arrangemonk": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/classic_laptop/classic_laptop_1k.gltf",
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        0.6519346237182617,
+        0.5428108389023691,
+        0.4859423041343689
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "originalBoundsMeters": {
+        "min": [
+          -0.3258250653743744,
+          -0.0008170718792825937,
+          -0.2418784648180008
+        ],
+        "max": [
+          0.32610955834388733,
+          0.5419937670230865,
+          0.2440638393163681
+        ]
+      },
+      "sourceCenterAdjustment": [
+        0.00014224648475646973,
+        -0.0008170718792825937,
+        0.0010926872491836548
+      ],
+      "materialCount": 2,
+      "meshCount": 3,
+      "skinCount": 0,
+      "textureCount": 3,
+      "triangles": 14450,
+      "bytes": 2181328,
+      "sha256": "f6f03590b6e61913bb304af484564ef7c3d1d4bf49f989647b7c06b35c46d209",
+      "processing": "Original mesh, source model node hierarchy and complete 1K PBR images retained in a self-contained GLB. Added a grounding parent. No decimation or procedural substitute. Original model cameras/lights excluded; room illumination is controlled by the scene.",
+      "runtimeIntegration": {
+        "helper": "src/workshop-assets.js",
+        "displayTextureParameter": "displayTextures.laptop",
+        "placementSnapshot": {
+          "rotatedWidth": 1.5,
+          "rotationRadiansXYZ": [0, 0.18, 0],
+          "groundWorldXYZ": [-2.8, 1.006, -0.72]
+        },
+        "screen": {
+          "sourceMaterial": "classic_laptop_screen",
+          "gltfLoaderMesh": "lid_floaters_low_1",
+          "runtimeMeshName": "Laptop_live_neural_display",
+          "vertexCount": 24,
+          "localFront": "+Z",
+          "aspectRatio": 1.2232825009522934,
+          "canvasPixels": [1024, 838],
+          "uvProcessing": "The original isolated screen has U 1..2 and V 0 at its top. At runtime only this mesh's geometry is cloned; physical local X/Y are projected to U/V 0..1, with V 1 at the top. This matches the site's CanvasTexture with default flipY true and keeps text upright, unmirrored.",
+          "materialProcessing": "Only the separate, originally untextured screen material is replaced with a MeshPhysicalMaterial using the live canvas as map/emissiveMap: emissiveIntensity 0.48, roughness 0.38, specularIntensity 0.18, clearcoat 0.35, clearcoatRoughness 0.4. Restrained glass reflections preserve screen readability. Housing, keyboard, hinges and all their original PBR maps remain unchanged."
+        }
+      }
+    }
+  ]
+}
