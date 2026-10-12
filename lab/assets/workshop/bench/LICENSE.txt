@@ -1,0 +1,28 @@
+Downloaded workbench model assets — Poly Haven / CC0 1.0
+
+All five GLB assets in this directory are adaptations of Poly Haven assets
+released under the Creative Commons CC0 1.0 Universal dedication.
+
+Official asset license: https://polyhaven.com/license
+CC0 summary: https://creativecommons.org/publicdomain/zero/1.0/
+CC0 legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+Screwdriver — PierreB3D
+https://polyhaven.com/a/screwdriver
+
+Ratchet Wrench — John Hutcheson
+https://polyhaven.com/a/ratchet_wrench
+
+Small Plastic Torch — Abiyyu Panggalih (Abiyyu_xyz)
+https://polyhaven.com/a/small_plastic_torch
+
+Measuring Tape 01 — Kuutti Siitonen
+https://polyhaven.com/a/measuring_tape_01
+
+Lubricant Spray — James Ray Cock
+https://polyhaven.com/a/lubricant_spray
+
+Original geometry and the full source 1K glTF PBR texture set are retained.
+Changes: embedded external buffers/images in self-contained GLBs and added
+centering/grounding parent transforms; no texture recompression or decimation.
+See bench-manifest.json for individual source files and checksums.

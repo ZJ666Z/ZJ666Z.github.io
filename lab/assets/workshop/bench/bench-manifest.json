@@ -1,0 +1,481 @@
+{
+  "provider": "Poly Haven",
+  "license": "CC0-1.0",
+  "assets": [
+    {
+      "id": "screwdriver",
+      "name": "Screwdriver",
+      "file": "screwdriver.glb",
+      "sourceUrl": "https://polyhaven.com/a/screwdriver",
+      "authors": {
+        "PierreB3D": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/screwdriver/screwdriver_1k.gltf",
+      "sourceGltfMd5": "9e762632816372548d772162c4dd9441",
+      "sourceFiles": [
+        {
+          "path": "textures/screwdriver_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/screwdriver/screwdriver_nor_gl_1k.jpg",
+          "md5": "82f0921fd579b798c04f01371bdb2a67",
+          "bytes": 188568,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/screwdriver_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/screwdriver/screwdriver_diff_1k.jpg",
+          "md5": "5ba63c3f1cf732191a513cc59465fbe6",
+          "bytes": 514204,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/screwdriver_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/screwdriver/screwdriver_arm_1k.jpg",
+          "md5": "da90a2d5611bcbdb20dfd2240fb34753",
+          "bytes": 750450,
+          "kind": "texture"
+        },
+        {
+          "path": "screwdriver.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/screwdriver/screwdriver.bin",
+          "md5": "ba3d5de3c16eab528409ded264fa52e8",
+          "bytes": 80568,
+          "kind": "geometry"
+        }
+      ],
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        0.027132239192724228,
+        0.20904450863599777,
+        0.026709272526204586
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "groundedBoundsMeters": {
+        "min": [
+          -0.013566119596362114,
+          0,
+          -0.013354636263102293
+        ],
+        "max": [
+          0.013566119596362114,
+          0.20904450863599777,
+          0.013354636263102293
+        ]
+      },
+      "originalBoundsMeters": {
+        "min": [
+          -0.013566119596362114,
+          -0.07394193857908249,
+          -0.013354635797441006
+        ],
+        "max": [
+          0.013566119596362114,
+          0.13510257005691528,
+          0.01335463672876358
+        ]
+      },
+      "sourceCenterAdjustment": [
+        0.0,
+        -0.07394193857908249,
+        4.656612873077393e-10
+      ],
+      "materialCount": 1,
+      "meshCount": 1,
+      "skinCount": 0,
+      "textureCount": 3,
+      "triangles": 3412,
+      "textureBytes": 1453222,
+      "bytes": 1535716,
+      "sha256": "5908db7ed9cd26b0c3adfba10045dc3f7c57049c8f0fe8d7dd247caadf927f88",
+      "processing": "Original mesh, UVs, material channels, source node hierarchy and all source 1K glTF texture images retained. Packed into a self-contained GLB with an XZ-centering/Y-grounding parent. No decimation, recompression, procedural replacement or imported cameras/lights.",
+      "placement": {
+        "pose": "Native model is upright along Y, steel tip toward +Y and handle toward -Y. Rotate X by pi/2 for a flat tabletop tool, then recompute the rotated bounding box and ground its minimum Y.",
+        "suggestedLongestSceneUnits": 0.52,
+        "zone": "Right-hand tool cluster, on the work mat or beside the vice."
+      }
+    },
+    {
+      "id": "ratchet_wrench",
+      "name": "Ratchet Wrench",
+      "file": "ratchet_wrench.glb",
+      "sourceUrl": "https://polyhaven.com/a/ratchet_wrench",
+      "authors": {
+        "John Hutcheson": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/ratchet_wrench/ratchet_wrench_1k.gltf",
+      "sourceGltfMd5": "a402821ab94f6dcfdbf240a06da47ac8",
+      "sourceFiles": [
+        {
+          "path": "textures/ratchet_wrench_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ratchet_wrench/ratchet_wrench_nor_gl_1k.jpg",
+          "md5": "9e5b7767e4f286b76b9ba0d6c8f8e692",
+          "bytes": 388724,
+          "kind": "texture"
+        },
+        {
+          "path": "ratchet_wrench.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/ratchet_wrench/ratchet_wrench.bin",
+          "md5": "021dc261c222c50e5e07963d0cb7fa7a",
+          "bytes": 219816,
+          "kind": "geometry"
+        },
+        {
+          "path": "textures/ratchet_wrench_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ratchet_wrench/ratchet_wrench_arm_1k.jpg",
+          "md5": "647ec2fe71b5f0d2749cf22b83e9e09b",
+          "bytes": 622307,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/ratchet_wrench_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ratchet_wrench/ratchet_wrench_diff_1k.jpg",
+          "md5": "92bda4c684ff4ceb5a15f8a5200d17dd",
+          "bytes": 286148,
+          "kind": "texture"
+        }
+      ],
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        0.04408946447074413,
+        0.24620075523853302,
+        0.043394144624471664
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "groundedBoundsMeters": {
+        "min": [
+          -0.022044732235372066,
+          0,
+          -0.021697072312235832
+        ],
+        "max": [
+          0.022044732235372066,
+          0.24620075523853302,
+          0.021697072312235832
+        ]
+      },
+      "originalBoundsMeters": {
+        "min": [
+          -0.01456446386873722,
+          -0.12003254890441895,
+          -0.021697072312235832
+        ],
+        "max": [
+          0.029525000602006912,
+          0.12616820633411407,
+          0.021697072312235832
+        ]
+      },
+      "sourceCenterAdjustment": [
+        0.007480268366634846,
+        -0.12003254890441895,
+        0.0
+      ],
+      "materialCount": 1,
+      "meshCount": 1,
+      "skinCount": 0,
+      "textureCount": 3,
+      "triangles": 8796,
+      "textureBytes": 1297179,
+      "bytes": 1518952,
+      "sha256": "a9a174a4016586c4e09e82506b8b4700a56f34753a9df094ff5b7c1caffc2f66",
+      "processing": "Original mesh, UVs, material channels, source node hierarchy and all source 1K glTF texture images retained. Packed into a self-contained GLB with an XZ-centering/Y-grounding parent. No decimation, recompression, procedural replacement or imported cameras/lights.",
+      "placement": {
+        "pose": "Native model is upright along Y, ratchet head at +Y and square drive facing +Z. Rotate X by -pi/2 for tabletop placement with the square drive facing up; recompute bounds after rotation. Official glTF is static, without the optional Blender rig.",
+        "suggestedLongestSceneUnits": 0.6,
+        "zone": "Near screwdriver and pliers; keep the chrome head visible to warm/cool reflections."
+      }
+    },
+    {
+      "id": "small_plastic_torch",
+      "name": "Small Plastic Torch",
+      "file": "small_plastic_torch.glb",
+      "sourceUrl": "https://polyhaven.com/a/small_plastic_torch",
+      "authors": {
+        "Abiyyu Panggalih (Abiyyu_xyz)": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/small_plastic_torch/small_plastic_torch_1k.gltf",
+      "sourceGltfMd5": "daef079394852ee603f6395f3578f4ea",
+      "sourceFiles": [
+        {
+          "path": "textures/small_plastic_torch_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/small_plastic_torch/small_plastic_torch_nor_gl_1k.jpg",
+          "md5": "ae2fd3c62c1e98dbcd5b4cfc95cd51a1",
+          "bytes": 745488,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/small_plastic_torch_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/small_plastic_torch/small_plastic_torch_diff_1k.jpg",
+          "md5": "c41d52ff6796382a48048fd5612177f8",
+          "bytes": 533146,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/small_plastic_torch_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/small_plastic_torch/small_plastic_torch_arm_1k.jpg",
+          "md5": "daa9b609db788dfa9830f30777f76bc8",
+          "bytes": 700501,
+          "kind": "texture"
+        },
+        {
+          "path": "small_plastic_torch.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/small_plastic_torch/small_plastic_torch.bin",
+          "md5": "13c4f8cdae7249cc9e292fc49237d15b",
+          "bytes": 343384,
+          "kind": "geometry"
+        }
+      ],
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        0.09977347403764725,
+        0.055050723254680634,
+        0.22747594863176346
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "groundedBoundsMeters": {
+        "min": [
+          -0.049886737018823624,
+          0,
+          -0.11373797431588173
+        ],
+        "max": [
+          0.049886737018823624,
+          0.055050723254680634,
+          0.11373797431588173
+        ]
+      },
+      "originalBoundsMeters": {
+        "min": [
+          -0.02752535790205002,
+          -0.027525344863533974,
+          -0.11238280683755875
+        ],
+        "max": [
+          0.07224811613559723,
+          0.02752537839114666,
+          0.11509314179420471
+        ]
+      },
+      "sourceCenterAdjustment": [
+        0.022361379116773605,
+        -0.027525344863533974,
+        0.0013551674783229828
+      ],
+      "materialCount": 2,
+      "meshCount": 1,
+      "skinCount": 0,
+      "textureCount": 4,
+      "triangles": 13252,
+      "textureBytes": 1979135,
+      "bytes": 2858820,
+      "sha256": "2182d3af115ec2e0d677e854908d06c3a68f6eb404e790d8db3cc6ecd8ddc757",
+      "processing": "Original mesh, UVs, material channels, source node hierarchy and all source 1K glTF texture images retained. Packed into a self-contained GLB with an XZ-centering/Y-grounding parent. No decimation, recompression, procedural replacement or imported cameras/lights.",
+      "placement": {
+        "pose": "Already lies horizontally along Z, lens toward +Z and wrist strap to the +X side. Retain X rotation 0 and turn around Y to compose on the bench. Glass is an original transparent material, not an extra scene light.",
+        "suggestedLongestSceneUnits": 0.55,
+        "zone": "Between the work mat and the right-side tool cluster, not aimed into the main camera."
+      }
+    },
+    {
+      "id": "measuring_tape_01",
+      "name": "Measuring Tape 01",
+      "file": "measuring_tape_01.glb",
+      "sourceUrl": "https://polyhaven.com/a/measuring_tape_01",
+      "authors": {
+        "Kuutti Siitonen": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/measuring_tape_01/measuring_tape_01_1k.gltf",
+      "sourceGltfMd5": "5b7914e5a48cdd9bbf7f16a4d0e8477a",
+      "sourceFiles": [
+        {
+          "path": "textures/measuring_tape_01_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/measuring_tape_01/measuring_tape_01_arm_1k.jpg",
+          "md5": "6bf2fc9cd5ebe5dad19c654e79c5988d",
+          "bytes": 143061,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/measuring_tape_01_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/measuring_tape_01/measuring_tape_01_diff_1k.jpg",
+          "md5": "51485fa43d7c92abd6c7e2d1ee8361f5",
+          "bytes": 83801,
+          "kind": "texture"
+        },
+        {
+          "path": "measuring_tape_01.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/measuring_tape_01/measuring_tape_01.bin",
+          "md5": "b1e09002fb178a078489b2964c853c4e",
+          "bytes": 94680,
+          "kind": "geometry"
+        },
+        {
+          "path": "textures/measuring_tape_01_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/measuring_tape_01/measuring_tape_01_nor_gl_1k.jpg",
+          "md5": "38492745403a54c41475ed128e791da3",
+          "bytes": 121717,
+          "kind": "texture"
+        }
+      ],
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        0.04056626558303833,
+        0.07341387253836729,
+        0.16941863298416138
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "groundedBoundsMeters": {
+        "min": [
+          -0.020283132791519165,
+          0,
+          -0.08470931649208069
+        ],
+        "max": [
+          0.020283132791519165,
+          0.07341387253836729,
+          0.08470931649208069
+        ]
+      },
+      "originalBoundsMeters": {
+        "min": [
+          -0.01757664605975151,
+          0.000228142918786034,
+          -0.12691232562065125
+        ],
+        "max": [
+          0.02298961952328682,
+          0.07364201545715332,
+          0.04250630736351013
+        ]
+      },
+      "sourceCenterAdjustment": [
+        0.0027064867317676544,
+        0.000228142918786034,
+        -0.04220300912857056
+      ],
+      "materialCount": 1,
+      "meshCount": 1,
+      "skinCount": 0,
+      "textureCount": 3,
+      "triangles": 2868,
+      "textureBytes": 348579,
+      "bytes": 445196,
+      "sha256": "ab9ccf107d054367858c259e73229e940c8c9de97b95684e9170bf33145cc38e",
+      "processing": "Original mesh, UVs, material channels, source node hierarchy and all source 1K glTF texture images retained. Packed into a self-contained GLB with an XZ-centering/Y-grounding parent. No decimation, recompression, procedural replacement or imported cameras/lights.",
+      "placement": {
+        "pose": "Already upright on its base; the long shape extending toward -Z is its wrist strap, not an extended measuring blade. The metal tape hook is at +Z. A Y-only rotation preserves its grounded base; retain clearance for the strap.",
+        "suggestedLongestSceneUnits": 0.4,
+        "zone": "Mat transition area; low silhouette below the laptop/monitor sight lines."
+      }
+    },
+    {
+      "id": "lubricant_spray",
+      "name": "Lubricant Spray",
+      "file": "lubricant_spray.glb",
+      "sourceUrl": "https://polyhaven.com/a/lubricant_spray",
+      "authors": {
+        "James Ray Cock": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/lubricant_spray/lubricant_spray_1k.gltf",
+      "sourceGltfMd5": "2a91bab36c2f44e94eca9b8a89783d55",
+      "sourceFiles": [
+        {
+          "path": "textures/lubricant_spray_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/lubricant_spray/lubricant_spray_diff_1k.jpg",
+          "md5": "dcd7151b00972c721aa61e49b7225fc6",
+          "bytes": 651836,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/lubricant_spray_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/lubricant_spray/lubricant_spray_nor_gl_1k.jpg",
+          "md5": "dd49d43511b68ad2544c37b0a935f589",
+          "bytes": 276157,
+          "kind": "texture"
+        },
+        {
+          "path": "textures/lubricant_spray_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/lubricant_spray/lubricant_spray_arm_1k.jpg",
+          "md5": "0d6862bc13bcdf5ed4441e0c1f9a3b11",
+          "bytes": 671245,
+          "kind": "texture"
+        },
+        {
+          "path": "lubricant_spray.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/lubricant_spray/lubricant_spray.bin",
+          "md5": "e44064240ce499758724566ff1b5bb12",
+          "bytes": 151640,
+          "kind": "geometry"
+        }
+      ],
+      "sourceTextureResolution": "1K",
+      "dimensionsMetersXYZ": [
+        0.0669858492910862,
+        0.1648811548948288,
+        0.06459099799394608
+      ],
+      "grounded": true,
+      "up": "+Y",
+      "units": "metres",
+      "groundedBoundsMeters": {
+        "min": [
+          -0.0334929246455431,
+          0,
+          -0.03229549899697304
+        ],
+        "max": [
+          0.0334929246455431,
+          0.1648811548948288,
+          0.03229549899697304
+        ]
+      },
+      "originalBoundsMeters": {
+        "min": [
+          -0.03229532018303871,
+          0.0,
+          -0.03229549899697304
+        ],
+        "max": [
+          0.034690529108047485,
+          0.1648811548948288,
+          0.03229549899697304
+        ]
+      },
+      "sourceCenterAdjustment": [
+        0.001197604462504387,
+        0.0,
+        0.0
+      ],
+      "materialCount": 1,
+      "meshCount": 3,
+      "skinCount": 0,
+      "textureCount": 3,
+      "triangles": 5476,
+      "textureBytes": 1599238,
+      "bytes": 1754464,
+      "sha256": "76c570a86cffa1204201e36bfe788bbf48748e3024f709cb76a436137983327a",
+      "processing": "Original mesh, UVs, material channels, source node hierarchy and all source 1K glTF texture images retained. Packed into a self-contained GLB with an XZ-centering/Y-grounding parent. No decimation, recompression, procedural replacement or imported cameras/lights.",
+      "placement": {
+        "pose": "Upright with base at Y=0, label facing approximately +Z and straw on the +X side. The narrow straw and securing tape are separate meshes, already correctly positioned. Keep these children together.",
+        "suggestedHeightSceneUnits": 0.5,
+        "zone": "Back-right near the main monitor, outside the screen silhouette."
+      }
+    }
+  ]
+}
