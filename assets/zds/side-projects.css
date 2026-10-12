@@ -7,6 +7,13 @@
 /* All Projects: group labels sit right above their grids. */
 .ap-group { margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: var(--ink); }
 #side-projects.ap-side { padding-block: 0 96px; }
+/* All Projects' body is white but ends on the grey Design System section: the footer sits on that grey too. */
+.page-all-projects .footer { background: var(--bg); }
+
+/* Robot Lab card: one cover per language, picked like the site's dual spans. */
+.card__media .lab-cover--zh { display: none; }
+html[data-locale="zh"] .card__media .lab-cover--en { display: none; }
+html[data-locale="zh"] .card__media .lab-cover--zh { display: block; }
 
 /* Lock badge: a small pill on the card image, the gate's lock in site tokens. */
 .card--locked .card__media { position: relative; }
