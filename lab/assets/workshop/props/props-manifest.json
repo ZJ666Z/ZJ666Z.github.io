@@ -1,0 +1,161 @@
+{
+  "assets": [
+    {
+      "id": "bench_vice_01",
+      "placement": {"front": "+Z handle / crank", "tableMountOffsetY": -0.085628, "note": "The lowest point is the long crank handle. Place at a desk edge; root Y = tabletop Y - 0.085628 * scale seats the mounting base."},
+      "name": "Bench Vice 01",
+      "file": "bench_vice_01.glb",
+      "sourceUrl": "https://polyhaven.com/a/bench_vice_01",
+      "authors": {
+        "Yann Kervran": "Rigging",
+        "Antanas Kep": "Modeling & Texturing"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/bench_vice_01/bench_vice_01_1k.gltf",
+      "sourceTextureResolution": "1K",
+      "sourceTriangles": 2864,
+      "orientation": "Native glTF Y-up, metres; added root centres X/Z and places minimum Y at 0. Original model forward direction retained.",
+      "processing": "Embedded original 1K baked PBR images and binary geometry into GLB. No decimation, colour repainting, material simplification or geometry generation.",
+      "dimensionsMetersXYZ": [
+        0.200482,
+        0.285149,
+        0.395722
+      ],
+      "originalBoundsMeters": {
+        "min": [
+          -0.10035783052444458,
+          -0.08558614552021027,
+          -0.18122732639312744
+        ],
+        "max": [
+          0.1001245379447937,
+          0.19956251978874207,
+          0.21449433267116547
+        ]
+      },
+      "materialCount": 1,
+      "meshCount": 4,
+      "textureCount": 3,
+      "bytes": 2434532,
+      "sha256": "9346c0110ea89d98c4f602027a646384e89b419a3ca2b86dd0acddbc3aabd310"
+    },
+    {
+      "id": "metal_toolbox",
+      "placement": {"front": "+Z latches and opening", "tableMountOffsetY": 0, "note": "Supplied with lid open; bottom sits at Y=0."},
+      "name": "Metal Toolbox",
+      "file": "metal_toolbox.glb",
+      "sourceUrl": "https://polyhaven.com/a/metal_toolbox",
+      "authors": {
+        "Mateusz Sadek": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/metal_toolbox/metal_toolbox_1k.gltf",
+      "sourceTextureResolution": "1K",
+      "sourceTriangles": 14228,
+      "orientation": "Native glTF Y-up, metres; added root centres X/Z and places minimum Y at 0. Original model forward direction retained.",
+      "processing": "Embedded original 1K baked PBR images and binary geometry into GLB. No decimation, colour repainting, material simplification or geometry generation.",
+      "dimensionsMetersXYZ": [
+        0.40001,
+        0.347106,
+        0.292329
+      ],
+      "originalBoundsMeters": {
+        "min": [
+          -0.2000098153948784,
+          0.0,
+          -0.17852476463581013
+        ],
+        "max": [
+          0.2000000700354576,
+          0.34710586427313916,
+          0.11380399018526077
+        ]
+      },
+      "materialCount": 1,
+      "meshCount": 6,
+      "textureCount": 3,
+      "bytes": 2742756,
+      "sha256": "052f90360175076fee3f3a661e52c149313eabce80c5cdc31de93102ef6576d9"
+    },
+    {
+      "id": "vintage_spacecraft_instrument",
+      "placement": {"front": "+Z instrument face", "tableMountOffsetY": 0, "note": "Use original PBR materials including glass."},
+      "name": "Vintage Spacecraft Instrument",
+      "file": "vintage_spacecraft_instrument.glb",
+      "sourceUrl": "https://polyhaven.com/a/vintage_spacecraft_instrument",
+      "authors": {
+        "Michał Wiśniewski": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/vintage_spacecraft_instrument/vintage_spacecraft_instrument_1k.gltf",
+      "sourceTextureResolution": "1K",
+      "sourceTriangles": 13279,
+      "orientation": "Native glTF Y-up, metres; added root centres X/Z and places minimum Y at 0. Original model forward direction retained.",
+      "processing": "Embedded original 1K baked PBR images and binary geometry into GLB. No decimation, colour repainting, material simplification or geometry generation.",
+      "dimensionsMetersXYZ": [
+        0.410287,
+        0.269286,
+        0.204402
+      ],
+      "originalBoundsMeters": {
+        "min": [
+          -0.20477592945098877,
+          -0.1346418261528015,
+          -0.08548414707183838
+        ],
+        "max": [
+          0.20551100373268127,
+          0.13464367389678955,
+          0.11891777813434601
+        ]
+      },
+      "materialCount": 2,
+      "meshCount": 1,
+      "textureCount": 4,
+      "bytes": 4290852,
+      "sha256": "361f86fa8cbfb18832ee674ed3b843720433330637e33fc696dd06abb5476b64"
+    },
+    {
+      "id": "pliers",
+      "placement": {"front": "+Z broad side", "tableMountOffsetY": 0, "note": "Native handle tips at Y=0 and steel jaws toward +Y. To lay flat rotate X=pi/2 and position Y=tabletop Y+0.008993*scale."},
+      "name": "Pliers",
+      "file": "pliers.glb",
+      "sourceUrl": "https://polyhaven.com/a/pliers",
+      "authors": {
+        "PierreB3D": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "sourceGltfUrl": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/pliers/pliers_1k.gltf",
+      "sourceTextureResolution": "1K",
+      "sourceTriangles": 4540,
+      "orientation": "Native glTF Y-up, metres; added root centres X/Z and places minimum Y at 0. Original model forward direction retained.",
+      "processing": "Embedded original 1K baked PBR images and binary geometry into GLB. No decimation, colour repainting, material simplification or geometry generation.",
+      "dimensionsMetersXYZ": [
+        0.05529,
+        0.179783,
+        0.017985
+      ],
+      "originalBoundsMeters": {
+        "min": [
+          -0.027644846588373184,
+          -0.1298636794090271,
+          -0.008992730639874935
+        ],
+        "max": [
+          0.027644846588373184,
+          0.049919553101062775,
+          0.008992722257971764
+        ]
+      },
+      "materialCount": 1,
+      "meshCount": 3,
+      "textureCount": 3,
+      "bytes": 2014412,
+      "sha256": "cf828427393cde4bbe7979e57b3b4fd52b93e6f6eb732d4d112859bd38224988"
+    }
+  ]
+}
