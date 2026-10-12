@@ -1,0 +1,21 @@
+Sesame robot web model
+
+Original author/project: soham0777/sesame-robot and its contributors
+Upstream: https://github.com/soham0777/sesame-robot
+Revision: 4542a50fed3ee5eae4b22cbc03e60a78b71b97da
+CAD: hardware/cad/Sesame-ESP32-v122.step (internal assembly label v123)
+License: Apache-2.0; the complete upstream license is in SESAME-LICENSE.txt.
+
+The model was converted locally through the existing 01_SESAME_SOURCE scene in
+Sesame_WheelLeg_v01.blend. This export includes only the original assembly,
+not the wheel-leg concept scene. Modified for this portfolio: welded vertices,
+reduced tessellation, display materials, grouped nodes, centered coordinates,
+and GLB conversion. No source CAD geometry was redesigned.
+
+This is the original reference design. It is not an exact reconstruction of the
+owner's ESP32-S3 / PCA9685 adaptation, wiring, battery, or physical print finish.
+Exploded view is a visual explanation, not disassembly instructions.
+
+GLB: metres; Y up; front/display faces +Z; horizontal center at X=Z=0;
+lowest model point Y=0. See sesame-model.json for bounds and part groups.
+Group extras.explodeOffset is already expressed in GLB / Three.js coordinates.
