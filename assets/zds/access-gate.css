@@ -1,0 +1,58 @@
+/* Access gate extras, served as /assets/zds/access-gate.css. The popover itself is the resume gate's
+   (assets/css/tiktok-gate.css: .tiktok-gate-wrap / .tiktok-gate-popover / .tiktok-gate / .pill …), linked beside this file.
+   This is an access threshold for a static site, not security. */
+
+/* The popover is fixed; the wrapper does not need the resume page's 100vh. */
+.access-gate.tiktok-gate-wrap { min-height: 0; padding: 0; }
+.access-gate .tiktok-gate__intro .pill .ico { flex: none; color: var(--ink); }
+
+/* ---------- Standalone pages (/lab/, /design-system/) ----------
+   They do not load site.css, so the gate brings the site tokens (values from site.css :root) and the few site classes it
+   uses, scoped to itself so it cannot touch the app underneath. */
+.access-gate--standalone {
+  --bg: #f5f4f6; --white: #ffffff; --dark: #1a1a1a; --ink: #1a1a1a; --ink-2: #383838; --muted: #8e8e8e; --line: #e6e6e6;
+  --blue: #6488ff; --blue-btn: #4b6bf3; --page: 1200px; --pad: 24px; --r-card: 24px; --r-btn: 12px; --r-pill: 999px;
+  position: relative;
+  z-index: 2147483000;
+  color: var(--ink);
+  font: 400 18px/28px "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+.access-gate--standalone *,
+.access-gate--standalone *::before,
+.access-gate--standalone *::after { box-sizing: border-box; }
+.access-gate--standalone h2,
+.access-gate--standalone p { margin: 0; font-weight: inherit; }
+.access-gate--standalone h2 { font-weight: 600; }
+.access-gate--standalone .wrap { width: 100%; max-width: var(--page); margin-inline: auto; padding-inline: var(--pad); }
+.access-gate--standalone .panel { display: grid; }
+.access-gate--standalone .pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  width: max-content; max-width: 100%;
+  padding: 6px 16px 6px 14px; border-radius: var(--r-pill);
+  box-shadow: inset 0 0 0 1px #e6e6e6;
+  font-size: 14px; line-height: 20px; font-weight: 500;
+}
+.access-gate--standalone .btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 20px; border-radius: var(--r-btn);
+  font-size: 14px; line-height: 20px; font-weight: 500;
+  cursor: pointer;
+}
+.access-gate--standalone .btn--blue { background: var(--blue-btn); color: #fff; }
+.access-gate--standalone .roll { display: block; overflow: hidden; height: 20px; }
+.access-gate--standalone .roll__in { display: block; height: 20px; }
+.access-gate--standalone input { margin: 0; }
+.access-gate--standalone :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* Language: the site's dual spans, keyed to the gate's own locale attribute (set by the inline head script). */
+.access-gate--standalone .i18n-inline--zh { display: none; }
+html[data-access-locale="zh"] .access-gate--standalone .i18n-inline--en { display: none; }
+html[data-access-locale="zh"] .access-gate--standalone .i18n-inline--zh { display: inline; }
+
+/* Locked: the app may load underneath, but stays invisible and out of the tab order until the gate is passed. */
+html.access-locked { overflow: hidden; }
+html.access-locked body > :not(.access-gate) { visibility: hidden !important; }
+html:not(.access-locked) .access-gate--standalone { display: none; }

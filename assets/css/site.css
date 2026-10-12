@@ -393,38 +393,6 @@ strong { font-weight: 700; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .case .grid-3 { gap: 36px; }
 
-.card {
-  display: flex; flex-direction: column; gap: 32px;
-  background: var(--bg); border-radius: var(--r-card); padding: 16px; overflow: hidden;
-}
-.sec--white .card { background: var(--bg); }
-.card__media { border-radius: 8px; overflow: hidden; aspect-ratio: 532 / 322; background: #fff; }
-.card__media img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .7s var(--fx-spring);
-}
-.card__body { padding: 0 16px 16px; display: grid; gap: 16px; }
-.card__copy { display: grid; gap: 10px; }
-.card__body h3 { position: relative; font-size: 24px; line-height: 32px; font-weight: 600; }
-.card__body h3::after {
-  content: ""; position: absolute; right: 8px; top: 8px;
-  width: 32px; height: 32px; opacity: 0; pointer-events: none;
-  background: center / 18px 18px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M4 14L14 4M6 4h8v8' stroke='%231A1A1A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  transition: opacity .7s var(--fx-spring), transform .7s var(--fx-spring);
-}
-.card:hover .card__media img,
-.card:focus-visible .card__media img { transform: scale(1.1); }
-.card:hover .card__body h3::after,
-.card:focus-visible .card__body h3::after { opacity: 1; transform: translate(8px, -8px); }
-.card__body p { color: var(--ink-2); }
-
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag {
-  padding: 6px 14px 6px 12px; border-radius: var(--r-pill);
-  background: var(--bg); box-shadow: inset 0 0 0 1px var(--dark);
-  font-size: 12px; line-height: 18px; font-weight: 500; color: var(--ink);
-}
-
 /* ---------- 经历卡 ---------- */
 .exp { background: #fff; border-radius: var(--r-card); padding: 24px; display: grid; gap: 12px; align-content: start; }
 .exp__logos { display: flex; gap: 0; overflow: visible; }
