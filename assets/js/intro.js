@@ -894,8 +894,8 @@
     ready: null,
   };
 
-  // The logo replays the intro on the home page.
-  document.querySelector('.nav__brand')?.addEventListener('click', e => {
+  // The logo replays the intro on the home page (the hand-written nav's .nav__brand, or the shared SiteBar's Z.).
+  document.querySelector('.nav__brand, .z-sitebar__mark')?.addEventListener('click', e => {
     if (playing || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     e.preventDefault();
