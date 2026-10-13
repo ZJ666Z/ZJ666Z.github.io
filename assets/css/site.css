@@ -829,7 +829,7 @@ strong { font-weight: 700; }
   width: max-content; max-width: 100%; margin-inline: auto; padding: 8px 36px; border-radius: 999px;
   background: var(--dark); color: #fff; text-align: center; white-space: nowrap;
 }
-.fragmented-pill span { color: #ffaa93; }
+.fragmented-pill span:not(.i18n-inline) { color: #ffaa93; }
 @media (max-width: 809.98px) {
   .fragmented-pill { width: min(613px, 100%); white-space: normal; }
 }
@@ -944,11 +944,11 @@ strong { font-weight: 700; }
 .page-case-element .case > section:nth-child(3) { padding-top: 36px; }
 
 /* Problem 三栏固定 548 高；左灰卡与右 Goal 卡撑满整列 */
-.page-case-element .tri { grid-template-rows: 548px; }
+.page-case-element .tri { grid-template-rows: minmax(548px, auto); }
 .page-case-element .tri__col { align-content: stretch; }
 .page-case-element .tri__col:nth-child(1),
 .page-case-element .tri__col:nth-child(3) { grid-template-rows: minmax(0, 1fr); }
-.page-case-element .tri__col:nth-child(2) { grid-template-rows: 303px 229px; }
+.page-case-element .tri__col:nth-child(2) { grid-template-rows: 303px minmax(229px, 1fr); }
 .page-case-element .tri__block--grouped { gap: 36px; align-content: start; }
 .page-case-element .tri__unit { display: grid; gap: 10px; align-content: start; }
 .page-case-element .tri__block--inconsist { gap: 16px; align-content: start; }
