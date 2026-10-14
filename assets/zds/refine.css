@@ -129,6 +129,19 @@
   .quote__more:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 
+/* ---------- Home hero on a phone ---------- */
+
+/* The card was a fixed 430-500px with its content centred in it, leaving empty bands above the greeting and under the
+   button. It now hugs its content: room for the illustration at the top, then the greeting, the lede and the button. */
+@media (max-width: 809.98px) {
+  .page-home .hero:not(.hero--about) .hero__card {
+    height: auto;
+    min-height: 0;
+    justify-content: flex-start;
+    padding: 112px 32px 32px;
+  }
+}
+
 /* ---------- Alignment and rhythm ---------- */
 
 /* On a phone the panel head stacks, so its lead reads from the left like everything above it. */
