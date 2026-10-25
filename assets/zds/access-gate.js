@@ -9,8 +9,13 @@
      to /lab/ or /design-system/ (including links inside the React island) and opens a resume-style popover for that
      destination. Correct password → sessionStorage[<key>] = '1' → navigate to the clicked href. Esc / backdrop dismiss.
    - Standalone (the /lab/ and /design-system/ pages): the build writes the gate markup into the page and a tiny head
-     script that marks <html class="access-locked"> unless the session is unlocked; CSS hides the app until then. Esc /
-     backdrop leave the page (back to the referrer on this site, otherwise home).
+     script that locks the page unless the session is unlocked. A destination enters one of two ways (`entry`):
+     · 'locked' (/design-system/): <html class="access-locked">, CSS hides the app, the popover is open from the start;
+       Esc / backdrop leave the page (back to the referrer on this site, otherwise home).
+     · 'scroll' (/lab/): the TikTok case study's rule. The first screen is free to see and use; what follows (`after`
+       and below) is blurred and inert under <html class="access-scroll-locked">; the popover opens on the way down
+       (400px before that part) and closes again above it; Esc / backdrop scroll back to the top. Launcher links to
+       such a destination are not intercepted: the visitor goes straight in.
 
    The pure helpers are exposed on globalThis.ZijiezAccessGate so Node tests and the build use the same code. */
 (() => {
@@ -32,6 +37,10 @@
       id: 'lab',
       path: '/lab/',
       sessionKey: 'lab-unlocked',
+      entry: 'scroll',
+      // The first gated part: the case study under the workshop's first screen, then the footer.
+      after: '.lab-case',
+      gated: '.lab-case, .lab-footer',
       copy: Object.freeze({
         pill: { en: 'Side project', zh: '个人实验' },
         title: { en: 'Robot Lab', zh: 'Robot Lab 机器人实验室' },
@@ -46,6 +55,7 @@
       id: 'design-system',
       path: '/design-system/',
       sessionKey: 'design-system-unlocked',
+      entry: 'locked',
       copy: Object.freeze({
         pill: { en: 'Design system', zh: '设计系统' },
         title: { en: 'Design system', zh: '设计系统' },
@@ -116,16 +126,21 @@
   const bilingual = copy => `<span class="i18n-inline i18n-inline--en" data-i18n-ignore>${escapeHtml(copy.en)}</span>`
     + `<span class="i18n-inline i18n-inline--zh" lang="zh-CN" data-i18n-ignore>${escapeHtml(copy.zh)}</span>`;
 
-  /** The popover, in the resume gate's markup and classes. `standalone` gates start open and own the page. */
+  /** The class the head script puts on <html> while a standalone destination is locked. */
+  const lockClass = item => (item.entry === 'scroll' ? 'access-scroll-locked' : 'access-locked');
+
+  /** The popover, in the resume gate's markup and classes. A standalone 'locked' gate starts open and owns the page; a
+      standalone 'scroll' gate starts closed and opens on the way down. */
   function renderGate(id, { standalone = false } = {}) {
     const item = destinationById(id);
     if (!item) throw new Error(`Unknown gated destination: ${id}`);
     const base = `access-gate-${item.id}`;
     const { copy } = item;
     const unlock = bilingual(copy.unlock);
+    const open = standalone && item.entry !== 'scroll';
     return [
-      `<section id="${base}" class="tiktok-gate-wrap access-gate${standalone ? ' access-gate--standalone' : ''}" data-zds-gate="${item.id}" data-session-key="${item.sessionKey}" data-i18n-ignore${standalone ? '' : ' hidden'}>`,
-      `<div class="tiktok-gate-popover" data-open="${standalone ? 'true' : 'false'}">`,
+      `<section id="${base}" class="tiktok-gate-wrap access-gate${standalone ? ' access-gate--standalone' : ''}" data-zds-gate="${item.id}" data-entry="${item.entry}" data-session-key="${item.sessionKey}" data-i18n-ignore${standalone ? '' : ' hidden'}>`,
+      `<div class="tiktok-gate-popover" data-open="${open ? 'true' : 'false'}">`,
       '<div class="wrap">',
       `<div class="tiktok-gate panel" role="dialog" aria-modal="true" aria-labelledby="${base}-title">`,
       '<div class="tiktok-gate__intro">',
@@ -154,7 +169,7 @@
 
   const api = Object.freeze({
     ACCESS_HASH, LANGUAGE_KEY, DESTINATIONS, SHARED,
-    destinationById, matchDestination, isUnlockedValue, pickLocale, toHex, hashMatches, sha256Hex, exitTarget, renderGate,
+    destinationById, matchDestination, isUnlockedValue, pickLocale, toHex, hashMatches, sha256Hex, exitTarget, renderGate, lockClass,
   });
   globalThis.ZijiezAccessGate = api;
 
@@ -173,7 +188,9 @@
   };
   const say = (gate, copy) => copy[currentLocale(gate)] || copy.en;
 
-  let active = null; // { gate, item, href, trigger, standalone }
+  let active = null; // { gate, item, href, trigger, standalone, scroll }
+  const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isOpen = gate => gate.querySelector('.tiktok-gate-popover').dataset.open === 'true';
 
   const focusables = gate => [...gate.querySelectorAll('.tiktok-gate a[href], .tiktok-gate input, .tiktok-gate button')]
     .filter(node => !node.disabled && node.offsetParent !== null);
@@ -239,7 +256,12 @@
 
   function dismiss() {
     if (!active) return;
-    const { gate, trigger, standalone } = active;
+    const { gate, trigger, standalone, scroll } = active;
+    if (scroll) {
+      // Back to the free first screen; the popover closes on the way up.
+      window.scrollTo({ top: 0, behavior: reducedMotion() ? 'auto' : 'smooth' });
+      return;
+    }
     if (standalone) {
       const target = exitTarget(document.referrer, location.href);
       if (target === 'back') history.back(); else location.assign(target);
@@ -260,12 +282,37 @@
     }
     active = null;
     gate.remove();
-    document.documentElement.classList.remove('access-locked');
+    document.documentElement.classList.remove(lockClass(item));
+    if (item.gated) for (const part of document.querySelectorAll(item.gated)) part.inert = false;
+    window.removeEventListener('scroll', follow);
+    window.removeEventListener('resize', follow);
     document.dispatchEvent(new CustomEvent('access-unlocked', { detail: { target: item.id } }));
   }
 
+  /* A 'scroll' destination: open the popover 400px before its gated part, close it again 600px above (tiktok-gate.js). The
+     gated part is drawn by the app after this script, so it is looked up each time; until it exists, the first screen ends
+     at the window's height. */
+  function follow() {
+    if (!active || !active.scroll) return;
+    const { gate, item } = active;
+    const first = document.querySelector(item.after);
+    for (const part of document.querySelectorAll(item.gated)) part.inert = true;
+    const top = first ? Math.round(first.getBoundingClientRect().top + window.scrollY) : window.innerHeight;
+    const y = window.scrollY;
+    const popover = gate.querySelector('.tiktok-gate-popover');
+    const wasOpen = popover.dataset.open === 'true';
+    const show = wasOpen ? y >= top - 600 : y >= top - 400;
+    popover.dataset.open = String(show);
+    if (show && !wasOpen) {
+      const status = gate.querySelector('[data-access-status]');
+      status.textContent = '';
+      status.dataset.state = '';
+      gate.querySelector('input[name="password"]').focus({ preventScroll: true });
+    }
+  }
+
   document.addEventListener('keydown', event => {
-    if (!active || active.gate.hidden) return;
+    if (!active || active.gate.hidden || !isOpen(active.gate)) return;
     if (event.key === 'Escape') { event.preventDefault(); dismiss(); return; }
     if (event.key !== 'Tab') return;
     const items = focusables(active.gate);
@@ -284,11 +331,19 @@
     if (!item) return;
     if (unlocked(item)) {
       standalone.remove();
-      document.documentElement.classList.remove('access-locked');
+      document.documentElement.classList.remove(lockClass(item));
       return;
     }
-    document.documentElement.classList.add('access-locked');
+    document.documentElement.classList.add(lockClass(item));
     wire(standalone);
+    if (item.entry === 'scroll') {
+      active = { gate: standalone, item, href: location.href, trigger: null, standalone: true, scroll: true };
+      window.addEventListener('scroll', follow, { passive: true });
+      window.addEventListener('resize', follow, { passive: true });
+      window.addEventListener('load', follow);
+      follow();
+      return;
+    }
     active = { gate: standalone, item, href: location.href, trigger: null, standalone: true };
     standalone.querySelector('input[name="password"]').focus({ preventScroll: true });
     return;
@@ -300,7 +355,8 @@
     if (!trigger || trigger.target === '_blank' || trigger.hasAttribute('download')) return;
     if ((event.button != null && event.button !== 0) || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const item = matchDestination(trigger.getAttribute('href'), location.href);
-    if (!item || unlocked(item)) return;
+    // A 'scroll' destination is entered freely: its own page asks on the way down.
+    if (!item || item.entry === 'scroll' || unlocked(item)) return;
     event.preventDefault();
     event.stopPropagation();
     open(item, { href: new URL(trigger.getAttribute('href'), location.href).href, trigger });

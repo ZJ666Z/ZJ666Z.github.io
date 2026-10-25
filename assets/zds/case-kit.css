@@ -1,0 +1,290 @@
+/* Case-study kit (site/case-kit.tsx). site.css draws the blocks (.two-col .block, .impact__pill, .grid-3 .step, .stats,
+   .plain-stack, .panel, .tradeoff, .notice); the other case studies then space and colour them in their own scope
+   (tiktok-gate.css under #tiktok-full-content, site.css under .page-case-amazon / .page-case-element). This file brings
+   the same values over under `.ck-case`, so a case study built from the kit reads like them. Served at
+   /assets/zds/case-kit.css; a case page that uses the kit links it. */
+
+/* ---------- Sections: the grey page, with white bands between (TikTok's Research bands) ---------- */
+.ck-case { padding-bottom: 0; }
+.ck-case > section:last-child:not(.ck-band) { padding-bottom: 96px; }
+.ck-case > section.ck-band {
+  width: 100vw; width: 100cqw; max-width: none;
+  margin-inline: calc(50% - 50vw); margin-inline: calc(50% - 50cqw);
+  padding: clamp(96px, 8vw, 128px) max(var(--pad), calc((100cqw - var(--page)) / 2 + var(--pad))) 128px;
+  background: var(--white);
+}
+.ck-case > section.ck-band + section { padding-top: 128px; }
+
+/* ---------- Heads ---------- */
+.ck-case .case-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; justify-self: center; }
+.ck-case > section:not(.ck-band) .case-pills .pill { box-shadow: none; }
+.ck-case .case-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.ck-case .case-head--left { row-gap: 20px; }
+.ck-case .case-head--left .case-tags .pill--tag {
+  padding: 6px 16px; background: var(--bg); box-shadow: none;
+  font-size: 24px; line-height: 32px; font-weight: 600; color: var(--ink);
+}
+.ck-case :is(.case-title, .ck-title, .ck-sub, .block h3, .step h3) { text-wrap: balance; }
+
+/* A section's title inside a chapter; a second one in the same section starts a new group. */
+.ck-case .ck-title:not(:first-child) { margin-top: 64px; }
+
+/* A part's title: 24/700 as TikTok's list titles; 64px from the part above, 16px to its own text. */
+.ck-case .ck-sub { font-size: 24px; line-height: 32px; font-weight: 700; color: var(--ink); }
+.ck-case .ck-sub:not(:first-child) { margin-top: 32px; }
+.ck-case :is(.case-head, .ck-title) + .ck-sub { margin-top: 0; }
+.ck-case .ck-sub + :is(.plain-block, .ck-columns) { margin-top: -16px; }
+
+/* ---------- Text ---------- */
+.ck-case strong { color: var(--ink); }
+.ck-case code {
+  padding: 1px 6px; border-radius: 6px; background: rgb(26 26 26 / 6%);
+  font: 500 .86em / inherit var(--z-font-code, ui-monospace, SFMono-Regular, Menlo, monospace); color: var(--ink);
+}
+/* Bullets as Amazon and Element set them: a "•" hung in a 24px indent. */
+.ck-case ul { list-style: none; padding-left: 0; }
+.ck-case ul > li { position: relative; padding-inline-start: 24px; }
+.ck-case ul > li::before { content: "•"; position: absolute; left: 0; top: 0; color: inherit; }
+.ck-case ol li::marker { color: var(--muted); }
+/* A list belongs to the sentence that introduces it, and the sentence after it to the list. */
+.ck-case .plain-block + .ck-list,
+.ck-case .ck-list + .plain-block { margin-top: -16px; }
+
+/* ---------- Cards: pairs (with an arrow) and rows, as TikTok's Problem / Impact cards ---------- */
+.ck-case .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; justify-content: stretch; }
+.ck-case .two-col:has(> .ck-arrow) { grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1fr); }
+.ck-case :is(.two-col, .grid-3, .ck-card-stack) > .block { padding: 24px; border-radius: var(--r-card); background: var(--white); gap: 12px; }
+.ck-card-stack { display: grid; gap: 24px; align-content: start; }
+.ck-case .ck-band :is(.two-col, .grid-3, .ck-card-stack) > .block { background: var(--bg); }
+.ck-case :is(.two-col, .grid-3, .ck-card-stack) > .block.block--blue { background: #ccddff; }
+.ck-case .block > .impact__pill { margin-bottom: 4px; }
+.ck-case :is(.two-col, .grid-3, .ck-card-stack) > .block h3 { margin-bottom: 4px; font-size: 24px; line-height: 32px; font-weight: 700; color: var(--ink-2); }
+.ck-case .block :is(p, li) { color: var(--ink-2); }
+.ck-case .block--blue :is(h3, p, li) { color: var(--ink); }
+.ck-arrow { align-self: center; justify-self: center; font-size: 60px; line-height: 72px; font-weight: 600; color: var(--ink); }
+
+/* ---------- Numbered steps: white cards as in the Process rows, four to a row when asked ---------- */
+.ck-case .step { padding: 24px; border-radius: var(--r-card); background: var(--white); }
+.ck-case .ck-band .step { background: var(--bg); }
+.ck-case .step .num { font-size: 24px; }
+.ck-case .grid-3.ck-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.ck-case .ck-grid-4 .step h3 { font-size: 20px; line-height: 28px; }
+
+/* ---------- Headline numbers (Element's overview), optionally with a bar ---------- */
+.ck-case .stat { text-align: center; align-content: start; }
+.ck-case .ck-stats--1 { grid-template-columns: minmax(0, 1fr); }
+.ck-case .ck-stats--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ck-case .ck-stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ck-case .ck-band .stats { background: var(--bg); }
+.ck-case .stats > .kicker { grid-column: 1 / -1; text-align: center; }
+.ck-case .stat.is-accent b { color: var(--blue-btn); }
+.ck-bar { position: relative; display: block; height: 8px; margin-top: 12px; border-radius: var(--r-pill); background: var(--line); overflow: hidden; }
+.ck-band .ck-bar { background: #e1e0e6; }
+.ck-bar > i { position: absolute; inset-block: 0; border-radius: inherit; background: var(--ink); }
+.stat.is-accent .ck-bar > i { background: var(--blue-btn); }
+
+/* ---------- Numbered findings (Amazon's research insights), two to a row where there is room ---------- */
+.ck-case .ck-findings { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.ck-case .ck-findings .plain-block { gap: 16px; padding: 24px; border-radius: var(--r-card); background: var(--white); }
+.ck-case .ck-band .ck-findings .plain-block { background: var(--bg); }
+.ck-case .ck-findings .num { width: 48px; height: 48px; font-size: 24px; line-height: 32px; font-weight: 700; }
+.ck-case .ck-findings p { margin: 0; color: var(--ink-2); }
+
+/* ---------- Outcome lists (TikTok's Potential Solution Impacts) ---------- */
+.ck-case .ck-outcomes { gap: 16px; }
+.ck-case .ck-outcomes .plain-block { gap: 0; }
+.ck-case .ck-outcomes h3 { margin-bottom: 16px; font-size: 24px; line-height: 32px; font-weight: 700; color: var(--ink); }
+.ck-case .ck-outcomes li { color: var(--ink); }
+
+/* ---------- Rationale card (TikTok's Design Rationale & Strategy) and the evidence in it ---------- */
+.ck-case .ck-rationale { padding: 24px; gap: 16px; border-radius: var(--r-card); background: var(--white); }
+.ck-case .ck-band .ck-rationale { background: var(--bg); }
+.ck-case .ck-rationale > h3 { font-size: 24px; line-height: 32px; font-weight: 700; color: var(--ink); }
+.ck-case .ck-rationale :is(p, li) { color: var(--ink); }
+.ck-evidence { display: grid; gap: 8px; padding-block: 8px; }
+.ck-evidence .stats { padding: 0; border-radius: 0; background: none; gap: 24px; }
+.ck-case .ck-evidence .stat { text-align: left; }
+.ck-evidence .stat b { font-size: 36px; line-height: 44px; }
+.ck-evidence .stat span { font-size: 16px; line-height: 24px; text-align: left; }
+
+/* ---------- Trade-off, notice, note, the large sentence ---------- */
+.ck-case > section:not(.ck-band) .tradeoff { background: var(--white); }
+.ck-case > section:not(.ck-band) .tradeoff__card { background: var(--bg); }
+.ck-case .tradeoff__card { gap: 12px; }
+.ck-case .tradeoff__card p { color: var(--ink-2); }
+.ck-case > section:not(.ck-band) .notice:not(.notice--dark) { background: var(--white); }
+
+.ck-case .case-note { font-size: 18px; line-height: 26px; font-weight: 500; color: var(--ink-2); text-align: left; }
+.ck-case :is(.stats, .figure, .two-col, .grid-3) + .case-note { margin-top: -16px; }
+
+.ck-takeaway { display: grid; grid-template-columns: minmax(0, 800px); justify-content: center; padding-block: 32px; }
+.ck-takeaway p { font-size: 36px; line-height: 44px; font-weight: 600; color: var(--ink); text-align: center; text-wrap: balance; }
+
+/* ---------- "Scroll down to continue" (TikTok's case-continue) ---------- */
+.ck-case .case-continue { display: grid; gap: 16px; margin-top: 64px; }
+.ck-case .case-continue__rule { display: flex; align-items: center; gap: 24px; }
+.ck-case .case-continue__rule::before,
+.ck-case .case-continue__rule::after { content: ""; flex: 1 1 0; height: 1px; background: var(--line); }
+.ck-case .case-continue .mouse-cue i { animation: mouse-wheel 1.6s ease-in-out infinite; }
+.ck-case .case-continue p { font-size: 12px; line-height: 18px; font-weight: 500; color: var(--z-color-caption, #6b6b6b); text-align: center; }
+
+/* ---------- Placeholders for images still to come, and the hero without its video ---------- */
+.ck-placeholder {
+  width: 100%; min-width: 0; min-height: 340px; padding: 32px;
+  border: 1px dashed #c9c8ce; border-radius: var(--r-card); background: var(--white);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  text-align: center; color: var(--z-color-caption, #6b6b6b);
+}
+.ck-band .ck-placeholder { background: var(--bg); }
+.ck-placeholder > span { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: .08em; }
+.ck-placeholder > p { max-width: 640px; font-size: 16px; line-height: 26px; color: inherit; }
+.ck-placeholder--short { min-height: 220px; }
+.ck-placeholders { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; }
+
+.ck-hero-backdrop { position: absolute; inset: 0; z-index: 0; display: grid; place-items: start center; padding: 112px var(--z-gutter) 0; text-align: center; background: radial-gradient(120% 80% at 50% 100%, #26304f 0%, var(--z-color-ink) 60%); color: rgb(255 255 255 / 40%); font: 600 var(--z-type-eyebrow) / var(--z-type-eyebrow-leading) var(--z-font-interface); letter-spacing: var(--z-tracking-eyebrow); }
+.ck-wordmark { color: #fff; font-size: clamp(30px, 5vw, 54px); line-height: 1.15; font-weight: 600; text-align: center; }
+.case-hero__lede { max-width: 720px; margin-inline: auto; font-size: 18px; line-height: 28px; color: rgb(255 255 255 / 82%); text-align: center; text-wrap: balance; }
+
+/* ---------- Side by side (Columns / Column): equal columns, each a stack with the section's rhythm ---------- */
+.ck-columns { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 36px; align-items: start; }
+.ck-column { display: grid; gap: 32px; align-content: start; min-width: 0; }
+.ck-column > * { min-width: 0; }
+
+/* ---------- Blocks from the older case studies ---------- */
+/* Panel: a card holding blocks; cards inside it take the other surface. */
+.ck-case .ck-panel { display: grid; gap: 20px; padding: 36px; border-radius: var(--r-card); background: var(--white); }
+.ck-case .ck-band .ck-panel { background: var(--bg); }
+.ck-case .ck-panel.ck-panel--blue { background: #ccddff; }
+.ck-case .ck-panel :is(.two-col, .grid-3, .ck-card-stack) > .block:not(.block--blue) { background: var(--bg); }
+.ck-case .ck-band .ck-panel :is(.two-col, .grid-3, .ck-card-stack) > .block:not(.block--blue) { background: var(--white); }
+.ck-panel__head { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.ck-panel__head .num { width: 48px; height: 48px; font-size: 24px; line-height: 32px; }
+
+/* Notice: TikTok's amber [CONFIDENTIAL], the coral [UNDER NDA] on dark. */
+.ck-case .ck-notice strong { font-weight: 600; color: #bd9156; }
+.ck-case .ck-notice.notice--dark strong { color: #ffaa93; }
+.ck-case .ck-notice.notice--dark .btn { background: var(--blue-btn); }
+
+/* How might we: one question between marks (TikTok, Amazon), or several numbered (Element). */
+.ck-hmw { display: grid; grid-template-columns: minmax(0, 800px); justify-content: center; padding-block: 32px; }
+.ck-hmw__mark { font-size: 60px; line-height: 72px; font-weight: 600; color: var(--ink); }
+.ck-hmw__mark--end { text-align: right; }
+.ck-hmw__text { font-size: 36px; line-height: 44px; font-weight: 600; color: var(--ink) !important; text-align: center; text-wrap: balance; }
+.ck-case .ck-hmw-list { padding: 24px 24px 8px; gap: 36px; }
+.ck-case .ck-hmw-list .hmw-items { display: grid; gap: 48px; }
+
+/* Opportunity / Goal: a heading over a blue card each. */
+.ck-case .ck-directions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; }
+.ck-case .ck-directions .col-group { grid-template-rows: auto 1fr; gap: 12px; }
+.ck-case .ck-directions .col-group h2 { margin-bottom: 0; }
+.ck-case .ck-directions .block { display: grid; gap: 16px; align-content: start; height: 100%; padding: 24px; border-radius: var(--r-card); background: #ccddff; }
+.ck-direction { display: grid; gap: 4px; }
+.ck-case .ck-direction h3 { font-size: 24px; line-height: 32px; font-weight: 700; color: var(--ink); }
+.ck-case .ck-direction :is(p, li) { color: var(--ink); }
+
+/* Overview: the image beside its text, in one white card. */
+.ck-case .ck-overview { max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ck-case .ck-band .ck-overview { background: var(--bg); }
+.ck-case .ck-overview .figure img { width: 100%; height: auto; }
+.ck-case .ck-overview .split__body { display: grid; gap: 12px; align-content: start; }
+.ck-case .ck-overview .ck-placeholder { background: var(--bg); }
+
+/* Options: a row that scrolls sideways, an option at a time (the next one shows at the edge). */
+.ck-options { display: grid; gap: 12px; }
+.ck-options__track {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 92%; gap: 24px;
+  overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; padding-bottom: 12px;
+  scrollbar-color: #8e8e8e #e6e6e6;
+}
+.ck-option { display: grid; grid-template-columns: 262px minmax(0, 1fr); gap: 36px; align-items: center; scroll-snap-align: start; }
+.ck-option__media { margin: 0; justify-self: center; width: 100%; }
+.ck-option__media img { display: block; width: auto; max-width: 262px; max-height: 540px; margin-inline: auto; }
+.ck-option__media .ck-placeholder { min-height: 480px; padding: 16px; }
+.ck-option__body { display: grid; gap: 12px; align-content: start; padding: 36px; border-radius: var(--r-card); background: var(--white); }
+.ck-band .ck-option__body { background: var(--bg); }
+.ck-case .ck-option__body h3 { margin-bottom: 12px; font-size: 24px; line-height: 32px; font-weight: 600; color: var(--ink-2); }
+.ck-case .ck-option__label { font-size: 24px; line-height: 32px; font-weight: 700; color: var(--ink-2); }
+.ck-case .ck-option__body ul + .ck-option__label { margin-top: 12px; }
+.ck-options__hint { font-size: 14px; line-height: 20px; color: var(--z-color-caption, #66666e) !important; text-align: center; }
+
+/* Recommendations panel. */
+.ck-quotes__title { display: grid; gap: 12px; justify-items: start; }
+.ck-case .ck-band .ck-quotes { background: var(--bg); }
+.ck-case .ck-band .ck-quotes .quote { background: var(--white); }
+
+/* ---------- Narrower screens: the breakpoints the case pages use ---------- */
+@media (max-width: 1279.98px) {
+  .ck-case .ck-directions,
+  .ck-case .ck-overview { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .ck-case .two-col,
+  .ck-case .two-col:has(> .ck-arrow) { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .ck-arrow { rotate: 90deg; line-height: 1; }
+  .ck-case .grid-3.ck-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 1099.98px) {
+  .ck-case .ck-findings { grid-template-columns: minmax(0, 1fr); }
+  .ck-columns { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+@media (max-width: 900px) {
+  .ck-case .case-head--left .case-tags .pill--tag { font-size: 18px; line-height: 26px; }
+}
+@media (max-width: 809.98px) {
+  .ck-case > section.ck-band { padding: 64px var(--pad); }
+  .ck-case > section.ck-band + section { padding-top: 64px; }
+  .ck-case > section:last-child:not(.ck-band) { padding-bottom: 64px; }
+  .ck-case .ck-title:not(:first-child) { margin-top: 32px; }
+  .ck-case .ck-sub:not(:first-child) { margin-top: 16px; }
+  .ck-case :is(.ck-stats--2, .ck-stats--3),
+  .ck-placeholders { grid-template-columns: minmax(0, 1fr); }
+  .ck-case .grid-3.ck-grid-4 { gap: 12px; }
+  .ck-case .ck-grid-4 .step { padding: 16px; }
+  .ck-case .ck-grid-4 .step h3 { font-size: 17px; line-height: 24px; }
+  .ck-case .stats { padding: 32px 24px; gap: 24px; }
+  .ck-evidence .stats { padding: 0; }
+  .ck-takeaway { padding-block: 8px; }
+  .ck-takeaway p { font-size: 24px; line-height: 32px; }
+  .ck-placeholder { min-height: 240px; padding: 24px; }
+  .ck-case .ck-panel { padding: 24px; }
+  .ck-hmw__text { font-size: 24px; line-height: 32px; }
+  .ck-hmw__mark { font-size: 40px; line-height: 48px; }
+  .ck-option { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .ck-option__body { padding: 24px; }
+  .ck-options__track { grid-auto-columns: 88%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ck-case .case-continue .mouse-cue i { animation: none; }
+}
+
+/* ---------- Look: a block's text size and colour, chosen in the editor (site/edit.ts `look`) ----------
+   Size scales the block's own type a step down or up (.875×, 1.125×, 1.25×) from the sizes the case pages give each role,
+   phone sizes included; colour is one of the palette's. Pills, labels and the numbers in black circles keep theirs. */
+.ck-case {
+  --ck-p: 18px; --ck-p-lh: 28px; --ck-h3: 24px; --ck-h3-lh: 32px; --ck-h2: 36px; --ck-h2-lh: 44px;
+  --ck-big: 36px; --ck-big-lh: 44px; --ck-h1: 48px; --ck-h1-lh: 56px; --ck-num: 48px; --ck-num-lh: 56px;
+}
+@media (max-width: 1279.98px) { .ck-case { --ck-h1: 40px; --ck-h1-lh: 48px; } }
+@media (max-width: 809.98px) {
+  .ck-case { --ck-p: 16px; --ck-p-lh: 26px; --ck-h2: 28px; --ck-h2-lh: 36px; --ck-big: 24px; --ck-big-lh: 32px; --ck-h1: 30px; --ck-h1-lh: 38px; --ck-num: 36px; --ck-num-lh: 44px; }
+}
+[data-ck-size="s"] { --ck-scale: .875; }
+[data-ck-size="l"] { --ck-scale: 1.125; }
+[data-ck-size="xl"] { --ck-scale: 1.25; }
+.ck-case [data-ck-size] :is(p, li, figcaption, .stat span),
+.ck-case :is(p, li)[data-ck-size] { font-size: calc(var(--ck-p) * var(--ck-scale)) !important; line-height: calc(var(--ck-p-lh) * var(--ck-scale)) !important; }
+.ck-case [data-ck-size] h3,
+.ck-case h3[data-ck-size] { font-size: calc(var(--ck-h3) * var(--ck-scale)) !important; line-height: calc(var(--ck-h3-lh) * var(--ck-scale)) !important; }
+.ck-case [data-ck-size] h2,
+.ck-case h2[data-ck-size] { font-size: calc(var(--ck-h2) * var(--ck-scale)) !important; line-height: calc(var(--ck-h2-lh) * var(--ck-scale)) !important; }
+.ck-case .ck-takeaway[data-ck-size] p { font-size: calc(var(--ck-big) * var(--ck-scale)) !important; line-height: calc(var(--ck-big-lh) * var(--ck-scale)) !important; }
+.ck-case [data-ck-size] .case-title { font-size: calc(var(--ck-h1) * var(--ck-scale)) !important; line-height: calc(var(--ck-h1-lh) * var(--ck-scale)) !important; }
+.ck-case [data-ck-size] .stat b { font-size: calc(var(--ck-num) * var(--ck-scale)) !important; line-height: calc(var(--ck-num-lh) * var(--ck-scale)) !important; }
+
+[data-ck-color="ink"] { --ck-color: var(--z-color-ink, #1a1a1a); }
+[data-ck-color="secondary"] { --ck-color: var(--z-color-ink-secondary, #383838); }
+[data-ck-color="caption"] { --ck-color: var(--z-color-caption, #66666e); }
+[data-ck-color="blue"] { --ck-color: var(--z-color-blue-action, #4b6bf3); }
+[data-ck-color="success"] { --ck-color: var(--z-color-success, #1b7a4f); }
+[data-ck-color="danger"] { --ck-color: var(--z-color-danger, #c2362a); }
+.ck-case [data-ck-color],
+.ck-case [data-ck-color] :is(p, li, h2, h3, b, strong, figcaption, .case-title, .stat span):not(:is(.impact__pill, .tradeoff__pill) *) { color: var(--ck-color) !important; }

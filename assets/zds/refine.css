@@ -87,6 +87,9 @@
   .page-case-amazon .amazon-deep .two-col { grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1fr); }
   .page-case-amazon .amazon-deep .two-groups,
   .page-case-element .case > section:nth-child(6) .two-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Element's sign-in rows (text beside a screen) were two fixed 556px columns, 1128px in all: wider than the 1080px
+     inside their panel, so the rows and the 3.1 picture above them ran 48px past the panel's right edge. */
+  .page-case-element .auth-row { max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ---------- Recommendations: the long quote rests at a few lines ---------- */
