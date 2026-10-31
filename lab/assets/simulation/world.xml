@@ -1,0 +1,113 @@
+<mujoco model="sesame_v1_cad">
+  <compiler angle="radian" autolimits="true" meshdir="meshes" />
+  <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81" />
+
+  <default>
+    <joint damping="0.08" armature="0.002" limited="true" />
+    <geom friction="0.9 0.02 0.002" condim="4" solref="0.004 1" />
+    <position kp="5.0" kv="0.12" forcerange="-0.10 0.10" />
+  </default>
+
+  <asset>
+    <texture name="sky" type="skybox" builtin="gradient" rgb1="0.18 0.22 0.28" rgb2="0.02 0.03 0.05" width="512" height="512" />
+    <material name="shell" rgba="0.88 0.90 0.92 1" />
+    <material name="leg" rgba="0.13 0.16 0.18 1" />
+    <material name="collision" rgba="0.15 0.65 0.70 0" />
+    <mesh name="torso_visual" file="torso.obj" />
+    <mesh name="R1_upper_visual" file="R1_upper.obj" />
+    <mesh name="R2_upper_visual" file="R2_upper.obj" />
+    <mesh name="L1_upper_visual" file="L1_upper.obj" />
+    <mesh name="L2_upper_visual" file="L2_upper.obj" />
+    <mesh name="R3_lower_visual" file="R3_lower.obj" />
+    <mesh name="R4_lower_visual" file="R4_lower.obj" />
+    <mesh name="L3_lower_visual" file="L3_lower.obj" />
+    <mesh name="L4_lower_visual" file="L4_lower.obj" />
+  <texture name="floor_tex" type="2d" builtin="checker" rgb1=".065 .095 .12" rgb2=".08 .12 .15" width="512" height="512" /><material name="floor_mat" texture="floor_tex" texrepeat="18 18" texuniform="true" reflectance=".12" /></asset>
+
+  <worldbody>
+    <light pos="0 0 1.2" dir="0 0 -1" diffuse="0.9 0.9 0.9" />
+    <geom name="ground" type="plane" size="3 3 0.1" rgba="1 1 1 1" material="floor_mat" />
+    <camera name="track" mode="trackcom" pos="0.22 -0.28 0.18" xyaxes="0.78 0.62 0 -0.30 0.38 0.87" />
+
+
+    <body name="torso" pos="0 0 0.04593">
+      <freejoint />
+      <geom type="mesh" mesh="torso_visual" material="shell" contype="0" conaffinity="0" mass="0" />
+      <geom name="torso_collision" type="box" pos="0 0 0.015" size="0.0395 0.034 0.030" mass="0.17" material="collision" />
+
+      <site name="front_marker" pos="0.040 0 0.035" size="0.003" rgba="0.2 1 0.2 1" />
+      <site name="imu" pos="-0.030 0 0.035" size="0.003" rgba="1 0.3 0.1 1" />
+
+
+      <body name="front_right_upper" pos="0.02874 -0.02964 0.02082">
+        <joint name="R1" axis="0 0 1" range="-0.785 1.571" />
+        <geom type="mesh" mesh="R1_upper_visual" material="leg" contype="0" conaffinity="0" mass="0" />
+        <geom type="capsule" fromto="0 0 0 0.00978 -0.02577 -0.01969" size="0.009" mass="0.018" material="collision" />
+        <body name="front_right_lower" pos="0.00978 -0.02577 -0.01969">
+          <joint name="R3" axis="0.625 0.781 0" range="-3.142 0" />
+          <geom type="mesh" mesh="R3_lower_visual" material="leg" contype="0" conaffinity="0" mass="0" />
+
+          <geom type="capsule" fromto="0 0 0 0.01646 0.01008 -0.03600" size="0.006" mass="0.001" material="collision" />
+          <geom name="front_right_foot" type="box" pos="0.01646 0.01008 -0.04487" size="0.00625 0.00625 0.002" mass="0.001" material="collision" />
+        </body>
+      </body>
+
+      <body name="rear_right_upper" pos="-0.02815 -0.02964 0.02082">
+        <joint name="R2" axis="0 0 1" range="-1.571 0.785" />
+        <geom type="mesh" mesh="R2_upper_visual" material="leg" contype="0" conaffinity="0" mass="0" />
+        <geom type="capsule" fromto="0 0 0 -0.00977 -0.02577 -0.01969" size="0.009" mass="0.018" material="collision" />
+        <body name="rear_right_lower" pos="-0.00977 -0.02577 -0.01969">
+          <joint name="R4" axis="-0.625 0.781 0" range="0 3.142" />
+          <geom type="mesh" mesh="R4_lower_visual" material="leg" contype="0" conaffinity="0" mass="0" />
+          <geom type="capsule" fromto="0 0 0 -0.01612 0.00973 -0.03600" size="0.006" mass="0.001" material="collision" />
+          <geom name="rear_right_foot" type="box" pos="-0.01612 0.00973 -0.04506" size="0.00625 0.00625 0.002" mass="0.001" material="collision" />
+        </body>
+      </body>
+
+      <body name="front_left_upper" pos="0.02874 0.02965 0.02082">
+        <joint name="L1" axis="0 0 1" range="-1.571 0.785" />
+        <geom type="mesh" mesh="L1_upper_visual" material="leg" contype="0" conaffinity="0" mass="0" />
+        <geom type="capsule" fromto="0 0 0 0.00978 0.02576 -0.01969" size="0.009" mass="0.018" material="collision" />
+        <body name="front_left_lower" pos="0.00978 0.02576 -0.01969">
+          <joint name="L3" axis="-0.625 0.781 0" range="0 3.142" />
+          <geom type="mesh" mesh="L3_lower_visual" material="leg" contype="0" conaffinity="0" mass="0" />
+          <geom type="capsule" fromto="0 0 0 0.01633 -0.01000 -0.03600" size="0.006" mass="0.001" material="collision" />
+          <geom name="front_left_foot" type="box" pos="0.01633 -0.01000 -0.04487" size="0.00625 0.00625 0.002" mass="0.001" material="collision" />
+        </body>
+      </body>
+
+      <body name="rear_left_upper" pos="-0.02815 0.02965 0.02082">
+        <joint name="L2" axis="0 0 1" range="-0.785 1.571" />
+        <geom type="mesh" mesh="L2_upper_visual" material="leg" contype="0" conaffinity="0" mass="0" />
+        <geom type="capsule" fromto="0 0 0 -0.00977 0.02576 -0.01969" size="0.009" mass="0.018" material="collision" />
+        <body name="rear_left_lower" pos="-0.00977 0.02576 -0.01969">
+          <joint name="L4" axis="0.625 0.781 0" range="-3.142 0" />
+          <geom type="mesh" mesh="L4_lower_visual" material="leg" contype="0" conaffinity="0" mass="0" />
+          <geom type="capsule" fromto="0 0 0 -0.01612 -0.00978 -0.03600" size="0.006" mass="0.001" material="collision" />
+          <geom name="rear_left_foot" type="box" pos="-0.01612 -0.00978 -0.04506" size="0.00625 0.00625 0.002" mass="0.001" material="collision" />
+        </body>
+      </body>
+    </body>
+  <body name="food" mocap="true" pos=".16 .04 .018"><geom name="fruit" type="ellipsoid" size=".019 .019 .023" rgba="0 0 0 0" contype="0" conaffinity="0" /><geom name="leaf" type="ellipsoid" pos=".004 0 .025" size=".012 .005 .002" rgba="0 0 0 0" contype="0" conaffinity="0" /></body><light pos="-.3 -.4 .6" diffuse=".5 .6 .8" dir=".3 .4 -.6" /><geom name="north" type="box" pos="0 .48 .025" size=".49 .005 .025" rgba=".15 .25 .3 1" /><geom name="south" type="box" pos="0 -.48 .025" size=".49 .005 .025" rgba=".15 .25 .3 1" /><geom name="east" type="box" pos=".48 0 .025" size=".005 .48 .025" rgba=".15 .25 .3 1" /><geom name="west" type="box" pos="-.48 0 .025" size=".005 .48 .025" rgba=".15 .25 .3 1" /></worldbody>
+
+  <actuator>
+    <position name="R1_servo" joint="R1" ctrlrange="-0.785 1.571" />
+    <position name="R2_servo" joint="R2" ctrlrange="-1.571 0.785" />
+    <position name="L1_servo" joint="L1" ctrlrange="-1.571 0.785" />
+    <position name="L2_servo" joint="L2" ctrlrange="-0.785 1.571" />
+    <position name="R4_servo" joint="R4" ctrlrange="0 3.142" />
+    <position name="R3_servo" joint="R3" ctrlrange="-3.142 0" />
+    <position name="L3_servo" joint="L3" ctrlrange="0 3.142" />
+    <position name="L4_servo" joint="L4" ctrlrange="-3.142 0" />
+  </actuator>
+
+  <sensor>
+    <gyro name="gyro" site="imu" />
+    <accelerometer name="accelerometer" site="imu" />
+  </sensor>
+
+
+  <keyframe>
+    <key name="stand" qpos="0 0 0.04593 1 0 0 0  0 0 0 0 0 0 0 0" />
+  </keyframe>
+<visual><global offwidth="1000" offheight="700" /><headlight ambient=".4 .4 .4" diffuse=".7 .7 .7" specular=".2 .2 .2" /></visual></mujoco>

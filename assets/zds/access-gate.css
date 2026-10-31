@@ -58,7 +58,3 @@ html.access-locked { overflow: hidden; }
 html.access-locked body > :not(.access-gate) { visibility: hidden !important; }
 html:not(.access-locked):not(.access-scroll-locked) .access-gate--standalone { display: none; }
 
-/* Locked on the way down ('scroll' entry, /lab/): the workshop's first screen is free; the case study and the footer
-   below it are blurred, as the TikTok case study's private half is, until the password (access-gate.js makes them inert). */
-html.access-scroll-locked .lab-case,
-html.access-scroll-locked .lab-footer { filter: blur(14px) saturate(.9); opacity: .72; pointer-events: none; user-select: none; }

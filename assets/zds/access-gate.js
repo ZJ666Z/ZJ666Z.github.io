@@ -1,4 +1,5 @@
-/* Access gate for the portfolio's Robot Lab (/lab/) and design system (/design-system/).
+/* Access gate for the portfolio's design system (/design-system/). Robot Lab (/lab/) was gated here until
+   2026-10-31 and is now open.
 
    This is an access threshold for a static site, not security: the SHA-256 below, the gate and the apps behind it are
    all public files. It mirrors assets/js/tiktok-gate.js (same hash, same popover classes, same sessionStorage idea) so the
@@ -6,13 +7,13 @@
 
    Two modes, one script (served as /assets/zds/access-gate.js, classic `defer` script, no imports):
    - Launcher (portfolio pages): a capture-phase click listener on document intercepts left clicks on same-origin links
-     to /lab/ or /design-system/ (including links inside the React island) and opens a resume-style popover for that
+     to a gated destination (including links inside the React island) and opens a resume-style popover for that
      destination. Correct password → sessionStorage[<key>] = '1' → navigate to the clicked href. Esc / backdrop dismiss.
-   - Standalone (the /lab/ and /design-system/ pages): the build writes the gate markup into the page and a tiny head
+   - Standalone (a gated destination's own page): the build writes the gate markup into the page and a tiny head
      script that locks the page unless the session is unlocked. A destination enters one of two ways (`entry`):
      · 'locked' (/design-system/): <html class="access-locked">, CSS hides the app, the popover is open from the start;
        Esc / backdrop leave the page (back to the referrer on this site, otherwise home).
-     · 'scroll' (/lab/): the TikTok case study's rule. The first screen is free to see and use; what follows (`after`
+     · 'scroll' (no destination uses it now; Robot Lab did): the TikTok case study's rule. The first screen is free to see and use; what follows (`after`
        and below) is blurred and inert under <html class="access-scroll-locked">; the popover opens on the way down
        (400px before that part) and closes again above it; Esc / backdrop scroll back to the top. Launcher links to
        such a destination are not intercepted: the visitor goes straight in.
@@ -33,24 +34,6 @@
   });
 
   const DESTINATIONS = Object.freeze([
-    Object.freeze({
-      id: 'lab',
-      path: '/lab/',
-      sessionKey: 'lab-unlocked',
-      entry: 'scroll',
-      // The first gated part: the case study under the workshop's first screen, then the footer.
-      after: '.lab-case',
-      gated: '.lab-case, .lab-footer',
-      copy: Object.freeze({
-        pill: { en: 'Side project', zh: '个人实验' },
-        title: { en: 'Robot Lab', zh: 'Robot Lab 机器人实验室' },
-        body: {
-          en: 'A 3D workshop for my quadruped robot, still in progress. Enter the access password to continue.',
-          zh: '四足机器人的三维维修室，仍在打磨中。请输入访问密码继续。',
-        },
-        unlock: { en: 'Open Robot Lab', zh: '进入实验室' },
-      }),
-    }),
     Object.freeze({
       id: 'design-system',
       path: '/design-system/',

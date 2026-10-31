@@ -1,0 +1,14 @@
+Strawberry model — food cue in the browser MuJoCo experiment
+
+Publisher: Grab3D
+Source: https://grab3d.com/models/food/strawberry/
+Download: https://grab3d.com/dl/strawberry/strawberry.glb
+Retrieved: 2026-10-31
+Published license: CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
+The source page states personal/commercial use and redistribution without attribution.
+Original file preserved as strawberry-source.glb (900264 bytes).
+strawberry.glb selects the largest whole berry, calyx and stalk from the group;
+the original PBR textures, UVs and normals are preserved.
+Reproduce with python3 scripts/prepare_strawberry.py.
+The Three.js viewer rotates and scales this model to a 4.5 cm visual cue.
+It is not a collider. The original food sensing radius and physics are unchanged.
