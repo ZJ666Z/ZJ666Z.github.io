@@ -11,13 +11,13 @@ window.ZijiezIntro = {
   chapters: [
     {
       id: 'cca', year: '2019', cell: [1, 0], scene: 'hello', beats: 4,
-      logo: { src: 'assets/img/intro/cca.png', ratio: 1000 / 293, w: 250 },
+      logo: { src: 'assets/img/intro/cca.png?v=bda6d3125d', ratio: 1000 / 293, w: 250 },
       caption: { en: 'California College of the Arts — BFA, Human-Computer Interaction', zh: '加州艺术学院 — 人机交互 学士' },
       takeaway: { en: 'Human-centered · HCI', zh: '以人为本 · 人机交互' },
     },
     {
       id: 'jci', year: '2022', cell: [1, 1], scene: 'token', beats: 5,
-      logo: { src: 'assets/img/intro/jci.svg', ratio: 250 / 126, w: 190 },
+      logo: { src: 'assets/img/intro/jci.svg?v=b241603b72', ratio: 250 / 126, w: 190 },
       caption: { en: 'Johnson Controls — Element Design System, 0 → 1', zh: '江森自控 — Element 设计系统，从 0 到 1' },
       takeaway: { en: 'Design systems', zh: '设计系统' },
       copy: {
@@ -30,22 +30,22 @@ window.ZijiezIntro = {
     },
     {
       id: 'cornell', year: '2024', cell: [2, 0], scene: 'toast', beats: 3,
-      logo: { src: 'assets/img/intro/cornell.svg', ratio: 539.1 / 137.2, w: 270 },
+      logo: { src: 'assets/img/intro/cornell.svg?v=ad84b720c4', ratio: 539.1 / 137.2, w: 270 },
       caption: { en: 'Cornell University — MS, Design & Technology', zh: '康奈尔大学 — 设计与技术 硕士' },
       takeaway: { en: 'AI × Design', zh: 'AI × 设计' },
       copy: {
-        mark: 'assets/img/intro/neurips.svg',
+        mark: 'assets/img/intro/neurips.svg?v=f7a107dd06',
         title: { en: 'Paper accepted', zh: '论文被接收' },
         sub: { en: 'NeurIPS 2025 · Cornell', zh: 'NeurIPS 2025 · 康奈尔' },
       },
     },
     {
       id: 'tiktok-intern', year: '2025', cell: [2, 1], scene: 'toggle', beats: 3,
-      logo: { src: 'assets/img/intro/tiktok-wordmark.png', ratio: 1209 / 354, w: 220 },
+      logo: { src: 'assets/img/intro/tiktok-wordmark.png?v=c0ca2dcbd5', ratio: 1209 / 354, w: 220 },
       caption: { en: 'TikTok Global Payment — Product Design Intern', zh: 'TikTok 国际支付 — 产品设计实习生' },
       takeaway: { en: 'UX research & audit', zh: '用户研究与体验走查' },
       copy: {
-        brand: 'assets/img/intro/tiktok-wordmark.png', brandW: 72,
+        brand: 'assets/img/intro/tiktok-wordmark.png?v=c0ca2dcbd5', brandW: 72,
         context: { en: 'Checkout · Insurance', zh: '结账页 · 保险' },
         title: { en: 'Shipping protection', zh: '运费保障' },
         sub: { en: 'Separate from seller warranty', zh: '与商家保修明确区分' },
@@ -60,7 +60,7 @@ window.ZijiezIntro = {
       caption: { en: 'TikTok Global Payment — Product Designer', zh: 'TikTok 国际支付 — 产品设计师' },
       takeaway: { en: 'Ships to code · AI-native', zh: 'AI 原生 · 设计直达代码' },
       copy: {
-        brand: 'assets/img/intro/tiktok-wordmark-white.png', brandW: 84,
+        brand: 'assets/img/intro/tiktok-wordmark-white.png?v=1bb6351a9f', brandW: 84,
         tabs: [{ en: 'Checkout', zh: '聚合收银' }, { en: 'Refund', zh: '退款' }, { en: 'Withdraw', zh: '提现' }],
         ringLabel: { en: 'Payment conversion', zh: '支付转化率' },
         ringFrom: 70, ringTo: 80,

@@ -803,7 +803,7 @@
     try {
       audio.ctx ||= new (window.AudioContext || window.webkitAudioContext)();
       await audio.ctx.resume();
-      audio.loading ||= fetch('assets/audio/intro.mp3').then(r => r.arrayBuffer()).then(b => audio.ctx.decodeAudioData(b));
+      audio.loading ||= fetch('assets/audio/intro.mp3?v=26d972a3e3').then(r => r.arrayBuffer()).then(b => audio.ctx.decodeAudioData(b));
       audio.buf = await audio.loading;
       if (!soundOn || !playing) return;
       audio.src = audio.ctx.createBufferSource();
