@@ -8,6 +8,8 @@ var e=`/* Toast family */
   padding: 12px 12px 12px 20px;
   border-radius: var(--z-radius-tile);
   background: var(--z-color-surface);
+  /* It brings its own surface, so it brings its own ink: on a dark page the inherited color would be light. */
+  color: var(--z-color-ink);
   box-shadow: inset 0 0 0 1px var(--z-color-line), var(--z-shadow-raised);
   animation: z-toast-in 420ms var(--z-ease-out) both;
 }
