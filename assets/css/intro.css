@@ -44,7 +44,13 @@ html.intro-play .hero__text > *, html.intro-play .hero__card > .fx-up { opacity:
 .zi-take i { width: 7px; height: 7px; border-radius: 50%; background: #6488ff; }
 .zi-brand { display: flex; align-items: center; gap: 8px; font: 600 14px/1 var(--font); color: #fff; }
 .zi-mark { width: 104px; height: 64px; display: grid; place-items: center; }
-.zi-toastt { display: flex; align-items: center; gap: 8px; }
+.zi-toastt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 18px/1 var(--font);
+  color: #1a1a1a;
+}
 .zi-okay { transform: scale(0); }
 .zi-okay circle { fill: #4b6bf3; }
 .zi-okay path { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1; stroke-dashoffset: 1; }
@@ -62,7 +68,6 @@ html.intro-play .hero__text > *, html.intro-play .hero__card > .fx-up { opacity:
 .zi-stat span { display: block; margin-top: 8px; font: 500 13px/1 var(--font); color: #8a8a8f; }
 .zi-badge { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
 .zi-badge .zi-chk { stroke-width: 2.4; stroke-dasharray: 1 1; stroke-dashoffset: 1; }
-.zi-toastt { font: 600 18px/1 var(--font); color: #1a1a1a; }
 .zi-toastt .zi-sw { height: 18px; }
 .zi-toasts { font: 500 13.5px/1 var(--font); color: #8a8a8f; }
 .zi-toasts .zi-sw { height: 14px; }

@@ -1,4 +1,4 @@
-import{Fn as e,Ft as t,Mt as n,Rn as r,bn as i,mn as a,mt as o,pn as s,st as c}from"./route-D8V-RcHq.js";import{t as l}from"./tokens--8wjVqaD.js";import{d as u,j as d,u as f}from"./docs-CCM0Joka.js";import{f as p,i as m,l as h,m as g,r as _,u as v}from"./kit-CGiBTmcs.js";import{t as y}from"./projects-B499T4Vf.js";import{t as b}from"./card-BhD8k76I.js";var x=r(),S={skin:`system`,layout:`stacked`,tone:`white`,tags:!0,linked:!0},C={width:532,height:322};function w(e){return e===`portfolio`?`// The live site's skin: its legacy DOM and stylesheet.
+import{Fn as e,Ft as t,Mt as n,Rn as r,bn as i,mn as a,mt as o,pn as s,st as c}from"./route-w3Dy8lmW.js";import{t as l}from"./tokens--8wjVqaD.js";import{d as u,j as d,u as f}from"./docs-BdsX5n5F.js";import{f as p,i as m,l as h,m as g,r as _,u as v}from"./kit-7Y2ru6MM.js";import{t as y}from"./projects-B499T4Vf.js";import{t as b}from"./card-BhD8k76I.js";var x=r(),S={skin:`system`,layout:`stacked`,tone:`white`,tags:!0,linked:!0},C={width:532,height:322};function w(e){return e===`portfolio`?`// The live site's skin: its legacy DOM and stylesheet.
 // zijiez.me supplies the base rules and --fx-spring it expects.
 import '@zijie/ui/portfolio.css';
 
@@ -53,7 +53,8 @@ export function ProjectCard({ title, description, image, imageAlt = '', tags = [
   if (href) return <a className={className} href={href} {...rootAttributes}>{contents}</a>;
   return <article className={className} {...rootAttributes}>{contents}</article>;
 }
-`,P="import type { HTMLAttributes } from 'react';\n\nexport type TagProps = HTMLAttributes<HTMLSpanElement> & {\n  tone?: 'outline' | 'soft' | 'dark';\n  variant?: 'section' | 'project' | 'problem' | 'solution';\n  /** `portfolio` emits the live site's legacy classes (`.tag` / `.pill`). */\n  skin?: 'system' | 'portfolio';\n};\n\nexport function Tag({ children, tone = 'outline', variant = 'section', skin = 'system', className = '', ...props }: TagProps) {\n  const classes = skin === 'portfolio' ? (variant === 'project' ? 'tag' : 'pill') : `z-tag z-tag--${variant} z-tag--${tone}`;\n  return <span className={`${classes}${className ? ` ${className}` : ''}`} {...props}>{children}</span>;\n}\n",F=`/* Existing portfolio skin. Kept separate from documentation and new controls. */
+`,P="import type { HTMLAttributes } from 'react';\n\nexport type TagProps = HTMLAttributes<HTMLSpanElement> & {\n  tone?: 'outline' | 'soft' | 'dark';\n  variant?: 'section' | 'project' | 'problem' | 'solution';\n  /** `portfolio` emits the live site's legacy classes (`.tag` / `.pill`). */\n  skin?: 'system' | 'portfolio';\n};\n\nexport function Tag({ children, tone = 'outline', variant = 'section', skin = 'system', className = '', ...props }: TagProps) {\n  const classes = skin === 'portfolio' ? (variant === 'project' ? 'tag' : 'pill') : `z-tag z-tag--${variant} z-tag--${tone}`;\n  return <span className={`${classes}${className ? ` ${className}` : ''}`} {...props}>{children}</span>;\n}\n",F=`/* Existing portfolio skin. Kept separate from documentation and new controls. The portfolio loads it after its own
+   stylesheet: the site's variable names, mapped to the tokens, and the ProjectCard and Tag, whose rules live only here. */
 @import './tokens.css';
 :root {
   --bg: var(--z-color-canvas); --white: var(--z-color-surface);
@@ -64,15 +65,23 @@ export function ProjectCard({ title, description, image, imageAlt = '', tags = [
   --r-card: var(--z-radius-card); --r-block: var(--z-radius-panel);
   --r-btn: var(--z-radius-button); --r-pill: var(--z-radius-pill);
 }
+/* "Answer the finger first": a press sinks the card in 120ms, it settles back on the spring. */
 .card {
   display: flex; flex-direction: column; gap: 32px;
   background: var(--bg); border-radius: var(--r-card); padding: 16px; overflow: hidden;
+  transition: scale var(--z-motion-layout) var(--z-ease-spring);
+  -webkit-tap-highlight-color: transparent;
+}
+.card:active {
+  scale: .985;
+  transition-duration: var(--z-motion-press);
+  transition-timing-function: var(--z-ease-out);
 }
 .sec--white .card { background: var(--bg); }
 .card__media { border-radius: 8px; overflow: hidden; aspect-ratio: 532 / 322; background: #fff; }
 .card__media img {
   width: 100%; height: 100%; object-fit: cover;
-  transition: transform .7s var(--fx-spring);
+  transition: transform var(--z-motion-media) var(--z-ease-spring);
 }
 .card__body { padding: 0 16px 16px; display: grid; gap: 16px; }
 .card__copy { display: grid; gap: 10px; }
@@ -81,12 +90,27 @@ export function ProjectCard({ title, description, image, imageAlt = '', tags = [
   content: ""; position: absolute; right: 8px; top: 8px;
   width: 32px; height: 32px; opacity: 0; pointer-events: none;
   background: center / 18px 18px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M4 14L14 4M6 4h8v8' stroke='%231A1A1A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  transition: opacity .7s var(--fx-spring), transform .7s var(--fx-spring);
+  transition: opacity var(--z-motion-hover) var(--z-ease-spring), transform var(--z-motion-hover) var(--z-ease-spring);
 }
 .card:hover .card__media img,
 .card:focus-visible .card__media img { transform: scale(1.1); }
 .card:hover .card__body h3::after,
 .card:focus-visible .card__body h3::after { opacity: 1; transform: translate(8px, -8px); }
+@media (hover: hover) and (pointer: fine) {
+  .card:focus-visible { box-shadow: 0 8px 20px #141b4012; }
+}
+/* "Hover belongs to fine pointers": on touch a tapped card does not stay zoomed after the finger lifts; the picture
+   zooms only while it is pressed. */
+@media (hover: none) {
+  .card:active .card__body h3::after { opacity: 1; transform: translate(8px, -8px); }
+  .card:hover .card__media img { transform: none; }
+  .card:hover .card__body h3::after { opacity: 0; transform: none; }
+  .card:active .card__media img { transform: scale(1.06); }
+}
+/* Reduced motion only removes the travel: no press sink (the site's motion rules keep the colour feedback). */
+@media (prefers-reduced-motion: reduce) {
+  .card:active { scale: none; }
+}
 .card__body p { color: var(--ink-2); }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag {

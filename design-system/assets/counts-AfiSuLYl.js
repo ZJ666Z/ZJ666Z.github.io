@@ -1,4 +1,4 @@
-import{Ut as e}from"./route-D8V-RcHq.js";var t=`{
+import{Ut as e}from"./route-w3Dy8lmW.js";var t=`{
   "name": "@zijie/ui",
   "version": "0.2.0",
   "private": true,

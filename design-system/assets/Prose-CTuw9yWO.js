@@ -1,4 +1,4 @@
-import{Ft as e,Mt as t,Rn as n,mn as r}from"./route-D8V-RcHq.js";import{C as i}from"./kit-CGiBTmcs.js";var a=n(),o=/^---[ \t]*\n([\s\S]*?)\n---[ \t]*(?:\n|$)/;function s(e){let t=String(e).replace(/\r\n?/g,`
+import{Ft as e,Mt as t,Rn as n,mn as r}from"./route-w3Dy8lmW.js";import{C as i}from"./kit-7Y2ru6MM.js";var a=n(),o=/^---[ \t]*\n([\s\S]*?)\n---[ \t]*(?:\n|$)/;function s(e){let t=String(e).replace(/\r\n?/g,`
 `),n=o.exec(t);if(!n)return{data:{},body:t};let r={};for(let e of n[1].split(`
 `)){let t=/^([A-Za-z][\w-]*):[ \t]*(.*)$/.exec(e);t&&(r[t[1]]=t[2].trim().replace(/^(["'])(.*)\1$/,`$2`))}return{data:r,body:t.slice(n[0].length)}}function c(e){let t=o.exec(String(e).replace(/\r\n?/g,`
 `));return t?t[0].replace(/\n$/,``).split(`
