@@ -34,7 +34,9 @@
   }, {passive: true});
 
   register('.fx, .fx-up', 'rise');
-  register('.hero__text > *, .hero__card > .fx-up', 'intro', 80);
+  register('.hero__text > :not(.hero__creds), .hero__card > .fx-up', 'intro', 80);
+  // The credentials rise one after another, after the lede (no intro: reduced motion, a deep link or ?intro=0).
+  document.querySelectorAll('.hero__cred').forEach((el, i) => configurations.set(el, {type: 'intro', delay: 100 + i * 30}));
   register('.hero__text h1, .case-hero h1', 'title');
   register('.sec-head h2, .case-head h2, .panel__head h2, .all-projects .page-title', 'title');
   register('.amz-hmw-question, .hmw-item h3, .fragmented-pill, .without-label', 'title');

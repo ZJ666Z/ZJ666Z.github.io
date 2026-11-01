@@ -151,7 +151,10 @@ var e=`/* Loader family.
   fill: none;
 }
 
-/* Converge (Agent): four options drawing to one answer, the group turning a quarter each beat. */
+/* Converge (Agent): four options drawn into one answer. Together they pick up speed toward the middle, meet as one
+   dot that blooms (the answer), then let go along the next axes. The group turns an eighth only while they are one,
+   so nothing is seen spinning and each round the options come from a new direction: across, then diagonal. Two
+   rounds make the loop, a quarter turn in all, which looks the same as the start. */
 .z-loader[data-variant='converge'] .z-loader__mark i {
   inset: 39%;
   border-radius: 50%;
@@ -160,12 +163,11 @@ var e=`/* Loader family.
 }
 
 .z-loader[data-variant='converge'][data-state='pending'][data-visible] .z-loader__mark {
-  animation: z-loader-quarter calc(var(--loader-beat) * 2) var(--z-ease-spring) infinite;
+  animation: z-loader-converge-turn calc(var(--loader-beat) * 4) linear infinite;
 }
 
 .z-loader[data-variant='converge'][data-state='pending'][data-visible] .z-loader__mark i {
-  animation: z-loader-converge calc(var(--loader-beat) * 2) ease-in-out infinite;
-  animation-delay: calc(var(--i) * var(--loader-beat) / -16);
+  animation: z-loader-converge calc(var(--loader-beat) * 2) linear infinite;
 }
 
 /* Scan (Agent): a light passes diagonally through a field of possibilities. */
@@ -551,7 +553,7 @@ var e=`/* Loader family.
 }
 
 .z-loader[data-still][data-state='pending'] .z-loader__mark i { opacity: .5; }
-.z-loader[data-still][data-variant='converge'][data-state='pending'] .z-loader__mark i { scale: .85; translate: calc(var(--dx) * 90%) calc(var(--dy) * 90%); }
+.z-loader[data-still][data-variant='converge'][data-state='pending'] .z-loader__mark i { scale: .85; translate: calc(var(--dx) * 70%) calc(var(--dy) * 70%); }
 .z-loader[data-still][data-variant='scan'][data-state='pending'] .z-loader__mark i { opacity: calc(.9 - var(--d) * .14); scale: 1; }
 .z-loader[data-still][data-variant='helix'][data-state='pending'] .z-loader__mark i { scale: 1 calc(.35 + var(--i) * .08); }
 .z-loader[data-still][data-variant='ripple'][data-state='pending'] .z-loader__mark i:not([data-part]) { opacity: calc(.6 - var(--i) * .18); scale: calc(.45 + var(--i) * .25); }
@@ -566,14 +568,23 @@ var e=`/* Loader family.
 
 /* ---------- Keyframes ---------- */
 
-@keyframes z-loader-quarter {
-  0%, 30% { rotate: 0deg; }
-  80%, 100% { rotate: 90deg; }
+/* One round per two beats: drawn in (ease-in, gathering speed), met, a bloom, then let go on expo-out. */
+@keyframes z-loader-converge {
+  0% {
+    opacity: var(--loader-rest); scale: .7; translate: calc(var(--dx) * 130%) calc(var(--dy) * 130%);
+    animation-timing-function: cubic-bezier(.55, 0, .8, .35);
+  }
+  40% { opacity: 1; scale: 1; translate: 0 0; animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
+  48% { scale: 1.28; animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
+  58% { opacity: 1; scale: 1; translate: 0 0; animation-timing-function: cubic-bezier(.16, 1, .3, 1); }
+  100% { opacity: var(--loader-rest); scale: .7; translate: calc(var(--dx) * 130%) calc(var(--dy) * 130%); }
 }
 
-@keyframes z-loader-converge {
-  0%, 100% { opacity: var(--loader-rest); scale: .7; translate: calc(var(--dx) * 130%) calc(var(--dy) * 130%); }
-  50% { opacity: 1; scale: 1; translate: calc(var(--dx) * 40%) calc(var(--dy) * 40%); }
+/* Two rounds: an eighth while the dots are one (40-58% of each round), then held. */
+@keyframes z-loader-converge-turn {
+  0%, 20% { rotate: 0deg; animation-timing-function: cubic-bezier(.65, 0, .35, 1); }
+  29%, 70% { rotate: 45deg; animation-timing-function: cubic-bezier(.65, 0, .35, 1); }
+  79%, 100% { rotate: 90deg; }
 }
 
 @keyframes z-loader-glint {

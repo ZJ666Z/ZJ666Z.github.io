@@ -10,6 +10,8 @@
   const graphic = document.querySelector('.hero__graphic');
   const heroH1 = document.querySelector('.hero__text h1');
   const heroLede = document.querySelector('.hero__lede');
+  const heroCreds = document.querySelector('.hero__creds');
+  const heroCredItems = [...document.querySelectorAll('.hero__cred')];
   const heroBtnWrap = document.querySelector('.hero__card > .fx-up');
   const heroBtn = heroBtnWrap?.querySelector('.btn');
   const params = new URLSearchParams(location.search);
@@ -775,6 +777,9 @@
     };
     set(heroH1, win(t, F + 1.5, null, { din: 0 }), 18);
     set(heroLede, win(t, F + 1.62, null, { din: 0 }));
+    // The three credentials follow the lede, one after another, a smaller rise than the lines above them.
+    if (heroCreds) heroCreds.style.opacity = t < F + 1.66 ? 0 : 1;
+    heroCredItems.forEach((el, i) => set(el, win(t, F + 1.66 + i * 0.07, null, { din: 0 }), 10));
     // The first dot comes back as the Resume button.
     const bv = t < F + 1.7 ? 0 : 1;
     heroBtnWrap.style.opacity = bv;
@@ -789,7 +794,7 @@
     }
   }
   function clearHero() {
-    for (const el of [heroH1, heroLede, heroBtnWrap, heroBtn, heroBtn.querySelector('.roll')]) {
+    for (const el of [heroH1, heroLede, heroCreds, ...heroCredItems, heroBtnWrap, heroBtn, heroBtn.querySelector('.roll')]) {
       if (!el) continue;
       for (const p of ['opacity', 'filter', 'translate', 'clipPath', 'background']) el.style[p] = '';
     }
