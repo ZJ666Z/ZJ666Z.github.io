@@ -1302,40 +1302,56 @@
   background: radial-gradient(120% 90% at 18% 0%, rgb(255 255 255 / 12%), transparent 60%);
 }
 .case-hero--blueprint :is(h1, .case-hero__lede, .ck-wordmark, .case-meta) { text-shadow: 0 1px 12px rgb(0 0 0 / 45%); }
+/* The title card and the facts strip stack from the bottom in a grid at every width, so a longer title or a taller
+   strip (English is longer) pushes the card up instead of under the strip. client.tsx tells the opening film where
+   both sit (`<app>:avoid`), so the robot and its labels keep clear of them. */
+.case-hero--blueprint .case-hero__inner {
+  display: grid; grid-template-rows: minmax(0, 1fr) auto auto; align-content: end; gap: 16px;
+  padding: 96px 0 clamp(24px, 4dvh, 40px);
+}
 .case-hero--blueprint .case-hero__identity {
-  left: 0; top: auto; bottom: calc(clamp(24px, 4dvh, 40px) + 112px); transform: none;
-  width: min(660px, 100%); padding: 32px 36px; gap: 14px; justify-items: start; text-align: left;
+  position: relative; inset: auto; transform: none; align-self: end;
+  width: min(660px, 100%); padding: 30px 36px; gap: 12px; justify-items: start; text-align: left;
 }
 .case-hero--blueprint .ck-wordmark {
   display: inline-flex; align-items: center; gap: 10px; text-align: left; color: rgb(255 255 255 / 82%);
   font: 600 var(--z-type-eyebrow, 12px) / var(--z-type-eyebrow-leading, 18px) var(--z-font-interface); letter-spacing: var(--z-tracking-eyebrow, .08em); text-transform: uppercase;
 }
 .case-hero--blueprint .ck-wordmark::before { content: ""; width: 18px; height: 18px; border: 1.5px solid currentColor; border-radius: 4px; background: linear-gradient(currentColor, currentColor) 50% 50% / 100% 1.5px no-repeat, linear-gradient(currentColor, currentColor) 50% 50% / 1.5px 100% no-repeat; }
-.case-hero--blueprint h1 { font-size: clamp(32px, 3.4vw, 48px); line-height: 1.12; font-weight: 600; text-align: left; letter-spacing: -.01em; }
-.case-hero--blueprint .case-hero__lede { margin: 0; max-width: none; font-size: 17px; line-height: 27px; text-align: left; text-wrap: pretty; }
+.case-hero--blueprint h1 { font-size: clamp(30px, 2.9vw, 42px); line-height: 1.14; font-weight: 600; text-align: left; letter-spacing: -.01em; text-wrap: balance; }
+.case-hero--blueprint .case-hero__lede { margin: 0; max-width: none; font-size: 16px; line-height: 26px; text-align: left; text-wrap: pretty; }
 .case-hero--blueprint .case-meta {
-  left: 0; right: 0; bottom: clamp(24px, 4dvh, 40px); width: auto; padding: 16px 4px;
+  position: relative; inset: auto; width: auto; padding: 14px 4px;
   grid-template-columns: 1fr 1.6fr 1.1fr 1.6fr; gap: 0; font-size: 14px; line-height: 21px;
 }
 .case-hero--blueprint .case-meta > div { padding-inline: 20px; }
 .case-hero--blueprint .case-meta > div + div { box-shadow: inset 1px 0 rgb(255 255 255 / 16%); }
 .case-hero--blueprint .case-meta strong { font-weight: 600; color: rgb(255 255 255 / 70%); }
+/* A short window: a tighter card, so the robot keeps the room above it. */
+@media (min-width: 810px) and (max-height: 820px) {
+  .case-hero--blueprint .case-hero__inner { padding-top: 84px; gap: 12px; }
+  .case-hero--blueprint .case-hero__identity { padding: 22px 28px; gap: 8px; }
+  .case-hero--blueprint h1 { font-size: clamp(28px, 2.5vw, 36px); }
+  .case-hero--blueprint .case-hero__lede { font-size: 15px; line-height: 23px; }
+  .case-hero--blueprint .case-meta { padding-block: 10px; font-size: 13px; line-height: 19px; }
+}
 @media (max-width: 1279.98px) {
   .case-hero--blueprint .case-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; }
   .case-hero--blueprint .case-meta > div:nth-child(3) { box-shadow: none; }
-  .case-hero--blueprint .case-hero__identity { bottom: calc(clamp(24px, 4dvh, 40px) + 150px); }
 }
 @media (max-width: 809.98px) {
   .case-hero--blueprint { padding-inline: 16px; }
-  .case-hero--blueprint .case-hero__inner { grid-template-rows: minmax(0, 1fr) auto auto; gap: 10px; padding: 76px 0 16px; }
-  .case-hero--blueprint .case-hero__identity { position: relative; inset: auto; align-self: end; width: 100%; padding: 22px 20px; gap: 10px; }
-  .case-hero--blueprint h1 { font-size: 28px; line-height: 34px; }
-  .case-hero--blueprint .case-hero__lede { font-size: 15px; line-height: 23px; }
-  .case-hero--blueprint .case-meta { position: relative; inset: auto; padding: 14px 4px; font-size: 13px; line-height: 19px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .case-hero--blueprint .case-hero__inner { gap: 10px; padding: 76px 0 16px; }
+  .case-hero--blueprint .case-hero__identity { width: 100%; }
+  .case-hero--blueprint .case-hero__identity { padding: 18px 18px; gap: 8px; }
+  .case-hero--blueprint h1 { font-size: 23px; line-height: 29px; }
+  .case-hero--blueprint .case-hero__lede { font-size: 14px; line-height: 21px; }
+  /* On a phone the strip keeps the robot and the stage, side by side, so the robot keeps the room above the card. */
+  .case-hero--blueprint .case-meta { padding: 12px 4px; font-size: 12.5px; line-height: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .case-hero--blueprint .case-meta > div { padding-inline: 14px; }
-  .case-hero--blueprint .case-meta > div:nth-child(2) { display: none; }
-  .case-hero--blueprint .case-meta > div:nth-child(3) { box-shadow: inset 1px 0 rgb(255 255 255 / 16%); }
-  .case-hero--blueprint .case-meta > div:nth-child(4) { grid-column: 1 / -1; box-shadow: none; }
+  .case-hero--blueprint .case-meta > div:is(:nth-child(1), :nth-child(2)) { display: none; }
+  .case-hero--blueprint .case-meta > div:nth-child(3) { box-shadow: none; }
+  .case-hero--blueprint .case-meta > div:nth-child(4) { box-shadow: inset 1px 0 rgb(255 255 255 / 16%); }
 }
 
 /* ---------- Part divider (PartHead): a hairline, a large light number, the part's name, title, lead, its chapters ----------

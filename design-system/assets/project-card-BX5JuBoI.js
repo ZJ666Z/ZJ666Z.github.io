@@ -1,4 +1,4 @@
-import{Fn as e,Ft as t,Mt as n,Rn as r,bn as i,mn as a,mt as o,pn as s,st as c}from"./route-w3Dy8lmW.js";import{t as l}from"./tokens--8wjVqaD.js";import{d as u,j as d,u as f}from"./docs-De71Ejfm.js";import{f as p,i as m,l as h,m as g,r as _,u as v}from"./kit-7Y2ru6MM.js";import{t as y}from"./projects-B499T4Vf.js";import{t as b}from"./card-BhD8k76I.js";var x=r(),S={skin:`system`,layout:`stacked`,tone:`white`,tags:!0,linked:!0},C={width:532,height:322};function w(e){return e===`portfolio`?`// The live site's skin: its legacy DOM and stylesheet.
+import{Fn as e,Ft as t,Mt as n,Rn as r,bn as i,mn as a,mt as o,pn as s,st as c}from"./route-w3Dy8lmW.js";import{t as l}from"./tokens--8wjVqaD.js";import{d as u,j as d,u as f}from"./docs-BdpZSzdd.js";import{f as p,i as m,l as h,m as g,r as _,u as v}from"./kit-7Y2ru6MM.js";import{t as y}from"./projects-B499T4Vf.js";import{t as b}from"./card-BhD8k76I.js";var x=r(),S={skin:`system`,layout:`stacked`,tone:`white`,tags:!0,linked:!0},C={width:532,height:322};function w(e){return e===`portfolio`?`// The live site's skin: its legacy DOM and stylesheet.
 // zijiez.me supplies the base rules and --fx-spring it expects.
 import '@zijie/ui/portfolio.css';
 
@@ -85,7 +85,8 @@ export function ProjectCard({ title, description, image, imageAlt = '', tags = [
 }
 .card__body { padding: 0 16px 16px; display: grid; gap: 16px; }
 .card__copy { display: grid; gap: 10px; }
-.card__body h3 { position: relative; font-size: 24px; line-height: 32px; font-weight: 600; }
+/* Room at the right for the arrow that comes in on hover, so a title that fills its line never runs under it. */
+.card__body h3 { position: relative; padding-right: 44px; font-size: 24px; line-height: 32px; font-weight: 600; }
 .card__body h3::after {
   content: ""; position: absolute; right: 8px; top: 8px;
   width: 32px; height: 32px; opacity: 0; pointer-events: none;

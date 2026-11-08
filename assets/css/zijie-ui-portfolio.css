@@ -30,7 +30,8 @@
 }
 .card__body { padding: 0 16px 16px; display: grid; gap: 16px; }
 .card__copy { display: grid; gap: 10px; }
-.card__body h3 { position: relative; font-size: 24px; line-height: 32px; font-weight: 600; }
+/* Room at the right for the arrow that comes in on hover, so a title that fills its line never runs under it. */
+.card__body h3 { position: relative; padding-right: 44px; font-size: 24px; line-height: 32px; font-weight: 600; }
 .card__body h3::after {
   content: ""; position: absolute; right: 8px; top: 8px;
   width: 32px; height: 32px; opacity: 0; pointer-events: none;
