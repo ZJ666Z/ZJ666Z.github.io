@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="data:," />
+    <title>小腿侧面轮廓 · 2D 实时拓扑优化</title>
+    <script type="module" crossorigin src="./assets/index-CKozGWfA.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BU_t8vMt.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="intro">
+        <div class="intro__row">
+          <p class="eyebrow" data-i18n="eyebrow"></p>
+          <button type="button" class="lang" id="lang"></button>
+        </div>
+        <h1 class="intro__title" data-i18n="title"></h1>
+        <p class="intro__lede" data-i18n="lede"></p>
+      </header>
+
+      <section class="sim" aria-labelledby="sim-title">
+        <h2 class="sr-only" id="sim-title" data-i18n="title"></h2>
+
+        <figure class="stage">
+          <p class="stage__tag"><span data-i18n="stageTagPlane"></span><span class="stage__sep"> · </span><span data-i18n="stageTagGrid"></span></p>
+          <div class="stage__view"><canvas class="stage__canvas" id="blueprint" role="img"></canvas></div>
+          <figcaption class="legend">
+            <span class="legend__item"><i class="key key--iso"></i><span data-i18n="legendIso"></span></span>
+            <span class="legend__item"><i class="key key--keepout"></i><span data-i18n="legendKeepOut"></span></span>
+            <span class="legend__item"><i class="key key--ghost"></i><span data-i18n="legendGhost"></span></span>
+            <span class="legend__item"><i class="key key--load"></i><span data-i18n="legendLoad"></span></span>
+          </figcaption>
+        </figure>
+
+        <div class="stats">
+          <div class="stat">
+            <p class="stat__label" data-i18n="statIter"></p>
+            <p class="stat__value"><span id="it">0</span><span class="stat__unit" id="it-total">/ 80</span></p>
+            <p class="stat__sub" id="it-sub">β 1</p>
+          </div>
+          <div class="stat stat--key">
+            <p class="stat__label" data-i18n="statStiff"></p>
+            <p class="stat__value"><span id="stiff">–</span><span class="stat__unit">×</span></p>
+            <p class="stat__sub" data-i18n="statStiffSub"></p>
+          </div>
+          <div class="stat">
+            <p class="stat__label" data-i18n="statMass"></p>
+            <p class="stat__value"><span id="mass">–</span><span class="stat__unit">g</span></p>
+            <p class="stat__sub" id="mass-sub"></p>
+          </div>
+        </div>
+
+        <div class="block chart">
+          <div class="block__head">
+            <p class="block__title" data-i18n="chartTitle"></p>
+            <p class="block__caption" data-i18n="chartCaption"></p>
+          </div>
+          <div class="chart__box"><canvas class="chart__canvas" id="chart" aria-hidden="true"></canvas></div>
+        </div>
+
+        <div class="block cases">
+          <div class="block__head">
+            <p class="block__title" data-i18n="casesTitle"></p>
+            <p class="block__caption" data-i18n="casesCaption"></p>
+          </div>
+          <ul class="cases__list" id="cases"></ul>
+        </div>
+
+        <div class="block controls">
+          <label class="control">
+            <span class="control__head">
+              <span class="control__label" data-i18n="controlMass"></span>
+              <output class="control__value" id="mass-out"></output>
+            </span>
+            <input type="range" id="mass-in" min="3.5" max="6.5" step="0.1" value="5.0" />
+            <span class="control__stops" id="mass-stops"></span>
+            <span class="control__hint" data-i18n="controlMassHint"></span>
+          </label>
+          <label class="control">
+            <span class="control__head">
+              <span class="control__label" data-i18n="controlLeg"></span>
+              <output class="control__value" id="leg-out"></output>
+            </span>
+            <input type="range" id="leg-in" min="0" max="4" step="1" value="2" />
+            <span class="control__stops" id="leg-stops"></span>
+          </label>
+          <label class="control">
+            <span class="control__head">
+              <span class="control__label" data-i18n="controlRho"></span>
+              <output class="control__value" id="rho-out"></output>
+            </span>
+            <input type="range" id="rho-in" min="0" max="3" step="1" value="1" />
+            <span class="control__stops" id="rho-stops"></span>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn btn--primary" id="run"></button>
+          <button type="button" class="btn btn--quiet" id="restart"></button>
+          <p class="actions__status" id="status"></p>
+        </div>
+
+        <div class="notes">
+          <p class="note note--key note--long"><svg class="note__icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.25" /><path d="M10 9v5M10 6.2v.1" /></svg><span data-i18n="noteStress"></span></p>
+          <p class="note note--long" data-i18n="noteRef"></p>
+          <p class="note note--short"><svg class="note__icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.25" /><path d="M10 9v5M10 6.2v.1" /></svg><span data-i18n="noteShort"></span></p>
+        </div>
+        <p class="sr-only" aria-live="polite" id="announce"></p>
+      </section>
+    </main>
+  </body>
+</html>

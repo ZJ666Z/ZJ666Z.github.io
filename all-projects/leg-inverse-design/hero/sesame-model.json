@@ -1,0 +1,1154 @@
+{
+  "file": "sesame-original.glb",
+  "units": "metres",
+  "up": "+Y",
+  "front": "+Z",
+  "floor": 0,
+  "horizontalCenter": [
+    0,
+    0
+  ],
+  "size": [
+    0.13054466247558594,
+    0.09198785573244095,
+    0.13474351167678833
+  ],
+  "center": [
+    0,
+    0.045993927866220474,
+    0
+  ],
+  "groups": {
+    "body": {
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "label": "Printed internal frame"
+    },
+    "top": {
+      "offset": [
+        0,
+        0.065,
+        0
+      ],
+      "label": "Removable top cover"
+    },
+    "electronics": {
+      "offset": [
+        0,
+        0.023,
+        0.026
+      ],
+      "label": "Original electronics and display"
+    },
+    "battery": {
+      "offset": [
+        0,
+        0.038,
+        -0.022
+      ],
+      "label": "Original CAD battery reference"
+    },
+    "leg_front_left": {
+      "offset": [
+        0.035,
+        0,
+        0.032
+      ],
+      "label": "Front left leg"
+    },
+    "leg_front_right": {
+      "offset": [
+        -0.035,
+        0,
+        0.032
+      ],
+      "label": "Front right leg"
+    },
+    "leg_rear_left": {
+      "offset": [
+        0.035,
+        0,
+        -0.032
+      ],
+      "label": "Rear left leg"
+    },
+    "leg_rear_right": {
+      "offset": [
+        -0.035,
+        0,
+        -0.032
+      ],
+      "label": "Rear right leg"
+    },
+    "servo_front_left": {
+      "offset": [
+        0.018,
+        0.018,
+        0.014
+      ],
+      "label": "Front left actuators"
+    },
+    "servo_front_right": {
+      "offset": [
+        -0.018,
+        0.018,
+        0.014
+      ],
+      "label": "Front right actuators"
+    },
+    "servo_rear_left": {
+      "offset": [
+        0.018,
+        0.018,
+        -0.014
+      ],
+      "label": "Rear left actuators"
+    },
+    "servo_rear_right": {
+      "offset": [
+        -0.018,
+        0.018,
+        -0.014
+      ],
+      "label": "Rear right actuators"
+    }
+  },
+  "parts": [
+    {
+      "index": 0,
+      "group": "servo_front_left",
+      "facesBefore": 60762,
+      "facesAfter": 3586,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.1_Pea"
+    },
+    {
+      "index": 1,
+      "group": "servo_front_left",
+      "facesBefore": 4424,
+      "facesAfter": 328,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.2_Pea"
+    },
+    {
+      "index": 7,
+      "group": "servo_front_right",
+      "facesBefore": 60762,
+      "facesAfter": 3616,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.1_Pea"
+    },
+    {
+      "index": 8,
+      "group": "servo_front_right",
+      "facesBefore": 4424,
+      "facesAfter": 330,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.2_Pea"
+    },
+    {
+      "index": 14,
+      "group": "servo_rear_right",
+      "facesBefore": 60770,
+      "facesAfter": 3588,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.1_Pea"
+    },
+    {
+      "index": 15,
+      "group": "servo_rear_right",
+      "facesBefore": 4424,
+      "facesAfter": 337,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.2_Pea"
+    },
+    {
+      "index": 21,
+      "group": "servo_rear_left",
+      "facesBefore": 60770,
+      "facesAfter": 3609,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.1_Pea"
+    },
+    {
+      "index": 22,
+      "group": "servo_rear_left",
+      "facesBefore": 4424,
+      "facesAfter": 329,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.2_Pea"
+    },
+    {
+      "index": 28,
+      "group": "leg_rear_right",
+      "facesBefore": 18908,
+      "facesAfter": 2348,
+      "sourceName": "/Sesame-ESP32 v123/femurjoint-R2"
+    },
+    {
+      "index": 29,
+      "group": "leg_rear_right",
+      "facesBefore": 5094,
+      "facesAfter": 1450,
+      "sourceName": "/Sesame-ESP32 v123/foot-joint-R4"
+    },
+    {
+      "index": 30,
+      "group": "servo_rear_right",
+      "facesBefore": 60757,
+      "facesAfter": 3691,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.1_Pea"
+    },
+    {
+      "index": 31,
+      "group": "servo_rear_right",
+      "facesBefore": 4424,
+      "facesAfter": 345,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.2_Pea"
+    },
+    {
+      "index": 37,
+      "group": "leg_rear_left",
+      "facesBefore": 18784,
+      "facesAfter": 2393,
+      "sourceName": "/Sesame-ESP32 v123/femur-joint-L2"
+    },
+    {
+      "index": 38,
+      "group": "leg_rear_left",
+      "facesBefore": 5450,
+      "facesAfter": 1457,
+      "sourceName": "/Sesame-ESP32 v123/foot-joint-L4"
+    },
+    {
+      "index": 39,
+      "group": "servo_rear_left",
+      "facesBefore": 60755,
+      "facesAfter": 3666,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.1_Pea"
+    },
+    {
+      "index": 40,
+      "group": "servo_rear_left",
+      "facesBefore": 4424,
+      "facesAfter": 348,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro v4/SG90 - Micro Servo 9g - Tower Pro.2_Pea"
+    },
+    {
+      "index": 46,
+      "group": "electronics",
+      "facesBefore": 2748,
+      "facesAfter": 364,
+      "sourceName": "/Sesame-ESP32 v123/Display_OLED_0.96_128x64 v5/Body - PCB"
+    },
+    {
+      "index": 47,
+      "group": "electronics",
+      "facesBefore": 12,
+      "facesAfter": 6,
+      "sourceName": "/Sesame-ESP32 v123/Display_OLED_0.96_128x64 v5/Body - Back Panel"
+    },
+    {
+      "index": 48,
+      "group": "electronics",
+      "facesBefore": 12,
+      "facesAfter": 6,
+      "sourceName": "/Sesame-ESP32 v123/Display_OLED_0.96_128x64 v5/Body - Adhesive Pad"
+    },
+    {
+      "index": 49,
+      "group": "electronics",
+      "facesBefore": 12,
+      "facesAfter": 6,
+      "sourceName": "/Sesame-ESP32 v123/Display_OLED_0.96_128x64 v5/Body - Front Panel"
+    },
+    {
+      "index": 50,
+      "group": "electronics",
+      "facesBefore": 356,
+      "facesAfter": 92,
+      "sourceName": "/Sesame-ESP32 v123/Display_OLED_0.96_128x64 v5/Body - Flex Connector Bend"
+    },
+    {
+      "index": 51,
+      "group": "electronics",
+      "facesBefore": 20,
+      "facesAfter": 8,
+      "sourceName": "/Sesame-ESP32 v123/Display_OLED_0.96_128x64 v5/Body - Flex Connector Terminals"
+    },
+    {
+      "index": 52,
+      "group": "electronics",
+      "facesBefore": 216,
+      "facesAfter": 57,
+      "sourceName": "/Sesame-ESP32 v123/Display_OLED_0.96_128x64 v5/Body - Black Tape"
+    },
+    {
+      "index": 53,
+      "group": "electronics",
+      "facesBefore": 12,
+      "facesAfter": 6,
+      "sourceName": "/Sesame-ESP32 v123/Display_OLED_0.96_128x64 v5/Body - Protective Foil"
+    },
+    {
+      "index": 54,
+      "group": "electronics",
+      "facesBefore": 32,
+      "facesAfter": 12,
+      "sourceName": "/Sesame-ESP32 v123/Display_OLED_0.96_128x64 v5/Body - Screen Border"
+    },
+    {
+      "index": 55,
+      "group": "electronics",
+      "facesBefore": 5056,
+      "facesAfter": 436,
+      "sourceName": "/Sesame-ESP32 v123/Display_OLED_0.96_128x64 v5/Extrude - Annular Rings"
+    },
+    {
+      "index": 56,
+      "group": "leg_front_left",
+      "facesBefore": 18360,
+      "facesAfter": 2392,
+      "sourceName": "/Sesame-ESP32 v123/femur-joint-L1"
+    },
+    {
+      "index": 57,
+      "group": "leg_front_left",
+      "facesBefore": 5818,
+      "facesAfter": 1434,
+      "sourceName": "/Sesame-ESP32 v123/foot-joint-L3"
+    },
+    {
+      "index": 58,
+      "group": "servo_front_left",
+      "facesBefore": 60740,
+      "facesAfter": 3691,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro.1_Pea(Mirror) (1)"
+    },
+    {
+      "index": 59,
+      "group": "servo_front_right",
+      "facesBefore": 60740,
+      "facesAfter": 3698,
+      "sourceName": "/Sesame-ESP32 v123/SG90 - Micro Servo 9g - Tower Pro.1_Pea(Mirror) (1)"
+    },
+    {
+      "index": 60,
+      "group": "leg_front_right",
+      "facesBefore": 18754,
+      "facesAfter": 2355,
+      "sourceName": "/Sesame-ESP32 v123/femur-joint-R1"
+    },
+    {
+      "index": 61,
+      "group": "leg_front_right",
+      "facesBefore": 5462,
+      "facesAfter": 1399,
+      "sourceName": "/Sesame-ESP32 v123/foot-joint-R3"
+    },
+    {
+      "index": 62,
+      "group": "electronics",
+      "facesBefore": 21982,
+      "facesAfter": 369,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/USB_type_C_smd_12p v1"
+    },
+    {
+      "index": 63,
+      "group": "electronics",
+      "facesBefore": 10752,
+      "facesAfter": 426,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/Pads"
+    },
+    {
+      "index": 64,
+      "group": "electronics",
+      "facesBefore": 10752,
+      "facesAfter": 414,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/Pads2"
+    },
+    {
+      "index": 65,
+      "group": "electronics",
+      "facesBefore": 10752,
+      "facesAfter": 425,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/Pads3"
+    },
+    {
+      "index": 66,
+      "group": "electronics",
+      "facesBefore": 10752,
+      "facesAfter": 412,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/Pads4"
+    },
+    {
+      "index": 67,
+      "group": "electronics",
+      "facesBefore": 4226,
+      "facesAfter": 405,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/Top Text"
+    },
+    {
+      "index": 68,
+      "group": "electronics",
+      "facesBefore": 53334,
+      "facesAfter": 507,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/Bottom Text"
+    },
+    {
+      "index": 69,
+      "group": "electronics",
+      "facesBefore": 3534,
+      "facesAfter": 898,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/0603 Blue v1/0603 Blue/Light"
+    },
+    {
+      "index": 70,
+      "group": "electronics",
+      "facesBefore": 232,
+      "facesAfter": 124,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/0603 Blue v1/0603 Blue/Body"
+    },
+    {
+      "index": 71,
+      "group": "electronics",
+      "facesBefore": 200,
+      "facesAfter": 53,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/0603 Blue v1/0603 Blue/Anode Bottom"
+    },
+    {
+      "index": 72,
+      "group": "electronics",
+      "facesBefore": 184,
+      "facesAfter": 49,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/0603 Blue v1/0603 Blue/Cathode Bottom"
+    },
+    {
+      "index": 73,
+      "group": "electronics",
+      "facesBefore": 184,
+      "facesAfter": 49,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/0603 Blue v1/0603 Blue/Anode"
+    },
+    {
+      "index": 74,
+      "group": "electronics",
+      "facesBefore": 184,
+      "facesAfter": 49,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/0603 Blue v1/0603 Blue/Cathode"
+    },
+    {
+      "index": 75,
+      "group": "electronics",
+      "facesBefore": 356,
+      "facesAfter": 92,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/0603 Blue v1/0603 Blue/Base"
+    },
+    {
+      "index": 76,
+      "group": "electronics",
+      "facesBefore": 3672,
+      "facesAfter": 478,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/40.00 MHz Oscillator v1"
+    },
+    {
+      "index": 77,
+      "group": "electronics",
+      "facesBefore": 26750,
+      "facesAfter": 345,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/ESP32-S2 v3"
+    },
+    {
+      "index": 78,
+      "group": "electronics",
+      "facesBefore": 3988,
+      "facesAfter": 388,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/ME6211-SOT23 v1"
+    },
+    {
+      "index": 79,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1/C0201_020/Part 3"
+    },
+    {
+      "index": 80,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1/C0201_020/Part 2"
+    },
+    {
+      "index": 81,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1/C0201_020/Part 1"
+    },
+    {
+      "index": 82,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (1)/C0201_020 (1)/Part 3"
+    },
+    {
+      "index": 83,
+      "group": "electronics",
+      "facesBefore": 558,
+      "facesAfter": 479,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (1)/C0201_020 (1)/Part 2"
+    },
+    {
+      "index": 84,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (1)/C0201_020 (1)/Part 1"
+    },
+    {
+      "index": 85,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (2)/C0201_020 (2)/Part 3"
+    },
+    {
+      "index": 86,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (2)/C0201_020 (2)/Part 2"
+    },
+    {
+      "index": 87,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (2)/C0201_020 (2)/Part 1"
+    },
+    {
+      "index": 88,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (3)/C0201_020 (3)/Part 3"
+    },
+    {
+      "index": 89,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 483,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (3)/C0201_020 (3)/Part 2"
+    },
+    {
+      "index": 90,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (3)/C0201_020 (3)/Part 1"
+    },
+    {
+      "index": 91,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (4)/C0201_020 (4)/Part 3"
+    },
+    {
+      "index": 92,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (4)/C0201_020 (4)/Part 2"
+    },
+    {
+      "index": 93,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (4)/C0201_020 (4)/Part 1"
+    },
+    {
+      "index": 94,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (5)/C0201_020 (5)/Part 3"
+    },
+    {
+      "index": 95,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (5)/C0201_020 (5)/Part 2"
+    },
+    {
+      "index": 96,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (5)/C0201_020 (5)/Part 1"
+    },
+    {
+      "index": 97,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (6)/C0201_020 (6)/Part 3"
+    },
+    {
+      "index": 98,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (6)/C0201_020 (6)/Part 2"
+    },
+    {
+      "index": 99,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (6)/C0201_020 (6)/Part 1"
+    },
+    {
+      "index": 100,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (7)/C0201_020 (7)/Part 3"
+    },
+    {
+      "index": 101,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (7)/C0201_020 (7)/Part 2"
+    },
+    {
+      "index": 102,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (7)/C0201_020 (7)/Part 1"
+    },
+    {
+      "index": 103,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (8)/C0201_020 (8)/Part 3"
+    },
+    {
+      "index": 104,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (8)/C0201_020 (8)/Part 2"
+    },
+    {
+      "index": 105,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (8)/C0201_020 (8)/Part 1"
+    },
+    {
+      "index": 106,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (9)/C0201_020 (9)/Part 3"
+    },
+    {
+      "index": 107,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (9)/C0201_020 (9)/Part 2"
+    },
+    {
+      "index": 108,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (9)/C0201_020 (9)/Part 1"
+    },
+    {
+      "index": 109,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (10)/C0201_020 (10)/Part 3"
+    },
+    {
+      "index": 110,
+      "group": "electronics",
+      "facesBefore": 558,
+      "facesAfter": 479,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (10)/C0201_020 (10)/Part 2"
+    },
+    {
+      "index": 111,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (10)/C0201_020 (10)/Part 1"
+    },
+    {
+      "index": 112,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (11)/C0201_020 (11)/Part 3"
+    },
+    {
+      "index": 113,
+      "group": "electronics",
+      "facesBefore": 558,
+      "facesAfter": 479,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (11)/C0201_020 (11)/Part 2"
+    },
+    {
+      "index": 114,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (11)/C0201_020 (11)/Part 1"
+    },
+    {
+      "index": 115,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (12)/C0201_020 (12)/Part 3"
+    },
+    {
+      "index": 116,
+      "group": "electronics",
+      "facesBefore": 558,
+      "facesAfter": 479,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (12)/C0201_020 (12)/Part 2"
+    },
+    {
+      "index": 117,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0201_020 v1 (12)/C0201_020 (12)/Part 1"
+    },
+    {
+      "index": 118,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0603_080 v1/C0603_080/Part 3 (1)"
+    },
+    {
+      "index": 119,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0603_080 v1/C0603_080/Part 2 (1)"
+    },
+    {
+      "index": 120,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0603_080 v1/C0603_080/Part 1 (1)"
+    },
+    {
+      "index": 121,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0603_080 v1 (1)/C0603_080 (1)/Part 3 (1)"
+    },
+    {
+      "index": 122,
+      "group": "electronics",
+      "facesBefore": 558,
+      "facesAfter": 479,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0603_080 v1 (1)/C0603_080 (1)/Part 2 (1)"
+    },
+    {
+      "index": 123,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0603_080 v1 (1)/C0603_080 (1)/Part 1 (1)"
+    },
+    {
+      "index": 124,
+      "group": "electronics",
+      "facesBefore": 92,
+      "facesAfter": 26,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0603_080 v1 (2)/C0603_080 (2)/Part 3 (1)"
+    },
+    {
+      "index": 125,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0603_080 v1 (2)/C0603_080 (2)/Part 2 (1)"
+    },
+    {
+      "index": 126,
+      "group": "electronics",
+      "facesBefore": 560,
+      "facesAfter": 482,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/C0603_080 v1 (2)/C0603_080 (2)/Part 1 (1)"
+    },
+    {
+      "index": 127,
+      "group": "electronics",
+      "facesBefore": 908,
+      "facesAfter": 604,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/R01005 v2"
+    },
+    {
+      "index": 128,
+      "group": "electronics",
+      "facesBefore": 908,
+      "facesAfter": 599,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/R01005 v2"
+    },
+    {
+      "index": 129,
+      "group": "electronics",
+      "facesBefore": 908,
+      "facesAfter": 599,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/R01005 v2"
+    },
+    {
+      "index": 130,
+      "group": "electronics",
+      "facesBefore": 908,
+      "facesAfter": 600,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/R01005 v2"
+    },
+    {
+      "index": 131,
+      "group": "electronics",
+      "facesBefore": 908,
+      "facesAfter": 605,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/R01005 v2"
+    },
+    {
+      "index": 132,
+      "group": "electronics",
+      "facesBefore": 908,
+      "facesAfter": 598,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/R01005 v2"
+    },
+    {
+      "index": 133,
+      "group": "electronics",
+      "facesBefore": 13372,
+      "facesAfter": 346,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/Board/SOLID"
+    },
+    {
+      "index": 134,
+      "group": "electronics",
+      "facesBefore": 44,
+      "facesAfter": 16,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/uController Reset Button v1"
+    },
+    {
+      "index": 135,
+      "group": "electronics",
+      "facesBefore": 44,
+      "facesAfter": 16,
+      "sourceName": "/Sesame-ESP32 v123/S2 Mini Board_no_hdr v1/uController Reset Button v1"
+    },
+    {
+      "index": 136,
+      "group": "electronics",
+      "facesBefore": 21088,
+      "facesAfter": 407,
+      "sourceName": "/Sesame-ESP32 v123/KCD1-B2-3P-On v1/KCD1-B2_Base"
+    },
+    {
+      "index": 137,
+      "group": "electronics",
+      "facesBefore": 14020,
+      "facesAfter": 589,
+      "sourceName": "/Sesame-ESP32 v123/KCD1-B2-3P-On v1/KCD1-B2_Rocker"
+    },
+    {
+      "index": 138,
+      "group": "electronics",
+      "facesBefore": 5436,
+      "facesAfter": 719,
+      "sourceName": "/Sesame-ESP32 v123/KCD1-B2-3P-On v1/KCD1-B2_RContact"
+    },
+    {
+      "index": 139,
+      "group": "electronics",
+      "facesBefore": 53666,
+      "facesAfter": 873,
+      "sourceName": "/Sesame-ESP32 v123/KCD1-B2-3P-On v1/KCD1-B2_Pin"
+    },
+    {
+      "index": 140,
+      "group": "body",
+      "facesBefore": 6826,
+      "facesAfter": 367,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 141,
+      "group": "body",
+      "facesBefore": 6826,
+      "facesAfter": 366,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 142,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 372,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 143,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 376,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 144,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 365,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 145,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 366,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 146,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 370,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 147,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 370,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 148,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 372,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 149,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 377,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 150,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 374,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 151,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 374,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 152,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 371,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 153,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 373,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 154,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 369,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 155,
+      "group": "body",
+      "facesBefore": 7148,
+      "facesAfter": 367,
+      "sourceName": "/Sesame-ESP32 v123/91420A001_Steel Phillips Flat Head Screws"
+    },
+    {
+      "index": 156,
+      "group": "body",
+      "facesBefore": 16446,
+      "facesAfter": 386,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 157,
+      "group": "body",
+      "facesBefore": 16424,
+      "facesAfter": 384,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 158,
+      "group": "body",
+      "facesBefore": 16392,
+      "facesAfter": 380,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 159,
+      "group": "body",
+      "facesBefore": 16452,
+      "facesAfter": 382,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 160,
+      "group": "body",
+      "facesBefore": 16418,
+      "facesAfter": 381,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 161,
+      "group": "body",
+      "facesBefore": 16378,
+      "facesAfter": 385,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 162,
+      "group": "body",
+      "facesBefore": 16428,
+      "facesAfter": 383,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 163,
+      "group": "body",
+      "facesBefore": 16470,
+      "facesAfter": 382,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 164,
+      "group": "body",
+      "facesBefore": 16388,
+      "facesAfter": 380,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 165,
+      "group": "body",
+      "facesBefore": 16386,
+      "facesAfter": 378,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 166,
+      "group": "body",
+      "facesBefore": 16384,
+      "facesAfter": 384,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 167,
+      "group": "body",
+      "facesBefore": 16384,
+      "facesAfter": 384,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 168,
+      "group": "body",
+      "facesBefore": 16392,
+      "facesAfter": 384,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 169,
+      "group": "body",
+      "facesBefore": 16452,
+      "facesAfter": 388,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 170,
+      "group": "body",
+      "facesBefore": 16460,
+      "facesAfter": 381,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 171,
+      "group": "body",
+      "facesBefore": 16442,
+      "facesAfter": 383,
+      "sourceName": "/Sesame-ESP32 v123/92000A011_Passivated 18-8 Stainless Steel Pan Head Phillips Screws"
+    },
+    {
+      "index": 173,
+      "group": "body",
+      "facesBefore": 4804,
+      "facesAfter": 447,
+      "sourceName": "/Sesame-ESP32 v123/Bottom-Cover"
+    },
+    {
+      "index": 174,
+      "group": "body",
+      "facesBefore": 22538,
+      "facesAfter": 3490,
+      "sourceName": "/Sesame-ESP32 v123/Internal-Frame"
+    },
+    {
+      "index": 175,
+      "group": "electronics",
+      "facesBefore": 13262,
+      "facesAfter": 418,
+      "sourceName": "/Sesame-ESP32 v123/OLED-128x64-0.96 v1"
+    },
+    {
+      "index": 176,
+      "group": "battery",
+      "facesBefore": 340,
+      "facesAfter": 88,
+      "sourceName": "/Sesame-ESP32 v123/14500 7.4V 800mAh Li-ion Battery-PC003 v2"
+    },
+    {
+      "index": 177,
+      "group": "top",
+      "facesBefore": 10969,
+      "facesAfter": 2508,
+      "sourceName": "/Sesame-ESP32 v123/COMPOUND"
+    }
+  ],
+  "source": "https://github.com/soham0777/sesame-robot",
+  "sourceCommit": "4542a50fed3ee5eae4b22cbc03e60a78b71b97da",
+  "sourceFile": "hardware/cad/Sesame-ESP32-v122.step",
+  "notice": "Original upstream CAD assembly, not an exact model of the owner's electronics adaptation. Display and gait effects in the site are illustrative."
+}

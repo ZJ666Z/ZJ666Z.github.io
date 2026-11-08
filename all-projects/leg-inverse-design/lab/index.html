@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN" data-locale="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="data:," />
+    <title>小腿逆向设计实验台 · Leg Lab</title>
+    <script>
+      // Language and chrome before first paint (the same rule as the site: a stored choice wins, else a zh-* browser).
+      (function () {
+        var q = new URLSearchParams(location.search), s = null;
+        try { s = localStorage.getItem('zijiez-language'); } catch (e) {}
+        var zh = s === 'zh' || (s !== 'en' && (navigator.languages || [navigator.language]).some(function (l) { return /^zh(?:-|$)/i.test(l); }));
+        var root = document.documentElement;
+        root.dataset.locale = zh ? 'zh' : 'en';
+        root.lang = zh ? 'zh-CN' : 'en';
+        root.dataset.view = q.get('view') || 'inverse';
+        if (q.has('bare')) root.dataset.bare = '';
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-Cxy7BE5Q.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BpGDvVuy.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

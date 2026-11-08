@@ -1,0 +1,359 @@
+{
+ "version": 1,
+ "exported": "2026-11-07 17:35",
+ "dataset": "v3",
+ "conditions": [
+  "mass_g",
+  "leg_mm",
+  "w_push",
+  "rho_mm"
+ ],
+ "gp": {
+  "file": "gp.bin",
+  "n": 79,
+  "d": 4,
+  "X": 0,
+  "L_packing": "lower triangle, row by row",
+  "xm": [
+   4.836091446112607,
+   46.94804611041008,
+   0.49648768955818084,
+   2.942981713396378
+  ],
+  "xs": [
+   0.8546540770261333,
+   3.5898382303048435,
+   0.17097582144878257,
+   0.6696419379611125
+  ],
+  "objectives": [
+   "solid_mass_g",
+   "solid_knee_inertia_g_mm2",
+   "stance_vs_stock_solid",
+   "push_vs_stock_solid",
+   "knee_torque_Nmm",
+   "lift_mm",
+   "stride_mm",
+   "rolling"
+  ],
+  "per_objective": {
+   "solid_mass_g": {
+    "ls": [
+     2.291984317195554,
+     10.334813534524523,
+     13.296014800212442,
+     20.085536923187668
+    ],
+    "sf": 1.6566921828290992,
+    "ym": 5.748708860759494,
+    "ys": 0.8981379211269954,
+    "alpha": 316,
+    "L": 395,
+    "sense": -1,
+    "label": "mass, solid (g)"
+   },
+   "solid_knee_inertia_g_mm2": {
+    "ls": [
+     2.459946427048235,
+     4.3669094026411726,
+     11.870493877318586,
+     20.085536923187668
+    ],
+    "sf": 2.2799811278683757,
+    "ym": 3653.740506329114,
+    "ys": 1068.135464139097,
+    "alpha": 3555,
+    "L": 3634,
+    "sense": -1,
+    "label": "knee inertia, solid (g mm\u00b2)"
+   },
+   "stance_vs_stock_solid": {
+    "ls": [
+     4.523846574826816,
+     2.481617281175679,
+     10.499992415060344,
+     20.085536923187668
+    ],
+    "sf": 2.5779834393498122,
+    "ym": 2.031475095919112,
+    "ys": 1.4760469687139652,
+    "alpha": 6794,
+    "L": 6873,
+    "sense": 1,
+    "label": "stance stiffness / stock (solid)"
+   },
+   "push_vs_stock_solid": {
+    "ls": [
+     3.634737961164194,
+     1.4932705286187398,
+     20.085536923187668,
+     20.085536923187668
+    ],
+    "sf": 2.0403145292007383,
+    "ym": 2.818014556125243,
+    "ys": 2.0823409129570107,
+    "alpha": 10033,
+    "L": 10112,
+    "sense": 1,
+    "label": "push stiffness / stock (solid)"
+   },
+   "knee_torque_Nmm": {
+    "ls": [
+     20.085536923187668,
+     6.936453498120847,
+     20.085536923187668,
+     0.5448648545204869
+    ],
+    "sf": 0.8380197805410914,
+    "ym": 14.384909128635357,
+    "ys": 6.388357535152173,
+    "alpha": 13272,
+    "L": 13351,
+    "sense": -1,
+    "label": "peak stance knee torque (N mm)"
+   },
+   "lift_mm": {
+    "ls": [
+     20.085536923187668,
+     7.373396129699029,
+     20.085536923187668,
+     2.5613254502244995
+    ],
+    "sf": 2.693923028882862,
+    "ym": 11.054190967999283,
+    "ys": 1.0986271158970042,
+    "alpha": 16511,
+    "L": 16590,
+    "sense": 1,
+    "label": "foot lift (mm)"
+   },
+   "stride_mm": {
+    "ls": [
+     20.085536923187668,
+     6.959580882360918,
+     20.085536923187668,
+     0.5474077198754052
+    ],
+    "sf": 0.8430999323729935,
+    "ym": 11.387805149078124,
+    "ys": 0.8760318467820177,
+    "alpha": 19750,
+    "L": 19829,
+    "sense": 1,
+    "label": "stride (mm)"
+   },
+   "rolling": {
+    "ls": [
+     20.085536923187668,
+     20.085536923187668,
+     20.085536923187668,
+     0.12856497571314043
+    ],
+    "sf": 0.7493578168011019,
+    "ym": 0.7848101265822784,
+    "ys": 0.4109540020452514,
+    "alpha": 22989,
+    "L": 23068,
+    "sense": 1,
+    "label": "rolling share of stance"
+   }
+  },
+  "transform": "x = [mass_g, leg_mm, w_push, ln(rho_mm)]; standardised (x - xm) / xs",
+  "predict": "k = sf^2 exp(-0.5 sum(((x - X_j) / ls)^2)); mu = k.alpha ys + ym; std = sqrt(max(sf^2 - |L^-1 k|^2, 0)) ys"
+ },
+ "candidates": {
+  "file": "candidates.bin",
+  "n": 20000,
+  "seed": 0,
+  "k_safe": 1.0,
+  "rule": "rho_mm: exp(ln lo + u (ln hi - ln lo)); others: lo + u (hi - lo); bounds narrow (lo, hi)"
+ },
+ "field": {
+  "file": "field.bin",
+  "dtype": "float32",
+  "layers": [
+   {
+    "name": "inp",
+    "in": 43,
+    "out": 256,
+    "W": 0,
+    "b": 11008
+   },
+   {
+    "name": "hidden.0",
+    "in": 256,
+    "out": 256,
+    "W": 11264,
+    "b": 76800
+   },
+   {
+    "name": "hidden.1",
+    "in": 256,
+    "out": 256,
+    "W": 77056,
+    "b": 142592
+   },
+   {
+    "name": "hidden.2",
+    "in": 299,
+    "out": 256,
+    "W": 142848,
+    "b": 219392
+   },
+   {
+    "name": "hidden.3",
+    "in": 256,
+    "out": 256,
+    "W": 219648,
+    "b": 285184
+   },
+   {
+    "name": "hidden.4",
+    "in": 256,
+    "out": 256,
+    "W": 285440,
+    "b": 350976
+   },
+   {
+    "name": "out",
+    "in": 256,
+    "out": 1,
+    "W": 351232,
+    "b": 351488
+   }
+  ],
+  "freq": [
+   3.1415927410125732,
+   6.2831854820251465,
+   12.566370964050293,
+   25.132741928100586,
+   50.26548385620117,
+   100.53096771240234
+  ],
+  "skip": 2,
+  "activation": "silu",
+  "clip_mm": 4.0,
+  "box": {
+   "x": [
+    -3.4,
+    20.5
+   ],
+   "y": [
+    -5.0,
+    35.0
+   ],
+   "z": [
+    43.0,
+    115.5
+   ]
+  },
+  "ranges": {
+   "mass_g": [
+    3.5,
+    6.5
+   ],
+   "leg_mm": [
+    40.0,
+    54.0
+   ],
+   "w_push": [
+    0.2,
+    0.8
+   ],
+   "rho_mm": [
+    6.0,
+    60.0
+   ]
+  },
+  "features": "p (3, box -> [-1, 1]), sin(p_i f_k) (i major, 18), cos (18), conditions (4) = 43",
+  "conditions": "[mass_g, leg_mm, w_push, ln rho_mm] -> [-1, 1] over RANGES (ln for rho)",
+  "skip_rule": "hidden[2] input = concat(h, h0)",
+  "output": "sdf_mm = out * clip_mm (negative inside)"
+ },
+ "interfaces": {
+  "file": "interfaces.bin",
+  "dtype": "float32",
+  "y0": -5.0,
+  "z0": 43.0,
+  "step": 0.5,
+  "ny": 81,
+  "nz": 146,
+  "layout": "y major: index = iy * nz + iz",
+  "keep": {
+   "offset": 0,
+   "x": [
+    4.013,
+    13.038
+   ],
+   "rule": "union (min)"
+  },
+  "out": {
+   "offset": 11826,
+   "x": null,
+   "rule": "subtract through every x"
+  },
+  "flange": {
+   "offset": 23652,
+   "x": [
+    [
+     1.263,
+     3.763
+    ],
+    [
+     13.288,
+     15.788
+    ]
+   ],
+   "rule": "subtract"
+  },
+  "ground": "keep z <= z_tip(leg_mm) = knee_z + axis_z leg_mm (flat cut on the ground plane)",
+  "knee_yz": [
+   15.23,
+   59.85
+  ],
+  "leg_axis_yz": [
+   -0.03291882584590382,
+   0.9994580285859567
+  ],
+  "slab_x": [
+   3.763,
+   13.288
+  ],
+  "pla_density_g_cm3": 1.24,
+  "pocket": [
+   9.0,
+   53.55,
+   21.49,
+   76.53
+  ],
+  "max_offset_mm": 0.4
+ },
+ "v8": {
+  "targets": {
+   "stance_vs_stock_solid": 1.0,
+   "push_vs_stock_solid": 1.0,
+   "knee_torque_Nmm": 14.15
+  },
+  "bounds": {
+   "leg_mm": [
+    46.1,
+    48.1
+   ]
+  },
+  "pick": {
+   "feasible": true,
+   "conditions": {
+    "mass_g": 3.920825591278093,
+    "leg_mm": 46.32590576505236,
+    "w_push": 0.24214161894662786,
+    "rho_mm": 21.206407783297024
+   },
+   "predicted": {
+    "solid_mass_g": 4.800726947753503,
+    "stance_vs_stock_solid": 1.0662338292230116,
+    "push_vs_stock_solid": 1.11687207805346,
+    "knee_torque_Nmm": 13.951232880273901
+   }
+  }
+ }
+}
